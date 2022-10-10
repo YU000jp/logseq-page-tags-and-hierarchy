@@ -1,5 +1,5 @@
-# logseq-page-tags-and-hierarchy
-"Logseq plugin" Show page-tags and hierarchy on the right side of the page.
+# logseq page-tags and hierarchy
+Show page-tags and hierarchy on the right side of the page.
 
 AFTER：
 ![image](https://user-images.githubusercontent.com/111847207/194802454-bae4573b-1cb6-45e9-bae0-4f58f37720f9.png)
