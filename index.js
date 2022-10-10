@@ -1,7 +1,7 @@
 function main(){logseq.provideStyle(String.raw`
 /* Screen size */
 @supports (display: flex) {
-    @media screen and (min-width: 1130px) {
+    @media screen and (min-width: 1580px) {
         main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative {
             margin-right: 390px;
             margin-bottom: 2em;
