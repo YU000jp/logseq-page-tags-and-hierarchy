@@ -1,7 +1,6 @@
 function main(){logseq.provideStyle(String.raw`
 /* Screen size */
-@supports (display: flex) {
-    @media screen and (min-width: 1580px) {
+@media screen and (min-width: 1580px) {
         main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative {
             margin-right: 390px;
             margin-bottom: 2em;
@@ -25,6 +24,9 @@ function main(){logseq.provideStyle(String.raw`
             top: 6.5em;
             right: 1em;
         }
+        main.ls-right-sidebar-open div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row {
+            display: none;
+        }
         body:not(.is-tabs-loaded) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row {
             top: 4.5em;
         }
@@ -33,7 +35,9 @@ function main(){logseq.provideStyle(String.raw`
             right: 1em;
             bottom: 3em;
         }
-    }
+        main.ls-right-sidebar-open div#main-content-container div.page-hierarchy {
+            display: none;
+        }
 }
 /* Screen size Finish */
 `);}logseq.ready(main).catch(console.error)
