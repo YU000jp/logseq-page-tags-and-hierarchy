@@ -1,7 +1,6 @@
 {
   "name": "Page-tags and Hierarchy",
   "author": "YU000jp",
-  "version": "0.0.1",
   "description": "Show page-tags and hierarchy on the right side of the page.",
   "main": "./index.html",
   "sponsors": ["https://www.buymeacoffee.com/yu000japan"],
