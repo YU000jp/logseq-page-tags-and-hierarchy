@@ -41,6 +41,10 @@ function main(){logseq.provideStyle(String.raw`
         main.ls-right-sidebar-open div#main-content-container div.page-hierarchy {
             display: none;
         }
+        div#right-sidebar div.relative+div.references.mt-6.flex-1.flex-row,
+        div#right-sidebar div.page-hierarchy {
+            display: none;
+        }
 }
 /* Screen size Finish */
 `);}logseq.ready(main).catch(console.error)
