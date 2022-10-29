@@ -17,7 +17,7 @@ function main(){logseq.provideStyle(String.raw`
             font-size: 0.95em;
             background-color: var(--ls-primary-background-color);
             border-radius: 10px;
-            z-index: +1;
+            z-index: var(--ls-z-index-level-3);
         }
         /* Pages-tagged-with */
         body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row {
