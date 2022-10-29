@@ -1,7 +1,7 @@
 Published on logseq marketplace. If you have the [Logseq Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout) installed, you do not need to add this plugin.
 # logseq page-tags and hierarchy
  - Show page-tags and hierarchy on the right side of the page.
- - monitor size min-width: 1580px
+ - monitor size min-width: ~~1580px~~ 1625px
  - Do not show page tags or hierarchy when PDF view or right sidebar is open. Clearly display the right sidebar.
 
 AFTER：
