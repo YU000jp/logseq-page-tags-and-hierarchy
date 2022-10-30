@@ -10,7 +10,7 @@ function main(){logseq.provideStyle(String.raw`
         body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,
         body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy {
             position: fixed;
-            height: 210px;
+            max-height: 210px;
             width: 42vw;
             overflow-y: auto;
             padding: 1.5em;
@@ -32,6 +32,11 @@ function main(){logseq.provideStyle(String.raw`
         }
 }
 @media screen and (min-width: 1625px) {
+        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open.ls-left-sidebar-open) div#main-content-container {
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 2em;
+        }
         body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative {
             margin-bottom: 2em;
             margin-top: 2em;
