@@ -16,4 +16,4 @@ BEFORE:
  - For more information [Link](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
 
 ## Hierarchy
- - Insert slashes in a page name to create what is called "hierarchy".
+ - Insert slashes in a page name to create what is called "hierarchy". `Logseq/Plugin`
