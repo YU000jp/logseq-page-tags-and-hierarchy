@@ -17,3 +17,7 @@ AFTER [max-width: 1624px] :
 ![image](https://user-images.githubusercontent.com/111847207/198820127-4dc84529-4d80-41a2-ba72-4e5895e1ab8b.png)
 BEFORE:
 ![image](https://user-images.githubusercontent.com/111847207/194802486-018c4910-2af9-40f0-a6fa-c318537655ad.png)
+
+---
+
+<a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee" style="height: 42px;width: 152px" ></a>
