@@ -7,7 +7,7 @@ Published on logseq marketplace. If you have the [Logseq Column Layout plugin](h
 ### Hierarchy
  - Insert slashes in a page name to create what is called "hierarchy". `Logseq/Plugin`
 
-# logseq page-tags and hierarchy
+# logseq-plugin-page-tags-and-hierarchy
  - Show page-tags and hierarchy on the right or bottom side of the page.
  - Do not show page tags or hierarchy when PDF view or right sidebar is open. Clearly display the right sidebar.
 
