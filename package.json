@@ -1,13 +1,29 @@
 {
-  "name": "Page-tags and Hierarchy",
-  "author": "YU000jp",
+  "name": "logseq-page-tags-and-hierarchy",
   "description": "Show page-tags and hierarchy on the right side of the page.",
-  "main": "./index.html",
-  "sponsors": ["https://www.buymeacoffee.com/yu000japan"],
-  "repository":"https://github.com/YU000jp/logseq-page-tags-and-hierarchy.git",
-  "repo":"YU000jp/logseq-page-tags-and-hierarchy",
+  "author": "YU000jp",
+  "main": "dist/index.html",
+  "sponsors": [
+    "https://www.buymeacoffee.com/yu000japan"
+  ],
+  "repository": "https://github.com/YU000jp/logseq-page-tags-and-hierarchy",
+  "repo": "YU000jp/logseq-page-tags-and-hierarchy",
+  "targets": {
+    "main": false
+  },
+  "scripts": {
+    "build": "parcel build --no-source-maps src/index.html --public-url ./"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@logseq/libs": "latest"
+  },
   "logseq": {
     "id": "logseq-page-tags-and-hierarchy",
+    "title": "Page-tags and Hierarchy",
     "icon": "./icon.svg"
+  },
+  "devDependencies": {
+    "parcel": "latest"
   }
 }
