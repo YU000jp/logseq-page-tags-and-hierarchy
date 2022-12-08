@@ -19,6 +19,8 @@
 
  - Insert slashes in a page name to create what is called "hierarchy". `Logseq/Plugin`
 
+## Demo
+
 > AFTER [min-width: 1625px] ：
 ![image](https://user-images.githubusercontent.com/111847207/194802454-bae4573b-1cb6-45e9-bae0-4f58f37720f9.png)
 
@@ -27,6 +29,10 @@
 
 > BEFORE:
 ![image](https://user-images.githubusercontent.com/111847207/194802486-018c4910-2af9-40f0-a6fa-c318537655ad.png)
+
+## 🎨 Settings
+
+![image](https://user-images.githubusercontent.com/111847207/206120109-20c32086-82ab-47cf-8a5b-ddf1ea0bdded.png)
 
 ---
 
