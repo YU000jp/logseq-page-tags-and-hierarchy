@@ -9,13 +9,22 @@ export const settingUI = () => {
             description: "",
         },
         {
-            key: "switch01",
+            key: "switchMain",
             title: "side by side *",
             type: "enum",
             enumChoices: ["Side", "Bottom"],
             enumPicker: "radio",
-            default: "enable",
+            default: "Side",
             description: "Side: Window size limit [min-width 1625px]  | Bottom: Place it on the bottom side.",
+        },
+        {
+            key: "switchWideModeLimit",
+            title: "set wide mode max-width: 1450px *",
+            type: "enum",
+            enumChoices: ["Enable", "Normal"],
+            enumPicker: "radio",
+            default: "Enable",
+            description: "enable: wide mode(shortcut `(Esc) + t → c`) limit width",
         }
     ];
     logseq.useSettingsSchema(settingsTemplate);

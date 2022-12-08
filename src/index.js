@@ -2,8 +2,10 @@ import "@logseq/libs";
 import { settingUI } from "./setting";
 
 const main = () => {
+
     settingUI(); /* -setting */
-    /* CSS */
+
+
     logseq.provideStyle(String.raw`
     /* Logseq bugs fix */
     
@@ -32,15 +34,25 @@ const main = () => {
     body[data-page="page"] div#right-sidebar div.page-hierarchy {
         display: none;
     }
-
-    body[data-page="page"] main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content {
-        max-width: 1480px;
-    }
     `);
-    const Setting = logseq.settings.switch01;
+
+
+    const SettingMain = logseq.settings.switchMain;
+    const SettingWideModeLimit = logseq.settings.switchWideModeLimit;
+
+
+    //wide mode limit
+    if (SettingWideModeLimit !== "Normal") {
+        logseq.provideStyle(String.raw`
+        main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content {
+            max-width: 1450px;
+        }
+        `);
+    }
     
+
     //Bottom
-    if (Setting !== undefined && Setting === "Bottom") {
+    if (SettingMain !== undefined && SettingMain === "Bottom") {
     
         logseq.provideStyle(String.raw`
     //Bottom
@@ -78,11 +90,12 @@ const main = () => {
     }
     `);
 
+
     }else{
+
 
     //Bottom < 1624 & 1625 > Side
     logseq.provideStyle(String.raw`
-
 
     /* Bottom < 1624 */
     @media screen and (max-width: 1624px) {
@@ -160,7 +173,9 @@ const main = () => {
             right: 1em;
             bottom: 3em;
         }
+    
     } 
+
     @media screen and (min-width: 1625px) and (max-width: 2259px) {
 
         body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container {
@@ -174,6 +189,7 @@ const main = () => {
         }
 
     }
+
     @media screen and (min-width: 2260px) {
 
         body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container {
@@ -186,8 +202,10 @@ const main = () => {
             width: 680px;
         }
     } 
+
     `);
     }
 
 };
+
 logseq.ready(main).catch(console.error);
