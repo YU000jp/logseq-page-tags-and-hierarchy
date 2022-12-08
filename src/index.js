@@ -32,6 +32,10 @@ const main = () => {
     body[data-page="page"] div#right-sidebar div.page-hierarchy {
         display: none;
     }
+
+    body[data-page="page"] main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content {
+        max-width: 1480px;
+    }
     `);
     const Setting = logseq.settings.switch01;
     
