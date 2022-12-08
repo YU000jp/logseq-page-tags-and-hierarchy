@@ -32,7 +32,7 @@
 
 ## 🎨 Settings
 
-![image](https://user-images.githubusercontent.com/111847207/206120109-20c32086-82ab-47cf-8a5b-ddf1ea0bdded.png)
+![image](https://user-images.githubusercontent.com/111847207/206410231-7ba1fddd-ba4e-455e-a7a1-a16321461d5b.png)
 
 ---
 
