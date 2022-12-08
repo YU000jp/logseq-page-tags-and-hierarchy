@@ -15,7 +15,7 @@ export const settingUI = () => {
             enumChoices: ["Side", "Bottom"],
             enumPicker: "radio",
             default: "enable",
-            description: "enable: Window size limit [min-width 1625px]  | disable: Place it on the bottom side.",
+            description: "Side: Window size limit [min-width 1625px]  | Bottom: Place it on the bottom side.",
         }
     ];
     logseq.useSettingsSchema(settingsTemplate);
