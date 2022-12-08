@@ -33,8 +33,12 @@ const main = () => {
     }
     `);
     const Setting = logseq.settings.switch01;
-    if (Setting !== undefined && Setting === "disable") {
-    logseq.provideStyle(String.raw`
+    
+    //Bottom
+    if (Setting !== undefined && Setting === "Bottom") {
+    
+        logseq.provideStyle(String.raw`
+    //Bottom
     body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative {
         margin-bottom: 2em;
         margin-top: 2em;
@@ -68,10 +72,16 @@ const main = () => {
         bottom: 0;
     }
     `);
+
     }else{
+
+    //Bottom < 1624 & 1625 > Side
     logseq.provideStyle(String.raw`
-    /* Screen size */
+
+
+    /* Bottom < 1624 */
     @media screen and (max-width: 1624px) {
+
         body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative {
             margin-bottom: 2em;
             margin-top: 2em;
@@ -106,21 +116,14 @@ const main = () => {
         }
     }
     
+
+    /* 1625 > Side */
     @media screen and (min-width: 1625px) {
-        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open.ls-left-sidebar-open) div#main-content-container {
-            display: flex;
-            justify-content: flex-start;
-            padding-left: 2em;
-        }
-    
+
         body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative {
             margin-bottom: 2em;
             margin-top: 2em;
             margin-left: 1.5em;
-        }
-    
-        body:not(.is-pdf-active) main.ls-wide-mode div#main-content-container div.flex-1.page.relative {
-            margin-right: 390px;
         }
     
         /* right-space */
@@ -152,7 +155,32 @@ const main = () => {
             right: 1em;
             bottom: 3em;
         }
-    }    
+    } 
+    @media screen and (min-width: 1625px) and (max-width: 2259px) {
+
+        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container {
+            padding-right: 424px;
+        }
+
+        /* Contents Page */
+        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,
+        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy {
+            width: 420px;
+        }
+
+    }
+    @media screen and (min-width: 2260px) {
+
+        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container {
+            padding-right: 684px;
+        }
+
+        /* Contents Page */
+        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,
+        body:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy {
+            width: 680px;
+        }
+    } 
     `);
     }
 
