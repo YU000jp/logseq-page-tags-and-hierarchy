@@ -25,7 +25,17 @@ export const settingUI = () => {
             enumPicker: "radio",
             default: "Enable",
             description: "enable: wide mode(shortcut `(Esc) + t → c`) limit width",
+        },
+        {
+            key: "switchPageLinkedReferences",
+            title: "Page Linked References height limit  *",
+            type: "enum",
+            enumChoices: ["Enable","Normal"],
+            enumPicker: "radio",
+            default: "Enable",
+            description: "",
         }
+
     ];
     logseq.useSettingsSchema(settingsTemplate);
 };

@@ -37,9 +37,9 @@ const main = () => {
     `);
 
 
-    const SettingMain = logseq.settings.switchMain;
-    const SettingWideModeLimit = logseq.settings.switchWideModeLimit;
-
+    const SettingMain = logseq.settings.switchMain || "";
+    const SettingWideModeLimit = logseq.settings.switchWideModeLimit || "";
+    const pageLinkedReferences = logseq.settings.switchPageLinkedReferences || "";
 
     //wide mode limit
     if (SettingWideModeLimit !== "Normal") {
@@ -49,7 +49,46 @@ const main = () => {
         }
         `);
     }
-    
+
+    //page Linked References
+    if (pageLinkedReferences === "Enable") {
+        logseq.provideStyle(String.raw`
+        @media screen and (min-width: 1850px) {
+            /*
+            
+            page Linked References
+            
+            */
+            body[data-page="page"] div#main-content-container div.relative div.lazy-visibility div.references {
+                margin-top: 4em;
+                margin-bottom: 4em;
+            }
+            
+            body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative div.lazy-visibility div.references div.references-blocks div.content>div,
+            body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div+div div.references div.references-blocks div.content>div,
+            body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div+div+div div.references div.references-blocks div.content>div {
+                gap: 1.2em;
+            }
+            
+            body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative div.lazy-visibility div.references div.references-blocks div.content>div>div.lazy-visibility,
+            body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div+div div.references div.references-blocks div.content>div>div.lazy-visibility,
+            body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div+div+div div.references div.references-blocks div.content>div>div.lazy-visibility {
+                overflow: auto;
+                border-radius: 1em;
+                max-height: 450px;
+                font-size: smaller;
+                display: block;
+            }
+            
+            body[data-page="page"] div#main-content-container div.relative h2.font-bold {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+    `);
+    }
 
     //Bottom
     if (SettingMain !== undefined && SettingMain === "Bottom") {
