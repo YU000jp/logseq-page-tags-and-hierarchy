@@ -1,9 +1,46 @@
 import "@logseq/libs";
-import { settingUI } from "./setting";
 
 const main = () => {
 
-    settingUI(); /* -setting */
+    /* https://logseq.github.io/plugins/types/SettingSchemaDesc.html */
+    const settingsTemplate = [
+        {
+            key: "heading00",
+            title: "*Please reboot Logseq to reflect styles.",
+            type: "heading",
+            default: "",
+            description: "",
+        },
+        {
+            key: "switchMain",
+            title: "side by side *",
+            type: "enum",
+            enumChoices: ["Side", "Bottom"],
+            enumPicker: "radio",
+            default: "Side",
+            description: "Side: Window size limit [min-width 1625px]  | Bottom: Place it on the bottom side.",
+        },
+        {
+            key: "switchWideModeLimit",
+            title: "set wide mode max-width: 1450px *",
+            type: "enum",
+            enumChoices: ["Enable", "Normal"],
+            enumPicker: "radio",
+            default: "Enable",
+            description: "enable: wide mode(shortcut `(Esc) + t → c`) limit width",
+        },
+        {
+            key: "switchPageLinkedReferences",
+            title: "Page Linked References height limit  *",
+            type: "enum",
+            enumChoices: ["Enable", "Normal"],
+            enumPicker: "radio",
+            default: "Enable",
+            description: "",
+        }
+
+    ];
+    logseq.useSettingsSchema(settingsTemplate);
 
 
     logseq.provideStyle(String.raw`
@@ -92,7 +129,7 @@ const main = () => {
 
     //Bottom
     if (SettingMain !== undefined && SettingMain === "Bottom") {
-    
+
         logseq.provideStyle(String.raw`
     //Bottom
     body[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative {
@@ -130,11 +167,11 @@ const main = () => {
     `);
 
 
-    }else{
+    } else {
 
 
-    //Bottom < 1624 & 1625 > Side
-    logseq.provideStyle(String.raw`
+        //Bottom < 1624 & 1625 > Side
+        logseq.provideStyle(String.raw`
 
     /* Bottom < 1624 */
     @media screen and (max-width: 1624px) {
