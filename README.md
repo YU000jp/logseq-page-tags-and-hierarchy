@@ -21,14 +21,14 @@
 
 ## Demo
 
-> AFTER [min-width: 1625px] ：
-![image](https://user-images.githubusercontent.com/111847207/194802454-bae4573b-1cb6-45e9-bae0-4f58f37720f9.png)
+> AFTER : Side by Side mode && min-width: 1625px
+![image](https://user-images.githubusercontent.com/111847207/209886888-0729b627-627d-4e05-abba-c9cbfe6e3758.png)
 
-> AFTER [max-width: 1624px] : 
-![image](https://user-images.githubusercontent.com/111847207/198820127-4dc84529-4d80-41a2-ba72-4e5895e1ab8b.png)
+> AFTER : Bottom mode && max-width: 1624px
+![image](https://user-images.githubusercontent.com/111847207/209886944-51fb75af-35e0-4b8a-bb45-165eccf73a78.png)
 
 > BEFORE:
-![image](https://user-images.githubusercontent.com/111847207/194802486-018c4910-2af9-40f0-a6fa-c318537655ad.png)
+![image](https://user-images.githubusercontent.com/111847207/209887038-dbdfa071-8d6e-4aae-9614-40aaddb0e5eb.png)
 
 ## 🎨 Settings
 
