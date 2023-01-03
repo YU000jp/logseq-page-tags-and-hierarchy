@@ -3,8 +3,6 @@
 - Show page-tags and hierarchy on the right or bottom side of the page.
 - Do not show page tags or hierarchy when PDF view or right sidebar is open. Clearly display the right sidebar.
  
- > If you have [Logseq Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout) installed, you do not need to add this plugin.
- 
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
 
