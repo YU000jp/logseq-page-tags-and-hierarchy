@@ -8,18 +8,20 @@
 
 ## Changelog
 
-- Detached from [logseq-plugin-column-layout](https://github.com/YU000jp/Logseq-column-Layout).
+- Detached from [Column Layout Plugin](https://github.com/YU000jp/Logseq-column-Layout).
 
 ## About Logseq feature
 
 ### Page-tags
 
  - Add `tags:: AA,BB` to first block on any page
- - For more information [Link](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
+ - [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
+ - [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
  
 ### Hierarchy
 
- - Insert slashes in a page name to create what is called "hierarchy". `Logseq/Plugin`
+ - Insert slashes in a page name to create what is called "hierarchy". for example `Logseq/Plugin`
+ - [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
 
 ## Demo
 
