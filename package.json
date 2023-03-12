@@ -3,6 +3,7 @@
   "description": "Show page-tags and hierarchy on the right side of the page.",
   "author": "YU000jp",
   "main": "dist/index.html",
+  "effect": true,
   "sponsors": [
     "https://www.buymeacoffee.com/yu000japan"
   ],
@@ -16,7 +17,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@logseq/libs": "latest"
+    "@logseq/libs": "latest",
+    "logseq-dateutils": "^0.0.26"
   },
   "logseq": {
     "id": "logseq-page-tags-and-hierarchy",
