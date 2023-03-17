@@ -22,6 +22,7 @@
 
  - Insert slashes in a page name to create what is called "hierarchy". for example `Logseq/Plugin`
  - [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
+ - It turns out that Logseq has a macro to show the hierarchy. Example: `{{namespace PAGE}}`
 
 ## Demo
 
