@@ -7,8 +7,26 @@
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
 
 ## Changelog
-
+- add Test Function (Quickly add to page-tags) #2023/03/19
 - Detached from [Column Layout Plugin](https://github.com/YU000jp/Logseq-column-Layout).
+
+## Test Function
+
+### [page title context menu] Shortcuts
+
+#### For PARA method pages. Quickly add to page-tags
+
+##### 🎨 add Project
+
+##### 🏠 add Area of responsibility
+
+##### 🌍 add Resource
+
+##### 🧹 add Archive
+
+#### For Other pages. Quickly add to page-tags
+
+##### 🧺 add a page-tag by select list
 
 ## About Logseq feature
 
