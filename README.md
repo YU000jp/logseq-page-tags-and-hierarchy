@@ -18,6 +18,8 @@
 
 ##### 🎨 add Project
 
+![Animation6w22](https://user-images.githubusercontent.com/111847207/226155740-02c6bc12-2930-4409-9acd-d3dc7f899514.gif)
+
 ##### 🏠 add Area of responsibility
 
 ##### 🌍 add Resource
