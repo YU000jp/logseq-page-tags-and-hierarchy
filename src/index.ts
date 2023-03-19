@@ -219,11 +219,8 @@ const main = async () => {
 
     //CSS minify https://csscompressor.com/
     logseq.provideStyle(String.raw`
-    @media screen and (min-width:1850px) {
-    body.th-pageLinkedReferences[data-page="page"] div#main-content-container div.relative div.lazy-visibility div.references{margin-top:4em;margin-bottom:4em}
-    body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative div.lazy-visibility div.references div.references-blocks div.content>div,body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.references div.references-blocks div.content>div{gap:1.2em}
-    body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative div.lazy-visibility div.references div.references-blocks div.content>div>div.lazy-visibility,body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.references div.references-blocks div.content>div>div.lazy-visibility{overflow:auto;border-radius:1em;max-height:450px;display:block}
-    body.th-pageLinkedReferences[data-page="page"] div#main-content-container div.relative h2.font-bold{display:block;margin-left:auto;margin-right:auto}
+@media screen and (min-width:1850px) {
+    body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative div.lazy-visibility div.references div.references-blocks div.content>div>div.lazy-visibility,body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.references div.references-blocks div.content>div>div.lazy-visibility{overflow:auto;max-height:450px;display:block}
 }
     body.th-bottom[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
     body.th-bottom[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,body.th-bottom[data-page="page"]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{max-height:210px;width:34vw;padding:1.15em;z-index:var(--ls-z-index-level-3)}
@@ -255,7 +252,7 @@ const main = async () => {
     body[data-page="home"] div#today-queries div.color-level div.blocks-container,body[data-page="home"] div#today-queries div.color-level{background-color:unset}
     body.is-pdf-active div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,main.ls-right-sidebar-open div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,body.is-pdf-active div#main-content-container div.page-hierarchy,main.ls-right-sidebar-open div#main-content-container div.page-hierarchy,div#right-sidebar div.relative+div.references.mt-6.flex-1.flex-row,div#right-sidebar div.page-hierarchy{display:none}
     main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content{max-width:1450px}
-    body.th-pageLinkedReferences[data-page="page"]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page="page"]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset: 2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}
+    body.th-pageLinkedReferences[data-page="page"]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references.mt-6.flex-1.flex-row,body.th-pageLinkedReferences[data-page="page"]:not(.is-pdf-active) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page="page"]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset:2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}
     `);
 
     //WideModeLimit
