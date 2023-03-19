@@ -17,8 +17,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@logseq/libs": "latest",
-    "logseq-dateutils": "^0.0.26"
+    "@logseq/libs": "^0.0.14",
+    "logseq-dateutils": "^0.0.26",
+    "sweetalert2": "^11.7.3"
   },
   "logseq": {
     "id": "logseq-page-tags-and-hierarchy",
@@ -26,6 +27,6 @@
     "icon": "./icon.svg"
   },
   "devDependencies": {
-    "parcel": "latest"
+    "parcel": "^2.8.3"
   }
 }
