@@ -64,3 +64,7 @@
 - [panel coloring](https://github.com/YU000jp/logseq-plugin-panel-coloring)
 
 - [Column Layout](https://github.com/YU000jp/Logseq-column-Layout)
+
+## Prior art & Credit
+
+- [Add PARA properties](https://github.com/georgeguimaraes/logseq-plugin-add-PARA-properties)
