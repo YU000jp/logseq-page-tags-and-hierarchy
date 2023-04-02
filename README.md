@@ -38,6 +38,14 @@
 
 ![image](https://user-images.githubusercontent.com/111847207/206410231-7ba1fddd-ba4e-455e-a7a1-a16321461d5b.png)
 
+## Install from Marketplace
+
+- Press [---] on the top right toolbar to open [Plugins]
+- Select marketplace
+- Type 'tags' in the search field, select it from the search results and install
+
+![image](https://user-images.githubusercontent.com/111847207/229359364-fb75af38-ff92-4aff-9c6d-c4c4e840de0f.png)
+
 ## Other my plugins
 
 - [SomeMenuExtemder](https://github.com/YU000jp/logseq-plugin-some-menu-extender)
