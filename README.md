@@ -45,7 +45,3 @@
 - [Panel Coloring](https://github.com/YU000jp/logseq-plugin-panel-coloring)
 - [Rakuten-books](https://github.com/YU000jp/logseq-plugin-rakuten-books) (Only for Japanese site)
 - [booklog-jp-import](https://github.com/YU000jp/logseq-plugin-booklog-jp-import) (Only for Japanese site)
-
-## Prior art & Credit
-
-- [Add PARA properties](https://github.com/georgeguimaraes/logseq-plugin-add-PARA-properties)
