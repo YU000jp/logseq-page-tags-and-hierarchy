@@ -35,18 +35,21 @@ BEFORE:
 
 ![image](https://user-images.githubusercontent.com/111847207/233505475-247977e9-4f08-436f-a3dd-328ed941f5e5.png)
 
-## Install from Marketplace
+## Install from Logseq Marketplace
 
-- Press [---] on the top right toolbar to open [Plugins]
+- Press [`---`] on the top right toolbar to open [`Plugins`]
 - Select marketplace
-- Type 'tags' in the search field, select it from the search results and install
+- Type '`tags`' in the search field, select it from the search results and install
 
 ![image](https://user-images.githubusercontent.com/111847207/229359364-fb75af38-ff92-4aff-9c6d-c4c4e840de0f.png)
 
-## Other my plugins
+## My plugins
 
+- [Weekdays and Holidays (Templates)](https://github.com/YU000jp/logseq-plugin-weekdays-and-weekends)
+- [Sticky Popup](https://github.com/YU000jp/logseq-plugin-sticky-popup)
 - [SomeMenuExtender](https://github.com/YU000jp/logseq-plugin-some-menu-extender)
-- [Column Layout](https://github.com/YU000jp/Logseq-column-Layout)
-- [Panel Coloring](https://github.com/YU000jp/logseq-plugin-panel-coloring)
+- [Column Layout (UI)](https://github.com/YU000jp/Logseq-column-Layout)
+- [Panel Coloring (Color)](https://github.com/YU000jp/logseq-plugin-panel-coloring)
+- [Page-tags and Hierarchy (UI)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy)
 - [Rakuten-books](https://github.com/YU000jp/logseq-plugin-rakuten-books) (Only for Japanese site)
 - [booklog-jp-import](https://github.com/YU000jp/logseq-plugin-booklog-jp-import) (Only for Japanese site)
