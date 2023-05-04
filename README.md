@@ -1,6 +1,6 @@
 # Logseq Plugin: Page-tags and Hierarchy (UI)
 
-- Show page-tags and hierarchy on the right or bottom side of the page.
+- Display page-tags and hierarchy on the right-hand side of the page.
 > Do not show page tags or hierarchy when PDF view or right sidebar is open. Clearly display the right sidebar.
 
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
