@@ -6,7 +6,7 @@
     "license": "MIT",
     "logseq": {
         "id": "logseq-page-tags-and-hierarchy",
-        "title": "Page-tags and Hierarchy",
+        "title": "Page-tags and Hierarchy (UI)",
         "icon": "./icon.svg",
         "main": "./dist/index.html"
     },
