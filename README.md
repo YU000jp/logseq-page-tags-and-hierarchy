@@ -5,9 +5,7 @@
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/YU000jp/logseq-page-tags-and-hierarchy/total.svg)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
-
-- ContextMenu functions separate as a plugin => [SomeMenuExtender](https://github.com/YU000jp/logseq-plugin-some-menu-extender) #2023/04/01
-- Detached from [Column Layout Plugin](https://github.com/YU000jp/Logseq-column-Layout).
+ Published 2022/10/10
 
 ## About Logseq feature
 
@@ -37,6 +35,11 @@ BEFORE:
 ## Question
 
 - Do not display page tags or hierarchy when PDF view or right sidebar is open. Clearly display the right sidebar.
+
+## About this plugin
+
+- ContextMenu functions separate as a plugin => [SomeMenuExtender](https://github.com/YU000jp/logseq-plugin-some-menu-extender) #2023/04/01
+- Detached from [Column Layout Plugin](https://github.com/YU000jp/Logseq-column-Layout).
 
 ## Install from Logseq Marketplace
 
