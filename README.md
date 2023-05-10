@@ -1,6 +1,6 @@
 # Logseq Plugin: Page-tags and Hierarchy (UI)
 
-- Display page-tags and hierarchy on the right-hand side of the page.
+- Display page-tags and hierarchy on the right-hand side or bottom side of the page.
 
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
@@ -11,7 +11,7 @@
 
 ### Page-tags
 
-- Add `tags:: AA,BB` to first block on any page
+- Add `tags:: AA,BB` to first block as page properties on any page
 - [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
 - [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
 
