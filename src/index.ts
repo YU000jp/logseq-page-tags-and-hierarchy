@@ -8,17 +8,17 @@ const main = () => {
     const settingsTemplate: SettingSchemaDesc[] = [
         {
             key: "booleanMain",
-            title: "side by side",
+            title: "Place page-tags and hierarchy on side by side (or bottom)",
             type: "boolean",
             default: true,
-            description: "true: Window size limit [min-width 1625px]  | false: Place it on the bottom side.",
+            description: "true: *Window size limit [min-width 1625px]  / false: Bottom mode",
         },
         {
             key: "booleanWideModeLimit",
             title: "set wide mode max-width: 1450px",
             type: "boolean",
             default: true,
-            description: "true: wide mode(shortcut `(Esc) + t → c`) limit width",
+            description: "*wide mode(shortcut `(Esc) + t → c`)",
         },
         {
             key: "booleanPageLinkedReferences",
