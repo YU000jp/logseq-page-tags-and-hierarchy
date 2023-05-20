@@ -39,7 +39,7 @@ Bottom mode
 
 ## Usage
 
-- This plugin be Installed, styles be applied. By default, bottom mode is turned off. it is possible to set in the plugin settings.
+- When this plugin install, the style be applied to non-journal pages. By default, bottom mode is turned off. it is possible to set in the plugin settings.
 
 ## Showcase / Questions / Ideas / Help
 
