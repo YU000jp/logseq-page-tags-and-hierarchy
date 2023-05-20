@@ -39,7 +39,7 @@ Bottom mode
 
 ## Usage
 
-- "When installed, styles be applied. By default, bottom mode is turned off. it is possible to set in the plugin settings.
+- This plugin be Installed, styles be applied. By default, bottom mode is turned off. it is possible to set in the plugin settings.
 
 ## Showcase / Questions / Ideas / Help
 
