@@ -51,7 +51,7 @@ Go to the [discussion](https://github.com/YU000jp/logseq-page-tags-and-hierarchy
 
 ## License
 
-? This Plugin is released under the MIT License. See the LICENSE file for more information.
+> This Plugin is released under the MIT License. See the LICENSE file for more information.
 
 ## Author
 
