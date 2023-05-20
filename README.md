@@ -37,17 +37,21 @@ Bottom mode
 
 ![image](https://user-images.githubusercontent.com/111847207/229359364-fb75af38-ff92-4aff-9c6d-c4c4e840de0f.png)
 
+## Usage
+
+- "When installed, styles be applied. By default, bottom mode is turned off. it is possible to set in the plugin settings.
+
 ## Showcase / Questions / Ideas / Help
 
 Go to the [discussion](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/discussions) tab to ask and find this kind of things.
 
 ## Contributing
 
-- Contributions to this plugin are always welcome! If you find a bug or have a suggestion for a new feature, please open an issue or submit a pull request. All contributions will be reviewed and considered for inclusion in future releases.
+> Contributions to this plugin are always welcome! If you find a bug or have a suggestion for a new feature, please open an issue or submit a pull request. All contributions will be reviewed and considered for inclusion in future releases.
 
 ## License
 
-- This Plugin is released under the MIT License. See the LICENSE file for more information.
+? This Plugin is released under the MIT License. See the LICENSE file for more information.
 
 ## Author
 
