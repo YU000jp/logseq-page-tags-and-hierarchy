@@ -7,57 +7,57 @@
 [![Downloads](https://img.shields.io/github/downloads/YU000jp/logseq-page-tags-and-hierarchy/total.svg)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
  Published 2022/10/10
 
-## About Logseq standard features
-
-### Page-tags
-
-- Add `tags:: AA,BB` to first block as page properties on any page
-- [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
-- [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
-
-### Hierarchy
-
-- Insert slashes in a page name to create what is called "hierarchy". for example `Logseq/Plugin`
-- [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
-- It turns out that Logseq has a macro to show the hierarchy. Example: `{{namespace PAGE}}`
+<hr/>
 
 ## Demo
 
-Side by side mode
-![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
+#### Side by side mode:
 
-Bottom mode
-![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
+   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
 
-## Install from Logseq Marketplace
+#### Bottom mode:
+
+   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
+
+<hr/>
+
+## Getting Started
+
+### Install from Logseq Marketplace
 
 - Press [`---`] on the top right toolbar to open [`Plugins`]
 - Select marketplace
 - Type '`tags`' in the search field, select it from the search results and install
 
-![image](https://user-images.githubusercontent.com/111847207/229359364-fb75af38-ff92-4aff-9c6d-c4c4e840de0f.png)
+   ![image](https://user-images.githubusercontent.com/111847207/229359364-fb75af38-ff92-4aff-9c6d-c4c4e840de0f.png)
 
-## Usage
+### Usage
 
 - When this plugin install, the style be applied to non-journal pages. By default, bottom mode is turned off. it is possible to set in the plugin settings.
 
-## Showcase / Questions / Ideas / Help
+#### Page-Tags
 
-Go to the [discussion](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/discussions) tab to ask and find this kind of things.
+- Add `tags:: AA,BB` to first block as page properties on any page
 
-## Contributing
+##### Links:
 
-> Contributions to this plugin are always welcome! If you find a bug or have a suggestion for a new feature, please open an issue or submit a pull request. All contributions will be reviewed and considered for inclusion in future releases.
+- [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
+- [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
 
-## License
+#### Hierarchy (namespaces)
 
-> This Plugin is released under the MIT License. See the LICENSE file for more information.
+- Insert slashes in a page name to create what is called "hierarchy". for example `Logseq/Plugin`
+> It turns out that Logseq has a macro to show the hierarchy. Example: `{{namespace PAGE}}`
+
+##### Link:
+
+- [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
+
+<hr/>
 
 ## Author
 
 * GitHub: [YU000jp](https://github.com/YU000jp)
-* Twitter: [@y0skyblue](https://twitter.com/y0skyblue)
-* Discord: YU#5179 ([Logseq](https://discord.gg/logseq))
 
 ### My Logseq plugins
 
