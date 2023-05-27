@@ -7,7 +7,7 @@
 [![Downloads](https://img.shields.io/github/downloads/YU000jp/logseq-page-tags-and-hierarchy/total.svg)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
  Published 2022/10/10
 
-<hr/>
+---
 
 ## Demo
 
@@ -19,15 +19,15 @@
 
    ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
 
-<hr/>
+---
 
 ## Getting Started
 
 ### Install from Logseq Marketplace
 
-- Press [`---`] on the top right toolbar to open [`Plugins`]
-- Select marketplace
-- Type '`tags`' in the search field, select it from the search results and install
+- Press `---` on the top right toolbar to open `Plugins`
+- Select `Marketplace`
+- Type `tags` in the search field, select it from the search results and install
 
    ![image](https://user-images.githubusercontent.com/111847207/229359364-fb75af38-ff92-4aff-9c6d-c4c4e840de0f.png)
 
@@ -53,7 +53,7 @@
 
 - [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
 
-<hr/>
+---
 
 ## Author
 
@@ -61,6 +61,7 @@
 
 ### My Logseq plugins
 
+- [Show Weekday and Week-number](https://github.com/YU000jp/logseq-plugin-show-weekday-and-week-number)
 - [Weekdays and Holidays (Templates)](https://github.com/YU000jp/logseq-plugin-weekdays-and-weekends)
 - [Sticky Popup](https://github.com/YU000jp/logseq-plugin-sticky-popup)
 - [SomeMenuExtender](https://github.com/YU000jp/logseq-plugin-some-menu-extender)
