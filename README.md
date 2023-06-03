@@ -11,11 +11,11 @@
 
 ## Demo
 
-#### Side by side mode:
+### Side by side mode
 
    ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
 
-#### Bottom mode:
+### Bottom mode
 
    ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
 
@@ -39,7 +39,7 @@
 
 - Add `tags:: AA,BB` to first block as page properties on any page
 
-##### Links:
+##### Links
 
 - [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
 - [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
@@ -47,6 +47,7 @@
 #### Hierarchy (namespaces)
 
 - Insert slashes in a page name to create what is called "hierarchy". for example `Logseq/Plugin`
+
 > It turns out that Logseq has a macro to show the hierarchy. Example: `{{namespace PAGE}}`
 
 ##### Link:
@@ -57,14 +58,4 @@
 
 ## Author
 
-* GitHub: [YU000jp](https://github.com/YU000jp)
-
-### My Logseq plugins
-
-- [Show Weekday and Week-number](https://github.com/YU000jp/logseq-plugin-show-weekday-and-week-number)
-- [Weekdays and Holidays (Templates)](https://github.com/YU000jp/logseq-plugin-weekdays-and-weekends)
-- [Sticky Popup](https://github.com/YU000jp/logseq-plugin-sticky-popup)
-- [SomeMenuExtender](https://github.com/YU000jp/logseq-plugin-some-menu-extender)
-- [Panel Coloring](https://github.com/YU000jp/logseq-plugin-panel-coloring)
-- [Page-tags and Hierarchy](https://github.com/YU000jp/logseq-page-tags-and-hierarchy)
-- [Column Layout](https://github.com/YU000jp/Logseq-column-Layout)
+- GitHub: [YU000jp](https://github.com/YU000jp)
