@@ -9,7 +9,7 @@
 
 ---
 
-## Demo
+## Feature
 
 ### Side by side mode
 
