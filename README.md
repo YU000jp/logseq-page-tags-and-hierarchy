@@ -9,7 +9,7 @@
 
 ---
 
-## Demo
+## Feature
 
 ### Side by side mode
 
@@ -41,8 +41,8 @@
 
 ##### Links
 
-- [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
-- [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
+1. [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
+1. [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
 
 #### Hierarchy (namespaces)
 
@@ -59,3 +59,9 @@
 ## Author
 
 - GitHub: [YU000jp](https://github.com/YU000jp)
+
+
+---
+
+<a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee" style="height: 42px;width: 152px" ></a>
+
