@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.1.2...v2.1.3) (2023-06-14)
+
+
+### Bug Fixes
+
+* **bug:** duplicate the first line && bracket ([0da6881](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/0da6881190342e4b307f2386839232dbe0cdfa9d))
+
 ## [2.1.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.1.1...v2.1.2) (2023-06-07)
 
 
