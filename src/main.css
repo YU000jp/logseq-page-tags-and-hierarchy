@@ -1,19 +1,8 @@
-@media screen and (min-width:1850px){
-body.th-pageLinkedReferences[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.references div.references-blocks div.content>div>div.lazy-visibility,body.th-pageLinkedReferences[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative div.lazy-visibility div.references div.references-blocks div.content>div>div.lazy-visibility{overflow:auto;max-height:450px;display:block}
-}
+@media screen and (min-width:1560px){
+
 body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
 body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{max-height:210px;padding:1.15em;z-index:var(--ls-z-index-level-3)}
-body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{bottom:0;right:.3em}
-@media screen and (max-width:1624px){
-body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{min-width:28vw}
-body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{width:30vw}
-body.th-bottom[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-bottom[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:30vw;bottom:0}
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{max-height:210px;width:34vw;padding:1.15em;z-index:var(--ls-z-index-level-3)}
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{bottom:0;right:.3em}
-body:not(.th-bottom)[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:36vw;bottom:0}
-}
-@media screen and (min-width:1625px){
+body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{bottom:0;right:.3em}    
 body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{min-width:20vw}
 body.th-bottom[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{width:22vw}
 body.th-bottom[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-bottom[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:22vw;bottom:0}
@@ -22,25 +11,17 @@ body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-side
 body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{top:6.5em;right:1em}
 body:not(.th-bottom)[data-page=page]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{top:4.5em}
 body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{right:1em;bottom:3em}
-}
-@media screen and (min-width:1625px) and (max-width:2000px){
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container{padding-right:17vw}
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{width:16vw}
-}
-@media screen and (min-width:2001px){
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container{padding-right:21vw}
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{width:20vw}
-}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child{margin-top:3.3em}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span:not(:last-child){position:relative;top:-2.4em}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span:is(:nth-last-child(2)){display:none}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference:last-child{position:absolute;left:3em}
+body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference:last-child::before{content:">";margin-left:.9rem;margin-right:.4rem;opacity:.3;pointer-events:none}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference:not([data-ref*='/']):last-child::after{content:"<";margin-left:.9rem}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span+span.page-reference:last-child::before{pointer-events:none}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > ";letter-spacing:.6em}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.35em;position:relative}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > ";letter-spacing:.6em}
+body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > ";letter-spacing:.6em;pointer-events:none}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > > ";letter-spacing:.6em}
 body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
@@ -50,9 +31,19 @@ body[data-page=page] div.page-hierarchy ul.namespaces li:not(:first-child) span.
 body[data-page=page] div.page-hierarchy ul.namespaces li:not(:first-child) span.page-reference+span:not(.page-reference){visibility:hidden}
 body[data-page=page] div.page-hierarchy ul.namespaces li:not(:first-child) span.page-reference+span:not(.page-reference)::after{content:">";visibility:visible}
 body[data-page=page] div.page-hierarchy ul.namespaces li{list-style:decimal-leading-zero;font-size:.94em}
+body.is-pdf-active div#main-content-container div:is(.page-hierarchy,.relative+div.references),div#right-sidebar div.page-hierarchy,div#right-sidebar div.relative+div.references,main.ls-right-sidebar-open div#main-content-container div.page-hierarchy,main.ls-right-sidebar-open div#main-content-container div.relative+div.references{display:none}
+body[data-page=page] div:is(.page-hierarchy,.relative+div.references) span.bracket{display:none}
+body[data-page=page] main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content{max-width:1450px}
+body:not(.th-bottom)[data-page=page]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy,body[data-page=page]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset:2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}
+}
+@media screen and (min-width:1560px) and (max-width:2000px){
+body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container{padding-right:17vw}
+body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{width:16vw}
+}
+@media screen and (min-width:2001px){
+body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container{padding-right:21vw}
+body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{width:20vw}
+}
 body[data-page=home] div#today-queries>div.lazy-visibility{min-height:unset!important}
 body[data-page=home] div#today-queries>div.lazy-visibility>div.shadow{display:none}
 body[data-page=home] div#today-queries div.color-level,body[data-page=home] div#today-queries div.color-level div.blocks-container{background-color:unset}
-body.is-pdf-active div#main-content-container div.page-hierarchy,body.is-pdf-active div#main-content-container div.relative+div.references,div#right-sidebar div.page-hierarchy,div#right-sidebar div.relative+div.references,main.ls-right-sidebar-open div#main-content-container div.page-hierarchy,main.ls-right-sidebar-open div#main-content-container div.relative+div.references{display:none}
-main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content{max-width:1450px}
-body:not(.th-bottom)[data-page=page]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy,body[data-page=page]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset:2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}

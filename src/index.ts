@@ -7,67 +7,44 @@ const main = () => {
     /* https://logseq.github.io/plugins/types/SettingSchemaDesc.html */
     const settingsTemplate: SettingSchemaDesc[] = [
         {
-            key: "booleanMain",
-            title: "Place page-tags and hierarchy on side by side (or bottom)",
-            type: "boolean",
-            default: true,
-            description: "true: *Window size limit [min-width 1625px]  / false: Bottom mode",
+            key: "placeSelect",
+            title: "Place on side by side or bottom",
+            type: "enum",
+            enumChoices: ["side", "bottom"],
+            default: "Side",
+            description: "side: min-width 1560px",
         },
         {
             key: "booleanWideModeLimit",
-            title: "set wide mode max-width: 1450px",
+            title: "When in wide mode, set the main content max-width to 1450px",
             type: "boolean",
             default: true,
             description: "*wide mode(shortcut `(Esc) + t → c`)",
-        },
-        {
-            key: "booleanPageLinkedReferences",
-            title: "Page Linked References height limit",
-            type: "boolean",
-            default: true,
-            description: "",
         },
     ];
     logseq.useSettingsSchema(settingsTemplate);
 
     //CSS minify https://csscompressor.com/
-    logseq.provideStyle({ key: "main", style: CSSmain });
+    logseq.provideStyle({ key: "th-main", style: CSSmain });
 
     //Bottom
-    if (logseq.settings?.booleanMain === false) {
-        parent.document.body.classList.add('th-bottom');
-    } else {
-        //Bottom < 1624 & 1625 > Side
-        //not(th-bottom)
-    }
+    if (logseq.settings?.placeSelect === "bottom") parent.document.body.classList.add('th-bottom');
     //WideModeLimit
-    if (logseq.settings?.booleanWideModeLimit === true) {
-        parent.document.body.classList.add('th-WideModeLimit');
-    }
-    //pageLinkedReferences
-    if (logseq.settings?.booleanPageLinkedReferences === true) {
-        parent.document.body.classList.add('th-pageLinkedReferences');
-    }
+    if (logseq.settings?.booleanWideModeLimit === true) parent.document.body.classList.add('th-WideModeLimit');
 
     logseq.onSettingsChanged((newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
-
-        if (oldSet.booleanMain !== true && newSet.booleanMain === true) {
-            parent.document.body.classList.remove('th-bottom');
-        } else if (oldSet.booleanMain !== false && newSet.booleanMain === false) {
-            parent.document.body.classList.add('th-bottom');
-        }
+        if (oldSet.placeSelect !== "side" && newSet.placeSelect === "side") {
+            parent.document.body.classList!.remove('th-bottom');
+        } else
+            if (oldSet.placeSelect !== "bottom" && newSet.placeSelect === "bottom") {
+                parent.document.body.classList!.add('th-bottom');
+            }
         if (oldSet.booleanWideModeLimit !== true && newSet.booleanWideModeLimit === true) {
-            parent.document.body.classList.add('th-WideModeLimit');
+            parent.document.body.classList!.add('th-WideModeLimit');
         } else if (oldSet.booleanWideModeLimit !== false && newSet.booleanWideModeLimit === false) {
-            parent.document.body.classList.remove('th-WideModeLimit');
-        }
-        if (oldSet.booleanPageLinkedReferences !== true && newSet.booleanPageLinkedReferences === true) {
-            parent.document.body.classList.add('th-pageLinkedReferences');
-        } else if (oldSet.booleanPageLinkedReferences !== false && newSet.booleanPageLinkedReferences === false) {
-            parent.document.body.classList.remove('th-pageLinkedReferences');
+            parent.document.body.classList!.remove('th-WideModeLimit');
         }
     });
-
 };
 
 logseq.ready(main).catch(console.error);
