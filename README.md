@@ -11,13 +11,11 @@
 
 ## Feature
 
-### Side by side mode
+   - Side by side mode
+      ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
 
-   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
-
-### Bottom mode
-
-   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
+   - Bottom mode
+      ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
 
 ---
 
@@ -40,10 +38,9 @@
 
 - Add `tags:: AA,BB` to first block as page properties on any page
 
-##### Links
-
-1. [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
-1. [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
+-  Links
+   1. [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
+   1. [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
 
 #### Hierarchy (namespaces)
 
@@ -51,9 +48,20 @@
 
 > It turns out that Logseq has a macro to show the hierarchy. Example: `{{namespace PAGE}}`
 
-##### Link:
+- Link
+   1. [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
 
-- [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
+### Plugin Settings
+
+- Place on side by side or bottom: Select
+   - `Side` default
+   - `Bottom`
+- When in wide mode, set the main content max-width to 1450px: boolean
+   - `true` default
+   - `false`
+- When the window size is less than 1560px, do not display it
+   - `true` default
+   - `false`
 
 ---
 
