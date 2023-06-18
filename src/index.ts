@@ -13,6 +13,8 @@ const main = () => {
     if (logseq.settings?.placeSelect === "bottom") parent.document.body.classList.add('th-bottom');
     //WideModeLimit
     if (logseq.settings?.booleanWideModeLimit === true) parent.document.body.classList.add('th-WideModeLimit');
+    //DisplayIfSmaller
+    if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
 
     logseq.onSettingsChanged((newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
         if (oldSet.placeSelect !== "side" && newSet.placeSelect === "side") {
@@ -27,11 +29,11 @@ const main = () => {
             if (oldSet.booleanWideModeLimit !== false && newSet.booleanWideModeLimit === false) {
                 parent.document.body.classList!.remove('th-WideModeLimit');
             }
-        if (oldSet.booleanWindowSizeDisplay !== true && newSet.booleanWindowSizeDisplay === true) {
-            parent.document.body.classList!.add('th-WindowSizeDisplay');
+        if (oldSet.booleanDisplayIfSmaller !== true && newSet.booleanDisplayIfSmaller === true) {
+            parent.document.body.classList!.remove('th-DisplayIfSmaller');
         } else
-            if (oldSet.booleanWindowSizeDisplay !== false && newSet.booleanWindowSizeDisplay === false) {
-                parent.document.body.classList!.remove('th-WindowSizeDisplay');
+            if (oldSet.booleanDisplayIfSmaller !== false && newSet.booleanDisplayIfSmaller === false) {
+                parent.document.body.classList!.add('th-DisplayIfSmaller');
             }
     });
 };
@@ -54,7 +56,7 @@ const settingsTemplate: SettingSchemaDesc[] = [
         description: "*wide mode(shortcut `(Esc) + t → c`)",
     },
     {//ウィンドウサイズが1560px未満だった場合は表示しない
-        key: "booleanWindowSizeDisplay",
+        key: "booleanDisplayIfSmaller",
         title: "When the window size is less than 1560px, do not display it",
         type: "boolean",
         default: true,

@@ -1,8 +1,8 @@
 @media screen and (max-width:1559px){
-body:not(.th-WindowSizeDisplay)[data-page=page] div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
-body:not(.th-WindowSizeDisplay)[data-page=page] div#main-content-container div.page-hierarchy,body:not(.th-WindowSizeDisplay)[data-page=page] div#main-content-container div.relative+div.references{max-height:210px;width:34vw;padding:1.15em;z-index:var(--ls-z-index-level-3)}
-body:not(.th-WindowSizeDisplay)[data-page=page] div#main-content-container div.relative+div.references{bottom:0;right:.3em}
-body:not(.th-WindowSizeDisplay)[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-WindowSizeDisplay)[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:36vw;bottom:0}
+body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
+body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.page-hierarchy,body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.relative+div.references{max-height:210px;width:34vw;padding:1.15em;z-index:var(--ls-z-index-level-3)}
+body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.relative+div.references{bottom:0;right:.3em}
+body.th-DisplayIfSmaller[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-DisplayIfSmaller[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:36vw;bottom:0}
 }
 @media screen and (min-width:1560px){
 body.th-bottom[data-page=page] div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
