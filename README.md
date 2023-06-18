@@ -29,7 +29,8 @@
 - Select `Marketplace`
 - Type `tags` in the search field, select it from the search results and install
 
-   ![image](https://user-images.githubusercontent.com/111847207/229359364-fb75af38-ff92-4aff-9c6d-c4c4e840de0f.png)
+   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/829fa20a-fa4a-446e-a685-2d52ff2db3f4)
+
 
 ### Usage
 
