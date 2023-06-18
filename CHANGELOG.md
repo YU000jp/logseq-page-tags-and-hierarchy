@@ -1,3 +1,15 @@
+# [2.2.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.1.3...v2.2.0) (2023-06-18)
+
+
+### Bug Fixes
+
+* **bug:** `When the window size is less than 1560px` ([f34326d](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/f34326dcd6e8a7285ef56f5d28cd973c044a73a9))
+
+
+### Features
+
+* add to plugin settings & Cleanup ([6422f56](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/6422f56bf23511a026d442780db327cc6cc03d60))
+
 ## [2.1.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.1.2...v2.1.3) (2023-06-14)
 
 
