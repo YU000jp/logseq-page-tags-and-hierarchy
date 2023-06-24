@@ -56,13 +56,15 @@
 - Place on side by side or bottom: Select
    - `Side` default
    - `Bottom`
-- When in wide mode, set the main content max-width to 1450px: boolean
+- When in wide mode, set the main content max-width to 1450px: Toggle
    - `true` default
    - `false`
-- When the window size is less than 1560px, do not display it
+- When the window size is less than 1560px, do not display it: Toggle
    - `true` default
    - `false`
-
+- modify the display of hierarchy to be original rather than standard: Toggle
+   - `true` default
+   - `false`
 ---
 
 ## Author
