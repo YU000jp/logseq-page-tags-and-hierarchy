@@ -25,26 +25,26 @@ body:not(.th-bottom)[data-page=page] div#main-content-container div.page-hierarc
 body:not(.th-bottom)[data-page=page] div#main-container{padding-right:21vw}
 body:not(.th-bottom)[data-page=page] div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page] div#main-content-container div.relative+div.references{width:20vw}
 }
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child{margin-top:3.3em}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span:not(:last-child){position:relative;top:-2.4em}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span:is(:nth-last-child(2)){display:none}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference:last-child{position:absolute;left:3em}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference:last-child::before{content:">";margin-left:.9rem;margin-right:.4rem;opacity:.3;pointer-events:none}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference:not([data-ref*='/']):last-child::after{content:"<";margin-left:.9rem}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span+span.page-reference:last-child::before{pointer-events:none}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > ";letter-spacing:.6em}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.35em;position:relative}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > ";letter-spacing:.6em;pointer-events:none}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > > ";letter-spacing:.6em}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > > > ";letter-spacing:.6em}
-body[data-page=page] div.page-hierarchy ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
-body[data-page=page] div.page-hierarchy ul.namespaces li:not(:first-child) span.page-reference:not(:last-child){display:none}
-body[data-page=page] div.page-hierarchy ul.namespaces li:not(:first-child) span.page-reference+span:not(.page-reference){visibility:hidden}
-body[data-page=page] div.page-hierarchy ul.namespaces li:not(:first-child) span.page-reference+span:not(.page-reference)::after{content:">";visibility:visible}
-body[data-page=page] div.page-hierarchy ul.namespaces li{list-style:decimal-leading-zero;font-size:.94em}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child{margin-top:3.3em}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span:not(:last-child){position:relative;top:-2.4em}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span:is(:nth-last-child(2)){display:none}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference:last-child{position:absolute;left:3em}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference:last-child::before{content:">";margin-left:.9rem;margin-right:.4rem;opacity:.3;pointer-events:none}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference:not([data-ref*='/']):last-child::after{content:"<";margin-left:.9rem}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span+span.page-reference:last-child::before{pointer-events:none}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > ";letter-spacing:.6em}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.35em;position:relative}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > ";letter-spacing:.6em;pointer-events:none}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > > ";letter-spacing:.6em}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child::before{content:" > > > > > ";letter-spacing:.6em}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference+span+span.page-reference:last-child div{left:-1.25em;position:relative}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:not(:first-child) span.page-reference:not(:last-child){display:none}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:not(:first-child) span.page-reference+span:not(.page-reference){visibility:hidden}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li:not(:first-child) span.page-reference+span:not(.page-reference)::after{content:">";visibility:visible}
+body[data-page=page] div.page-hierarchy:not(.th-journal) ul.namespaces li{list-style:decimal-leading-zero;font-size:.94em}
 body.is-pdf-active div#main-content-container div:is(.page-hierarchy,.relative+div.references),div#right-sidebar div.page-hierarchy,div#right-sidebar div.relative+div.references,main.ls-right-sidebar-open div#main-content-container div.page-hierarchy,main.ls-right-sidebar-open div#main-content-container div.relative+div.references{display:none}
 body[data-page=page] div:is(.page-hierarchy,.relative+div.references) span.bracket{display:none}
 body[data-page=page] main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content{max-width:1450px}

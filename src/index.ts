@@ -1,5 +1,5 @@
 import "@logseq/libs";
-import { SettingSchemaDesc, LSPluginBaseInfo } from "@logseq/libs/dist/LSPlugin.user";
+import { SettingSchemaDesc, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
 import CSSmain from './main.css?inline';
 
 const main = () => {
@@ -8,6 +8,23 @@ const main = () => {
 
     //CSS minify https://csscompressor.com/
     logseq.provideStyle({ key: "th-main", style: CSSmain });
+
+
+    logseq.App.onRouteChanged(({ template }) => {
+        if (template === '/page/:name') {
+            //page only
+            (async () => {
+                const current = await logseq.Editor.getCurrentPage() as PageEntity;
+                //ページ名が2023/06/24の形式にマッチする場合
+                if (
+                    current.name.match(/^\d{4}/)
+                    || current.name.match(/^(\d{4}\/\d{2})/)
+                    || current.name.match(/^(\d{4}\/\d{2}\/\d{2})/)
+                )
+                    (parent.document.querySelector("div.page-hierarchy") as HTMLDivElement)!.classList.add('th-journal');
+            })();
+        }
+    });
 
     //Bottom
     if (logseq.settings?.placeSelect === "bottom") parent.document.body.classList.add('th-bottom');
