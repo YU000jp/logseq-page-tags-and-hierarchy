@@ -11,7 +11,7 @@ const main = () => {
 
 
     logseq.App.onRouteChanged(({ template }) => {
-        if (logseq.settings!.booleanModifyHierarchy === true && template === '/page/:name') {
+        if (template === '/page/:name') {
             //page only
             (async () => {
                 const current = await logseq.Editor.getCurrentPage() as PageEntity;
@@ -32,8 +32,6 @@ const main = () => {
     if (logseq.settings?.booleanWideModeLimit === true) parent.document.body.classList.add('th-WideModeLimit');
     //DisplayIfSmaller
     if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
-    //ModifyHierarchy
-    if (logseq.settings?.booleanModifyHierarchy === false) parent.document.body.classList.add('th-DisModifyHierarchy');
 
     logseq.onSettingsChanged((newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
         if (oldSet.placeSelect !== "side" && newSet.placeSelect === "side") {
@@ -53,13 +51,6 @@ const main = () => {
         } else
             if (oldSet.booleanDisplayIfSmaller !== false && newSet.booleanDisplayIfSmaller === false) {
                 parent.document.body.classList!.add('th-DisplayIfSmaller');
-            }
-        if (oldSet.booleanModifyHierarchy !== true && newSet.booleanModifyHierarchy === true) {
-            parent.document.body.classList!.remove('th-DisModifyHierarchy');
-        }
-        else  
-            if (oldSet.booleanModifyHierarchy !== false && newSet.booleanModifyHierarchy === false) {
-                parent.document.body.classList!.add('th-DisModifyHierarchy');
             }
     });
 };
@@ -87,13 +78,6 @@ const settingsTemplate: SettingSchemaDesc[] = [
         type: "boolean",
         default: true,
         description: "default: true",
-    },
-    {
-        key: "booleanModifyHierarchy",
-        title: "modify the display of hierarchy to be original rather than standard",
-        type: "boolean",
-        default: true,
-        description: "",
     },
 ];
 
