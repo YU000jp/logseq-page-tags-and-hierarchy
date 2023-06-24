@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.2.0...v2.3.0) (2023-06-24)
+
+
+### Features
+
+* **hierarchy:** An exception handling has been added for displaying hierarchy in the format like `2023/06/24` ([dfe411b](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/dfe411ba7945aa17d71f0169bf699847b775513f))
+
 # [2.2.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.1.3...v2.2.0) (2023-06-18)
 
 
