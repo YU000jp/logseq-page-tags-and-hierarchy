@@ -16,10 +16,12 @@ const main = () => {
             (async () => {
                 const current = await logseq.Editor.getCurrentPage() as PageEntity;
                 //ページ名が2023/06/24の形式にマッチする場合
-                if (
-                    current.name.match(/^\d{4}/)
-                    || current.name.match(/^(\d{4}\/\d{2})/)
-                    || current.name.match(/^(\d{4}\/\d{2}\/\d{2})/)
+                if (current.name
+                    && (
+                        current.name.match(/^\d{4}/)
+                        || current.name.match(/^(\d{4}\/\d{2})/)
+                        || current.name.match(/^(\d{4}\/\d{2}\/\d{2})/)
+                    )
                 )
                     (parent.document.querySelector("div.page-hierarchy") as HTMLDivElement)!.classList.add('th-journal');
             })();
@@ -57,7 +59,7 @@ const main = () => {
         if (oldSet.booleanModifyHierarchy !== true && newSet.booleanModifyHierarchy === true) {
             parent.document.body.classList!.remove('th-DisModifyHierarchy');
         }
-        else  
+        else
             if (oldSet.booleanModifyHierarchy !== false && newSet.booleanModifyHierarchy === false) {
                 parent.document.body.classList!.add('th-DisModifyHierarchy');
             }
