@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.0...v2.3.1) (2023-07-01)
+
+
+### Bug Fixes
+
+* **bug:** when open zoom page (console error) ([64fb584](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/64fb584664175e87218ba6c88dec82e70f909b1e))
+
 # [2.3.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.2.0...v2.3.0) (2023-06-24)
 
 
