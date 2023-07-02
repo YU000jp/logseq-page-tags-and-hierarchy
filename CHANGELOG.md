@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.1...v2.3.2) (2023-07-02)
+
+
+### Bug Fixes
+
+* **bug:** Remove console error ([9434645](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/943464517460489adcef0e3ed9d6b08dca8c8bfe))
+
 ## [2.3.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.0...v2.3.1) (2023-07-01)
 
 
