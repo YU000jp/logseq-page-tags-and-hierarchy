@@ -23,7 +23,7 @@ const main = () => {
                         || current.name.match(/^(\d{4}\/\d{2}\/\d{2})/)
                     )
                 )
-                    (parent.document.querySelector("div.page-hierarchy") as HTMLDivElement)!.classList.add('th-journal');
+                    parent.document.querySelector("div.page-hierarchy")?.classList.add('th-journal');
             })();
         }
     });
