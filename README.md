@@ -1,4 +1,4 @@
-# Logseq Plugin: Page-tags and Hierarchy (UI)
+# Logseq Plugin: *Page-tags and Hierarchy (UI)*
 
 - Place page tags and hierarchy in non-standard positions (right or bottom of the page).
 
