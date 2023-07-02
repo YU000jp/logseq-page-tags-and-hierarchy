@@ -1,3 +1,11 @@
+## [2.3.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.2...v2.3.3) (2023-07-02)
+
+
+### Bug Fixes
+
+* **bug:** small window ([706ce14](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/706ce14c262887f90bc63dac78ca573956c928a5))
+* **bug:** toolbar menu duplicate ([8554c10](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/8554c100da74dca5e08b5fdc081b8b41a02e93ef))
+
 ## [2.3.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.1...v2.3.2) (2023-07-02)
 
 
