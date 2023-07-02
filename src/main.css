@@ -52,3 +52,4 @@ body[data-page=page] main.ls-wide-mode div#main-content-container div.cp__sideba
 body[data-page=home] div#today-queries>div.lazy-visibility{min-height:unset!important}
 body[data-page=home] div#today-queries>div.lazy-visibility>div.shadow{display:none}
 body[data-page=home] div#today-queries div.color-level,body[data-page=home] div#today-queries div.color-level div.blocks-container{background-color:unset}
+body[data-page=home] div#main-content-container {z-index: var(--ls-z-index-level-1)}
