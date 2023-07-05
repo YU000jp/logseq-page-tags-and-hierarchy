@@ -5,7 +5,7 @@ body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.relative
 body.th-DisplayIfSmaller[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-DisplayIfSmaller[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:36vw;bottom:0}
 }
 @media screen and (min-width:1560px){
-body:not(.th-bottom)[data-page=page]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body[data-page=page]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset:2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}
+body[data-page=page]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references,body[data-page=page]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset:2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}
 body.th-bottom[data-page=page] div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
 body.th-bottom[data-page=page] div#main-content-container div.page-hierarchy,body.th-bottom[data-page=page] div#main-content-container div.relative+div.references{max-height:210px;padding:1.15em;z-index:var(--ls-z-index-level-3)}
 body.th-bottom[data-page=page] div#main-content-container div.relative+div.references{bottom:0;right:.3em}
@@ -24,7 +24,7 @@ body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-side
 }
 @media screen and (min-width:2001px){
 body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-container{padding-right:21vw}
-body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body:not(.th-bottom)[data-page=page] div#main-content-container div.relative+div.references{width:20vw}
+body:not(.th-bottom)[data-page=page] div#main-content-container div.relative+div.references,body:not(.th-bottom)[data-page=page]:not(.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{width:20vw}
 }
 body[data-page=page]:not(.th-DisModifyHierarchy) div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child{margin-top:3.3em}
 body[data-page=page]:not(.th-DisModifyHierarchy) div.page-hierarchy:not(.th-journal) ul.namespaces li:first-child span:not(:last-child){position:relative;top:-2.4em}
@@ -52,4 +52,4 @@ body[data-page=page] main.ls-wide-mode div#main-content-container div.cp__sideba
 body[data-page=home] div#today-queries>div.lazy-visibility{min-height:unset!important}
 body[data-page=home] div#today-queries>div.lazy-visibility>div.shadow{display:none}
 body[data-page=home] div#today-queries div.color-level,body[data-page=home] div#today-queries div.color-level div.blocks-container{background-color:unset}
-body[data-page=home] div#main-content-container {z-index: var(--ls-z-index-level-1)}
+body[data-page=home] div#main-content-container{z-index:var(--ls-z-index-level-1)}
