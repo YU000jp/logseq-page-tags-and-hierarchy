@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.3...v2.3.4) (2023-07-05)
+
+
+### Bug Fixes
+
+* **bug:** Broken layout ([#19](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/19)) ([c62e38a](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/c62e38a136e2cea103e8630eeeeaf533feb6119c))
+
 ## [2.3.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.2...v2.3.3) (2023-07-02)
 
 
