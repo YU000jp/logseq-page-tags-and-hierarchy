@@ -5,6 +5,7 @@ body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.relative
 body.th-DisplayIfSmaller[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-DisplayIfSmaller[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:36vw;bottom:0}
 }
 @media screen and (min-width:1560px){
+div#root div#head:has(div.dropdown-wrapper.enter-done){z-index: var(--ls-z-index-level-4)}
 body[data-page=page]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references,body[data-page=page]:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset:2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}
 body.th-bottom[data-page=page] div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
 body.th-bottom[data-page=page] div#main-content-container div.page-hierarchy,body.th-bottom[data-page=page] div#main-content-container div.relative+div.references{max-height:210px;padding:1.15em;z-index:var(--ls-z-index-level-3)}
