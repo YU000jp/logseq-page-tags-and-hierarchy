@@ -1,3 +1,10 @@
+## [2.3.5](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.4...v2.3.5) (2023-07-25)
+
+
+### Bug Fixes
+
+* **bug:** dropdown menu ([5d8261d](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/5d8261dcdc6527051f986cbb0c61c17414b2916f))
+
 ## [2.3.4](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.3...v2.3.4) (2023-07-05)
 
 
