@@ -9,13 +9,17 @@
 
 ---
 
-## Feature
+## Features
 
-   - Side by side mode
-      ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
+### Side by side mode
+  ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
 
-   - Bottom mode
-      ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
+### Bottom mode
+  ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
+
+### Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
+
+![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/cd236bc1-70b5-48af-a343-c86167c23c53)
 
 ---
 
@@ -53,9 +57,13 @@
 
 ### Plugin Settings
 
+- Split hierarchy of the page title link (non-journal) [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
+   - `true` default
+   - `false`
 - Place on side by side or bottom: Select
    - `Side` default
    - `Bottom`
+   - `unset` 🆕
 - When in wide mode, set the main content max-width to 1450px: Toggle
    - `true` default
    - `false`
