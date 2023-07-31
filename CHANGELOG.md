@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.4.0...v2.4.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* **bug:** Hierarchy links, stye position ([15ad2e9](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/15ad2e9a9521c481cdd4dd751cf66e71b911949f))
+
 # [2.4.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.5...v2.4.0) (2023-07-31)
 
 
