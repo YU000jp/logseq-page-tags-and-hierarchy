@@ -12,7 +12,7 @@ const main = () => {
     //CSS minify https://csscompressor.com/
     if (logseq.settings!.placeSelect !== "unset") logseq.provideStyle({ key: "th-main", style: CSSmain });
 
-    if (logseq.settings!.placeSelect !== "unset" && logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
+    if (logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
     logseq.App.onRouteChanged(async ({ template, path }) => {
         if (template === '/page/:name') {
             let pageName = path.replace(/\/page\//, '');
