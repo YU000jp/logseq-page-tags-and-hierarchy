@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.5...v2.4.0) (2023-07-31)
+
+
+### Features
+
+* **Add:** Split hierarchy of the page title link (BREAKING CHANGE) ([#23](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/23)) ([b2d6b37](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/b2d6b374583b5ddf575f13f465a5e3ff5c8997cf))
+
 ## [2.3.5](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.3.4...v2.3.5) (2023-07-25)
 
 
