@@ -1,21 +1,22 @@
-body[data-page=page] div#root div#main-content-container{justify-content:unset!important}
-body[data-page=page] div#root div#main-content-container div.cp__sidebar-main-content{max-width:unset}
-body[data-page=page] div.page.relative{display:flex}
-body[data-page=page] div.page.relative>div.relative{min-width:1050px;max-width:1450px;flex:1}
-body[data-page=page] div#right-sidebar div.page.relative>div.relative{min-width:94%}
-body[data-page=page] div.page.relative>div:not(.relative){padding:1em;height:fit-content;position:sticky;top:1em}
-body[data-page=page] div.page.relative>div:not(.relative):not(:has(div.hidden)){flex:.3;max-width:fit-content}
-body[data-page=page] div.page.relative>div:not(.relative):has(div.hidden){writing-mode:vertical-rl;max-height:88vh;max-width:3.2em}
-body[data-page=page] div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{font-size:.9em}
-body[data-page=page] div.page.relative>div:is(.page-tags,.page-hierarchy){padding:1em;order:2;overflow-y:auto;overflow-x:hidden;max-height:88vh}
-body[data-page=page] div.page.relative>div.page-hierarchy:not(:has(div.hidden)){max-width:580px;min-width:400px}
-body[data-page=page] div.page.relative>div.page-tags{flex:.2}
-body[data-page=page] div.page.relative>div.page-tags:not(:has(div.hidden)){max-width:480px;min-width:400px}
-body[data-page=page] div.page.relative>div div:is(.page-linked,.page-unlinked){order:1;font-size:.96em;max-width:570px;max-height:88vh;overflow:auto}
-body[data-page=page] div.page.relative>div div.page-linked div.pt-6{padding-top:unset;overflow:hidden}
-body[data-page=page] div.page.relative>div>div.page-unlinked.mt-6{margin-top:unset;overflow:hidden}
-body[data-page=page] div.page.relative>div:not(.relative):not(:has(div.hidden)) div.foldable-title{min-width:340px}
-body[data-page=page] div.page.relative>div div:is(.page-linked,.page-unlinked)>div.content>div>div.initial{max-height:86vh}
-body[data-page=page] div.page.relative>div div:is(.page-linked,.page-unlinked):not(:has(div.hidden)):focus-within{min-width:500px}
-body[data-page=page] div.page.relative>div div:is(.page-linked,.page-unlinked):is(:hover,:focus-within)>div.content>div>div.initial{overflow-y:scroll;margin-right:-1em}
+div#root div#main-content-container{justify-content:unset!important}
+div#root div#main-content-container div.cp__sidebar-main-content{max-width:unset}
+div#root div.page.relative{display:flex}
+div#root div.page.relative>div.relative{min-width:1050px;max-width:1450px;flex:1}
+div#root div#right-sidebar div#root div.page.relative>div.relative{min-width:94%}
+div#root div.page.relative>div:not(.relative){padding:1em;height:fit-content;position:sticky;top:1em}
+div#root div.page.relative>div:not(.relative):not(:has(div.hidden)){flex:.3;max-width:fit-content}
+div#root div.page.relative>div:not(.relative):has(div.hidden){writing-mode:vertical-rl;max-height:88vh;max-width:3.2em}
+div#root div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{font-size:.9em}
+div#root div.page.relative>div:is(.page-tags,.page-hierarchy){padding:1em;order:2;overflow-y:auto;overflow-x:hidden;max-height:88vh}
+div#root div.page.relative>div.page-hierarchy:not(:has(div.hidden)){max-width:580px;min-width:400px}
+div#root div.page.relative>div.page-tags{flex:.2}
+div#root div.page.relative>div.page-tags:not(:has(div.hidden)){max-width:480px;min-width:400px}
+div#root div.page.relative>div div:is(.page-linked,.page-unlinked){order:1;font-size:.96em;max-width:570px;max-height:88vh;overflow:auto}
+div#root div.page.relative>div div.page-linked div.pt-6{padding-top:unset;overflow:hidden}
+div#root div.page.relative>div>div.page-unlinked.mt-6{margin-top:unset;overflow:hidden}
+div#root div.page.relative>div:not(.relative):not(:has(div.hidden)) div.foldable-title{min-width:340px}
+div#root div.page.relative>div div:is(.page-linked,.page-unlinked)>div.content>div>div.initial{max-height:86vh}
+div#root div.page.relative>div div:is(.page-linked,.page-unlinked):not(:has(div.hidden)):focus-within{min-width:500px}
+div#root div.page.relative>div div:is(.page-linked,.page-unlinked):is(:hover,:focus-within)>div.content>div>div.initial{overflow-y:scroll;margin-right:-1em}
 div#root div#main-content-container.scrollbar-spacing{overflow-x: unset}
+div#root div:is(#main-content-container,#right-sidebar) div.is-journals div:is(#today-queries,.lazy-visibility div.scheduled-or-deadlines){display: none}
