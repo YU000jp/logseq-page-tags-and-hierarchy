@@ -56,11 +56,13 @@ const main = () => {
         }
     });
 
-    //ページ読み込み時のダブルチェック用
+    //ページ読み込み時に実行
     logseq.App.onPageHeadActionsSlotted(() => {
+        //Hierarchy linksの表示
         if (parent.document.getElementById("hierarchyLinks") !== null) return;
         const pageName = parent.document.querySelector("h1.page-title")?.textContent as string | undefined;
         if (logseq.settings!.booleanSplitHierarchy === true && pageName && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
+        //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
     });
 
 
