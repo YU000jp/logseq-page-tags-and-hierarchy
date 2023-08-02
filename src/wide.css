@@ -18,3 +18,4 @@ body[data-page=page] div.page.relative>div:not(.relative):not(:has(div.hidden)) 
 body[data-page=page] div.page.relative>div div:is(.page-linked,.page-unlinked)>div.content>div>div.initial{max-height:86vh}
 body[data-page=page] div.page.relative>div div:is(.page-linked,.page-unlinked):not(:has(div.hidden)):focus-within{min-width:500px}
 body[data-page=page] div.page.relative>div div:is(.page-linked,.page-unlinked):is(:hover,:focus-within)>div.content>div>div.initial{overflow-y:scroll;margin-right:-1em}
+div#root div#main-content-container.scrollbar-spacing{overflow-x: unset}
