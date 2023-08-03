@@ -1,3 +1,17 @@
+# [2.5.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.4.1...v2.5.0) (2023-08-03)
+
+
+### Bug Fixes
+
+* **bug:** For right sidebar ([2abec09](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/2abec09c7b69895d879a6e38d2c5c74a0220a1e5))
+* **bug:** some themes not work scroll ([09e3a4d](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/09e3a4d8c31449db76004abb9fa5461081eef0de))
+* wide view, check Logseq version ([6a1147d](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/6a1147dfb620efce5e124757ebf51078a097f850))
+
+
+### Features
+
+* **Add:** wide view mode ([7e6a428](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/7e6a428126a847b8f2716fc7019c335582ef6342))
+
 ## [2.4.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.4.0...v2.4.1) (2023-07-31)
 
 
