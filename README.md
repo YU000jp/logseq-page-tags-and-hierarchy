@@ -42,7 +42,7 @@
 
 - Add `tags:: AA,BB` to first block as page properties on any page
 
--  Links
+- Links
    1. [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
    1. [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
 
@@ -58,27 +58,25 @@
 ### Plugin Settings
 
 - Split hierarchy of the page title link (non-journal) [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
-   - `true` default
-   - `false`
+  - `true` default
+  - `false`
 - Place on side by side or bottom: Select
-   - `Side` default
-   - `Bottom`
-   - `unset` 🆕
-- When in wide mode, set the main content max-width to 1450px: Toggle
-   - `true` default
-   - `false`
-- When the window size is less than 1560px, do not display it: Toggle
-   - `true` default
-   - `false`
-- modify the display of hierarchy to be original rather than standard: Toggle
-   - `true` default
-   - `false`
+  - 🆕`wide view`: *require scroll to right space
+  - `side` default: *min-width 1560px
+  - `bottom`: *min-width 1560px
+  - 🆕`unset` : *for only use split hierarchy feature
+- Bottom mode, when the window size is less than 1560px, do not display it: Toggle
+  - `true` default
+  - `false`
+- For non-"unset", modify the display of hierarchy to be original rather than standard: Toggle
+  - `true` default
+  - `false`
+
 ---
 
 ## Author
 
 - GitHub: [YU000jp](https://github.com/YU000jp)
-
 
 ---
 
