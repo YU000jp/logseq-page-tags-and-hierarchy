@@ -16,7 +16,6 @@ const keyWide = "th-wide";
 const main = () => {
 
     if (!logseq.settings?.placeSelect) {
-        try {
             (async () => {
                 //初回バージョンチェック
                 const version: string = await logseq.App.getInfo("version");
@@ -26,11 +25,10 @@ const main = () => {
                     (Number(versionArr[0]) === 0 && Number(versionArr[1]) > 9) ||
                     (Number(versionArr[0]) === 0 && Number(versionArr[1]) === 9 && Number(versionArr[2]) >= 11)) {
                     logseq.useSettingsSchema(settingsTemplate("wide view"));
+                }else{
+                    logseq.useSettingsSchema(settingsTemplate("side"));
                 }
             })();
-        } finally {
-            setTimeout(() => logseq.showSettingsUI(), 2000);
-        }
     } else {
         logseq.useSettingsSchema(settingsTemplate("side"));
     }
