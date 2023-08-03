@@ -17,6 +17,6 @@ div#root div.page.relative>div>div.page-unlinked.mt-6{margin-top:unset;overflow:
 div#root div.page.relative>div:not(.relative):not(:has(div.hidden)) div.foldable-title{min-width:340px}
 div#root div.page.relative>div div:is(.page-linked,.page-unlinked)>div.content>div>div.initial{max-height:86vh}
 div#root div.page.relative>div div:is(.page-linked,.page-unlinked):not(:has(div.hidden)):focus-within{min-width:500px}
-div#root div.page.relative>div div:is(.page-linked,.page-unlinked):is(:hover,:focus-within)>div.content>div>div.initial{overflow-y:scroll;margin-right:-1em}
+div#root div.page.relative>div div:is(.page-linked,.page-unlinked):is(:hover,:focus-within)>div.content>div>div.initial{overflow-y:scroll}
 div#root div#main-content-container.scrollbar-spacing{overflow-x: unset}
 div#root div:is(#main-content-container,#right-sidebar) div.is-journals div:is(#today-queries,.lazy-visibility div.scheduled-or-deadlines){display: none}
