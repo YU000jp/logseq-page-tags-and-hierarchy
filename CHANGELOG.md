@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.5.1...v2.6.0) (2023-08-03)
+
+
+### Features
+
+* **For first user:** default mode by Logseq version check ([bcb2fb6](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/bcb2fb6b5dc287b08df6a9a038c19dc31c3f704f))
+
 ## [2.5.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.5.0...v2.5.1) (2023-08-03)
 
 
