@@ -1,7 +1,7 @@
-div#root div#main-content-container{justify-content:unset!important}
-div#root div#main-content-container div.cp__sidebar-main-content{max-width:unset}
+div#root div#main-content-container:not(:has(div#journals)){justify-content:unset!important}
+div#root div#main-content-container:not(:has(div#journals)) div.cp__sidebar-main-content{max-width:unset}
 div#root div.page.relative{display:flex}
-div#root div#main-content-container div.page.relative>div.relative{min-width:1050px;max-width:1450px;flex:1}
+div#root div#main-content-container:not(:has(div#journals)) div.page.relative>div.relative{min-width:1050px;max-width:1450px;flex:1}
 div#root div#right-sidebar div.page.relative>div.relative{min-width:94%}
 div#root div.page.relative>div:not(.relative){padding:1em;height:fit-content;position:sticky;top:1em}
 div#root div.page.relative>div:not(.relative):not(:has(div.hidden)){flex:.3;max-width:fit-content}
