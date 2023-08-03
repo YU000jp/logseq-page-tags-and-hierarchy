@@ -4,7 +4,7 @@ import { settingsTemplate, } from "./settings";
 import { splitHierarchy, hierarchyLinksCSS, } from "./splitHierarchy";
 import { LSPluginBaseInfo } from "@logseq/libs/dist/LSPlugin.user";
 import { removeProvideStyle } from "./lib";
-import fileHierarchy from "./hierarchyList.css?inline";
+import fileHierarchy from "./pageHierarchyList.css?inline";
 import CSSside from './side.css?inline';
 import CSSbottom from './bottom.css?inline';
 import CSSwide from './wide.css?inline';
