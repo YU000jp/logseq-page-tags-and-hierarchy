@@ -1,7 +1,7 @@
 import { SettingSchemaDesc, } from "@logseq/libs/dist/LSPlugin.user";
 
 /* https://logseq.github.io/plugins/types/SettingSchemaDesc.html */
-export const settingsTemplate: SettingSchemaDesc[] = [
+export const settingsTemplate = (defaultMode: string): SettingSchemaDesc[] => [
     {
         key: "booleanSplitHierarchy",
         title: "🆙Split hierarchy of the page title link (non-journals)",
@@ -14,8 +14,8 @@ export const settingsTemplate: SettingSchemaDesc[] = [
         key: "placeSelect",
         title: "Select mode",
         type: "enum",
-        enumChoices: ["wide view","side", "bottom", "unset"],
-        default: "side",
+        enumChoices: ["wide view", "side", "bottom", "unset"],
+        default: defaultMode || "side",
         description: `
         🆕wide view: *require scroll to right space , If workspace is small, zoom in or open it in the right sidebar , Logseq v0.9.11 or later⚠️
         side: *min-width 1560px
