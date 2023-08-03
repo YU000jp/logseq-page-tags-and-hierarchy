@@ -4,7 +4,7 @@ import { SettingSchemaDesc, } from "@logseq/libs/dist/LSPlugin.user";
 export const settingsTemplate: SettingSchemaDesc[] = [
     {
         key: "booleanSplitHierarchy",
-        title: "🆙Split hierarchy of the page title link (non-journal)",
+        title: "🆙Split hierarchy of the page title link (non-journals)",
         type: "boolean",
         default: true,
         //この項目のみを有効にしたい場合は次の設定項目をunsetにする
@@ -17,7 +17,7 @@ export const settingsTemplate: SettingSchemaDesc[] = [
         enumChoices: ["wide view","side", "bottom", "unset"],
         default: "side",
         description: `
-        🆕wide view: *require scroll to right space
+        🆕wide view: *require scroll to right space , If workspace is small, zoom in or open it in the right sidebar , Logseq v0.9.11 or later⚠️
         side: *min-width 1560px
         bottom: *min-width 1560px
         🆙unset: *for only use split hierarchy feature
