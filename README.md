@@ -11,10 +11,17 @@
 
 ## Features
 
-### Side by side mode
+### Wide view mode 🆕
+
+- Place page-tags and page-hierarchy, linked references, unlinked references side by side with content of the page.
+
+### Side mode
+
+- Place page-tags and page-hierarchy side by side with ontent of the page.
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
 
 ### Bottom mode
+
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
 
 ### Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
