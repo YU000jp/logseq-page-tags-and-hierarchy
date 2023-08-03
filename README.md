@@ -18,6 +18,7 @@
 ### Side mode
 
 - Place page-tags and page-hierarchy side by side with ontent of the page.
+
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
 
 ### Bottom mode
