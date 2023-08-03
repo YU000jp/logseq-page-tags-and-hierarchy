@@ -66,7 +66,7 @@ const main = () => {
     });
 
 
-    logseq.onSettingsChanged((newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
+    logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
         if (oldSet.placeSelect !== newSet.placeSelect) {
             switch (newSet.placeSelect) {
                 case "side" || "bottom":
@@ -89,9 +89,20 @@ const main = () => {
                     logseq.provideStyle({ key: keySide, style: CSSside });
                     break;
                 case "wide view":
-                    removeProvideStyle(keySide);
-                    removeProvideStyle(keyBottom);
-                    logseq.provideStyle({ key: keyWide, style: CSSwide });
+                    //バージョンチェック
+                    const version: string = await logseq.App.getInfo("version");
+                    console.log(version);
+                    const versionArr = version?.split(".") as string[];
+                    if (Number(versionArr[0]) > 0 ||
+                        (Number(versionArr[0]) === 0 && Number(versionArr[1]) > 9) ||
+                        (Number(versionArr[0]) === 0 && Number(versionArr[1]) === 9 && Number(versionArr[2]) >= 11)) {
+                        removeProvideStyle(keySide);
+                        removeProvideStyle(keyBottom);
+                        logseq.provideStyle({ key: keyWide, style: CSSwide });
+                    } else {
+                        logseq.UI.showMsg("Wide view mode is available from Logseq v0.9.11");
+                        logseq.updateSettings({ placeSelect: oldSet.placeSelect });
+                    }
                     break;
                 case "unset":
                     removeProvideStyle(keySide);
