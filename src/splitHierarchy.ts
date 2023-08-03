@@ -2,12 +2,9 @@ import { PageEntity } from "@logseq/libs/dist/LSPlugin.user";
 
 
 export const hierarchyLinksCSS = `
-div#main-content-container span#hierarchyLinks {
-    top: -1.2em;
+div#main-content-container div.is-journals>div.relative div div.ls-page-title:has(h1.page-title[data-checked=true]) span#hierarchyLinks {
     position: absolute;
-}
-div#main-container div#weekBoundaries+div.relative span#hierarchyLinks {
-    top: 1.2em;
+    margin-top: -4em;
 }
 `;
 
