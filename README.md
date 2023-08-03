@@ -14,10 +14,15 @@
 ### Wide view mode 🆕
 
 - Place page-tags and page-hierarchy, linked references, unlinked references side by side with content of the page.
+  - *require scroll to right space
+  - Logseq v0.9.11 or later⚠️
+
+  ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f6b2c0d0-85bd-4629-9da9-ecc6940f2387)
 
 ### Side mode
 
 - Place page-tags and page-hierarchy side by side with ontent of the page.
+
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
 
 ### Bottom mode
