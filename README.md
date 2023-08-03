@@ -70,7 +70,7 @@
 
 ### Plugin Settings
 
-- Split hierarchy of the page title link (non-journal) [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
+- Split hierarchy of the page title link (non-journals) [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
   - `true` default
   - `false`
 - Place on side by side or bottom: Select
