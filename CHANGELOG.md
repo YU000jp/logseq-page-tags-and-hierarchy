@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.5.0...v2.5.1) (2023-08-03)
+
+
+### Bug Fixes
+
+* **bug:** cancel journals page ([250f222](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/250f222e193fa60e22cda8590446878059accf1e))
+
 # [2.5.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.4.1...v2.5.0) (2023-08-03)
 
 
