@@ -15,20 +15,20 @@ const keyWide = "th-wide";
 
 const main = () => {
 
-    if (!logseq.settings?.placeSelect) {
-            (async () => {
-                //初回バージョンチェック
-                const version: string = await logseq.App.getInfo("version");
-                console.log(version);
-                const versionArr = version?.split(".") as string[];
-                if (Number(versionArr[0]) > 0 ||
-                    (Number(versionArr[0]) === 0 && Number(versionArr[1]) > 9) ||
-                    (Number(versionArr[0]) === 0 && Number(versionArr[1]) === 9 && Number(versionArr[2]) >= 11)) {
-                    logseq.useSettingsSchema(settingsTemplate("wide view"));
-                }else{
-                    logseq.useSettingsSchema(settingsTemplate("side"));
-                }
-            })();
+    if (!logseq.settings) {
+        (async () => {
+            //初回バージョンチェック
+            const version: string = await logseq.App.getInfo("version");
+            console.log(version);
+            const versionArr = version?.split(".") as string[];
+            if (Number(versionArr[0]) > 0 ||
+                (Number(versionArr[0]) === 0 && Number(versionArr[1]) > 9) ||
+                (Number(versionArr[0]) === 0 && Number(versionArr[1]) === 9 && Number(versionArr[2]) >= 11)) {
+                logseq.useSettingsSchema(settingsTemplate("wide view"));
+            } else {
+                logseq.useSettingsSchema(settingsTemplate("side"));
+            }
+        })();
     } else {
         logseq.useSettingsSchema(settingsTemplate("side"));
     }
@@ -39,19 +39,24 @@ const main = () => {
             break;
         case "bottom":
             logseq.provideStyle({ key: keyBottom, style: CSSbottom });
+            break;
         case "side":
             logseq.provideStyle({ key: keySide, style: CSSside });
+            break;
         case "Side"://Sideミス対策
             logseq.provideStyle({ key: keySide, style: CSSside });
             logseq.updateSettings({ placeSelect: "side" }); //default値を間違えていたため修正(変更していないユーザー用)
+            break;
         case "wide view":
             logseq.provideStyle({ key: keyWide, style: CSSwide });
-        default:
-            //unset以外
-            //DisplayIfSmaller
-            if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
-            //ModifyHierarchyList
-            if (logseq.settings?.booleanModifyHierarchy === true) logseq.provideStyle({ key: keyModifyHierarchyList, style: fileHierarchy });
+            break;
+    }
+    if (logseq.settings!.placeSelect !== "unset") {
+        //unset以外
+        //DisplayIfSmaller
+        if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
+        //ModifyHierarchyList
+        if (logseq.settings?.booleanModifyHierarchy === true) logseq.provideStyle({ key: keyModifyHierarchyList, style: fileHierarchy });
     }
 
     if (logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
@@ -117,7 +122,7 @@ const main = () => {
                         logseq.provideStyle({ key: keyWide, style: CSSwide });
                     } else {
                         logseq.UI.showMsg("Wide view mode is available from Logseq v0.9.11");
-                        logseq.updateSettings({ placeSelect: oldSet.placeSelect });
+                        setTimeout(() => { logseq.updateSettings({ placeSelect: oldSet.placeSelect }) }, 300);
                     }
                     break;
                 case "unset":
