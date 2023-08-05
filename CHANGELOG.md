@@ -1,3 +1,10 @@
+## [2.6.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.1...v2.6.2) (2023-08-05)
+
+
+### Bug Fixes
+
+* **bug:** Support Awesome Styler plugin ([#29](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/29)) ([0f65b4a](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/0f65b4a1e9d5585c15db0121111bd2bd4b635a9d))
+
 ## [2.6.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.0...v2.6.1) (2023-08-05)
 
 
