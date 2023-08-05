@@ -17,6 +17,8 @@
   - *require scroll to right space
   - If workspace is small, zoom in or open it in the right sidebar
   - Logseq v0.9.11 or later⚠️
+ 
+  > For Journals >> [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
 
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f6b2c0d0-85bd-4629-9da9-ecc6940f2387)
 
