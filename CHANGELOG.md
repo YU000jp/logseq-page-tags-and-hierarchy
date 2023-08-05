@@ -1,3 +1,10 @@
+## [2.6.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.2...v2.6.3) (2023-08-05)
+
+
+### Bug Fixes
+
+* **bug:** wide mode, today journal only, scheduled and deadline ([#31](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/31)) ([cb4bb22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/cb4bb22d25dfac70d2f758dbabf3da42656487a2))
+
 ## [2.6.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.1...v2.6.2) (2023-08-05)
 
 
