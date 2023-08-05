@@ -1,3 +1,11 @@
+## [2.6.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.0...v2.6.1) (2023-08-05)
+
+
+### Bug Fixes
+
+* **bug:** bottom settings (loading styles duplicate) ([#27](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/27)) ([ad1549f](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/ad1549f67676a1c21ad58e2c9ad6d9e3939da378))
+* **For first user:** default mode by Logseq version check ([26a6adb](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/26a6adb9391a6cba659643112caa071d7190bec6))
+
 # [2.6.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.5.1...v2.6.0) (2023-08-03)
 
 
