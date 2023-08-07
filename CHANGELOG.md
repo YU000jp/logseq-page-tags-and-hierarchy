@@ -1,3 +1,11 @@
+## [2.7.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.7.0...v2.7.1) (2023-08-07)
+
+
+### Bug Fixes
+
+* **bug:** wide view mode, sometimes not work displaying ([49b11ba](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/49b11baac5063843e044772c87bfb360cefc94fc))
+* **bug:** wide view mode, toc collapsed && remove console error ([2b0c4ba](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/2b0c4ba0245943e0471cace48cbfcc4f55aab548))
+
 # [2.7.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.3...v2.7.0) (2023-08-07)
 
 
