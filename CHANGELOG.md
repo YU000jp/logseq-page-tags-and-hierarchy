@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.8.0...v2.9.0) (2023-08-07)
+
+
+### Features
+
+* **Add:** Wide view mode, Showing journal queries on today journal page ([#36](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/36)) ([7e47765](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/7e477655e00cd8f6205efdcf4461330e1b9ab534))
+
 # [2.8.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.7.1...v2.8.0) (2023-08-07)
 
 
