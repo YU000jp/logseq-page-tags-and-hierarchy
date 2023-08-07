@@ -88,16 +88,24 @@ const main = () => {
         if (!pageName) return;
         if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
-        if (logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
+        if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
     });
 
     //toc更新用
     //ブロック更新のコールバック
-    if (logseq.settings!.booleanTableOfContents === true && checkOnBlockChanged === false) onBlockChanged();
+    if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true && checkOnBlockChanged === false) onBlockChanged();
 
     //設定変更のコールバック
     logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
-        if (oldSet.placeSelect !== newSet.placeSelect) {
+
+        if (oldSet.placeSelect !== newSet.placeSelect) {//tocはwide viewのみ
+            if (oldSet.placeSelect === "wide view" && newSet.placeSelect !== "wide view") removeElementClass("th-toc")
+            else if (oldSet.placeSelect !== "wide view" && newSet.placeSelect === "wide view") {
+                const current = await logseq.Editor.getCurrentPage() as PageEntity | null;
+                if (current && current.name) displayToc(current.name);
+                onBlockChanged();
+            }
+
             switch (newSet.placeSelect) {
                 case "side" || "bottom":
                     if (newSet.booleanModifyHierarchy === true

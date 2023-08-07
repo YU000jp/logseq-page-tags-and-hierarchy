@@ -2,6 +2,7 @@ import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user";
 
 
 export const displayToc = async (pageName: string) => {
+  if(logseq.settings!.placeSelect !== "wide view") return;
   const pageBlocks = await logseq.Editor.getPageBlocksTree(pageName) as BlockEntity[];
   const headers = getTocBlocks(pageBlocks as Child[]);
   if (headers.length > 0) {
