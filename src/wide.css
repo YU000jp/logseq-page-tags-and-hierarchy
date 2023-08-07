@@ -7,11 +7,11 @@ div#root div.page.relative>div:not(.relative){padding:1em;height:fit-content;pos
 div#root div.page.relative>div:not(.relative):not(:has(div.hidden)){flex:.3;max-width:fit-content}
 div#root div.page.relative>div:not(.relative):has(div.hidden){writing-mode:vertical-rl;max-width:3.2em}
 div#root div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{font-size:.9em}
-div#root div.page.relative>div:is(.page-tags,.page-hierarchy){padding:1em;order:2}
+div#root div.page.relative>div:is(.page-tags,.page-hierarchy){padding:1em}
 div#root div.page.relative>div.page-hierarchy:not(:has(div.hidden)){max-width:580px;min-width:400px}
 div#root div.page.relative>div.page-tags{flex:.2}
 div#root div.page.relative>div.page-tags:not(:has(div.hidden)){max-width:480px;min-width:400px}
-div#root div.page.relative>div div:is(.page-linked,.page-unlinked){order:1;font-size:.96em;max-width:570px}
+div#root div.page.relative>div div:is(.page-linked,.page-unlinked){font-size:.96em;max-width:570px}
 div#root div.page.relative>div div.page-linked div.pt-6{padding-top:unset}
 div#root div.page.relative>div>div.page-unlinked.mt-6{margin-top:unset}
 div#root div.page.relative>div:not(.relative):not(:has(div.hidden)) div.foldable-title{min-width:340px}
@@ -36,7 +36,7 @@ div#root div#main-content-container div#tocInPage h6{padding-left:3.0em}
 div#root div#main-content-container div#tocInPage :is(h2,h3,h4,h5,h6){margin-top:.4em;display:list-item;list-style-type:disc;list-style-position:inside}
 div#root div#main-content-container div#tocInPage :is(h3.h4,h5,h6){padding-top:.6em}
 div#root div#main-content-container div#tocInPage div:is(.headerTwo,.headerThree,.headerFour,.headerFive,.headerSix)+div.headerOne{margin-top:14px}
-div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.page-hierarchy div.foldable-title a.block-control{display:none}
-div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines div.foldable-title a.block-control{display:none}
-div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines.mt-8{margin-top:unset}
+div#root div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.page-hierarchy div.foldable-title a.block-control{display:none}
+div#root div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines div.foldable-title a.block-control{display:none}
+div#root div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines.mt-8{margin-top:unset}
 div#root div#main-content-container div.page.relative>div div#tocInPage,div#root div.page.relative>div div:is(.page-linked,.page-unlinked)>div.content>div>div.initial,div#root div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{max-height:86vh;overflow:auto}

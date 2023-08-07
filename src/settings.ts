@@ -50,7 +50,54 @@ export const settingsTemplate = (defaultMode: string): SettingSchemaDesc[] => [
         type: "boolean",
         default: false,
         description: "default: false",
-
     },
+    {//wide viewモード、横の並び順 SCHEDULED AND DEADLINEの位置
+        key: "enumScheduleDeadline",
+        title: "Scheduled and deadline position (wide view only)",
+        type: "enum",
+        enumChoices: ["1", "2", "3", "4", "5","6"],
+        default: "1",
+        description: "default: 1 *It is not displayed only when necessary",
+    },
+    {//wide viewモード、横の並び順 Table of Contentsの位置
+        key: "enumTableOfContents",
+        title: "Table of contents position (wide view only)",
+        type: "enum",
+        enumChoices: ["1", "2", "3", "4", "5","6"],
+        default: "2",
+        description: "default: 2 *It is not displayed only when necessary",
+    },
+    {//wide viewモード、横の並び順 Linked Referencesの位置
+        key: "enumLinkedReferences",
+        title: "Linked references position (wide view only)",
+        type: "enum",
+        enumChoices: ["1", "2", "3", "4", "5","6"],
+        default: "3",
+        description: "default: 3",
+    },
+    {//wide viewモード、横の並び順 Unlinked Referencesの位置
+        key : "enumUnlinkedReferences",
+        title: "Unlinked references position (wide view only)",
+        type: "enum",
+        enumChoices: ["1", "2", "3", "4", "5","6"],
+        default: "4",
+        description: "default: 4",
+    },
+    {//wide viewモード、横の並び順 Page-Hierarchyの位置
+        key: "enumPageHierarchy",
+        title: "Page hierarchy position (wide view only)",
+        type: "enum",
+        enumChoices: ["1", "2", "3", "4", "5","6"],
+        default: "5",
+        description: "default: 5 *It is not displayed only when necessary",
+    },
+    {//wide viewモード、横の並び順 Page-Tagsの位置
+        key: "enumPageTags",
+        title: "Page tags position (wide view only)",
+        type: "enum",
+        enumChoices: ["1", "2", "3", "4", "5","6"],
+        default: "6",
+        description: "default: 6 *It is not displayed only when necessary",
+    }
 ];
 
