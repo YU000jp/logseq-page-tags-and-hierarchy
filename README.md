@@ -87,7 +87,7 @@
   - `side` default: *min-width 1560px
   - `bottom`: *min-width 1560px
   - `unset` : *for only use split hierarchy feature [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
- - For non-"unset", modify the display of hierarchy to be original rather than standard: Toggle
+- For non-"unset", modify the display of hierarchy to be original rather than standard: Toggle
   - `true` default
   - `false`
 - Bottom mode, when the window size is less than 1560px, do not display it: Toggle
@@ -99,6 +99,48 @@
 - Hide table of contents by default (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
   - `true`
   - `false` default
+- Scheduled and deadline position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
+  - `1` default
+  - `2`
+  - `3`
+  - `4`
+  - `5`
+  - `6`
+- Table of contents position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
+  - `1`
+  - `2` default
+  - `3`
+  - `4`
+  - `5`
+  - `6`
+- Linked references position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
+  - `1`
+  - `2`
+  - `3` default
+  - `4`
+  - `5`
+  - `6`
+- Unlinked references position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
+  - `1`
+  - `2`
+  - `3`
+  - `4` default
+  - `5`
+  - `6`
+- Page hierarchy position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
+  - `1`
+  - `2`
+  - `3`
+  - `4`
+  - `5` default
+  - `6`
+- Page tags position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
+  - `1`
+  - `2`
+  - `3`
+  - `4`
+  - `5`
+  - `6` default
 
 ---
 
