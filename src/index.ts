@@ -9,7 +9,7 @@ import CSSside from './side.css?inline';
 import CSSbottom from './bottom.css?inline';
 import CSSwide from './wide.css?inline';
 import CSSwideJournalQueries from './wideJournalQueries.css?inline';
-import { displayToc } from "./toc";
+import { displayToc, onBlockChanged } from "./toc";
 import { CSSpageSupportContentPosition } from "./toc";
 const keyModifyHierarchyList = "th-modifyHierarchy";
 const keySide = "th-side";
@@ -17,8 +17,8 @@ const keyBottom = "th-bottom";
 const keyWide = "th-wide";
 const keyPageSupportContentPosition = "th-pageSupportContentPosition";
 const keyWideJournalQueries = "th-wideJournalQueries";
-let checkOnBlockChanged: boolean = false;//一度飲み
-let processBlockChanged: boolean = false;//処理中
+
+
 
 const main = () => {
 
@@ -98,9 +98,6 @@ const main = () => {
         if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
     });
 
-    //toc更新用
-    //ブロック更新のコールバック
-    if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true && checkOnBlockChanged === false) onBlockChanged();
 
     //設定変更のコールバック
     logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
@@ -210,28 +207,5 @@ const main = () => {
     });
 
 };//end main
-
-
-function onBlockChanged() {
-    if (checkOnBlockChanged === true) return;
-    checkOnBlockChanged = true;
-    logseq.DB.onChanged(async ({ blocks }) => {
-        if (processBlockChanged === true) return;
-        if (logseq.settings!.booleanTableOfContents === true) {
-            //headingがあるブロックが更新されたら
-            const findBlock = blocks.find((block) => block.properties?.heading);//uuidを得るためsomeではなくfindをつかう
-            if (!findBlock) return;
-            const pageName = parent.document.querySelector("h1.page-title")?.textContent as string | null | undefined;
-            if (!pageName) return;
-            processBlockChanged = true;
-            await displayToc(pageName);//toc更新
-            processBlockChanged = false;
-            //ブロック更新のコールバック
-            logseq.DB.onBlockChanged(findBlock.uuid, async (block) => {
-                if (!block.properties?.heading) await displayToc(pageName);
-            });
-        }
-    });
-}
 
 logseq.ready(main).catch(console.error);
