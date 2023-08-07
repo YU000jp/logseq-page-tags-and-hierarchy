@@ -1,6 +1,7 @@
 # Logseq Plugin: *Page-tags and Hierarchy (UI)*
 
-- Place page tags and hierarchy in non-standard positions (right or bottom of the page).
+- ~~Place page tags and hierarchy in non-standard positions (right or bottom of the page).~~
+- Place page tags and hierarchy or references in non-standard positions. Choose from several modes.
 
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
