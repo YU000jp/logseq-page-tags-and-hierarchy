@@ -22,6 +22,12 @@
 
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f6b2c0d0-85bd-4629-9da9-ecc6940f2387)
 
+#### Table of Contents in a page (Wide view mode only)
+
+- Use the markdown of Header (`# `) (`## `) (`### `) (`#### `) (`#### `) (`##### `)
+
+  ![WideViewMode-Toc](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/995487f5-66b1-4dc5-8556-242ccb5120de)
+
 ### Side mode
 
 - Place page-tags and page-hierarchy side by side with ontent of the page.
