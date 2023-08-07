@@ -12,7 +12,7 @@
 
 ## Features
 
-### Wide view mode 🆕
+### Wide view mode [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
 
 - Place page-tags and page-hierarchy, linked references, unlinked references side by side with content of the page.
   - *require scroll to right space
@@ -23,7 +23,7 @@
 
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f6b2c0d0-85bd-4629-9da9-ecc6940f2387)
 
-#### Table of Contents in a page (Wide view mode only) 🆕
+#### Table of Contents in a page (Wide view mode only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
 
 - Use the markdown of Header (`# `) (`## `) (`### `) (`#### `) (`#### `) (`##### `)
 
@@ -58,7 +58,7 @@
 
 ### Usage
 
-- When this plugin install, the style be applied to non-journal pages. By default, bottom mode is turned off. it is possible to set in the plugin settings.
+- When this plugin install, the style be applied to non-journal pages. By default, side mode or bottom mode is turned off. it is possible to set in the plugin settings.
 
 #### Page-Tags
 
@@ -83,16 +83,22 @@
   - `true` default
   - `false`
 - Place on side by side or bottom: Select
-  - 🆕`wide view`: *require scroll to right space
+  - `wide view`: *require scroll to right space [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
   - `side` default: *min-width 1560px
   - `bottom`: *min-width 1560px
-  - 🆕`unset` : *for only use split hierarchy feature
+  - `unset` : *for only use split hierarchy feature [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
+ - For non-"unset", modify the display of hierarchy to be original rather than standard: Toggle
+  - `true` default
+  - `false`
 - Bottom mode, when the window size is less than 1560px, do not display it: Toggle
   - `true` default
   - `false`
-- For non-"unset", modify the display of hierarchy to be original rather than standard: Toggle
+- Enable table of contents on a page (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
   - `true` default
   - `false`
+- Hide table of contents by default (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
+  - `true`
+  - `false` default
 
 ---
 
