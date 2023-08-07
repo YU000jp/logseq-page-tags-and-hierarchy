@@ -9,10 +9,12 @@ import CSSside from './side.css?inline';
 import CSSbottom from './bottom.css?inline';
 import CSSwide from './wide.css?inline';
 import { displayToc } from "./toc";
+import { CSSpageSupportContentPosition } from "./toc";
 const keyModifyHierarchyList = "th-modifyHierarchy";
 const keySide = "th-side";
 const keyBottom = "th-bottom";
 const keyWide = "th-wide";
+const keyPageSupportContentPosition = "th-pageSupportContentPosition";
 let checkOnBlockChanged: boolean = false;//一度飲み
 let processBlockChanged: boolean = false;//処理中
 
@@ -52,6 +54,7 @@ const main = () => {
             break;
         case "wide view":
             logseq.provideStyle({ key: keyWide, style: CSSwide });
+            logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(logseq.settings) });
             break;
     }
     if (logseq.settings!.placeSelect !== "unset") {
@@ -120,11 +123,13 @@ const main = () => {
                 case "bottom":
                     removeProvideStyle(keySide);
                     removeProvideStyle(keyWide);
+                    removeProvideStyle(keyPageSupportContentPosition);
                     logseq.provideStyle({ key: keyBottom, style: CSSbottom });
                     break;
                 case "side":
                     removeProvideStyle(keyBottom);
                     removeProvideStyle(keyWide);
+                    removeProvideStyle(keyPageSupportContentPosition);
                     logseq.provideStyle({ key: keySide, style: CSSside });
                     break;
                 case "wide view":
@@ -138,6 +143,7 @@ const main = () => {
                         removeProvideStyle(keySide);
                         removeProvideStyle(keyBottom);
                         logseq.provideStyle({ key: keyWide, style: CSSwide });
+                        logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(logseq.settings) });
                     } else {
                         logseq.UI.showMsg("Wide view mode is available from Logseq v0.9.11");
                         setTimeout(() => { logseq.updateSettings({ placeSelect: oldSet.placeSelect }) }, 300);
@@ -147,6 +153,7 @@ const main = () => {
                     removeProvideStyle(keySide);
                     removeProvideStyle(keyBottom);
                     removeProvideStyle(keyWide);
+                    removeProvideStyle(keyPageSupportContentPosition);
                     break;
             }
         } else {
@@ -171,6 +178,18 @@ const main = () => {
                 onBlockChanged();
             }
             else if (oldSet.booleanTableOfContents === true && newSet.booleanTableOfContents === false) removeElementClass("th-toc");
+
+            //positionのCSSを変更
+            if (newSet.placeSelect === "wide view"
+                && (oldSet.enumScheduleDeadline !== newSet.enumScheduleDeadline
+                    || oldSet.enumTableOfContents !== newSet.enumTableOfContents
+                    || oldSet.enumLinkedReferences !== newSet.enumLinkedReferences
+                    || oldSet.enumUnlinkedReferences !== newSet.enumUnlinkedReferences
+                    || oldSet.enumPageHierarchy !== newSet.enumPageHierarchy
+                    || oldSet.enumPageTags !== newSet.enumPageTags)) {
+                removeProvideStyle(keyPageSupportContentPosition);
+                logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(newSet) });
+            }
         }
     });
 
@@ -203,6 +222,5 @@ function onBlockChanged() {
         }
     });
 }
-
 
 logseq.ready(main).catch(console.error);
