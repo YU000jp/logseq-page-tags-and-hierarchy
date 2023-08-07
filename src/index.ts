@@ -77,6 +77,7 @@ const main = () => {
                     || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
                 parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
             if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
+            if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
         }
     });
 
