@@ -66,6 +66,7 @@ async function insertElement(): Promise<void> {
 interface TocBlock {
   content: string;
   uuid: string;
+  properties?: { [key: string]: string[] };
 }
 
 interface Child {
@@ -82,35 +83,19 @@ const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
   const findAllHeaders = (childrenArr: Child[]) => {
     if (!childrenArr) return;
     for (let a = 0; a < childrenArr.length; a++) {
-      if (childrenArr[a].content.startsWith("# ")) {
+      if (
+        childrenArr[a].content.startsWith("# ")
+        || childrenArr[a].content.startsWith("## ")
+        || childrenArr[a].content.startsWith("### ")
+        || childrenArr[a].content.startsWith("#### ")
+        || childrenArr[a].content.startsWith("##### ")
+        || childrenArr[a].content.startsWith("###### ")
+        || childrenArr[a].content.startsWith("####### ")
+      ) {
         tocBlocks.push({
           content: childrenArr[a].content,
           uuid: childrenArr[a].uuid,
-        });
-      } else if (childrenArr[a].content.startsWith("## ")) {
-        tocBlocks.push({
-          content: childrenArr[a].content,
-          uuid: childrenArr[a].uuid,
-        });
-      } else if (childrenArr[a].content.startsWith("### ")) {
-        tocBlocks.push({
-          content: childrenArr[a].content,
-          uuid: childrenArr[a].uuid,
-        });
-      } else if (childrenArr[a].content.startsWith("#### ")) {
-        tocBlocks.push({
-          content: childrenArr[a].content,
-          uuid: childrenArr[a].uuid,
-        });
-      } else if (childrenArr[a].content.startsWith("##### ")) {
-        tocBlocks.push({
-          content: childrenArr[a].content,
-          uuid: childrenArr[a].uuid,
-        });
-      } else if (childrenArr[a].content.startsWith("###### ")) {
-        tocBlocks.push({
-          content: childrenArr[a].content,
-          uuid: childrenArr[a].uuid,
+          properties: childrenArr[a].properties,
         });
       }
       if (childrenArr[a].children) {
@@ -125,7 +110,7 @@ const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
   return tocBlocks;
 };
 
-const headersList = async (targetElement, tocBlocks, thisPageName: string): Promise<void> => {
+const headersList = async (targetElement: HTMLElement, tocBlocks: TocBlock[], thisPageName: string): Promise<void> => {
 
   // To top
   const elementTop = document.createElement("div");
@@ -137,7 +122,7 @@ const headersList = async (targetElement, tocBlocks, thisPageName: string): Prom
 
   // Create list
   for (let i = 0; i < tocBlocks.length; i++) {
-    let blockContent = tocBlocks[i].content;
+    let blockContent: string = tocBlocks[i].content;
     if (blockContent.includes("((") && blockContent.includes("))")) {
       // Get content if it's q block reference
       const rxGetId = /\(([^(())]+)\)/;
@@ -152,6 +137,10 @@ const headersList = async (targetElement, tocBlocks, thisPageName: string): Prom
         block.content.substring(0, block.content.indexOf("id::"))
       );
     }
+
+    //プロパティを取り除く
+    blockContent = await removeProperties(tocBlocks, i, blockContent);
+
 
     if (blockContent.includes("id:: ")) {
       blockContent = blockContent.substring(0, blockContent.indexOf("id:: "));
@@ -241,6 +230,21 @@ const headersList = async (targetElement, tocBlocks, thisPageName: string): Prom
   }
 };
 
+async function removeProperties(tocBlocks: TocBlock[], i: number, blockContent: string): Promise<string> {
+  const properties = tocBlocks[i].properties;
+  if (!properties) return blockContent;
+  const keys = Object.keys(properties);
+  for (let j = 0; j < keys.length; j++) {
+    let key = keys[j];
+    const values = properties[key];
+    //backgroundColorをbackground-colorにする
+    //キーの途中で一文字大文字になっている場合は小文字にしてその前にハイフンを追加する
+    key = key.replace(/([A-Z])/g, "-$1").toLowerCase();
+    blockContent = blockContent.replace(`${key}:: ${values}`, "");
+  }
+  return blockContent;
+}
+
 async function selectBlock(shiftKey: boolean, pageName: string, blockUuid: string) {
   if (shiftKey) {
     logseq.Editor.openInRightSidebar(blockUuid);
@@ -311,4 +315,12 @@ async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
     }
   }
 }
+export const CSSpageSupportContentPosition = (settings) => `
+div#root div.page.relative>div.lazy-visibility:has(div.scheduled-or-deadlines){order:${settings.enumScheduleDeadline}}
+div#root div.page.relative>div.th-toc{order:${settings.enumTableOfContents}}
+div#root div.page.relative>div:has(div.page-linked){order:${settings.enumLinkedReferences}}
+div#root div.page.relative>div:has(div.page-unlinked){order:${settings.enumUnlinkedReferences}}
+div#root div.page.relative>div.page-hierarchy{order:${settings.enumPageHierarchy}}
+div#root div.page.relative>div.page-tags{order:${settings.enumPageTags}}
+`;
 
