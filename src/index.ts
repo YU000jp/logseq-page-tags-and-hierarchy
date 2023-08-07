@@ -18,8 +18,7 @@ const keyWide = "th-wide";
 const keyPageSupportContentPosition = "th-pageSupportContentPosition";
 const keyWideJournalQueries = "th-wideJournalQueries";
 
-let checkOnBlockChanged: boolean = false;//一度飲み
-let processBlockChanged: boolean = false;//処理中
+
 
 const main = () => {
 
