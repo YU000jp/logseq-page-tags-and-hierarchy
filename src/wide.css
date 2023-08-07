@@ -5,7 +5,7 @@ div#root div#main-content-container:not(:has(div#journals)) div.page.relative>di
 div#root div#right-sidebar div.page.relative>div.relative{min-width:94%}
 div#root div.page.relative>div:not(.relative){padding:1em;height:fit-content;position:sticky;top:1em}
 div#root div.page.relative>div:not(.relative):not(:has(div.hidden)){flex:.3;max-width:fit-content}
-div#root div.page.relative>div:not(.relative):has(div.hidden){writing-mode:vertical-rl;max-width:3.2em}
+div#root div.page.relative>div:not(.relative):not(#today-queries):has(div.hidden){writing-mode:vertical-rl;max-width:3.2em}
 div#root div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{font-size:.9em}
 div#root div.page.relative>div:is(.page-tags,.page-hierarchy){padding:1em}
 div#root div.page.relative>div.page-hierarchy:not(:has(div.hidden)){max-width:580px;min-width:400px}
