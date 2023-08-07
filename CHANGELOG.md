@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.3...v2.7.0) (2023-08-07)
+
+
+### Features
+
+* **Add:** Table Of Contents (wide view mode only) ([4911499](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/491149937a593f1ddacac3255bee960232c4969f))
+
 ## [2.6.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.6.2...v2.6.3) (2023-08-05)
 
 
