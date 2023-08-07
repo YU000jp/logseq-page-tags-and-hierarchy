@@ -39,14 +39,14 @@ export const settingsTemplate = (defaultMode: string): SettingSchemaDesc[] => [
     },
     {//Switch Table of Contents
         key: "booleanTableOfContents",
-        title: "Enable table of contents on a page",
+        title: "Enable table of contents on a page (wide view only)",
         type: "boolean",
         default: true,
         description: "default: true",
     },
     {//Table of Contentsをデフォルトで隠す
         key: "booleanTableOfContentsHide",
-        title: "Hide table of contents by default",
+        title: "Hide table of contents by default (wide view only)",
         type: "boolean",
         default: false,
         description: "default: false",
