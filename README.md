@@ -22,7 +22,7 @@
 
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f6b2c0d0-85bd-4629-9da9-ecc6940f2387)
 
-#### Table of Contents in a page (Wide view mode only)
+#### Table of Contents in a page (Wide view mode only) 🆕
 
 - Use the markdown of Header (`# `) (`## `) (`### `) (`#### `) (`#### `) (`##### `)
 
