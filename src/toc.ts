@@ -2,7 +2,7 @@ import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user";
 
 
 export const displayToc = async (pageName: string) => {
-  if(logseq.settings!.placeSelect !== "wide view") return;
+  if (logseq.settings!.placeSelect !== "wide view") return;
   const pageBlocks = await logseq.Editor.getPageBlocksTree(pageName) as BlockEntity[];
   const headers = getTocBlocks(pageBlocks as Child[]);
   if (headers.length > 0) {
@@ -21,7 +21,7 @@ function tocContentTitleCollapsed(PageName: string) {
   const titleElement = parent.document.getElementById("tocContentTitle") as HTMLDivElement | null;
   if (!titleElement || titleElement.dataset.PageName === PageName) return;
   titleElement.dataset.pageName = PageName;
-  titleElement.addEventListener('click', async () => {
+  titleElement.onclick = async () => {
     const elementTocInPage = parent.document.getElementById("tocInPage") as HTMLDivElement | null;
     if (!elementTocInPage) return;
     if (elementTocInPage.parentElement?.classList.contains("initial")) {
@@ -33,7 +33,7 @@ function tocContentTitleCollapsed(PageName: string) {
       elementTocInPage.parentElement!.classList.remove("hidden");
       elementTocInPage.parentElement!.classList.add("initial");
     }
-  });
+  };
 }
 
 async function insertElement(): Promise<void> {
@@ -80,6 +80,7 @@ const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
 
   // Recursive function to map all headers in a linear array
   const findAllHeaders = (childrenArr: Child[]) => {
+    if (!childrenArr) return;
     for (let a = 0; a < childrenArr.length; a++) {
       if (childrenArr[a].content.startsWith("# ")) {
         tocBlocks.push({
