@@ -99,6 +99,9 @@
 - Hide table of contents by default (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
   - `true`
   - `false` default
+- Showing journal queries on today journal page (wide view only) [#35](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/35) 🆕
+   - `true`
+  - `false` default
 - Scheduled and deadline position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
   - `1` default
   - `2`
