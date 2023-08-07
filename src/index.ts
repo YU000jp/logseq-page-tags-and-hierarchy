@@ -2,16 +2,19 @@ import "@logseq/libs";
 
 import { settingsTemplate, } from "./settings";
 import { splitHierarchy, hierarchyLinksCSS, } from "./splitHierarchy";
-import { LSPluginBaseInfo } from "@logseq/libs/dist/LSPlugin.user";
-import { removeProvideStyle } from "./lib";
+import { LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
+import { removeElementClass, removeProvideStyle } from "./lib";
 import fileHierarchy from "./pageHierarchyList.css?inline";
 import CSSside from './side.css?inline';
 import CSSbottom from './bottom.css?inline';
 import CSSwide from './wide.css?inline';
+import { displayToc } from "./toc";
 const keyModifyHierarchyList = "th-modifyHierarchy";
 const keySide = "th-side";
 const keyBottom = "th-bottom";
 const keyWide = "th-wide";
+let checkOnBlockChanged: boolean = false;//一度飲み
+let processBlockChanged: boolean = false;//処理中
 
 const main = () => {
 
@@ -81,12 +84,18 @@ const main = () => {
     logseq.App.onPageHeadActionsSlotted(() => {
         //Hierarchy linksの表示
         if (parent.document.getElementById("hierarchyLinks") !== null) return;
-        const pageName = parent.document.querySelector("h1.page-title")?.textContent as string | undefined;
-        if (logseq.settings!.booleanSplitHierarchy === true && pageName && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
+        const pageName = parent.document.querySelector("h1.page-title")?.textContent as string | null | undefined;
+        if (!pageName) return;
+        if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
+        if (logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
     });
 
+    //toc更新用
+    //ブロック更新のコールバック
+    if (logseq.settings!.booleanTableOfContents === true && checkOnBlockChanged === false) onBlockChanged();
 
+    //設定変更のコールバック
     logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
         if (oldSet.placeSelect !== newSet.placeSelect) {
             switch (newSet.placeSelect) {
@@ -147,6 +156,12 @@ const main = () => {
                 if (oldSet.booleanModifyHierarchy !== false
                     && newSet.booleanModifyHierarchy === false)
                     removeProvideStyle(keyModifyHierarchyList);
+            if (oldSet.booleanTableOfContents === false && newSet.booleanTableOfContents === true) {
+                const current = await logseq.Editor.getCurrentPage() as PageEntity | null;
+                if (current && current.name) displayToc(current.name);
+                onBlockChanged();
+            }
+            else if (oldSet.booleanTableOfContents === true && newSet.booleanTableOfContents === false) removeElementClass("th-toc");
         }
     });
 
@@ -156,5 +171,29 @@ const main = () => {
     });
 
 };//end main
+
+
+function onBlockChanged() {
+    if (checkOnBlockChanged === true) return;
+    checkOnBlockChanged = true;
+    logseq.DB.onChanged(async ({ blocks }) => {
+        if (processBlockChanged === true) return;
+        if (logseq.settings!.booleanTableOfContents === true) {
+            //headingがあるブロックが更新されたら
+            const findBlock = blocks.find((block) => block.properties?.heading);//uuidを得るためsomeではなくfindをつかう
+            if (!findBlock) return;
+            const pageName = parent.document.querySelector("h1.page-title")?.textContent as string | null | undefined;
+            if (!pageName) return;
+            processBlockChanged = true;
+            await displayToc(pageName);//toc更新
+            processBlockChanged = false;
+            //ブロック更新のコールバック
+            logseq.DB.onBlockChanged(findBlock.uuid, async (block) => {
+                if (!block.properties?.heading) await displayToc(pageName);
+            });
+        }
+    });
+}
+
 
 logseq.ready(main).catch(console.error);

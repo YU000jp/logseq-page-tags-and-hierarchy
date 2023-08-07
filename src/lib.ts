@@ -4,4 +4,7 @@ export const removeProvideStyle = (className: string) => {
     if (doc) doc.remove();
 };
 
-
+export const removeElementClass = (elementClassName: string) => {
+    const doc = (parent.document.getElementsByClassName(elementClassName) as HTMLCollectionOf<HTMLElement>)[0];
+    if (doc) doc.remove();
+};
