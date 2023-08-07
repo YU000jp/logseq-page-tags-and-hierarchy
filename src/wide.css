@@ -37,4 +37,6 @@ div#root div#main-content-container div#tocInPage :is(h2,h3,h4,h5,h6){margin-top
 div#root div#main-content-container div#tocInPage :is(h3.h4,h5,h6){padding-top:.6em}
 div#root div#main-content-container div#tocInPage div:is(.headerTwo,.headerThree,.headerFour,.headerFive,.headerSix)+div.headerOne{margin-top:14px}
 div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.page-hierarchy div.foldable-title a.block-control{display:none}
+div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines div.foldable-title a.block-control{display:none}
+div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines.mt-8{margin-top:unset}
 div#root div#main-content-container div.page.relative>div div#tocInPage,div#root div.page.relative>div div:is(.page-linked,.page-unlinked)>div.content>div>div.initial,div#root div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{max-height:86vh;overflow:auto}
