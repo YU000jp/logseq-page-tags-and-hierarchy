@@ -93,10 +93,10 @@
 - Bottom mode, when the window size is less than 1560px, do not display it: Toggle
   - `true` default
   - `false`
-- Enable table of contents on a page (wide view only) 🆕
+- Enable table of contents on a page (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
   - `true` default
   - `false`
-- Hide table of contents by default (wide view only) 🆕
+- Hide table of contents by default (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
   - `true`
   - `false` default
 
