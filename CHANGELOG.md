@@ -1,3 +1,17 @@
+# [2.8.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.7.1...v2.8.0) (2023-08-07)
+
+
+### Bug Fixes
+
+* **bug:** TOC, remove block properties ([7e21698](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/7e216980519e53a7b52980f8e8af7dec34f71655))
+* **bug:** wide view mode, SCHEDULED AND DEADLINES ([25bd3c8](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/25bd3c8523ca2dc49497fd0178ea7a9e80424b52))
+* **doc:** plugin settings ([b5391ef](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/b5391efdc2cd51d12e384b9861eb9af73d5f10ed))
+
+
+### Features
+
+* **TOC:** Swap left and right ([#34](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/34)) ([607f051](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/607f0512e81ca0e6019f8bddef80ff0dfbf9a3e1))
+
 ## [2.7.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.7.0...v2.7.1) (2023-08-07)
 
 
