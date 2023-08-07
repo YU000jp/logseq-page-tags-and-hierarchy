@@ -101,5 +101,14 @@
 
 ---
 
+## Prior art & Credit
+
+- Logseq plugin
+
+  - [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
+  - [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
+
+---
+
 <a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee" style="height: 42px;width: 152px" ></a>
 
