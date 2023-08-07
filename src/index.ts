@@ -8,6 +8,7 @@ import fileHierarchy from "./pageHierarchyList.css?inline";
 import CSSside from './side.css?inline';
 import CSSbottom from './bottom.css?inline';
 import CSSwide from './wide.css?inline';
+import CSSwideJournalQueries from './wideJournalQueries.css?inline';
 import { displayToc } from "./toc";
 import { CSSpageSupportContentPosition } from "./toc";
 const keyModifyHierarchyList = "th-modifyHierarchy";
@@ -15,6 +16,7 @@ const keySide = "th-side";
 const keyBottom = "th-bottom";
 const keyWide = "th-wide";
 const keyPageSupportContentPosition = "th-pageSupportContentPosition";
+const keyWideJournalQueries = "th-wideJournalQueries";
 let checkOnBlockChanged: boolean = false;//一度飲み
 let processBlockChanged: boolean = false;//処理中
 
@@ -55,6 +57,7 @@ const main = () => {
         case "wide view":
             logseq.provideStyle({ key: keyWide, style: CSSwide });
             logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(logseq.settings) });
+            if (logseq.settings!.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideJournalQueries, style: CSSwideJournalQueries });
             break;
     }
     if (logseq.settings!.placeSelect !== "unset") {
@@ -124,6 +127,7 @@ const main = () => {
                     removeProvideStyle(keySide);
                     removeProvideStyle(keyWide);
                     removeProvideStyle(keyPageSupportContentPosition);
+                    removeProvideStyle(keyWideJournalQueries);
                     logseq.provideStyle({ key: keyBottom, style: CSSbottom });
                     break;
                 case "side":
@@ -144,6 +148,7 @@ const main = () => {
                         removeProvideStyle(keyBottom);
                         logseq.provideStyle({ key: keyWide, style: CSSwide });
                         logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(logseq.settings) });
+                        if (newSet.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideJournalQueries, style: CSSwideJournalQueries });
                     } else {
                         logseq.UI.showMsg("Wide view mode is available from Logseq v0.9.11");
                         setTimeout(() => { logseq.updateSettings({ placeSelect: oldSet.placeSelect }) }, 300);
@@ -154,6 +159,7 @@ const main = () => {
                     removeProvideStyle(keyBottom);
                     removeProvideStyle(keyWide);
                     removeProvideStyle(keyPageSupportContentPosition);
+                    removeProvideStyle(keyWideJournalQueries);
                     break;
             }
         } else {
@@ -180,15 +186,20 @@ const main = () => {
             else if (oldSet.booleanTableOfContents === true && newSet.booleanTableOfContents === false) removeElementClass("th-toc");
 
             //positionのCSSを変更
-            if (newSet.placeSelect === "wide view"
-                && (oldSet.enumScheduleDeadline !== newSet.enumScheduleDeadline
+            if (newSet.placeSelect === "wide view") {
+                if (oldSet.enumScheduleDeadline !== newSet.enumScheduleDeadline
                     || oldSet.enumTableOfContents !== newSet.enumTableOfContents
                     || oldSet.enumLinkedReferences !== newSet.enumLinkedReferences
                     || oldSet.enumUnlinkedReferences !== newSet.enumUnlinkedReferences
                     || oldSet.enumPageHierarchy !== newSet.enumPageHierarchy
-                    || oldSet.enumPageTags !== newSet.enumPageTags)) {
-                removeProvideStyle(keyPageSupportContentPosition);
-                logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(newSet) });
+                    || oldSet.enumPageTags !== newSet.enumPageTags) {
+                    removeProvideStyle(keyPageSupportContentPosition);
+                    logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(newSet) });
+                }
+                if (oldSet.booleanWideModeJournalQueries === false && newSet.booleanWideModeJournalQueries === true)
+                    logseq.provideStyle({ key: keyWideJournalQueries, style: CSSwideJournalQueries });
+                else if (oldSet.booleanWideModeJournalQueries === true && newSet.booleanWideModeJournalQueries === false)
+                    removeProvideStyle(keyWideJournalQueries);
             }
         }
     });

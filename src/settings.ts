@@ -51,6 +51,13 @@ export const settingsTemplate = (defaultMode: string): SettingSchemaDesc[] => [
         default: false,
         description: "default: false",
     },
+    {//wide viewモード、Journal Queriesを表示するかどうか
+        key: "booleanWideModeJournalQueries",
+        title: "Showing journal queries on today journal page (wide view only)",
+        type: "boolean",
+        default: false,
+        description: "default: false *When on the single journal page.",
+    },
     {//wide viewモード、横の並び順 SCHEDULED AND DEADLINEの位置
         key: "enumScheduleDeadline",
         title: "Scheduled and deadline position (wide view only)",
@@ -98,6 +105,6 @@ export const settingsTemplate = (defaultMode: string): SettingSchemaDesc[] => [
         enumChoices: ["1", "2", "3", "4", "5","6"],
         default: "6",
         description: "default: 6 *It is not displayed only when necessary",
-    }
+    },
 ];
 
