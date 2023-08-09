@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.9.1...v2.10.0) (2023-08-09)
+
+
+### Features
+
+* **Wide view, TOC:** remove markdown ([5bd151b](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/5bd151b814889298f55f48b3dbf00bfc0f2f70af))
+
 ## [2.9.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.9.0...v2.9.1) (2023-08-09)
 
 
