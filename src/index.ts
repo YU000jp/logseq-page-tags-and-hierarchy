@@ -220,33 +220,26 @@ export function onBlockChanged() {
     if (checkOnBlockChanged === true) return;
     checkOnBlockChanged = true;
     logseq.DB.onChanged(async ({ blocks }) => {
-        if (processBlockChanged === true || currentPageName === "") return;
-        if (logseq.settings!.booleanTableOfContents === true) {
-            //headingがあるブロックが更新されたら
-            let findBlock = blocks.find((block) => block.properties?.heading);//uuidを得るためsomeではなくfindをつかう
-            if (!findBlock) {
-                const current = await logseq.Editor.getCurrentBlock() as BlockEntity | null;
-                if (current && current.properties!.heading !== null) findBlock = current;
-                else return;
-            }
-            processBlockChanged = true;
-            setTimeout(async () => {
-                await displayToc(currentPageName);//toc更新
-                processBlockChanged = false;
-            }, 300);//toc更新を抑制
+        if (processBlockChanged === true || currentPageName === "" || logseq.settings!.booleanTableOfContents === false) return;
+        //headingがあるブロックが更新されたら
+        const findBlock = blocks.find((block) => block.properties?.heading) as BlockEntity | null; //uuidを得るためsomeではなくfindをつかう
+        if (!findBlock) return;
+        const uuid = findBlock? findBlock!.uuid : null;
+        updateToc();//toc更新を抑制
 
-            //ブロック更新のコールバック
-            logseq.DB.onBlockChanged(findBlock.uuid, async (block) => {
-                if (!block.properties?.heading) {
-                    processBlockChanged = true;
-                    setTimeout(async () => {
-                        await displayToc(currentPageName);//toc更新
-                        processBlockChanged = false;
-                    }, 300);//更新抑制
-                }
-            });
-        }
+        //ブロック更新のコールバック
+        if (uuid) logseq.DB.onBlockChanged(uuid, async () => updateToc());
     });
 }
 
+export function updateToc() {
+    if (processBlockChanged === true) return;
+    processBlockChanged = true;
+    setTimeout(async () => {
+        await displayToc(currentPageName); //toc更新
+        processBlockChanged = false;
+    }, 300);
+}
+
 logseq.ready(main).catch(console.error);
+

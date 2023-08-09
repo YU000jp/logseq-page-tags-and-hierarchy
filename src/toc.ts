@@ -1,5 +1,7 @@
+import removeMd from "remove-markdown";
 import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user";
 import { checkOnBlockChanged, onBlockChanged } from ".";
+import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage } from "./markdown";
 
 export const displayToc = async (pageName: string) => {
   if (logseq.settings!.placeSelect !== "wide view") return;
@@ -64,7 +66,7 @@ async function insertElement(): Promise<void> {
 }
 
 
-interface TocBlock {
+export interface TocBlock {
   content: string;
   uuid: string;
   properties?: { [key: string]: string[] };
@@ -148,103 +150,40 @@ const headersList = async (targetElement: HTMLElement, tocBlocks: TocBlock[], th
     }
 
     //文字列のどこかで「[[」と「]]」で囲まれているもいのがある場合は、[[と]]を削除する
-    if (blockContent.includes("[[")) {
-      blockContent = blockContent.replace(/\[\[/g, "");
-    }
-    if (blockContent.includes("]]")) {
-      blockContent = blockContent.replace(/\]\]/g, "");
-    }
-    // Header 1
-    if (blockContent.startsWith("# ")) {
-      const element: HTMLDivElement = document.createElement("h1");
+    blockContent = removeMarkdownLink(blockContent);
+    //文字列のどこかで[]()形式のリンクがある場合は、[と]を削除する
+    blockContent = removeMarkdownAliasLink(blockContent);
+    //文字数が200文字を超える場合は、200文字以降を「...」に置き換える
+    blockContent = replaceOverCharacters(blockContent);
+    //マークダウンの画像記法を全体削除する
+    blockContent = removeMarkdownImage(blockContent);
+
+    // Header
+    if (blockContent.startsWith("# ")
+      || blockContent.startsWith("## ")
+      || blockContent.startsWith("### ")
+      || blockContent.startsWith("#### ")
+      || blockContent.startsWith("##### ")
+      || blockContent.startsWith("###### ")
+      || blockContent.startsWith("####### ")) {
+      const element: HTMLDivElement =
+        (blockContent.startsWith("# ")) ? document.createElement("h1") :
+          (blockContent.startsWith("## ")) ? document.createElement("h2") :
+            (blockContent.startsWith("### ")) ? document.createElement("h3") :
+              (blockContent.startsWith("#### ")) ? document.createElement("h4") :
+                (blockContent.startsWith("##### ")) ? document.createElement("h5") :
+                  document.createElement("h6");
       element.classList.add("cursor");
-      element.innerHTML = `${(blockContent.includes("collapsed:: true") &&
+      element.innerHTML = removeMd(`${(blockContent.includes("collapsed:: true") &&
         blockContent.substring(2, blockContent.length - 16)) ||
-        blockContent.substring(2)}`;
+        blockContent.substring(2)}`);
       setTimeout(() => {
-        element.addEventListener('click', ({ shiftKey }) => {
-          selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid);
-        });
-      }, 800);
-      targetElement.append(element);
-    } else if (blockContent.startsWith("## ")) {
-      const element: HTMLDivElement = document.createElement("h2");
-      element.classList.add("cursor");
-      element.innerHTML = `${(blockContent.includes("collapsed:: true") &&
-        blockContent.substring(3, blockContent.length - 16)) ||
-        blockContent.substring(3)}`;
-      setTimeout(() => {
-        element.addEventListener('click', ({ shiftKey }) => {
-          selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid);
-        });
-      }, 800);
-      targetElement.append(element);
-    } else if (blockContent.startsWith("### ")) {
-      const element: HTMLDivElement = document.createElement("h3");
-      element.classList.add("cursor");
-      element.innerHTML = `${(blockContent.includes("collapsed:: true") &&
-        blockContent.substring(4, blockContent.length - 16)) ||
-        blockContent.substring(4)}`;
-      setTimeout(() => {
-        element.addEventListener('click', ({ shiftKey }) => {
-          selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid);
-        });
-      }, 800);
-      targetElement.append(element);
-    } else if (blockContent.startsWith("#### ")) {
-      const element: HTMLDivElement = document.createElement("h4");
-      element.classList.add("cursor");
-      element.innerHTML = `${(blockContent.includes("collapsed:: true") &&
-        blockContent.substring(5, blockContent.length - 16)) ||
-        blockContent.substring(5)}`;
-      setTimeout(() => {
-        element.addEventListener('click', ({ shiftKey }) => {
-          selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid);
-        });
-      }, 800);
-      targetElement.append(element);
-    } else if (blockContent.startsWith("##### ")) {
-      const element: HTMLDivElement = document.createElement("h5");
-      element.classList.add("cursor");
-      element.innerHTML = `${(blockContent.includes("collapsed:: true") &&
-        blockContent.substring(6, blockContent.length - 16)) ||
-        blockContent.substring(6)}`;
-      setTimeout(() => {
-        element.addEventListener('click', ({ shiftKey }) => {
-          selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid);
-        });
-      }, 800);
-      targetElement.append(element);
-    } else if (blockContent.startsWith("###### ")) {
-      const element: HTMLDivElement = document.createElement("h6");
-      element.classList.add("cursor");
-      element.innerHTML = `${(blockContent.includes("collapsed:: true") &&
-        blockContent.substring(7, blockContent.length - 16)) ||
-        blockContent.substring(7)}`;
-      setTimeout(() => {
-        element.addEventListener('click', ({ shiftKey }) => {
-          selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid);
-        });
+        element.addEventListener('click', ({ shiftKey }) => selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid));
       }, 800);
       targetElement.append(element);
     }
   }
 };
-
-async function removeProperties(tocBlocks: TocBlock[], i: number, blockContent: string): Promise<string> {
-  const properties = tocBlocks[i].properties;
-  if (!properties) return blockContent;
-  const keys = Object.keys(properties);
-  for (let j = 0; j < keys.length; j++) {
-    let key = keys[j];
-    const values = properties[key];
-    //backgroundColorをbackground-colorにする
-    //キーの途中で一文字大文字になっている場合は小文字にしてその前にハイフンを追加する
-    key = key.replace(/([A-Z])/g, "-$1").toLowerCase();
-    blockContent = blockContent.replace(`${key}:: ${values}`, "");
-  }
-  return blockContent;
-}
 
 async function selectBlock(shiftKey: boolean, pageName: string, blockUuid: string) {
   if (shiftKey) {
