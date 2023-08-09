@@ -2,14 +2,17 @@ import "@logseq/libs";
 
 import { settingsTemplate, } from "./settings";
 import { splitHierarchy, hierarchyLinksCSS, } from "./splitHierarchy";
-import { LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
+import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
 import { removeElementClass, removeProvideStyle } from "./lib";
 import fileHierarchy from "./pageHierarchyList.css?inline";
 import CSSside from './side.css?inline';
 import CSSbottom from './bottom.css?inline';
 import CSSwide from './wide.css?inline';
 import CSSwideJournalQueries from './wideJournalQueries.css?inline';
-import { displayToc, onBlockChanged } from "./toc";
+import { displayToc } from "./toc";
+export let checkOnBlockChanged: boolean = false;//一度飲み
+let processBlockChanged: boolean = false;//処理中
+let currentPageName: string = "";
 import { CSSpageSupportContentPosition } from "./toc";
 const keyModifyHierarchyList = "th-modifyHierarchy";
 const keySide = "th-side";
@@ -84,6 +87,7 @@ const main = () => {
                 parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
             if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
             if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
+            currentPageName = pageName;
         }
     });
 
@@ -96,8 +100,11 @@ const main = () => {
         if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
+        currentPageName = pageName;
     });
 
+    //ブロック更新のコールバック
+    if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) onBlockChanged();
 
     //設定変更のコールバック
     logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
@@ -207,5 +214,39 @@ const main = () => {
     });
 
 };//end main
+
+
+export function onBlockChanged() {
+    if (checkOnBlockChanged === true) return;
+    checkOnBlockChanged = true;
+    logseq.DB.onChanged(async ({ blocks }) => {
+        if (processBlockChanged === true || currentPageName === "") return;
+        if (logseq.settings!.booleanTableOfContents === true) {
+            //headingがあるブロックが更新されたら
+            let findBlock = blocks.find((block) => block.properties?.heading);//uuidを得るためsomeではなくfindをつかう
+            if (!findBlock) {
+                const current = await logseq.Editor.getCurrentBlock() as BlockEntity | null;
+                if (current && current.properties!.heading !== null) findBlock = current;
+                else return;
+            }
+            processBlockChanged = true;
+            setTimeout(async () => {
+                await displayToc(currentPageName);//toc更新
+                processBlockChanged = false;
+            }, 300);//toc更新を抑制
+
+            //ブロック更新のコールバック
+            logseq.DB.onBlockChanged(findBlock.uuid, async (block) => {
+                if (!block.properties?.heading) {
+                    processBlockChanged = true;
+                    setTimeout(async () => {
+                        await displayToc(currentPageName);//toc更新
+                        processBlockChanged = false;
+                    }, 300);//更新抑制
+                }
+            });
+        }
+    });
+}
 
 logseq.ready(main).catch(console.error);

@@ -1,8 +1,5 @@
-import { BlockEntity, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
-let checkOnBlockChanged: boolean = false;//一度飲み
-let processBlockChanged: boolean = false;//処理中
-let currentPageName: string = "";
-
+import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user";
+import { checkOnBlockChanged, onBlockChanged } from ".";
 
 export const displayToc = async (pageName: string) => {
   if (logseq.settings!.placeSelect !== "wide view") return;
@@ -14,35 +11,12 @@ export const displayToc = async (pageName: string) => {
     if (element) element.innerHTML = "";//elementが存在する場合は中身を削除する
     else await insertElement();//elementが存在しない場合は作成する
     await headersList(parent.document.getElementById("tocInPage") as HTMLDivElement, headers, pageName);
-        //toc更新用
-    //ブロック更新のコールバック
-    if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true && checkOnBlockChanged === false) onBlockChanged();
-    currentPageName = pageName;
+    //toc更新用のイベントを登録する
+    if (checkOnBlockChanged === false) onBlockChanged();
     //タイトルでcollapsedする処理
     tocContentTitleCollapsed(pageName);
   }
 };
-
-
-export function onBlockChanged() {
-  if (checkOnBlockChanged === true) return;
-  checkOnBlockChanged = true;
-  logseq.DB.onChanged(async ({ blocks }) => {
-      if (processBlockChanged === true || currentPageName==="") return;
-      if (logseq.settings!.booleanTableOfContents === true) {
-          //headingがあるブロックが更新されたら
-          const findBlock = blocks.find((block) => block.properties?.heading);//uuidを得るためsomeではなくfindをつかう
-          if (!findBlock) return;
-          processBlockChanged = true;
-          await displayToc(currentPageName);//toc更新
-          processBlockChanged = false;
-          //ブロック更新のコールバック
-          logseq.DB.onBlockChanged(findBlock.uuid, async (block) => {
-              if (!block.properties?.heading) await displayToc(currentPageName);
-          });
-      }
-  });
-}
 
 function tocContentTitleCollapsed(PageName: string) {
   const titleElement = parent.document.getElementById("tocContentTitle") as HTMLDivElement | null;
