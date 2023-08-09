@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.9.0...v2.9.1) (2023-08-09)
+
+
+### Bug Fixes
+
+* **bug:** wide view mode, TOC, sometimes not work update ([3fb56b9](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/3fb56b9709db87eb4d079ac1a32e03ec7119924a))
+
 # [2.9.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.8.0...v2.9.0) (2023-08-07)
 
 
