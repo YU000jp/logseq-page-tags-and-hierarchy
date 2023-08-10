@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.10.0...v2.11.0) (2023-08-10)
+
+
+### Features
+
+* **perf:** refactor with CSS3 nesting ([a1ae675](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/a1ae675c8240d34bc30697c93b0456b332744490))
+
 # [2.10.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.9.1...v2.10.0) (2023-08-09)
 
 
