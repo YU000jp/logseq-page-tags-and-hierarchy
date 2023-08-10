@@ -1,42 +1,198 @@
-div#root div#main-content-container:not(:has(div#journals)){justify-content:unset!important}
-div#root div#main-content-container:not(:has(div#journals)) div.cp__sidebar-main-content{max-width:unset}
-div#root div.page.relative{display:flex}
-div#root div#main-content-container:not(:has(div#journals)) div.page.relative>div.relative{min-width:1050px;max-width:1450px;flex:1}
-div#root div#right-sidebar div.page.relative>div.relative{min-width:94%}
-div#root div.page.relative>div:not(.relative){padding:1em;height:fit-content;position:sticky;top:1em}
-div#root div.page.relative>div:not(.relative):not(:has(div.hidden)){flex:.3;max-width:fit-content}
-div#root div.page.relative>div:not(.relative):not(#today-queries):has(div.hidden){writing-mode:vertical-rl;max-width:3.2em}
-div#root div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{font-size:.9em}
-div#root div.page.relative>div:is(.page-tags,.page-hierarchy){padding:1em}
-div#root div.page.relative>div.page-hierarchy:not(:has(div.hidden)){max-width:580px;min-width:400px}
-div#root div.page.relative>div.page-tags{flex:.2}
-div#root div.page.relative>div.page-tags:not(:has(div.hidden)){max-width:480px;min-width:400px}
-div#root div.page.relative>div div:is(.page-linked,.page-unlinked){font-size:.96em;max-width:570px}
-div#root div.page.relative>div div.page-linked div.pt-6{padding-top:unset}
-div#root div.page.relative>div>div.page-unlinked.mt-6{margin-top:unset}
-div#root div.page.relative>div:not(.relative):not(:has(div.hidden)) div.foldable-title{min-width:340px}
-div#root div.page.relative>div div:is(.page-linked,.page-unlinked):not(:has(div.hidden)):focus-within{min-width:500px}
-div#root div.page.relative>div div:is(.page-linked,.page-unlinked):is(:hover,:focus-within)>div.content>div>div.initial{overflow-y:scroll}
-div#root div#main-content-container.scrollbar-spacing{overflow-x:unset}
-div#root div:is(#main-content-container,#right-sidebar) div.is-journals div#today-queries{display:none}
-body.is-awSt-enabled div#root div.cp__sidebar-main-content>div{margin-left:unset}
-body.is-awSt-enabled div#root div.page.relative{gap:.5em}
-body.is-awSt-enabled div#root div.page.relative>div:not(.relative){background:var(--ls-primary-background-color);border-radius:7px}
-body.is-awSt-enabled div#root div.page.relative div.mt-6{margin-top:unset}
-body.is-awSt-enabled div#root div.page.relative>div.relative{margin-right:1.5em}
-div#root div.page.relative>div.lazy-visibility:has(div.scheduled-or-deadlines):not(:has(div.hidden)){min-width:480px;max-width:650px}
-div#root div.page.relative>div.lazy-visibility:has(div.scheduled-or-deadlines):not(:has(div.hidden)):focus-within{min-width:550px}
-div#root div#main-content-container div#tocInPage{font-size:.86em;padding-bottom:2em;padding-left:1.8em;padding-right:1em}
-div#root div#main-content-container div#tocInPage h1{font-size:1.6em;margin-top:.8em}
-div#root div#main-content-container div#tocInPage h2{font-size:1.4em;padding-left:0.6em}
-div#root div#main-content-container div#tocInPage h3{padding-left:1.2em}
-div#root div#main-content-container div#tocInPage h4{padding-left:1.8em}
-div#root div#main-content-container div#tocInPage h5{padding-left:2.4em}
-div#root div#main-content-container div#tocInPage h6{padding-left:3.0em}
-div#root div#main-content-container div#tocInPage :is(h2,h3,h4,h5,h6){margin-top:.4em;display:list-item;list-style-type:disc;list-style-position:inside}
-div#root div#main-content-container div#tocInPage :is(h3.h4,h5,h6){padding-top:.6em}
-div#root div#main-content-container div#tocInPage div:is(.headerTwo,.headerThree,.headerFour,.headerFive,.headerSix)+div.headerOne{margin-top:14px}
-div#root div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.page-hierarchy div.foldable-title a.block-control{display:none}
-div#root div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines div.foldable-title a.block-control{display:none}
-div#root div.page.relative>div div.references div.foldable-title a.block-control,div.page.relative>div.lazy-visibility div.scheduled-or-deadlines.mt-8{margin-top:unset}
-div#root div#main-content-container div.page.relative>div div#tocInPage,div#root div.page.relative>div div:is(.page-linked,.page-unlinked)>div.content>div>div.initial,div#root div.page.relative>div:not(.relative):is(.page-tags,.page-hierarchy) div.initial{max-height:86vh;overflow:auto}
+div#root div {
+
+    &#main-content-container:not(:has(div#journals)) {
+        justify-content: unset !important;
+
+        & div.cp__sidebar-main-content {
+            max-width: unset
+        }
+
+        & div.page.relative>div.relative {
+            min-width: 1050px;
+            max-width: 1450px;
+            flex: 1
+        }
+    }
+
+    &.page.relative {
+        display: flex;
+
+        >div {
+
+            &:not(.relative) {
+                padding: 1em;
+                height: fit-content;
+                position: sticky;
+                top: 1em;
+
+                &:not(:has(div.hidden)) {
+                    flex: .3;
+                    max-width: fit-content;
+
+                    & div.foldable-title {
+                        min-width: 340px
+                    }
+                }
+
+                &:not(#today-queries):has(div.hidden) {
+                    writing-mode: vertical-rl;
+                    max-width: 3.2em
+                }
+
+            }
+
+            &:is(.page-tags, .page-hierarchy) {
+                padding: 1em;
+
+                & div.initial {
+                    font-size: .9em
+                }
+            }
+
+            &.page-hierarchy:not(:has(div.hidden)) {
+                max-width: 580px;
+                min-width: 400px
+            }
+
+
+            &.page-tags:not(:has(div.hidden)) {
+                max-width: 480px;
+                min-width: 400px
+            }
+
+            & div:is(.page-linked, .page-unlinked) {
+                font-size: .96em;
+                max-width: 570px;
+
+                &:not(:has(div.hidden)):focus-within {
+                    min-width: 500px
+                }
+
+                &:is(:hover, :focus-within)>div.content>div>div.initial {
+                    overflow-y: scroll
+                }
+            }
+
+            & div.page-linked div.pt-6 {
+                padding-top: unset
+            }
+
+            >div.page-unlinked.mt-6 {
+                margin-top: unset
+            }
+
+            & div.references div.foldable-title a.block-control,
+            &.lazy-visibility div.scheduled-or-deadlines.mt-8 {
+                margin-top: unset
+            }
+
+            &.lazy-visibility:has(div.scheduled-or-deadlines):not(:has(div.hidden)) {
+                min-width: 480px;
+                max-width: 650px;
+
+                &:focus-within {
+                    min-width: 550px
+                }
+            }
+        }
+
+        >:is(div div.references, div.page-hierarchy, div.lazy-visibility div.scheduled-or-deadlines) div.foldable-title a.block-control {
+            display: none
+        }
+
+
+    }
+
+    &#main-content-container div.page.relative>div div#tocInPage,
+    &.page.relative>div div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
+    &.page.relative>div:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
+        max-height: 86vh;
+        overflow: auto
+    }
+
+    &#right-sidebar div.page.relative>div.relative {
+        min-width: 94%
+    }
+
+
+
+    &:is(#main-content-container, #right-sidebar) div.is-journals div#today-queries {
+        display: none
+    }
+
+    &#main-content-container {
+        &.scrollbar-spacing {
+            overflow-x: unset
+        }
+
+        & div#tocInPage {
+            font-size: .86em;
+            padding-bottom: 2em;
+            padding-left: 1.8em;
+            padding-right: 1em;
+
+            & h1 {
+                font-size: 1.6em;
+                margin-top: .8em;
+            }
+
+            & h2 {
+                font-size: 1.4em;
+                padding-left: 0.6em;
+            }
+
+            & h3 {
+                padding-left: 1.2em;
+            }
+
+            & h4 {
+                padding-left: 1.8em;
+            }
+
+            & h5 {
+                padding-left: 2.4em;
+            }
+
+            & h6 {
+                padding-left: 3.0em;
+            }
+
+            & :is(h2, h3, h4, h5, h6) {
+                margin-top: .4em;
+                display: list-item;
+                list-style-type: disc;
+                list-style-position: inside;
+            }
+
+            & :is(h3, h4, h5, h6) {
+                padding-top: .6em;
+            }
+        }
+    }
+}
+
+
+body.is-awSt-enabled div#root {
+    & div.page.relative {
+        gap: .5em;
+
+        & div.mt-6 {
+            margin-top: unset
+        }
+
+        >div {
+            &.relative {
+                margin-right: 1.5em
+            }
+
+            &:not(.relative) {
+                background: var(--ls-primary-background-color);
+                border-radius: 7px
+            }
+        }
+    }
+
+    & div.cp__sidebar-main-content>div {
+        margin-left: unset
+    }
+}
