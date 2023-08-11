@@ -174,6 +174,8 @@ const headersList = async (targetElement: HTMLElement, tocBlocks: TocBlock[], th
                 (blockContent.startsWith("##### ")) ? document.createElement("h5") :
                   document.createElement("h6");
       element.classList.add("cursor");
+      //elementのタグ名を取得する
+      element.title = element.tagName.toLowerCase();
       element.innerHTML = removeMd(`${(blockContent.includes("collapsed:: true") &&
         blockContent.substring(2, blockContent.length - 16)) ||
         blockContent.substring(2)}`);
@@ -255,7 +257,7 @@ async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
     }
   }
 }
-export const CSSpageSupportContentPosition = (settings) => `
+export const CSSpageSubOrder = (settings) => `
 div#root div.page.relative>div.lazy-visibility:has(div.scheduled-or-deadlines){order:${settings.enumScheduleDeadline}}
 div#root div.page.relative>div.th-toc{order:${settings.enumTableOfContents}}
 div#root div.page.relative>div:has(div.page-linked){order:${settings.enumLinkedReferences}}
