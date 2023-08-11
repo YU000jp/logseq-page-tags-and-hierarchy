@@ -1,3 +1,15 @@
+# [2.12.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.11.0...v2.12.0) (2023-08-11)
+
+
+### Bug Fixes
+
+* **bug:** plugin settings ([4100f57](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/4100f571017bfaba45c40bb59ee1a1da3daf75cd))
+
+
+### Features
+
+* **TOC:** when hover a header, show tag name ([34232d1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/34232d16454cf3df1761d11995552deec39f46f9))
+
 # [2.11.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.10.0...v2.11.0) (2023-08-10)
 
 
