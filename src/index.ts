@@ -116,18 +116,15 @@ const main = () => {
                 onBlockChanged();
             }
 
-            switch (newSet.placeSelect) {
-                case "side" || "bottom":
-                    if (newSet.booleanModifyHierarchy === true
-                        && !parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`))
-                        provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
-                    else
-                        if (newSet.booleanModifyHierarchy === false) {
-                            removeProvideStyle(keyPageAccessory);
-                            removeProvideStyle(keyNestingPageAccessory);
-                        }
-
-            }
+            if (newSet.booleanModifyHierarchy === true
+                && !parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`))
+                provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
+            else
+                if (newSet.booleanModifyHierarchy === false) {
+                    removeProvideStyle(keyPageAccessory);
+                    removeProvideStyle(keyNestingPageAccessory);
+                }
+                
             switch (newSet.placeSelect) {
                 case "bottom":
                     removeProvideStyle(keySide);
@@ -143,13 +140,7 @@ const main = () => {
                     logseq.provideStyle({ key: keySide, style: fileSide });
                     break;
                 case "wide view":
-                    //バージョンチェック
-                    const version: string = await logseq.App.getInfo("version");
-                    console.log(version);
-                    const versionArr = version?.split(".") as string[];
-                    if (Number(versionArr[0]) > 0 ||
-                        (Number(versionArr[0]) === 0 && Number(versionArr[1]) > 9) ||
-                        (Number(versionArr[0]) === 0 && Number(versionArr[1]) === 9 && Number(versionArr[2]) >= 11)) {
+                    if (versionOver === true) {
                         removeProvideStyle(keySide);
                         removeProvideStyle(keyBottom);
                         logseq.provideStyle({ key: keyWide, style: fileWide });
