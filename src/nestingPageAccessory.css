@@ -1,0 +1,59 @@
+body[data-page=page] {
+    & div.page-hierarchy:not(.th-journal) ul.namespaces {
+        padding: 0.6em .1em 1em .1em;
+        font-size: .93em;
+
+        & li {
+            list-style: decimal-leading-zero;
+
+            & span.page-reference {
+                &:not(:last-child) {
+                    display: none
+                }
+
+                +span:not(.page-reference) {
+                    visibility: hidden;
+
+                    &::after {
+                        content: ">";
+                        visibility: visible
+                    }
+                }
+
+            }
+
+            &:first-child {
+
+                & span {
+
+                    &.page-reference+span+span.page-reference {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    +span.page-reference:last-child::before {
+                        pointer-events: none
+                    }
+                }
+            }
+        }
+    }
+
+    & div.page-hierarchy:not(:has(ul li:first-of-type span.page-reference[data-ref*='/'])) {
+        display: none
+    }
+
+    & div.page-tags {
+
+        & ul {
+            list-style: circle;
+            font-size: .93em;
+            padding: .6em 1em 1em 1em;
+
+            & li {
+                list-style: decimal-leading-zero;
+            }
+        }
+    }
+}
