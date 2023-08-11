@@ -45,6 +45,10 @@ div#root div {
 
             }
 
+            & div.foldable-title h2 {
+                user-select: none;
+            }
+
             &:is(.page-tags, .page-hierarchy) {
                 padding: 1em;
 
@@ -143,11 +147,12 @@ div#root div {
             padding-bottom: 2em;
             padding-left: 1em;
             padding-right: .8em;
+            user-select: none;
 
             & :is(h1, h2, h3, h4, h5, h6):hover {
-                    border-radius: 2px;
-                    background-color: var(--ls-block-highlight-color);
-                    transition: background-color .2s cubic-bezier(0, 1, 0, 1);
+                border-radius: 2px;
+                background-color: var(--ls-block-highlight-color);
+                transition: background-color .2s cubic-bezier(0, 1, 0, 1);
             }
 
             & :is(h2, h3, h4, h5, h6) {
