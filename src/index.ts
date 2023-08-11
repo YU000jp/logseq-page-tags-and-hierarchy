@@ -3,72 +3,65 @@ import "@logseq/libs";
 import { settingsTemplate, } from "./settings";
 import { splitHierarchy, hierarchyLinksCSS, } from "./splitHierarchy";
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
-import { removeElementClass, removeProvideStyle } from "./lib";
-import fileHierarchy from "./pageHierarchyList.css?inline";
-import CSSside from './side.css?inline';
-import CSSbottom from './bottom.css?inline';
-import CSSwide from './wide.css?inline';
-import CSSwideJournalQueries from './wideJournalQueries.css?inline';
+import { provideStyleByVersion, removeElementClass, removeProvideStyle, titleCollapsedRegisterEvent, versionCheck } from "./lib";
+import filePageAccessory from "./pageAccessory.css?inline";
+import fileNestingPageAccessory from "./nestingPageAccessory.css?inline";
+import fileSide from './side.css?inline';
+import fileBottom from './bottom.css?inline';
+import fileWide from './wide.css?inline';
+import fileWideModeJournalQueries from './wideJournalQueries.css?inline';
 import { displayToc } from "./toc";
-export let checkOnBlockChanged: boolean = false;//一度飲み
+export let checkOnBlockChanged: boolean = false;//一度のみ
 let processBlockChanged: boolean = false;//処理中
 let currentPageName: string = "";
-import { CSSpageSupportContentPosition } from "./toc";
-const keyModifyHierarchyList = "th-modifyHierarchy";
+import { CSSpageSubOrder } from "./toc";
+const keyPageAccessory = "th-PageAccessory";
+const keyNestingPageAccessory = "th-nestingPageAccessory";
 const keySide = "th-side";
 const keyBottom = "th-bottom";
 const keyWide = "th-wide";
-const keyPageSupportContentPosition = "th-pageSupportContentPosition";
-const keyWideJournalQueries = "th-wideJournalQueries";
-
+const keyPageAccessoryOrder = "th-pageAccessoryOrder";
+const keyWideModeJournalQueries = "th-wideModeJournalQueries";
+let versionOver: boolean = false;
 
 
 const main = () => {
 
-    if (!logseq.settings) {
-        (async () => {
-            //初回バージョンチェック
-            const version: string = await logseq.App.getInfo("version");
-            console.log(version);
-            const versionArr = version?.split(".") as string[];
-            if (Number(versionArr[0]) > 0 ||
-                (Number(versionArr[0]) === 0 && Number(versionArr[1]) > 9) ||
-                (Number(versionArr[0]) === 0 && Number(versionArr[1]) === 9 && Number(versionArr[2]) >= 11)) {
-                logseq.useSettingsSchema(settingsTemplate("wide view"));
-            } else {
-                logseq.useSettingsSchema(settingsTemplate("side"));
-            }
-        })();
-    } else {
-        logseq.useSettingsSchema(settingsTemplate("side"));
-    }
+    (async () => {
+        versionOver = await versionCheck(0, 9, 11);
+        if (versionOver === true) {
+            logseq.useSettingsSchema(settingsTemplate("wide view"));
+        } else {
+            logseq.useSettingsSchema(settingsTemplate("side"));
+        }
+        if (logseq.settings!.placeSelect !== "unset") {
+            //unset以外
+            //DisplayIfSmaller
+            if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
+            //ModifyHierarchyList
+            if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
+        }
+    })();
 
     //CSS minify https://csscompressor.com/
     switch (logseq.settings!.placeSelect) {
         case "unset":
             break;
         case "bottom":
-            logseq.provideStyle({ key: keyBottom, style: CSSbottom });
+            logseq.provideStyle({ key: keyBottom, style: fileBottom });
             break;
         case "side":
-            logseq.provideStyle({ key: keySide, style: CSSside });
+            logseq.provideStyle({ key: keySide, style: fileSide });
             break;
         case "Side"://Sideミス対策
-            logseq.provideStyle({ key: keySide, style: CSSside });
+            logseq.provideStyle({ key: keySide, style: fileSide });
             logseq.updateSettings({ placeSelect: "side" }); //default値を間違えていたため修正(変更していないユーザー用)
             break;
         case "wide view":
-            logseq.provideStyle({ key: keyWide, style: CSSwide });
-            logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(logseq.settings) });
-            if (logseq.settings!.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideJournalQueries, style: CSSwideJournalQueries });
+            logseq.provideStyle({ key: keyWide, style: fileWide });
+            logseq.provideStyle({ key: keyPageAccessoryOrder, style: CSSpageSubOrder(logseq.settings) });
+            if (logseq.settings!.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideModeJournalQueries, style: fileWideModeJournalQueries });
             break;
-    }
-    if (logseq.settings!.placeSelect !== "unset") {
-        //unset以外
-        //DisplayIfSmaller
-        if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
-        //ModifyHierarchyList
-        if (logseq.settings?.booleanModifyHierarchy === true) logseq.provideStyle({ key: keyModifyHierarchyList, style: fileHierarchy });
     }
 
     if (logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
@@ -88,6 +81,9 @@ const main = () => {
             if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
             if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
             currentPageName = pageName;
+
+            //ページタグのtitleElementがあったら場合
+            pageTagsTitleCollapsed();
         }
     });
 
@@ -101,6 +97,9 @@ const main = () => {
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
         currentPageName = pageName;
+
+        //ページタグのtitleElementがあったら場合 ※二重保証
+        pageTagsTitleCollapsed();
     });
 
     //ブロック更新のコールバック
@@ -120,25 +119,28 @@ const main = () => {
             switch (newSet.placeSelect) {
                 case "side" || "bottom":
                     if (newSet.booleanModifyHierarchy === true
-                        && !parent.document.head.querySelector(`style[data-injected-style^="${keyModifyHierarchyList}"]`))
-                        logseq.provideStyle({ key: keyModifyHierarchyList, style: fileHierarchy });
+                        && !parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`))
+                        provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
                     else
-                        if (newSet.booleanModifyHierarchy === false)
-                            removeProvideStyle(keyModifyHierarchyList);
+                        if (newSet.booleanModifyHierarchy === false) {
+                            removeProvideStyle(keyPageAccessory);
+                            removeProvideStyle(keyNestingPageAccessory);
+                        }
+
             }
             switch (newSet.placeSelect) {
                 case "bottom":
                     removeProvideStyle(keySide);
                     removeProvideStyle(keyWide);
-                    removeProvideStyle(keyPageSupportContentPosition);
-                    removeProvideStyle(keyWideJournalQueries);
-                    logseq.provideStyle({ key: keyBottom, style: CSSbottom });
+                    removeProvideStyle(keyPageAccessoryOrder);
+                    removeProvideStyle(keyWideModeJournalQueries);
+                    logseq.provideStyle({ key: keyBottom, style: fileBottom });
                     break;
                 case "side":
                     removeProvideStyle(keyBottom);
                     removeProvideStyle(keyWide);
-                    removeProvideStyle(keyPageSupportContentPosition);
-                    logseq.provideStyle({ key: keySide, style: CSSside });
+                    removeProvideStyle(keyPageAccessoryOrder);
+                    logseq.provideStyle({ key: keySide, style: fileSide });
                     break;
                 case "wide view":
                     //バージョンチェック
@@ -150,9 +152,9 @@ const main = () => {
                         (Number(versionArr[0]) === 0 && Number(versionArr[1]) === 9 && Number(versionArr[2]) >= 11)) {
                         removeProvideStyle(keySide);
                         removeProvideStyle(keyBottom);
-                        logseq.provideStyle({ key: keyWide, style: CSSwide });
-                        logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(logseq.settings) });
-                        if (newSet.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideJournalQueries, style: CSSwideJournalQueries });
+                        logseq.provideStyle({ key: keyWide, style: fileWide });
+                        logseq.provideStyle({ key: keyPageAccessoryOrder, style: CSSpageSubOrder(logseq.settings) });
+                        if (newSet.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideModeJournalQueries, style: fileWideModeJournalQueries });
                     } else {
                         logseq.UI.showMsg("Wide view mode is available from Logseq v0.9.11");
                         setTimeout(() => { logseq.updateSettings({ placeSelect: oldSet.placeSelect }) }, 300);
@@ -162,26 +164,29 @@ const main = () => {
                     removeProvideStyle(keySide);
                     removeProvideStyle(keyBottom);
                     removeProvideStyle(keyWide);
-                    removeProvideStyle(keyPageSupportContentPosition);
-                    removeProvideStyle(keyWideJournalQueries);
+                    removeProvideStyle(keyPageAccessoryOrder);
+                    removeProvideStyle(keyWideModeJournalQueries);
+                    removeProvideStyle(keyPageAccessory);
+                    removeProvideStyle(keyNestingPageAccessory);
                     break;
             }
         } else {
-            if (oldSet.booleanDisplayIfSmaller !== true
+            if (oldSet.booleanDisplayIfSmaller === false
                 && newSet.booleanDisplayIfSmaller === true) parent.document.body.classList!.remove('th-DisplayIfSmaller');
             else
                 if (oldSet.booleanDisplayIfSmaller !== false
                     && newSet.booleanDisplayIfSmaller === false) parent.document.body.classList!.add('th-DisplayIfSmaller');
 
-            if (oldSet.booleanModifyHierarchy !== true
+            if (oldSet.booleanModifyHierarchy === false
                 && newSet.booleanModifyHierarchy === true
-                && newSet.placeSelect !== "unset"
-                && !parent.document.head.querySelector(`style[data-injected-style^="${keyModifyHierarchyList}"]`))
-                logseq.provideStyle({ key: keyModifyHierarchyList, style: fileHierarchy });
-            else
-                if (oldSet.booleanModifyHierarchy !== false
-                    && newSet.booleanModifyHierarchy === false)
-                    removeProvideStyle(keyModifyHierarchyList);
+                && newSet.placeSelect !== "unset") {
+                if (!parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`) && !parent.document.head.querySelector(`style[data-injected-style^="${keyNestingPageAccessory}"]`)) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
+            } else
+                if (oldSet.booleanModifyHierarchy === true
+                    && newSet.booleanModifyHierarchy === false) {
+                    removeProvideStyle(keyPageAccessory);
+                    removeProvideStyle(keyNestingPageAccessory);
+                }
             if (oldSet.booleanTableOfContents === false && newSet.booleanTableOfContents === true) {
                 const current = await logseq.Editor.getCurrentPage() as PageEntity | null;
                 if (current && current.name) displayToc(current.name);
@@ -197,13 +202,13 @@ const main = () => {
                     || oldSet.enumUnlinkedReferences !== newSet.enumUnlinkedReferences
                     || oldSet.enumPageHierarchy !== newSet.enumPageHierarchy
                     || oldSet.enumPageTags !== newSet.enumPageTags) {
-                    removeProvideStyle(keyPageSupportContentPosition);
-                    logseq.provideStyle({ key: keyPageSupportContentPosition, style: CSSpageSupportContentPosition(newSet) });
+                    removeProvideStyle(keyPageAccessoryOrder);
+                    logseq.provideStyle({ key: keyPageAccessoryOrder, style: CSSpageSubOrder(newSet) });
                 }
                 if (oldSet.booleanWideModeJournalQueries === false && newSet.booleanWideModeJournalQueries === true)
-                    logseq.provideStyle({ key: keyWideJournalQueries, style: CSSwideJournalQueries });
+                    logseq.provideStyle({ key: keyWideModeJournalQueries, style: fileWideModeJournalQueries });
                 else if (oldSet.booleanWideModeJournalQueries === true && newSet.booleanWideModeJournalQueries === false)
-                    removeProvideStyle(keyWideJournalQueries);
+                    removeProvideStyle(keyWideModeJournalQueries);
             }
         }
     });
@@ -216,6 +221,11 @@ const main = () => {
 };//end main
 
 
+function pageTagsTitleCollapsed() {
+    const titleElement = parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.content div.foldable-title h2") as HTMLElement | null;
+    if (titleElement) titleCollapsedRegisterEvent(titleElement, parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.initial") as HTMLElement);
+}
+
 export function onBlockChanged() {
     if (checkOnBlockChanged === true) return;
     checkOnBlockChanged = true;
@@ -224,7 +234,7 @@ export function onBlockChanged() {
         //headingがあるブロックが更新されたら
         const findBlock = blocks.find((block) => block.properties?.heading) as BlockEntity | null; //uuidを得るためsomeではなくfindをつかう
         if (!findBlock) return;
-        const uuid = findBlock? findBlock!.uuid : null;
+        const uuid = findBlock ? findBlock!.uuid : null;
         updateToc();//toc更新を抑制
 
         //ブロック更新のコールバック
@@ -232,7 +242,7 @@ export function onBlockChanged() {
     });
 }
 
-export function updateToc() {
+function updateToc() {
     if (processBlockChanged === true) return;
     processBlockChanged = true;
     setTimeout(async () => {
