@@ -1,3 +1,15 @@
+# [2.13.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.12.0...v2.13.0) (2023-08-13)
+
+
+### Bug Fixes
+
+* **bug:** Logseq nightly version break ([c988aee](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/c988aee65bf127fbe0a8342b2b2bfa1fb64fdd14))
+
+
+### Features
+
+* **TOC:** user-select cancel (CSS) ([39950f7](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/39950f7f45481a8840616c143b9348239990be34))
+
 # [2.12.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.11.0...v2.12.0) (2023-08-11)
 
 
