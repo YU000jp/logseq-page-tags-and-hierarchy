@@ -1,3 +1,10 @@
+## [2.13.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.13.0...v2.13.1) (2023-08-16)
+
+
+### Bug Fixes
+
+* **bug:** hierarchy links, if include comma ([42cf798](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/42cf7984bc3ebe4c458c598c6227d262e187e320))
+
 # [2.13.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.12.0...v2.13.0) (2023-08-13)
 
 
