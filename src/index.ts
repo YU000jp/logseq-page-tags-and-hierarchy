@@ -93,7 +93,7 @@ const main = () => {
         if (parent.document.getElementById("hierarchyLinks") !== null) return;
         const pageName = parent.document.querySelector("h1.page-title")?.textContent as string | null | undefined;
         if (!pageName) return;
-        if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/")) splitHierarchy(pageName, true, 0,);
+        if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/") && !pageName.includes(",")) splitHierarchy(pageName, true, 0,);
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
         currentPageName = pageName;
