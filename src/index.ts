@@ -23,7 +23,7 @@ const keyWide = "th-wide";
 const keyPageAccessoryOrder = "th-pageAccessoryOrder";
 const keyWideModeJournalQueries = "th-wideModeJournalQueries";
 let versionOver: boolean = false;
-
+let onRouteChangedOrOnPageHeadActionsSlotted: string = "";
 
 const main = () => {
 
@@ -66,44 +66,16 @@ const main = () => {
 
     if (logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
 
-    logseq.App.onRouteChanged(async ({ template, path }) => {
-        if (template === '/page/:name') {
-            let pageName = path.replace(/\/page\//, '');
-            pageName = pageName.replaceAll("%2F", '/');
-            //page only
-            //ページ名が2023/06/24の形式にマッチする場合
-            if (logseq.settings!.booleanModifyHierarchy === true
-                && pageName
-                && (pageName.match(/^\d{4}/)
-                    || pageName.match(/^(\d{4}\/\d{2})/)
-                    || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
-                parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
-            if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/") && !pageName.includes("%2C")) splitHierarchy(pageName, true, 0,);
-            if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
-            currentPageName = pageName;
-
-            //ページタグのtitleElementがあったら場合
-            pageTagsTitleCollapsed();
-        }
+    logseq.App.onRouteChanged(async ({ template }) => {
+        if (template === '/page/:name') onPageChanged(true);
     });
 
-    //ページ読み込み時に実行
-    logseq.App.onPageHeadActionsSlotted(() => {
-        //Hierarchy linksの表示
-        if (parent.document.getElementById("hierarchyLinks") !== null) return;
-        const pageName = parent.document.querySelector("h1.page-title")?.textContent as string | null | undefined;
-        if (!pageName) return;
-        if (logseq.settings!.booleanSplitHierarchy === true && pageName.includes("/") && !pageName.includes(",")) splitHierarchy(pageName, true, 0,);
-        //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
-        if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
-        currentPageName = pageName;
-
-        //ページタグのtitleElementがあったら場合 ※二重保証
-        pageTagsTitleCollapsed();
-    });
+    //ページ読み込み時に実行 バグあり？onRouteChangedとともに動作保証が必要
+    logseq.App.onPageHeadActionsSlotted(async () => onPageChanged(false));
 
     //ブロック更新のコールバック
-    if (logseq.settings!.placeSelect === "wide view" && logseq.settings!.booleanTableOfContents === true) onBlockChanged();
+    if (logseq.settings!.placeSelect === "wide view"
+        && logseq.settings!.booleanTableOfContents === true) onBlockChanged();
 
     //設定変更のコールバック
     logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
@@ -124,7 +96,7 @@ const main = () => {
                     removeProvideStyle(keyPageAccessory);
                     removeProvideStyle(keyNestingPageAccessory);
                 }
-                
+
             switch (newSet.placeSelect) {
                 case "bottom":
                     removeProvideStyle(keySide);
@@ -212,12 +184,42 @@ const main = () => {
 };//end main
 
 
-function pageTagsTitleCollapsed() {
+const onPageChanged = async (hierarchyEnable: boolean) => {
+    const current = await logseq.Editor.getCurrentPage() as PageEntity | null;
+    if (current) {
+        const pageName = current.originalName;
+        if (onRouteChangedOrOnPageHeadActionsSlotted !== pageName) {
+            onRouteChangedOrOnPageHeadActionsSlotted = pageName;
+            //Hierarchy Links
+            if (parent.document.getElementById("hierarchyLinks") === null
+                && logseq.settings!.booleanSplitHierarchy === true
+                && pageName.includes("/")
+                && !pageName.includes(",")) splitHierarchy(pageName, true, 0,);
+            //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
+            if (logseq.settings!.placeSelect === "wide view"
+                && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
+        }
+        currentPageName = pageName;
+        //ページタグの折りたたみを有効にする
+        pageTagsTitleCollapsed();
+        if (hierarchyEnable === true) {
+            //ページ名が2023/06/24の形式にマッチする場合
+            if (logseq.settings!.booleanModifyHierarchy === true
+                && pageName
+                && (pageName.match(/^\d{4}/)
+                    || pageName.match(/^(\d{4}\/\d{2})/)
+                    || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
+                parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
+        }
+    }
+};
+
+const pageTagsTitleCollapsed = () => {
     const titleElement = parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.content div.foldable-title h2") as HTMLElement | null;
     if (titleElement) titleCollapsedRegisterEvent(titleElement, parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.initial") as HTMLElement);
 }
 
-export function onBlockChanged() {
+export const onBlockChanged = () => {
     if (checkOnBlockChanged === true) return;
     checkOnBlockChanged = true;
     logseq.DB.onChanged(async ({ blocks }) => {
@@ -233,7 +235,7 @@ export function onBlockChanged() {
     });
 }
 
-function updateToc() {
+const updateToc = () => {
     if (processBlockChanged === true) return;
     processBlockChanged = true;
     setTimeout(async () => {
