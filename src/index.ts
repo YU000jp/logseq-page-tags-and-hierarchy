@@ -187,15 +187,17 @@ const main = () => {
 
 const onPageChanged = async (hierarchyEnable: boolean) => {
     const current = await logseq.Editor.getCurrentPage() as PageEntity | null;
+    let pageName: string = "";
     if (current) {
-        const pageName = current.originalName;
+        pageName = current.originalName;
         if (onRouteChangedOrOnPageHeadActionsSlotted !== pageName) {
             onRouteChangedOrOnPageHeadActionsSlotted = pageName;
             //Hierarchy Links
             if (parent.document.getElementById("hierarchyLinks") === null
                 && logseq.settings!.booleanSplitHierarchy === true
                 && pageName.includes("/")
-                && !pageName.includes(",")) splitHierarchy(pageName, true, 0,);
+                && !pageName.includes(",")) setTimeout(() => splitHierarchy(pageName, true, 0,), 20);
+
             //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
             if (logseq.settings!.placeSelect === "wide view"
                 && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
@@ -203,15 +205,15 @@ const onPageChanged = async (hierarchyEnable: boolean) => {
         currentPageName = pageName;
         //ページタグの折りたたみを有効にする
         pageTagsTitleCollapsed();
-        if (hierarchyEnable === true) {
-            //ページ名が2023/06/24の形式にマッチする場合
-            if (logseq.settings!.booleanModifyHierarchy === true
-                && pageName
-                && (pageName.match(/^\d{4}/)
-                    || pageName.match(/^(\d{4}\/\d{2})/)
-                    || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
-                parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
-        }
+    }
+    if (hierarchyEnable === true) {
+        //ページ名が2023/06/24の形式にマッチする場合
+        if (logseq.settings!.booleanModifyHierarchy === true
+            && pageName
+            && (pageName.match(/^\d{4}/)
+                || pageName.match(/^(\d{4}\/\d{2})/)
+                || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
+            parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
     }
 };
 

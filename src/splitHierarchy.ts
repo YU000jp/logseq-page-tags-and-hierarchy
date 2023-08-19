@@ -13,7 +13,7 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
     if (parent.document.getElementById("hierarchyLinks") !== null) return;//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
     if (must !== true && repeat !== undefined && repeat > 30) return;
-    const h1Element = parent!.document.querySelector("div#main-content-container h1.page-title") as HTMLHeadElement | null;
+    const h1Element = parent.document.querySelector("div#main-content-container h1.page-title") as HTMLHeadElement | null;
     if (h1Element === null) {
         setTimeout(() => {
             splitHierarchy(pageName, false, repeat + 1);
@@ -22,7 +22,7 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
     }
     const pageNameArr: string[] = pageName.split('/');
     //h1Elementの上にspan#hierarchyLinksを作成
-    const hierarchyLinks: HTMLSpanElement = document.createElement("span");
+    const hierarchyLinks: HTMLSpanElement = parent.document.createElement("span");
     hierarchyLinks.id = "hierarchyLinks";
     h1Element.insertAdjacentElement("beforebegin", hierarchyLinks);
     let parts: string = "";
@@ -35,7 +35,7 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
         } else {
             return;//最後の要素はリンクを作成しない
         }
-        const link: HTMLAnchorElement = document.createElement("a");
+        const link: HTMLAnchorElement = parent.document.createElement("a");
         link.className = "page-ref";
         link.dataset.checked = "";//" data-checked data-localizeは、querySelector回避用
         link.dataset.localize = "";
@@ -46,6 +46,7 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
             if (link.dataset.ref) openPage(link.dataset.ref as string, shiftKey);
         });
     });
+    console.log(pageNameArr[pageNameArr.length]);
 };
 
 
