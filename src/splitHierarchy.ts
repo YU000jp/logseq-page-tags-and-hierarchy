@@ -28,31 +28,23 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
     let parts: string = "";
     pageNameArr.forEach((part, index) => {
         if (parts === "") {
-            parts += part;
-            const link: HTMLAnchorElement = document.createElement("a");
-            link.className = "page-ref";
-            link.dataset.checked = "";//" data-checked data-localizeは、querySelector回避用
-            link.dataset.localize = "";
-            link.dataset.ref = parts;
-            link.textContent = part;
-            hierarchyLinks.insertAdjacentElement("beforeend", link);
-            link.addEventListener("click", ({ shiftKey }) => {
-                openPage(parts, shiftKey);
-            });
+            parts = part;
         } else if (index !== pageNameArr.length - 1) {
             parts += "/" + part;
-            const link: HTMLAnchorElement = document.createElement("a");
-            link.className = "page-ref";
-            link.dataset.checked = "";//" data-checked data-localizeは、querySelector回避用
-            link.dataset.localize = "";
-            link.dataset.ref = parts;
-            link.textContent = part;
             hierarchyLinks.insertAdjacentText("beforeend", " / ");
-            hierarchyLinks.insertAdjacentElement("beforeend", link);
-            link.addEventListener("click", ({ shiftKey }) => {
-                openPage(parts, shiftKey);
-            });
+        } else {
+            return;//最後の要素はリンクを作成しない
         }
+        const link: HTMLAnchorElement = document.createElement("a");
+        link.className = "page-ref";
+        link.dataset.checked = "";//" data-checked data-localizeは、querySelector回避用
+        link.dataset.localize = "";
+        link.dataset.ref = parts;
+        link.textContent = part;
+        hierarchyLinks.insertAdjacentElement("beforeend", link);
+        link.addEventListener("click", ({ shiftKey }) => {
+            if (link.dataset.ref) openPage(link.dataset.ref as string, shiftKey);
+        });
     });
 };
 

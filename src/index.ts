@@ -66,12 +66,13 @@ const main = () => {
 
     if (logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
 
+    //ページ読み込み時に実行コールバック
     logseq.App.onRouteChanged(async ({ template }) => {
-        if (template === '/page/:name') onPageChanged(true);
+        if (template === '/page/:name') onPageChanged(true); //バグあり？onPageHeadActionsSlottedとともに動作保証が必要
     });
 
-    //ページ読み込み時に実行 バグあり？onRouteChangedとともに動作保証が必要
-    logseq.App.onPageHeadActionsSlotted(async () => onPageChanged(false));
+    //ページ読み込み時に実行コールバック
+    logseq.App.onPageHeadActionsSlotted(async () => onPageChanged(false)); //バグあり？onRouteChangedとともに動作保証が必要
 
     //ブロック更新のコールバック
     if (logseq.settings!.placeSelect === "wide view"
