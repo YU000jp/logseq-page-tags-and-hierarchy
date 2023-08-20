@@ -1,13 +1,11 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user";
 
-
 export const hierarchyLinksCSS = `
 div#main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
     position: absolute;
     margin-top: -4em;
 }
 `;
-
 
 export const splitHierarchy = (pageName: string, must: boolean, repeat: number,) => {
     if (parent.document.getElementById("hierarchyLinks") !== null) return;//存在していたら何もしない
@@ -26,6 +24,7 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
     hierarchyLinks.id = "hierarchyLinks";
     h1Element.insertAdjacentElement("beforebegin", hierarchyLinks);
     let parts: string = "";
+    let lastPart: string = "";
     pageNameArr.forEach((part, index) => {
         if (parts === "") {
             parts = part;
@@ -33,6 +32,7 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
             parts += "/" + part;
             hierarchyLinks.insertAdjacentText("beforeend", " / ");
         } else {
+            lastPart = part;
             return;//最後の要素はリンクを作成しない
         }
         const link: HTMLAnchorElement = parent.document.createElement("a");
@@ -46,12 +46,33 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
             if (link.dataset.ref) openPage(link.dataset.ref as string, shiftKey);
         });
     });
-    console.log(pageNameArr[pageNameArr.length]);
+    if (logseq.settings!.booleanRemoveHierarchyPageTitle === true) removeHierarchyPageTitle(lastPart);
 };
 
+export const removeHierarchyPageTitle = (lastPart: string) => {
+    const pageTitleSelector = "div#main-content-container h1.page-title span.title";
+    const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null;
+    if (pageTitleElement) {
+        pageTitleElement.innerText = lastPart;
+        //同じ階層でspan.editingが発生し消えたらpageTitleElementを元に戻す
+        const observer = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.removedNodes) {
+                        if (node.nodeName === "SPAN") {
+                            pageTitleElement.innerText = lastPart;
+                            return;
+                        }
+                    }
+                }
+            };
+        });
+        const targetNode = pageTitleElement.parentElement;
+        if (targetNode) observer.observe(targetNode, { childList: true });
+    }
+};
 
-
-async function openPage(pageName: string, shiftKey: boolean) {
+const openPage = async (pageName: string, shiftKey: boolean) => {
     const page = await logseq.Editor.getPage(pageName) as PageEntity | null;//ページの存在チェックが必要
     if (page) {
         if (shiftKey) {
@@ -60,4 +81,22 @@ async function openPage(pageName: string, shiftKey: boolean) {
             logseq.App.pushState('page', { name: pageName });
         }
     }
-}
+};
+export const onSettingsChangedRevertHierarchyPageTitleOnce = () => {
+    const pageTitleSelector = "div#main-content-container h1.page-title span.title";
+    const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null;
+    if (pageTitleElement) pageTitleElement.innerText = pageTitleElement.dataset.ref as string;
+};
+export const onSettingsChangedRemoveHierarchyPageTitleOnce = () => {
+    const pageTitleSelector = "div#main-content-container h1.page-title span.title";
+    const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null;
+    if (pageTitleElement) {
+        const pageTitle = pageTitleElement.innerText;
+        const pageTitleArr = pageTitle.split("/");
+        if (pageTitleArr.length > 1) {
+            const lastPart = pageTitleArr.pop() as string;
+            pageTitleElement.innerText = lastPart;
+            removeHierarchyPageTitle(lastPart);
+        }
+    }
+};
