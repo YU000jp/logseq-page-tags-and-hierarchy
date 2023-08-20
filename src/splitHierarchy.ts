@@ -79,7 +79,7 @@ const openPage = async (pageName: string, shiftKey: boolean) => {
         if (shiftKey) {
             logseq.Editor.openInRightSidebar(page.uuid);
         } else {
-            logseq.App.pushState('page', { name: pageName });
+            logseq.App.replaceState('page', { name: pageName });
         }
     }
 };
