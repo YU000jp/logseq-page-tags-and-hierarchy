@@ -1,6 +1,5 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user";
 
-
 export const hierarchyLinksCSS = `
 div#main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
     position: absolute;
@@ -8,12 +7,11 @@ div#main-content-container div.is-journals>div.relative div div.ls-page-title sp
 }
 `;
 
-
 export const splitHierarchy = (pageName: string, must: boolean, repeat: number,) => {
     if (parent.document.getElementById("hierarchyLinks") !== null) return;//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
     if (must !== true && repeat !== undefined && repeat > 30) return;
-    const h1Element = parent!.document.querySelector("div#main-content-container h1.page-title") as HTMLHeadElement | null;
+    const h1Element = parent.document.querySelector("div#main-content-container h1.page-title") as HTMLHeadElement | null;
     if (h1Element === null) {
         setTimeout(() => {
             splitHierarchy(pageName, false, repeat + 1);
@@ -22,43 +20,59 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
     }
     const pageNameArr: string[] = pageName.split('/');
     //h1Elementの上にspan#hierarchyLinksを作成
-    const hierarchyLinks: HTMLSpanElement = document.createElement("span");
+    const hierarchyLinks: HTMLSpanElement = parent.document.createElement("span");
     hierarchyLinks.id = "hierarchyLinks";
     h1Element.insertAdjacentElement("beforebegin", hierarchyLinks);
     let parts: string = "";
+    let lastPart: string = "";
     pageNameArr.forEach((part, index) => {
         if (parts === "") {
-            parts += part;
-            const link: HTMLAnchorElement = document.createElement("a");
-            link.className = "page-ref";
-            link.dataset.checked = "";//" data-checked data-localizeは、querySelector回避用
-            link.dataset.localize = "";
-            link.dataset.ref = parts;
-            link.textContent = part;
-            hierarchyLinks.insertAdjacentElement("beforeend", link);
-            link.addEventListener("click", ({ shiftKey }) => {
-                openPage(parts, shiftKey);
-            });
+            parts = part;
         } else if (index !== pageNameArr.length - 1) {
             parts += "/" + part;
-            const link: HTMLAnchorElement = document.createElement("a");
-            link.className = "page-ref";
-            link.dataset.checked = "";//" data-checked data-localizeは、querySelector回避用
-            link.dataset.localize = "";
-            link.dataset.ref = parts;
-            link.textContent = part;
             hierarchyLinks.insertAdjacentText("beforeend", " / ");
-            hierarchyLinks.insertAdjacentElement("beforeend", link);
-            link.addEventListener("click", ({ shiftKey }) => {
-                openPage(parts, shiftKey);
-            });
+        } else {
+            lastPart = part;
+            return;//最後の要素はリンクを作成しない
         }
+        const link: HTMLAnchorElement = parent.document.createElement("a");
+        link.className = "page-ref";
+        link.dataset.checked = "";//" data-checked data-localizeは、querySelector回避用
+        link.dataset.localize = "";
+        link.dataset.ref = parts;
+        link.textContent = part;
+        hierarchyLinks.insertAdjacentElement("beforeend", link);
+        link.addEventListener("click", ({ shiftKey }) => {
+            if (link.dataset.ref) openPage(link.dataset.ref as string, shiftKey);
+        });
     });
+    if (logseq.settings!.booleanRemoveHierarchyPageTitle === true) removeHierarchyPageTitle(lastPart);
 };
 
+export const removeHierarchyPageTitle = (lastPart: string) => {
+    const pageTitleSelector = "div#main-content-container h1.page-title span.title";
+    const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null;
+    if (pageTitleElement) {
+        pageTitleElement.innerText = lastPart;
+        //同じ階層でspan.editingが発生し消えたらpageTitleElementを元に戻す
+        const observer = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.type === "childList") {
+                    for (const node of mutation.removedNodes) {
+                        if (node.nodeName === "SPAN") {
+                            pageTitleElement.innerText = lastPart;
+                            return;
+                        }
+                    }
+                }
+            };
+        });
+        const targetNode = pageTitleElement.parentElement;
+        if (targetNode) observer.observe(targetNode, { childList: true });
+    }
+};
 
-
-async function openPage(pageName: string, shiftKey: boolean) {
+const openPage = async (pageName: string, shiftKey: boolean) => {
     const page = await logseq.Editor.getPage(pageName) as PageEntity | null;//ページの存在チェックが必要
     if (page) {
         if (shiftKey) {
@@ -67,4 +81,22 @@ async function openPage(pageName: string, shiftKey: boolean) {
             logseq.App.pushState('page', { name: pageName });
         }
     }
-}
+};
+export const onSettingsChangedRevertHierarchyPageTitleOnce = () => {
+    const pageTitleSelector = "div#main-content-container h1.page-title span.title";
+    const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null;
+    if (pageTitleElement) pageTitleElement.innerText = pageTitleElement.dataset.ref as string;
+};
+export const onSettingsChangedRemoveHierarchyPageTitleOnce = () => {
+    const pageTitleSelector = "div#main-content-container h1.page-title span.title";
+    const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null;
+    if (pageTitleElement) {
+        const pageTitle = pageTitleElement.innerText;
+        const pageTitleArr = pageTitle.split("/");
+        if (pageTitleArr.length > 1) {
+            const lastPart = pageTitleArr.pop() as string;
+            pageTitleElement.innerText = lastPart;
+            removeHierarchyPageTitle(lastPart);
+        }
+    }
+};
