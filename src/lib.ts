@@ -13,10 +13,6 @@ export const removeElementClass = (elementClassName: string) => {
   )[0];
   if (doc) doc.remove();
 };
-export const removeElementId = (elementId: string) => {
-  const doc = parent.document.getElementById(elementId) as HTMLElement;
-  if (doc) doc.remove();
-};
 
 export async function versionCheck(
   first: number,
