@@ -1,3 +1,10 @@
+## [2.14.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.0...v2.14.1) (2023-08-20)
+
+
+### Bug Fixes
+
+* **bug:** remove hierarchy page title, cancel single journal page ([719e7e2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/719e7e297c1a1114bbafe017862747e87aac917d))
+
 # [2.14.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.13.1...v2.14.0) (2023-08-20)
 
 
