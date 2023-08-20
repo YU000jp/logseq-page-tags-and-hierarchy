@@ -1,3 +1,17 @@
+# [2.14.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.13.1...v2.14.0) (2023-08-20)
+
+
+### Bug Fixes
+
+* **bug:** hierarchy links, if include comma ([#39](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/39)) ([be683fa](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/be683fab0d40ba4fa36edf3f36f89a951a2511be))
+* **bug:** Hierarchy links, open the intermediate page ([1d824bf](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/1d824bf81ac67449e0399a944ad82e2f232362ad))
+* **Hierarchy links:** preserve the capitalization ([6469150](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/646915051c3027941c11aa08f3142a17b0c0e0bd))
+
+
+### Features
+
+* **Hierarchy links:** Remove hierarchy of the page title ([21161a3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/21161a3b2c37bf7b8354e7695ceac2aa0d97d7ce))
+
 ## [2.13.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.13.0...v2.13.1) (2023-08-16)
 
 
