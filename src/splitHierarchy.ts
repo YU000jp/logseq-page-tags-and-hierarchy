@@ -50,6 +50,7 @@ export const splitHierarchy = (pageName: string, must: boolean, repeat: number,)
 };
 
 export const removeHierarchyPageTitle = (lastPart: string) => {
+    if (parent.document.querySelector("div.is-journals") as HTMLDivElement | null) return;
     const pageTitleSelector = "div#main-content-container h1.page-title span.title";
     const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null;
     if (pageTitleElement) {
