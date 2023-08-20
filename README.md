@@ -82,6 +82,9 @@
 - Split hierarchy of the page title link (non-journals) [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
   - `true` default
   - `false`
+- Remove hierarchy of the page title (if the above option is enabled) [#38](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/38) 🆕
+  - `true` default
+  - `false`
 - Place on side by side or bottom: Select
   - `wide view`: *require scroll to right space [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
   - `side` default: *min-width 1560px
