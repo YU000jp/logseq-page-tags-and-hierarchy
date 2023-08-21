@@ -69,11 +69,11 @@ const main = () => {
 
     //ページ読み込み時に実行コールバック
     logseq.App.onRouteChanged(async ({ template }) => {
-        if (template === '/page/:name') onPageChanged(true); //バグあり？onPageHeadActionsSlottedとともに動作保証が必要
+        if (template === '/page/:name') onPageChanged(); //バグあり？onPageHeadActionsSlottedとともに動作保証が必要
     });
 
     //ページ読み込み時に実行コールバック
-    logseq.App.onPageHeadActionsSlotted(async () => onPageChanged(false)); //バグあり？onRouteChangedとともに動作保証が必要
+    logseq.App.onPageHeadActionsSlotted(async () => onPageChanged()); //バグあり？onRouteChangedとともに動作保証が必要
 
     //ブロック更新のコールバック
     if (logseq.settings!.placeSelect === "wide view"
@@ -94,7 +94,7 @@ logseq.ready(main).catch(console.error);
 
 
 
-const onPageChanged = async (hierarchyEnable: boolean) => {
+const onPageChanged = async () => {
     const current = await logseq.Editor.getCurrentPage() as PageEntity | null;
     let pageName: string = "";
     if (current) {
@@ -116,15 +116,13 @@ const onPageChanged = async (hierarchyEnable: boolean) => {
         const titleElement = parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.content div.foldable-title h2") as HTMLElement | null;
         if (titleElement) titleCollapsedRegisterEvent(titleElement, parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.initial") as HTMLElement);
     }
-    if (hierarchyEnable === true) {
-        //ページ名が2023/06/24の形式にマッチする場合
-        if (logseq.settings!.booleanModifyHierarchy === true
-            && pageName
-            && (pageName.match(/^\d{4}/)
-                || pageName.match(/^(\d{4}\/\d{2})/)
-                || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
-            parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
-    }
+    //ページ名が2023/06/24の形式にマッチする場合
+    if (logseq.settings!.booleanModifyHierarchy === true
+        && pageName
+        && (pageName.match(/^\d{4}/)
+            || pageName.match(/^(\d{4}\/\d{2})/)
+            || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
+        parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
 };
 
 export const onBlockChanged = () => {
