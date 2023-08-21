@@ -1,3 +1,10 @@
+## [2.14.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.2...v2.14.3) (2023-08-21)
+
+
+### Bug Fixes
+
+* **bug:** Hierarchy links, sometimes not work ([c99e863](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/c99e8635ff2aa5c81668ab37d39453cddf3979a7))
+
 ## [2.14.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.1...v2.14.2) (2023-08-20)
 
 
