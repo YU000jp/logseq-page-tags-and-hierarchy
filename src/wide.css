@@ -29,7 +29,7 @@ div#root div {
                     margin-top: unset;
                 }
 
-                &:not(:has(div.hidden)) {
+                &:not(:has(div.content+div.hidden)) {
                     flex: .3;
                     max-width: fit-content;
 
@@ -38,11 +38,11 @@ div#root div {
                     }
                 }
 
-                &:not(#today-queries):has(div.hidden) {
+                &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
+                &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
                     writing-mode: vertical-rl;
-                    max-width: 3.2em
+                    max-width: 3.2em;
                 }
-
             }
 
             & div.foldable-title h2 {
@@ -63,13 +63,13 @@ div#root div {
                 }
             }
 
-            &.page-hierarchy:not(:has(div.hidden)) {
+            &.page-hierarchy:not(:has(div.content+div.hidden)) {
                 max-width: 580px;
                 min-width: 400px
             }
 
 
-            &.page-tags:not(:has(div.hidden)) {
+            &.page-tags:not(:has(div.content+div.hidden)) {
                 max-width: 480px;
                 min-width: 400px
             }
@@ -78,7 +78,7 @@ div#root div {
                 font-size: .96em;
                 max-width: 570px;
 
-                &:not(:has(div.hidden)):focus-within {
+                &:not(:has(div.content+div.hidden)):focus-within {
                     min-width: 500px
                 }
 
@@ -103,7 +103,7 @@ div#root div {
                 margin-top: unset;
             }
 
-            &.lazy-visibility:has(div.scheduled-or-deadlines):not(:has(div.hidden)) {
+            &.lazy-visibility:has(div.scheduled-or-deadlines):not(:has(div.content+div.hidden)) {
                 min-width: 480px;
                 max-width: 650px;
 
