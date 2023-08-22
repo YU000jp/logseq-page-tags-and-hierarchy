@@ -1,3 +1,10 @@
+## [2.14.4](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.3...v2.14.4) (2023-08-22)
+
+
+### Bug Fixes
+
+* **bug:** wide view, crazy display ([95ca1ec](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/95ca1ecb2aa30e068c7877138f74aa9c8e16f8e4))
+
 ## [2.14.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.2...v2.14.3) (2023-08-21)
 
 
