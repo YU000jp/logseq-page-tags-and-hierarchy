@@ -104,8 +104,9 @@ const onPageChanged = async () => {
             //Hierarchy Links
             if (parent.document.getElementById("hierarchyLinks") === null
                 && logseq.settings!.booleanSplitHierarchy === true
+                && pageName
                 && pageName.includes("/")
-                && !pageName.includes(",")) splitHierarchy(pageName, true, 0,);
+                && !(pageName.includes(","))) splitHierarchy(pageName, true, 0,);
 
             //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
             if (logseq.settings!.placeSelect === "wide view"
