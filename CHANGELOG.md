@@ -5,6 +5,13 @@
 
 * **bug:** Hierarchy links, sometimes not work ([1b22e07](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/1b22e07a645ced5a4fbe49678cf250917eb7d447))
 
+## [2.14.6](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.5...v2.14.6) (2023-08-29)
+
+
+### Bug Fixes
+
+* **bug:** Hierarchy links, sometimes not work ([1b22e07](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/1b22e07a645ced5a4fbe49678cf250917eb7d447))
+
 ## [2.14.5](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.4...v2.14.5) (2023-08-23)
 
 
