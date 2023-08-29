@@ -8,7 +8,6 @@ div#main-content-container div.is-journals>div.relative div div.ls-page-title sp
 `;
 
 export const splitHierarchy = (pageName: string, must: boolean, repeat: number,) => {
-    logseq.UI.showMsg("splitHierarchy", "info", { timeout: 3000 });
     if (parent.document.getElementById("hierarchyLinks") !== null) return;//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
     if (must !== true && repeat !== undefined && repeat > 10) return;
