@@ -8,14 +8,13 @@ div#main-content-container div.is-journals>div.relative div div.ls-page-title sp
 `;
 
 export const splitHierarchy = (pageName: string, must: boolean, repeat: number,) => {
+    logseq.UI.showMsg("splitHierarchy", "info", { timeout: 3000 });
     if (parent.document.getElementById("hierarchyLinks") !== null) return;//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
-    if (must !== true && repeat !== undefined && repeat > 30) return;
+    if (must !== true && repeat !== undefined && repeat > 10) return;
     const h1Element = parent.document.querySelector("div#main-content-container h1.page-title") as HTMLHeadElement | null;
     if (h1Element === null) {
-        setTimeout(() => {
-            splitHierarchy(pageName, false, repeat + 1);
-        }, 10);
+        setTimeout(() => splitHierarchy(pageName, false, repeat + 1), 40);
         return;
     }
     const pageNameArr: string[] = pageName.split('/');

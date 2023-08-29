@@ -24,7 +24,6 @@ const keyWide = "th-wide";
 const keyPageAccessoryOrder = "th-pageAccessoryOrder";
 const keyWideModeJournalQueries = "th-wideModeJournalQueries";
 let versionOver: boolean = false;
-let onRouteChangedOrOnPageHeadActionsSlotted: string = "";
 
 const main = () => {
 
@@ -96,33 +95,30 @@ logseq.ready(main).catch(console.error);
 
 const onPageChanged = async () => {
     const current = await logseq.Editor.getCurrentPage() as PageEntity | null;
-    let pageName: string = "";
     if (current) {
-        pageName = current.originalName;
-        if (onRouteChangedOrOnPageHeadActionsSlotted !== pageName) {
-            onRouteChangedOrOnPageHeadActionsSlotted = pageName;
-            //Hierarchy Links
-            if (parent.document.getElementById("hierarchyLinks") === null
-                && logseq.settings!.booleanSplitHierarchy === true
-                && pageName
-                && pageName.includes("/")
-                && !(pageName.includes(","))) splitHierarchy(pageName, true, 0,);
-
-            //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
-            if (logseq.settings!.placeSelect === "wide view"
-                && logseq.settings!.booleanTableOfContents === true) displayToc(pageName);
-        }
-        currentPageName = pageName; //index.tsの値を書き換える
+        currentPageName = current.originalName; //index.tsの値を書き換える
+        //Hierarchy Links
+        if (parent.document.getElementById("hierarchyLinks") as HTMLSpanElement | null === null
+            && logseq.settings!.booleanSplitHierarchy === true
+            && currentPageName
+            && currentPageName.includes("/")
+            && !(currentPageName.includes(","))) splitHierarchy(currentPageName, true, 0,);
+        //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
+        if (logseq.settings!.placeSelect === "wide view"
+            && logseq.settings!.booleanTableOfContents === true) displayToc(currentPageName);
         //ページタグの折りたたみを有効にする
-        const titleElement = parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.content div.foldable-title h2") as HTMLElement | null;
-        if (titleElement) titleCollapsedRegisterEvent(titleElement, parent.document.querySelector("div#main-content-container div.page.relative div.page-tags div.initial") as HTMLElement);
+        const pageTagsElement = parent.document.querySelector("div#main-content-container div.page.relative div.page-tags") as HTMLElement | null;
+        if (pageTagsElement) {
+            const titleElement = pageTagsElement.querySelector("div.content div.foldable-title h2") as HTMLElement | null;
+            if (titleElement) titleCollapsedRegisterEvent(titleElement, pageTagsElement.querySelector("div.initial") as HTMLElement);
+        }
     }
     //ページ名が2023/06/24の形式にマッチする場合
     if (logseq.settings!.booleanModifyHierarchy === true
-        && pageName
-        && (pageName.match(/^\d{4}/)
-            || pageName.match(/^(\d{4}\/\d{2})/)
-            || pageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
+        && currentPageName
+        && (currentPageName.match(/^\d{4}/)
+            || currentPageName.match(/^(\d{4}\/\d{2})/)
+            || currentPageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
         parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
 };
 
