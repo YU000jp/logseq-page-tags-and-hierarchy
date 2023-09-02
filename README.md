@@ -12,6 +12,10 @@
 
 ## Features
 
+### Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
+
+![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/cd236bc1-70b5-48af-a343-c86167c23c53)
+
 ### Wide view mode [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
 
 - Place page-tags and page-hierarchy, linked references, unlinked references side by side with content of the page.
@@ -38,10 +42,6 @@
 ### Bottom mode
 
   ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
-
-### Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
-
-![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/cd236bc1-70b5-48af-a343-c86167c23c53)
 
 ---
 
