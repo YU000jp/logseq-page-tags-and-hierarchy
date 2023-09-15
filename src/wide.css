@@ -39,6 +39,7 @@ div#root div {
                 }
 
                 &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
+                &.lazy-visibility:has(div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
                 &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
                     writing-mode: vertical-rl;
                     max-width: 3.2em;
@@ -99,24 +100,30 @@ div#root div {
                 display: none;
             }
 
-            &.lazy-visibility div.scheduled-or-deadlines.mt-8 {
-                margin-top: unset;
-            }
+            &.lazy-visibility {
 
-            &.lazy-visibility:has(div.scheduled-or-deadlines):not(:has(div.content+div.hidden)) {
-                min-width: 480px;
-                max-width: 650px;
+                &:has(div.scheduled-or-deadlines.mt-8>div.flex>div.content+div.initial) {
+                    min-width: 480px;
+                    max-width: 650px;
 
-                &:focus-within {
-                    min-width: 550px
+                    &:focus-within {
+                        min-width: 550px
+                    }
+                }
+
+                & div.scheduled-or-deadlines.mt-8 {
+                    margin-top: unset;
+
+                    & div.foldable-title a.block-control {
+                        display: none;
+                    }
                 }
             }
         }
 
-        >:is(div div.references, div.page-hierarchy, div.lazy-visibility div.scheduled-or-deadlines) div.foldable-title a.block-control {
+        >:is(div div.references, div.page-hierarchy) div.foldable-title a.block-control {
             display: none
         }
-
 
     }
 
