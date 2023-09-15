@@ -10,11 +10,13 @@
 
 ---
 
-## Features
+## Option
 
 ### Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
 
 ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/cd236bc1-70b5-48af-a343-c86167c23c53)
+
+## Page view
 
 ### Wide view mode [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
 
