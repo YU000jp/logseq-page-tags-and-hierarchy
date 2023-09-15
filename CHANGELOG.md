@@ -1,3 +1,10 @@
+## [2.14.8](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.7...v2.14.8) (2023-09-15)
+
+
+### Bug Fixes
+
+* **bug:** linked references min-width ([a1782e5](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/a1782e561e1d714676e433944aaf4f4347eb0e05))
+
 ## [2.14.7](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.6...v2.14.7) (2023-09-15)
 
 
