@@ -1,3 +1,10 @@
+## [2.14.7](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.6...v2.14.7) (2023-09-15)
+
+
+### Bug Fixes
+
+* **bug:** crazy display SCHEDULED AND DEADLINE ([a93658e](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/a93658e06133be012ca09f1970513e9b2aa1c033))
+
 ## [2.14.6](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.5...v2.14.6) (2023-08-29)
 
 
