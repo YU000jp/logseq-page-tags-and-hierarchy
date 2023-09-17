@@ -77,11 +77,15 @@ div#root div {
 
             & div:is(.page-linked, .page-unlinked) {
                 font-size: .96em;
-                min-width: 400px;
-                max-width: 570px;
 
-                &:not(:has(div.content+div.hidden)):focus-within {
-                    min-width: 500px
+
+                &:not(:has(div.content+div.hidden)) {
+                    min-width: 400px;
+                    max-width: 570px;
+
+                    :focus-within {
+                        min-width: 500px
+                    }
                 }
 
                 &:is(:hover, :focus-within)>div.content>div>div.initial {
