@@ -2,10 +2,11 @@ import removeMd from "remove-markdown";
 import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user";
 import { checkOnBlockChanged, onBlockChanged } from ".";
 import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage } from "./markdown";
-
 export const displayToc = async (pageName: string) => {
-  if (logseq.settings!.placeSelect !== "wide view") return;
+  if (logseq.settings!.placeSelect !== "wide view") return; //wide viewのみ
   const pageBlocks = await logseq.Editor.getPageBlocksTree(pageName) as BlockEntity[];
+
+  //ページの全ブロックからheaderがあるかどうかを確認する
   const headers = getTocBlocks(pageBlocks as Child[]);
   if (headers.length > 0) {
     //Headerが存在する場合のみ
@@ -258,11 +259,13 @@ async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
   }
 }
 export const CSSpageSubOrder = (settings) => `
-div#root div.page.relative>div.lazy-visibility:has(div.scheduled-or-deadlines){order:${settings.enumScheduleDeadline}}
-div#root div.page.relative>div.th-toc{order:${settings.enumTableOfContents}}
-div#root div.page.relative>div:has(div.page-linked){order:${settings.enumLinkedReferences}}
-div#root div.page.relative>div:has(div.page-unlinked){order:${settings.enumUnlinkedReferences}}
-div#root div.page.relative>div.page-hierarchy{order:${settings.enumPageHierarchy}}
-div#root div.page.relative>div.page-tags{order:${settings.enumPageTags}}
+div#root div.page.relative>div {
+&.lazy-visibility:has(div.scheduled-or-deadlines){order:${settings.enumScheduleDeadline}}
+&.th-toc{order:${settings.enumTableOfContents}}
+&:has(div.page-linked){order:${settings.enumLinkedReferences}}
+&:has(div.page-unlinked){order:${settings.enumUnlinkedReferences}}
+&.page-hierarchy{order:${settings.enumPageHierarchy}}
+&.page-tags{order:${settings.enumPageTags}}
+}
 `;
 
