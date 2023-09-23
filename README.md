@@ -10,7 +10,7 @@
 
 ---
 
-## Option
+## Options
 
 ### Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
 
