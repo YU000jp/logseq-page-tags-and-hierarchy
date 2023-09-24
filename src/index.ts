@@ -28,18 +28,13 @@ let versionOver: boolean = false;
 const main = () => {
 
     (async () => {
-        versionOver = await versionCheck(0, 9, 11);
-        if (versionOver === true) {
-            logseq.useSettingsSchema(settingsTemplate("wide view"));
-        } else {
-            logseq.useSettingsSchema(settingsTemplate("side"));
-        }
+        logseq.useSettingsSchema(settingsTemplate());
         if (logseq.settings!.placeSelect !== "unset") {
             //unset以外
             //DisplayIfSmaller
             if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
             //ModifyHierarchyList
-            if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
+            if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(await versionCheck(0, 9, 11), keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
         }
     })();
 

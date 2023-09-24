@@ -89,9 +89,9 @@
   - `false`
 - Place on side by side or bottom: Select
   - `wide view`: *require scroll to right space [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
-  - `side` default: *min-width 1560px
+  - `side`: *min-width 1560px
   - `bottom`: *min-width 1560px
-  - `unset` : *for only use split hierarchy feature [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
+  - `unset` default: *for only use split hierarchy feature [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
 - For non-"unset", modify the display of hierarchy to be original rather than standard: Toggle
   - `true` default
   - `false`
