@@ -1,3 +1,10 @@
+## [2.14.11](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.10...v2.14.11) (2023-09-24)
+
+
+### Bug Fixes
+
+* **bug:** for Logseq version check ([a153faa](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/a153faa0e4cc599ff25dc4b3b558867fb71c47cb))
+
 ## [2.14.10](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.9...v2.14.10) (2023-09-24)
 
 
