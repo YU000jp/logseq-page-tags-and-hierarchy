@@ -1,3 +1,10 @@
+## [2.14.10](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.9...v2.14.10) (2023-09-24)
+
+
+### Bug Fixes
+
+* **Page View:** Change default setting ([2e0f99b](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/2e0f99b9027d4da9aea3e3ea00595bae49233443))
+
 ## [2.14.9](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.8...v2.14.9) (2023-09-17)
 
 
