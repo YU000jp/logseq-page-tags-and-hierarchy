@@ -18,6 +18,8 @@
 
 ## Page view
 
+- Wide view mode, side mode, bottom mode...
+
 > [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
 
 ---
