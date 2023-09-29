@@ -35,95 +35,16 @@
 
 ### Usage
 
-- When this plugin install, the style be applied to non-journal pages. By default, side mode or bottom mode is turned off. it is possible to set in the plugin settings.
+- When this plugin install, the style be applied to non-journal pages. By default, page view mode is turned off. it is possible to set in the plugin settings.
+> For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
 
-#### Page-Tags
+#### Page-Tags and Hierarchy (namespaces)
 
-- Add `tags:: AA,BB` to first block as page properties on any page
-
-- Links
-   1. [Properties (docs.logseq.com)](https://docs.logseq.com/#/page/properties)
-   1. [Page-links vs Tags](https://aryansawhney.com/pages/page-links-vs-tags-in-logseq/#special-case-page-tags)
-
-#### Hierarchy (namespaces)
-
-- Insert slashes in a page name to create what is called "hierarchy". for example `Logseq/Plugin`
-
-> It turns out that Logseq has a macro to show the hierarchy. Example: `{{namespace PAGE}}`
-
-- Link
-   1. [How to use namespaces](https://www.logseqmastery.com/blog/logseq-namespaces)
+> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page%E2%80%90Tags-and-Hierarchy-(namespaces))
 
 ### Plugin Settings
 
-- Split hierarchy of the page title link (non-journals) [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
-  - `true` default
-  - `false`
-- Remove hierarchy of the page title (if the above option is enabled) [#38](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/38) 🆕
-  - `true` default
-  - `false`
-- Place on side by side or bottom: Select
-  - `wide view`: *require scroll to right space [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
-  - `side`: *min-width 1560px
-  - `bottom`: *min-width 1560px
-  - `unset` default: *for only use split hierarchy feature [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
-- For non-"unset", modify the display of hierarchy to be original rather than standard: Toggle
-  - `true` default
-  - `false`
-- Bottom mode, when the window size is less than 1560px, do not display it: Toggle
-  - `true` default
-  - `false`
-- Enable table of contents on a page (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
-  - `true` default
-  - `false`
-- Hide table of contents by default (wide view only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
-  - `true`
-  - `false` default
-- Showing journal queries on today journal page (wide view only) [#35](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/35) 🆕
-   - `true`
-  - `false` default
-- Scheduled and deadline position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
-  - `1` default
-  - `2`
-  - `3`
-  - `4`
-  - `5`
-  - `6`
-- Table of contents position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
-  - `1`
-  - `2` default
-  - `3`
-  - `4`
-  - `5`
-  - `6`
-- Linked references position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
-  - `1`
-  - `2`
-  - `3` default
-  - `4`
-  - `5`
-  - `6`
-- Unlinked references position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
-  - `1`
-  - `2`
-  - `3`
-  - `4` default
-  - `5`
-  - `6`
-- Page hierarchy position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
-  - `1`
-  - `2`
-  - `3`
-  - `4`
-  - `5` default
-  - `6`
-- Page tags position (wide view only) [#33](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/33) 🆕
-  - `1`
-  - `2`
-  - `3`
-  - `4`
-  - `5`
-  - `6` default
+> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Plugin-Settings)
 
 ---
 
