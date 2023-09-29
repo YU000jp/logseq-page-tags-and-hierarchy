@@ -14,9 +14,11 @@
 
 ### Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
 
+- Easy access the hierarchies page. Possible to remove hierarchies from page title.
+
 ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/cd236bc1-70b5-48af-a343-c86167c23c53)
 
-## Page view
+### Page view
 
 - Wide view mode, side mode, bottom mode...
 
