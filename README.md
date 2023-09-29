@@ -1,7 +1,7 @@
 # Logseq Plugin: *Page-tags and Hierarchy (UI)*
 
-- ~~Place page tags and hierarchy in non-standard positions (right or bottom of the page).~~
-- Place page tags and hierarchy or references in non-standard positions. Choose from several modes.
+1. Show hierarchy links to page title
+1. Page View: Place page tags and hierarchy or references in non-standard positions. Choose from several modes.
 
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
@@ -18,32 +18,7 @@
 
 ## Page view
 
-### Wide view mode [#24](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/24) 🆕
-
-- Place page-tags and page-hierarchy, linked references, unlinked references side by side with content of the page.
-  - *require scroll to right space
-  - If workspace is small, zoom in or open it in the right sidebar
-  - Logseq v0.9.11 or later⚠️
- 
-  > For Journals >> [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
-
-  ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f6b2c0d0-85bd-4629-9da9-ecc6940f2387)
-
-#### Table of Contents in a page (Wide view mode only) [#32](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/32) 🆕
-
-- Use the markdown of Header (`# `) (`## `) (`### `) (`#### `) (`#### `) (`##### `)
-
-  ![WideViewMode-Toc](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/995487f5-66b1-4dc5-8556-242ccb5120de)
-
-### Side mode
-
-- Place page-tags and page-hierarchy side by side with ontent of the page.
-
-  ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/641562cf-d7ac-40f6-805b-9e74377daa3c)
-
-### Bottom mode
-
-  ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/96aabe66-9f72-45ae-aa16-dce949c063b2)
+> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
 
 ---
 
