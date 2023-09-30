@@ -1,5 +1,6 @@
 import "@logseq/libs";
-
+import { setup as l10nSetup, t } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
+import ja from "./translations/ja.json";
 import { settingsTemplate, } from "./settings";
 import { splitHierarchy, hierarchyLinksCSS, } from "./splitHierarchy";
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
@@ -29,7 +30,13 @@ const main = () => {
 
     (async () => {
         versionOver = await versionCheck(0, 9, 11);
-        logseq.useSettingsSchema(settingsTemplate());
+        try {
+            await l10nSetup({ builtinTranslations: { ja } });
+        } finally {
+            /* user settings */
+            logseq.useSettingsSchema(settingsTemplate());
+        }
+
         if (logseq.settings!.placeSelect !== "unset") {
 
             //unset以外
@@ -115,8 +122,11 @@ const onPageChanged = async () => {
         && currentPageName
         && (currentPageName.match(/^\d{4}/)
             || currentPageName.match(/^(\d{4}\/\d{2})/)
-            || currentPageName.match(/^(\d{4}\/\d{2}\/\d{2})/))) //Journalの場合はもともと表示されない
+            //|| currentPageName.match(/^(\d{4}\/\d{2}\/\d{2})/) //Journalの場合はもともと表示されない
+        )) {
         parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal');
+    }
+
 };
 
 export const onBlockChanged = () => {

@@ -1,0 +1,16 @@
+{
+    "🆙Split hierarchy of the page title link (non-journals)": "ページタイトルリンクの階層を分割します（ジャーナル以外）",
+    "Remove hierarchy of the page title (if the above option is enabled)": "ページタイトルの階層を削除します（上記のオプションが有効な場合）",
+    "Select mode": "モードを選択します",
+    "For non-\"unset\", modify the display of hierarchy to be original rather than standard": "「unset」でない場合、階層の表示を標準ではなくオリジナルに変更します",
+    "Bottom mode, when the window size is less than 1560px, do not display it": "ウィンドウサイズが1560px未満の場合、ボトムモードでは表示しない",
+    "Enable table of contents on a page (wide view only)": "ページで目次を有効にします（ワイドビューのみ）",
+    "Hide table of contents by default (wide view only)": "デフォルトで目次を非表示にします（ワイドビューのみ）",
+    "Showing journal queries on today journal page (wide view only)": "今日のジャーナルページでジャーナルクエリーを表示します（ワイドビューのみ）",
+    "Scheduled and deadline position (wide view only)": "スケジュールと締切位置（ワイドビューのみ）",
+    "Table of contents position (wide view only)": "目次の位置（ワイドビューのみ）",
+    "Linked references position (wide view only)": "Linked Referencesの位置（ワイドビューのみ）",
+    "Unlinked references position (wide view only)": "Unlinked Referencesの位置（ワイドビューのみ）",
+    "Page hierarchy position (wide view only)": "ページ階層の位置（ワイドビューのみ）",
+    "Page tags position (wide view only)": "ページタグの位置（ワイドビューのみ）"
+}

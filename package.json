@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@logseq/libs": "^0.0.15",
+        "logseq-l10n": "^0.2.0",
         "remove-markdown": "^0.5.0"
     },
     "devDependencies": {
