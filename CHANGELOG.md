@@ -1,3 +1,10 @@
+# [2.15.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.11...v2.15.0) (2023-09-30)
+
+
+### Features
+
+* **translation:** ja ([ae4c35f](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/ae4c35f468342cb3830be5cf2937909a0e86a37d))
+
 ## [2.14.11](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.10...v2.14.11) (2023-09-24)
 
 
