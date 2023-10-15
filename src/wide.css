@@ -1,4 +1,4 @@
-div#root div {
+body>div#root>div>main div {
 
     &#main-content-container:not(:has(div#journals)) {
         justify-content: unset !important;
@@ -7,149 +7,6 @@ div#root div {
             max-width: unset
         }
 
-        & div.page.relative>div.relative {
-            min-width: 1050px;
-            max-width: 1450px;
-            flex: 1
-        }
-    }
-
-    &.page.relative {
-        display: flex;
-
-        >div {
-
-            &:not(.relative) {
-                padding: 1em;
-                height: fit-content;
-                position: sticky;
-                top: 0;
-
-                &.mt-6 {
-                    margin-top: unset;
-                }
-
-                &:not(:has(div.content+div.hidden)) {
-                    flex: .3;
-                    max-width: fit-content;
-
-                    & div.foldable-title {
-                        min-width: 340px
-                    }
-                }
-
-                &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
-                &.lazy-visibility:has(div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
-                &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
-                    writing-mode: vertical-rl;
-                    max-width: 3.2em;
-                }
-            }
-
-            & div.foldable-title h2 {
-                user-select: none;
-            }
-
-            &:is(.page-tags, .page-hierarchy) {
-                padding: 1em;
-
-                & div.initial {
-                    font-size: .9em
-                }
-
-                & div.foldable-title h2 {
-                    opacity: unset;
-                    font-weight: 500;
-                    cursor: pointer;
-                }
-            }
-
-            &.page-hierarchy:not(:has(div.content+div.hidden)) {
-                max-width: 580px;
-                min-width: 400px
-            }
-
-
-            &.page-tags:not(:has(div.content+div.hidden)) {
-                max-width: 480px;
-                min-width: 400px
-            }
-
-            & div:is(.page-linked, .page-unlinked) {
-                font-size: .96em;
-
-
-                &:not(:has(div.content+div.hidden)) {
-                    min-width: 400px;
-                    max-width: 570px;
-
-                    :focus-within {
-                        min-width: 500px
-                    }
-                }
-
-                &:is(:hover, :focus-within)>div.content>div>div.initial {
-                    overflow-y: scroll
-                }
-            }
-
-            & div.page-linked div.pt-6 {
-                padding-top: unset
-            }
-
-            >div.page-unlinked.mt-6 {
-                margin-top: unset
-            }
-
-            & div.references div.foldable-title a.block-control {
-                display: none;
-            }
-
-            &.lazy-visibility {
-
-                &:has(div.scheduled-or-deadlines.mt-8>div.flex>div.content+div.initial) {
-                    min-width: 480px;
-                    max-width: 650px;
-
-                    &:focus-within {
-                        min-width: 550px
-                    }
-                }
-
-                & div.scheduled-or-deadlines.mt-8 {
-                    margin-top: unset;
-
-                    & div.foldable-title a.block-control {
-                        display: none;
-                    }
-                }
-            }
-        }
-
-        >:is(div div.references, div.page-hierarchy) div.foldable-title a.block-control {
-            display: none
-        }
-
-    }
-
-    &#main-content-container div.page.relative>div div#tocInPage,
-    &.page.relative>div div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
-    &.page.relative>div:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
-        max-height: 86vh;
-        overflow: auto
-    }
-
-    &#right-sidebar div.page.relative>div.relative {
-        min-width: 94%
-    }
-
-
-
-    &:is(#main-content-container, #right-sidebar) div.is-journals div#today-queries {
-        display: none
-    }
-
-    &#main-content-container {
         &.scrollbar-spacing {
             overflow-x: unset
         }
@@ -207,11 +64,152 @@ div#root div {
                 padding-left: 3.6em;
             }
         }
+
+        & div.page.relative {
+            display: flex;
+
+            >div {
+
+                &:not(.relative) {
+                    padding: 1em;
+                    height: fit-content;
+                    position: sticky;
+                    top: 0;
+
+                    &.mt-6 {
+                        margin-top: unset;
+                    }
+
+                    &:not(:has(div.content+div.hidden)) {
+                        flex: .3;
+                        max-width: fit-content;
+
+                        & div.foldable-title {
+                            min-width: 340px
+                        }
+                    }
+
+                    &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
+                    &.lazy-visibility:has(div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
+                    &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
+                        writing-mode: vertical-rl;
+                        max-width: 3.2em;
+                    }
+                }
+
+                & div.foldable-title h2 {
+                    user-select: none;
+                }
+
+                &:is(.page-tags, .page-hierarchy) {
+                    padding: 1em;
+
+                    & div.initial {
+                        font-size: .9em
+                    }
+
+                    & div.foldable-title h2 {
+                        opacity: unset;
+                        font-weight: 500;
+                        cursor: pointer;
+                    }
+                }
+
+                &.page-hierarchy:not(:has(div.content+div.hidden)) {
+                    max-width: 580px;
+                    min-width: 400px
+                }
+
+
+                &.page-tags:not(:has(div.content+div.hidden)) {
+                    max-width: 480px;
+                    min-width: 400px
+                }
+
+                & div:is(.page-linked, .page-unlinked) {
+                    font-size: .96em;
+
+
+                    &:not(:has(div.content+div.hidden)) {
+                        min-width: 400px;
+                        max-width: 570px;
+
+                        :focus-within {
+                            min-width: 500px
+                        }
+                    }
+
+                    &:is(:hover, :focus-within)>div.content>div>div.initial {
+                        overflow-y: scroll
+                    }
+                }
+
+                & div.page-linked div.pt-6 {
+                    padding-top: unset
+                }
+
+                >div.page-unlinked.mt-6 {
+                    margin-top: unset
+                }
+
+                & div.references div.foldable-title a.block-control {
+                    display: none;
+                }
+
+                &.lazy-visibility {
+
+                    &:has(div.scheduled-or-deadlines.mt-8>div.flex>div.content+div.initial) {
+                        min-width: 480px;
+                        max-width: 650px;
+
+                        &:focus-within {
+                            min-width: 550px
+                        }
+                    }
+
+                    & div.scheduled-or-deadlines.mt-8 {
+                        margin-top: unset;
+
+                        & div.foldable-title a.block-control {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            >:is(div div.references, div.page-hierarchy) div.foldable-title a.block-control {
+                display: none
+            }
+
+            &>div.relative {
+                min-width: 1050px;
+                max-width: 1450px;
+                flex: 1
+            }
+        }
+    }
+
+
+    &#main-content-container div.page.relative>div div#tocInPage,
+    &.page.relative>div div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
+    &.page.relative>div:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
+        max-height: 86vh;
+        overflow: auto
+    }
+
+    &#right-sidebar div.page.relative>div.relative {
+        min-width: 94%
+    }
+
+
+
+    &:is(#main-content-container, #right-sidebar) div.is-journals div#today-queries {
+        display: none
     }
 }
 
 
-body.is-awSt-enabled div#root {
+body.is-awSt-enabled>div#root>div>main>div#app-container div#main-content-container {
     & div.page.relative {
         gap: .5em;
 
