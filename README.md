@@ -10,11 +10,15 @@
 
 ---
 
+#### About page-tags and hierarchy (on Logseq)
+
+> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page%E2%80%90Tags-and-Hierarchy-(namespaces)) (Hierarchy is also called namespaces.)
+
 ## Options
 
-### 1. Show hierarchy links to page title [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22) 🆕
+### 1. Show hierarchy links to page title
 
-- Breaking down the page title hierarchy. Easy access the hierarchies parent page.
+- Breaking down the page title hierarchy. Easy access the hierarchies parent page. [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22)
 
 ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
@@ -35,10 +39,6 @@
 
 - After installing this plugin, the styles be applied to non-journal pages. By default, page view mode is turned off. it is possible to set in the plugin settings.
   > For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
-
-#### About page-tags and hierarchy
-
-> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page%E2%80%90Tags-and-Hierarchy-(namespaces)) (Hierarchy is also called namespaces.)
 
 ### Plugin Settings
 
