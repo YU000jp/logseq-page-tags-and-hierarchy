@@ -34,7 +34,7 @@
 
 ### Usage
 
-- When this plugin install, the style be applied to non-journal pages. By default, page view mode is turned off. it is possible to set in the plugin settings.
+- After installing this plugin, the styles be applied to non-journal pages. By default, page view mode is turned off. it is possible to set in the plugin settings.
   > For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
 
 #### About page-tags and hierarchy
