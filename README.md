@@ -11,7 +11,7 @@
 ---
 
 - Logseq features Page Tags and Hierarchy, which are essential functions that assist in organizing and searching for information. Hierarchy is also called `namespaces`.
-> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page%E2%80%90Tags-and-Hierarchy-(namespaces))
+> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
 
 ## Options
 
