@@ -1,3 +1,10 @@
+## [2.16.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.16.1...v2.16.2) (2023-10-17)
+
+
+### Bug Fixes
+
+* **bug:** plugin settings, "Hierarchy for first level only" [#40](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/40) ([3eed2f9](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/3eed2f99bc1ec979a6ca6dbed7e9a233695b3096))
+
 ## [2.16.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.16.0...v2.16.1) (2023-10-17)
 
 
