@@ -16,7 +16,7 @@
 
 ### 1. Split page title hierarchy as links
 
-- Breaking down the page title hierarchy. Easy access the hierarchies parent page. [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22)
+- Breaking down the page title hierarchy. Easy access the hierarchies parent page.
 
 ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
