@@ -1,7 +1,7 @@
 # Logseq Plugin: *Page-tags and Hierarchy*
 
 1. Split page title hierarchy as links
-1. Page View: Place page tags and hierarchy or references in non-standard positions. Choose from several modes.
+1. Page View UI: Place page tags and hierarchy or references in non-standard positions. Choose from several modes.
 
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
@@ -21,7 +21,7 @@
 
 ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
-### 2. Page view
+### 2. Page view (UI)
 
 - Change the position of page tags and hierarchy placed in page content to a different position than usual.
 > Wide view mode, side mode, bottom mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
