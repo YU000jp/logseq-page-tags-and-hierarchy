@@ -1,4 +1,4 @@
-# Logseq Plugin: *Page-tags and Hierarchy (UI)*
+# Logseq Plugin: *Page-tags and Hierarchy*
 
 1. Split page title hierarchy as links
 1. Page View: Place page tags and hierarchy or references in non-standard positions. Choose from several modes.
