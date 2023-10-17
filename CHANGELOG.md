@@ -1,3 +1,10 @@
+## [2.16.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.16.0...v2.16.1) (2023-10-17)
+
+
+### Bug Fixes
+
+* **bug:** for "Delete the hierarchy from the beginning level" ([d1fe97d](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/d1fe97da5685c59327db041931be932a3dc412ae))
+
 # [2.16.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.15.0...v2.16.0) (2023-10-17)
 
 
