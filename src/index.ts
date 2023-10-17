@@ -10,6 +10,7 @@ import fileNestingPageAccessory from "./nestingPageAccessory.css?inline";
 import fileSide from './side.css?inline';
 import fileBottom from './bottom.css?inline';
 import fileWide from './wide.css?inline';
+import fileHierarchyForFirstLevelOnly from './hierarchyForFirstLevelOnly.css?inline';
 import fileWideModeJournalQueries from './wideJournalQueries.css?inline';
 import { displayToc } from "./toc";
 export let checkOnBlockChanged: boolean = false;//一度のみ
@@ -24,6 +25,8 @@ const keyBottom = "th-bottom";
 const keyWide = "th-wide";
 const keyPageAccessoryOrder = "th-pageAccessoryOrder";
 const keyWideModeJournalQueries = "th-wideModeJournalQueries";
+const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly";
+
 let versionOver: boolean = false;
 
 const main = () => {
@@ -67,6 +70,8 @@ const main = () => {
             if (logseq.settings!.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideModeJournalQueries, style: fileWideModeJournalQueries });
             break;
     }
+
+    if (logseq.settings!.booleanModifyHierarchy === true) logseq.provideStyle({ key: keyHierarchyForFirstLevelOnly, style: fileHierarchyForFirstLevelOnly });
 
     if (logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
 
@@ -158,6 +163,7 @@ const updateToc = () => {
 const onSettingsChanged = () => {
     logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
 
+        // 表示場所の変更
         if (oldSet.placeSelect !== newSet.placeSelect) { //tocはwide viewのみ
             if (oldSet.placeSelect === "wide view" && newSet.placeSelect !== "wide view") removeElementClass("th-toc");
             else if (oldSet.placeSelect !== "wide view" && newSet.placeSelect === "wide view") {
@@ -169,7 +175,6 @@ const onSettingsChanged = () => {
             if (newSet.booleanModifyHierarchy === true
                 && !parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`))
                 provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
-
             else if (newSet.booleanModifyHierarchy === false) {
                 removeProvideStyle(keyPageAccessory);
                 removeProvideStyle(keyNestingPageAccessory);
@@ -211,7 +216,16 @@ const onSettingsChanged = () => {
                     removeProvideStyle(keyNestingPageAccessory);
                     break;
             }
+
+
+            //表示場所の変更以外
         } else {
+
+            // ページタグのサブレベル1のみを表示する
+            if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly);
+            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && newSet.placeSelect !== "unset") logseq.provideStyle({ key: keyHierarchyForFirstLevelOnly, style: fileHierarchyForFirstLevelOnly });
+
+
             if (oldSet.booleanDisplayIfSmaller === false
                 && newSet.booleanDisplayIfSmaller === true) parent.document.body.classList!.remove('th-DisplayIfSmaller');
 

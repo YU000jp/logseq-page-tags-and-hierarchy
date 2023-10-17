@@ -31,12 +31,20 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         🆙unset: *for only use split hierarchy feature
         `,//unsetの場合は他の設定も無効になる
     },
+
     {
         key: "booleanModifyHierarchy",
         title: t("For non-\"unset\", modify the display of hierarchy to be original rather than standard"),
         type: "boolean",
         default: true,
         description: "",
+    },
+    {//上記が有効な場合のみ
+        key: "booleanHierarchyForFirstLevelOnly",
+        title: t("Page tags for first level only (if the above option is enabled)"),
+        type: "boolean",
+        default: false,
+        description: "default: false",
     },
     {
         key: "booleanDisplayIfSmaller",
