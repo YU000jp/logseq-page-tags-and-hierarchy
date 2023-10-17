@@ -1,3 +1,20 @@
+# [2.16.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.15.0...v2.16.0) (2023-10-17)
+
+
+### Bug Fixes
+
+* **Hierarchy list:** plugin settings, first level only [#40](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/40) ([c7b3b52](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/c7b3b52378bde97c38cfc0b7460f5b8eedcc36a1))
+
+
+### Features
+
+* **Hierarchy list:** plugin settings, first level only [#40](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/40) ([b94bb8b](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/b94bb8bdf0ffd6c1f150519fd8315787580e0a87))
+
+
+### Reverts
+
+* **Hierarchy list:** plugin settings, first level only [#40](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/40) ([dc3c3da](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/dc3c3da03ba631ade992e6e8ebd2fe98adb6d884))
+
 # [2.15.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.14.11...v2.15.0) (2023-09-30)
 
 

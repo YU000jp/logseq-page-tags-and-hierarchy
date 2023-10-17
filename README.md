@@ -15,7 +15,7 @@
 
 ## Options
 
-### 1. Show hierarchy of page title
+### 1. Split page title hierarchy as links
 
 - Breaking down the page title hierarchy. Easy access the hierarchies parent page. [#22](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/22)
 
