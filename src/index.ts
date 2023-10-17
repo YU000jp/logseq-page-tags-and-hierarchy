@@ -118,7 +118,6 @@ const onPageChanged = async () => {
             // Hierarchyのサブレベル1のみを表示する
             if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true) hierarchyForFirstLevelOnly(currentPageName.split("/"));
             // Hierarchyの最初から始まるレベルを削除する
-            //if (logseq.settings!.booleanRemoveBeginningLevel === true) デフォルトで削除する
             hierarchyRemoveBeginningLevel(currentPageName.split("/"));
         }
     }
@@ -225,11 +224,6 @@ const onSettingsChanged = () => {
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly);
             else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyForFirstLevelOnly(currentPageName.split("/"));
-
-            // // 階層の最初からのレベルを削除する
-            // if (oldSet.booleanRemoveBeginningLevel === true && newSet.booleanRemoveBeginningLevel === false) removeProvideStyle(keyHierarchyRemoveBeginningLevel);
-            // else if (oldSet.booleanRemoveBeginningLevel === false && newSet.booleanRemoveBeginningLevel === true && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyRemoveBeginningLevel(currentPageName.split("/"));
-
 
             if (oldSet.booleanDisplayIfSmaller === false
                 && newSet.booleanDisplayIfSmaller === true) parent.document.body.classList!.remove('th-DisplayIfSmaller');
