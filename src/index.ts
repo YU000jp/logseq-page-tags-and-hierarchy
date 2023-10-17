@@ -114,7 +114,7 @@ const onPageChanged = async () => {
             const titleElement = pageTagsElement.querySelector("div.content div.foldable-title h2") as HTMLElement | null;
             if (titleElement) titleCollapsedRegisterEvent(titleElement, pageTagsElement.querySelector("div.initial") as HTMLElement);
         }
-        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true && (currentPageName.match(/\//g) || []).length !== 0) {
+        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true && currentPageName.includes("/")) {
             // Hierarchyのサブレベル1のみを表示する
             if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true) hierarchyForFirstLevelOnly(currentPageName.split("/"));
             // Hierarchyの最初から始まるレベルを削除する

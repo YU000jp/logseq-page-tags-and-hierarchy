@@ -9,7 +9,7 @@ export const hierarchyForFirstLevelOnly = (pageNameArray: string[]) => {
     //li.my-2:has(span.page-reference[data-ref*="A/B/C/"]+span.mx-2+span.page-reference[data-ref*="A/B/C/"]+span.mx-2)にマッチするliを削除する
     for (let i = 0; i < count; i++) {
         const pageName = pageNameArray.slice(0, i + 1).join("/");
-        CSSdataRef += `&:has(span.page-reference[data-ref*="${pageName}/"]+span.mx-2+span.page-reference[data-ref*="${pageName}/"]+span.mx-2),`;
+        CSSdataRef += `&:has(span.page-reference[data-ref*="${pageName}/"]+span.mx-2+span.page-reference[data-ref*="${pageName}/"i]+span.mx-2),`;
     }
     //最後の,を削除する
     CSSdataRef = CSSdataRef.slice(0, -1);
@@ -29,7 +29,7 @@ export const hierarchyForFirstLevelOnly = (pageNameArray: string[]) => {
 export const hierarchyRemoveBeginningLevel = (pageNameArray: string[]) => {
     let CSSdataRef = "";
     // A/B/Cの場合、AとA/B、A/B/Cの3つのレベルの次のspan.mx-2を削除する
-    for (let i = 0; i < pageNameArray.length; i++) CSSdataRef += `&[data-ref="${pageNameArray.slice(0, i + 1).join("/")}"]+span.mx-2,`;
+    for (let i = 0; i < pageNameArray.length; i++) CSSdataRef += `&[data-ref="${pageNameArray.slice(0, i + 1).join("/")}"i]+span.mx-2,`;
     //最後の,を削除する
     CSSdataRef = CSSdataRef.slice(0, -1);
     logseq.provideStyle({
