@@ -10,8 +10,7 @@
 
 ---
 
-- Logseq features Page Tags and Hierarchy, which are essential functions that assist in organizing and searching for information. Hierarchy is also called `namespaces`.
-> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
+- Logseq features Page Tags and Hierarchy, which are essential functions that assist in organizing and searching for information. Hierarchy is also called `namespaces`. [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
 
 ## Options
 
@@ -23,8 +22,7 @@
 
 ### 2. Page view UI
 
-- Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes.
-> Wide view mode, side mode, bottom mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
+- Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. Wide view mode, side mode, bottom mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
 
 ---
 
@@ -38,10 +36,6 @@
 
 - After installing this plugin, the styles be applied to non-journal pages. By default, page view mode is turned off. it is possible to set in the plugin settings.
   > For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
-
-### Plugin Settings
-
-> [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Plugin-Settings)
 
 ---
 
