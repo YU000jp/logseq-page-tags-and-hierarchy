@@ -31,26 +31,18 @@ export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLeve
 
 let versionOver: boolean = false;
 
-const main = () => {
+const main = async () => {
+    versionOver = await versionCheck(0, 9, 11);
+    await l10nSetup({ builtinTranslations: { ja } });
+    /* user settings */
+    logseq.useSettingsSchema(settingsTemplate());
 
-    (async () => {
-        versionOver = await versionCheck(0, 9, 11);
-        try {
-            await l10nSetup({ builtinTranslations: { ja } });
-        } finally {
-            /* user settings */
-            logseq.useSettingsSchema(settingsTemplate());
-        }
+    //unset以外
+    //DisplayIfSmaller
+    if (logseq.settings!.placeSelect !== "unset" && logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
 
-        if (logseq.settings!.placeSelect !== "unset") {
-
-            //unset以外
-            //DisplayIfSmaller
-            if (logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller');
-            //ModifyHierarchyList
-            if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
-        }
-    })();
+    //ModifyHierarchyList
+    if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
 
     //CSS minify https://csscompressor.com/
     switch (logseq.settings!.placeSelect) {
@@ -232,11 +224,11 @@ const onSettingsChanged = () => {
 
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly);
-            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && newSet.placeSelect !== "unset" && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyForFirstLevelOnly(currentPageName.split("/"));
+            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyForFirstLevelOnly(currentPageName.split("/"));
 
             // // 階層の最初からのレベルを削除する
             // if (oldSet.booleanRemoveBeginningLevel === true && newSet.booleanRemoveBeginningLevel === false) removeProvideStyle(keyHierarchyRemoveBeginningLevel);
-            // else if (oldSet.booleanRemoveBeginningLevel === false && newSet.booleanRemoveBeginningLevel === true && newSet.placeSelect !== "unset" && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyRemoveBeginningLevel(currentPageName.split("/"));
+            // else if (oldSet.booleanRemoveBeginningLevel === false && newSet.booleanRemoveBeginningLevel === true && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyRemoveBeginningLevel(currentPageName.split("/"));
 
 
             if (oldSet.booleanDisplayIfSmaller === false
@@ -246,8 +238,7 @@ const onSettingsChanged = () => {
                 && newSet.booleanDisplayIfSmaller === false) parent.document.body.classList!.add('th-DisplayIfSmaller');
 
             if (oldSet.booleanModifyHierarchy === false
-                && newSet.booleanModifyHierarchy === true
-                && newSet.placeSelect !== "unset") {
+                && newSet.booleanModifyHierarchy === true) {
                 if (!parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`) && !parent.document.head.querySelector(`style[data-injected-style^="${keyNestingPageAccessory}"]`)) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory);
             }
             else if (oldSet.booleanModifyHierarchy === true

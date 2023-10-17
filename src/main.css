@@ -1,4 +1,12 @@
-body>div#root>div>main div#main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
-    position: absolute;
-    margin-top: -4em;
+body>div#root>div>main {
+    & article>div[data-id="logseq-page-tags-and-hierarchy"] div.heading-item {
+        margin-top: 3em;
+        border-top-width: 1px;
+        padding-top: 1em;
+    }
+
+    & div#main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
+        position: absolute;
+        margin-top: -4em;
+    }
 }
