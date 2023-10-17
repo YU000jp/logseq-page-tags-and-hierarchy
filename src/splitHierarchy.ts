@@ -1,12 +1,5 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user";
 
-export const hierarchyLinksCSS = `
-div#main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
-    position: absolute;
-    margin-top: -4em;
-}
-`;
-
 export const splitHierarchy = (pageName: string, must: boolean, repeat: number,) => {
     if (parent.document.getElementById("hierarchyLinks") !== null) return;//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み

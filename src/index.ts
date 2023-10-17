@@ -2,7 +2,7 @@ import "@logseq/libs";
 import { setup as l10nSetup, t } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
 import ja from "./translations/ja.json";
 import { settingsTemplate, } from "./settings";
-import { splitHierarchy, hierarchyLinksCSS, } from "./splitHierarchy";
+import { splitHierarchy, } from "./splitHierarchy";
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
 import { provideStyleByVersion, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent, versionCheck } from "./lib";
 import filePageAccessory from "./pageAccessory.css?inline";
@@ -10,8 +10,8 @@ import fileNestingPageAccessory from "./nestingPageAccessory.css?inline";
 import fileSide from './side.css?inline';
 import fileBottom from './bottom.css?inline';
 import fileWide from './wide.css?inline';
-import fileHierarchyForFirstLevelOnly from './hierarchyForFirstLevelOnly.css?inline';
 import fileWideModeJournalQueries from './wideJournalQueries.css?inline';
+import fileCSSMain from './main.css?inline';
 import { displayToc } from "./toc";
 export let checkOnBlockChanged: boolean = false;//一度のみ
 let processBlockChanged: boolean = false;//処理中
@@ -25,7 +25,6 @@ const keyBottom = "th-bottom";
 const keyWide = "th-wide";
 const keyPageAccessoryOrder = "th-pageAccessoryOrder";
 const keyWideModeJournalQueries = "th-wideModeJournalQueries";
-const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly";
 
 let versionOver: boolean = false;
 
@@ -71,9 +70,8 @@ const main = () => {
             break;
     }
 
-    if (logseq.settings!.booleanModifyHierarchy === true) logseq.provideStyle({ key: keyHierarchyForFirstLevelOnly, style: fileHierarchyForFirstLevelOnly });
-
-    if (logseq.settings!.booleanSplitHierarchy === true) logseq.provideStyle(hierarchyLinksCSS);
+    // ページタイトルの階層を分割する を含む
+    logseq.provideStyle(fileCSSMain); //メインCSS
 
     //ページ読み込み時に実行コールバック
     logseq.App.onRouteChanged(async ({ template }) => {
@@ -121,6 +119,11 @@ const onPageChanged = async () => {
             const titleElement = pageTagsElement.querySelector("div.content div.foldable-title h2") as HTMLElement | null;
             if (titleElement) titleCollapsedRegisterEvent(titleElement, pageTagsElement.querySelector("div.initial") as HTMLElement);
         }
+
+        // Hierarchyのサブレベル1のみを表示する
+
+        // Hierarchyの最初から始まるレベルを削除する
+
     }
     //ページ名が2023/06/24の形式にマッチする場合
     if (logseq.settings!.booleanModifyHierarchy === true
@@ -220,11 +223,6 @@ const onSettingsChanged = () => {
 
             //表示場所の変更以外
         } else {
-
-            // ページタグのサブレベル1のみを表示する
-            if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly);
-            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && newSet.placeSelect !== "unset") logseq.provideStyle({ key: keyHierarchyForFirstLevelOnly, style: fileHierarchyForFirstLevelOnly });
-
 
             if (oldSet.booleanDisplayIfSmaller === false
                 && newSet.booleanDisplayIfSmaller === true) parent.document.body.classList!.remove('th-DisplayIfSmaller');

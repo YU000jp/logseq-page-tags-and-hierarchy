@@ -40,11 +40,20 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         description: "",
     },
     {//上記が有効な場合のみ
+        // 階層のサブレベル1段階のみを表示する
         key: "booleanHierarchyForFirstLevelOnly",
         title: t("Page tags for first level only (if the above option is enabled)"),
         type: "boolean",
         default: false,
         description: "default: false",
+    },
+    {//上記が有効な場合のみ
+        // 階層の最初からのレベルを削除する
+        key: "booleanRemoveBeginningLevel",
+        title: t("Remove beginning level ( > ) of hierarchy (if the above option is enabled)"),
+        type: "boolean",
+        default: true,
+        description: "default: true",
     },
     {
         key: "booleanDisplayIfSmaller",

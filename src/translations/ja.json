@@ -13,5 +13,6 @@
     "Unlinked references position (wide view only)": "Unlinked Referencesの位置（ワイドビューのみ）",
     "Page hierarchy position (wide view only)": "ページ階層の位置（ワイドビューのみ）",
     "Page tags position (wide view only)": "ページタグの位置（ワイドビューのみ）",
-    "Page tags for first level only (if the above option is enabled)": "ページタグは1レベルのみ（上記のオプションが有効な場合）"
+    "Page tags for first level only (if the above option is enabled)": "ページタグは1レベルのみ（上記のオプションが有効な場合）",
+    "Remove beginning level ( > ) of hierarchy (if the above option is enabled)": "階層の最初からのレベル( > )を削除します（上記のオプションが有効な場合）"
 }
