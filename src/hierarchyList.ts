@@ -9,7 +9,7 @@ export const hierarchyForFirstLevelOnly = (pageNameArray: string[]) => {
     //li.my-2:has(span.page-reference[data-ref*="A/B/C/"]+span.mx-2+span.page-reference[data-ref*="A/B/C/"]+span.mx-2)にマッチするliを削除する
     for (let i = 0; i < count; i++) {
         const pageName = pageNameArray.slice(0, i + 1).join("/");
-        CSSdataRef += `&:has(span.page-reference[data-ref*="${pageName}/"]+span.mx-2+span.page-reference[data-ref*="${pageName}/"i]+span.mx-2),`;
+        CSSdataRef += `&:has(span.page-reference[data-ref*="${pageName}/"i]+span.mx-2+span.page-reference[data-ref*="${pageName}/"i]+span.mx-2),`;
     }
     //最後の,を削除する
     CSSdataRef = CSSdataRef.slice(0, -1);
