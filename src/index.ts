@@ -18,6 +18,7 @@ let processBlockChanged: boolean = false;//処理中
 let currentPageName: string = "";
 import { CSSpageSubOrder } from "./toc";
 import { onSettingsChangedRemoveHierarchyPageTitleOnce, onSettingsChangedRevertHierarchyPageTitleOnce } from "./splitHierarchy";
+import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList";
 const keyPageAccessory = "th-PageAccessory";
 const keyNestingPageAccessory = "th-nestingPageAccessory";
 const keySide = "th-side";
@@ -25,6 +26,8 @@ const keyBottom = "th-bottom";
 const keyWide = "th-wide";
 const keyPageAccessoryOrder = "th-pageAccessoryOrder";
 const keyWideModeJournalQueries = "th-wideModeJournalQueries";
+export const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly";
+export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLevel";
 
 let versionOver: boolean = false;
 
@@ -119,11 +122,13 @@ const onPageChanged = async () => {
             const titleElement = pageTagsElement.querySelector("div.content div.foldable-title h2") as HTMLElement | null;
             if (titleElement) titleCollapsedRegisterEvent(titleElement, pageTagsElement.querySelector("div.initial") as HTMLElement);
         }
-
-        // Hierarchyのサブレベル1のみを表示する
-
-        // Hierarchyの最初から始まるレベルを削除する
-
+        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true && (currentPageName.match(/\//g) || []).length !== 0) {
+            // Hierarchyのサブレベル1のみを表示する
+            if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true) hierarchyForFirstLevelOnly(currentPageName.split("/"));
+            // Hierarchyの最初から始まるレベルを削除する
+            //if (logseq.settings!.booleanRemoveBeginningLevel === true) デフォルトで削除する
+            hierarchyRemoveBeginningLevel(currentPageName.split("/"));
+        }
     }
     //ページ名が2023/06/24の形式にマッチする場合
     if (logseq.settings!.booleanModifyHierarchy === true
@@ -223,6 +228,16 @@ const onSettingsChanged = () => {
 
             //表示場所の変更以外
         } else {
+
+
+            // 階層のサブレベル1のみを表示する
+            if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly);
+            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && newSet.placeSelect !== "unset" && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyForFirstLevelOnly(currentPageName.split("/"));
+
+            // // 階層の最初からのレベルを削除する
+            // if (oldSet.booleanRemoveBeginningLevel === true && newSet.booleanRemoveBeginningLevel === false) removeProvideStyle(keyHierarchyRemoveBeginningLevel);
+            // else if (oldSet.booleanRemoveBeginningLevel === false && newSet.booleanRemoveBeginningLevel === true && newSet.placeSelect !== "unset" && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyRemoveBeginningLevel(currentPageName.split("/"));
+
 
             if (oldSet.booleanDisplayIfSmaller === false
                 && newSet.booleanDisplayIfSmaller === true) parent.document.body.classList!.remove('th-DisplayIfSmaller');

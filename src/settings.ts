@@ -47,14 +47,14 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         default: false,
         description: "default: false",
     },
-    {//上記が有効な場合のみ
-        // 階層の最初からのレベルを削除する
-        key: "booleanRemoveBeginningLevel",
-        title: t("Remove beginning level ( > ) of hierarchy (if the above option is enabled)"),
-        type: "boolean",
-        default: true,
-        description: "default: true",
-    },
+    // {//上記が有効な場合のみ
+    //     // 階層の最初からのレベルを削除する
+    //     key: "booleanRemoveBeginningLevel",
+    //     title: t("Remove beginning level ( > ) of hierarchy (if the above option is enabled)"),
+    //     type: "boolean",
+    //     default: true,
+    //     description: "default: true",
+    // },
     {
         key: "booleanDisplayIfSmaller",
         title: t("Bottom mode, when the window size is less than 1560px, do not display it"),
