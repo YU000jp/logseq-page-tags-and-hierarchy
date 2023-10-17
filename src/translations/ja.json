@@ -11,7 +11,7 @@
     "[unset, side, bottom, wide view]": "[設定しない, 右サイド, 下側, ワイドビュー] ",
     "Page view settings": "ページビューの設定",
     "Hierarchy settings": "階層の設定",
-    "Hierarchy for first level only (if the above option is enabled)": "階層は1レベルのみ（上記のオプションが有効な場合）",
+    "Hierarchy for first level only (if the above option is enabled)": "階層は1レベルのみ",
     "Wide view mode settings": "ワイドビューモードの設定",
     "Enable table of contents on a page": "ページで目次を有効にします",
     "Collapsed table of contents by default": "デフォルトで目次を折りたたみます",

@@ -36,7 +36,7 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
     {//上記が有効な場合のみ
         // 階層のサブレベル1段階のみを表示する
         key: "booleanHierarchyForFirstLevelOnly",
-        title: t("Hierarchy for first level only (if the above option is enabled)"),
+        title: t("Hierarchy for first level only"),
         type: "boolean",
         default: false,
         description: "default: false",
