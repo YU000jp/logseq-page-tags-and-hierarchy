@@ -114,7 +114,7 @@ const onPageChanged = async () => {
             const titleElement = pageTagsElement.querySelector("div.content div.foldable-title h2") as HTMLElement | null;
             if (titleElement) titleCollapsedRegisterEvent(titleElement, pageTagsElement.querySelector("div.initial") as HTMLElement);
         }
-        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true && currentPageName.includes("/")) {
+        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true) {
             // Hierarchyのサブレベル1のみを表示する
             if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true) hierarchyForFirstLevelOnly(currentPageName.split("/"));
             // Hierarchyの最初から始まるレベルを削除する
@@ -223,7 +223,7 @@ const onSettingsChanged = () => {
 
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly);
-            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && currentPageName && (currentPageName.match(/\//g) || []).length !== 0) hierarchyForFirstLevelOnly(currentPageName.split("/"));
+            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && currentPageName) hierarchyForFirstLevelOnly(currentPageName.split("/"));
 
             if (oldSet.booleanDisplayIfSmaller === false
                 && newSet.booleanDisplayIfSmaller === true) parent.document.body.classList!.remove('th-DisplayIfSmaller');
