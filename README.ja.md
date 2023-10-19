@@ -12,7 +12,7 @@
 
 ---
 
-- Logseqには、情報の整理と検索を支援するために不可欠な機能である「ページタグ」と「階層」が備わっています。階層はまた「ネームスペース」とも呼ばれます。[こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
+- Logseqには、情報の整理と検索を支援するために不可欠な機能である「ページタグ」と「階層」が備わっています。階層はまた「ネームスペース」とも呼ばれます。[こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq%E3%81%AF%E3%80%81%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%BF%E3%82%B0%E3%81%A8%E9%9A%8E%E5%B1%A4%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E5%82%99%E3%81%88%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99)
 
 ## オプション
 
@@ -24,7 +24,7 @@
 
 ### 2. ページビューUI
 
-- ページコンテンツに配置されたページタグと階層の位置を通常とは異なる位置に変更します。複数のモードから選択できます。ワイドビューモード、サイドモード、ボトムモードなど... [こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
+- ページコンテンツに配置されたページタグと階層の位置を通常とは異なる位置に変更します。複数のモードから選択できます。ワイドビューモード、サイドモード、ボトムモードなど... [こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%93%E3%83%A5%E3%83%BCUI)
 
 ---
 
