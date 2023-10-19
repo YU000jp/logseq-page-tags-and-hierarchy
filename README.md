@@ -1,3 +1,5 @@
+[日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) / [简体中文](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.zhCN.md)
+
 # Logseq Plugin: *Page-tags and Hierarchy*
 
 1. Split page title hierarchy as links
