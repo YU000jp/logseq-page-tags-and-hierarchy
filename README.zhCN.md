@@ -30,9 +30,8 @@
 
 ## 开始
 
-### 从Logseq Marketplace安装
-
-- 在右上角的工具栏中，单击 `---` 并打开 `插件`。选择 `市场`。在搜索字段中输入 `tags` 并从搜索结果中选择并安装。
+从Logseq Marketplace安装
+  - 在右上角的工具栏中，单击 `---` 并打开 `插件`。选择 `市场`。在搜索字段中输入 `tags` 并从搜索结果中选择并安装。
 
 ### 使用方法
 
@@ -41,18 +40,13 @@
 
 ---
 
-## 作者
-
-- GitHub: [YU000jp](https://github.com/YU000jp)
-
----
-
 ## 先行研究和鸣谢
 
-- Logseq插件
+Logseq插件 > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
 
-  - [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
-  - [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
+Logseq插件 > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
+
+作者 > [YU000jp (GitHub)](https://github.com/YU000jp)
 
 ---
 
