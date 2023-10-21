@@ -1,6 +1,6 @@
 [English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy) / [简体中文](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.zhCN.md)
 
-# Logseq プラグイン: *ページタグと階層*
+# Logseq プラグイン: *ページタグと階層 (ページUI)*
 
 1. ページタイトルの階層をリンクとして分割
 1. ページタグと階層のためのページビューUI
