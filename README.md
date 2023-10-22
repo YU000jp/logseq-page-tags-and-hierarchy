@@ -24,7 +24,7 @@
 
 ### 2. Page view UI
 
-- Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. Wide view mode, side mode, bottom mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
+- Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. Wide view mode, side mode, bottom mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
 
 ---
 
