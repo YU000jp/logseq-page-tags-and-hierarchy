@@ -40,7 +40,7 @@
 
 ---
 
-## 先行研究和鸣谢
+## 先行研究 / 鸣谢
 
 Logseq插件 > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
 
