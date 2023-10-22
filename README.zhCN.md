@@ -1,9 +1,10 @@
 [English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy) / [日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md)
 
-# Logseq插件: *Page-tags and Hierarchy* 页面标签和层次结构
+# Logseq插件: *Page-tags and Hierarchy (Page UI)*
 
-1. 将页面标题的层次分割为链接
-1. 用于页面标签和层次的页面视图界面
+页面标签和层次结构
+  1. 将页面标题的层次分割为链接
+  1. 用于页面标签和层次的页面视图界面
 
 [![最新发布版本](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![许可证](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
@@ -30,7 +31,7 @@
 
 ## 开始
 
-从Logseq Marketplace安装
+从Logseq 市场安装
   - 在右上角的工具栏中，单击 `---` 并打开 `插件`。选择 `市场`。在搜索字段中输入 `tags` 并从搜索结果中选择并安装。
 
 ### 使用方法
