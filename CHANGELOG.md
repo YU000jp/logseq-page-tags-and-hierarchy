@@ -1,3 +1,15 @@
+# [2.17.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.16.3...v2.17.0) (2023-10-22)
+
+
+### Bug Fixes
+
+* **bug:** plugin settings "Wiki" URL ([182ef66](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/182ef66498c962528cb2ee1d11204664ae7cac00))
+
+
+### Features
+
+* **Translations:** ko / zh-CN / zh-Hant ([90a439a](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/90a439ad7d3c95250454e8c4c298b3c5488fc201))
+
 ## [2.16.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.16.2...v2.16.3) (2023-10-18)
 
 
