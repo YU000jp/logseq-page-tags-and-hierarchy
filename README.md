@@ -40,6 +40,10 @@ Install from Logseq Marketplace
 
 ---
 
+## Recommend
+
+- [Short namespaces plugin](https://github.com/YU000jp/logseq-plugin-short-namespaces)
+
 ## Prior art / Credit
 
 Logseq plugin > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
