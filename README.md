@@ -30,9 +30,8 @@
 
 ## Getting Started
 
-### Install from Logseq Marketplace
-
-- Press `---` on the top right toolbar to open `Plugins`. Select `Marketplace`. Type `tags` in the search field, select it from the search results and install.
+Install from Logseq Marketplace
+  - Press `---` on the top right toolbar to open `Plugins`. Select `Marketplace`. Type `tags` in the search field, select it from the search results and install.
 
 ### Usage
 
@@ -41,20 +40,13 @@
 
 ---
 
-## Author
+## Prior art / Credit
 
-- GitHub: [YU000jp](https://github.com/YU000jp)
+Logseq plugin > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
 
----
+Logseq plugin > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
 
-## Prior art & Credit
-
-- Logseq plugin
-
-  - [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
-  - [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
-
----
+Author > [YU000jp (GitHub)](https://github.com/YU000jp)
 
 <a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee" style="height: 42px;width: 152px" ></a>
 
