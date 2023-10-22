@@ -55,7 +55,7 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         type: "enum",
         enumChoices: ["wide view", "side", "bottom", "unset"],
         default: "unset",
-        description: t("[unset, side, bottom, wide view]") + " [wiki](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)",
+        description: t("[unset, side, bottom, wide view]") + ` [wiki](${t("https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI")})`,
     },
     {
         key: "booleanDisplayIfSmaller",
