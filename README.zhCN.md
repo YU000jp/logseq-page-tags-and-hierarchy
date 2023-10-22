@@ -41,6 +41,10 @@
 
 ---
 
+＃＃ 推荐
+
+- [短命名空间插件] (https://github.com/YU000jp/logseq-plugin-short-namespaces)
+
 ## 先行研究 / 鸣谢
 
 Logseq插件 > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
