@@ -1,9 +1,9 @@
 [English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy) / [简体中文](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.zhCN.md)
 
-# Logseq プラグイン: *ページタグと階層 (ページUI)*
-
-1. ページタイトルの階層をリンクとして分割
-1. ページタグと階層のためのページビューUI
+# Logseq プラグイン: *Page-tags and Hierarchy (Page UI)*
+ページタグと階層
+  1. ページタイトルの階層をリンクとして分割
+  1. ページタグと階層のためのページビューUI
 
  [![最新リリースバージョン](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![ライセンス](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
