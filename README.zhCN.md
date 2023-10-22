@@ -12,7 +12,7 @@
 
 ---
 
-- Logseq具备整理和检索信息的关键功能，即“页面标签”和“层次”。层次也被称为“命名空间”。[查看此文档](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
+- Logseq具备整理和检索信息的关键功能，即“页面标签”和“层次”。层次也被称为“命名空间”。[查看此文档](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E9%A1%B5%E9%9D%A2%E6%A0%87%E7%AD%BE%E5%92%8C%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84)
 
 ## 选项
 
@@ -24,7 +24,7 @@
 
 ### 2. 页面视图界面
 
-- 将页面标签和层次的位置移动到页面内容的非常规位置。可以选择多种模式，如宽视图模式、侧边模式、底部模式等... [查看此文档](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
+- 将页面标签和层次的位置移动到页面内容的非常规位置。可以选择多种模式，如宽视图模式、侧边模式、底部模式等... [查看此文档](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E9%A1%B5%E9%9D%A2%E8%A7%86%E5%9B%BE%E7%95%8C%E9%9D%A2)
 
 ---
 
@@ -36,7 +36,7 @@
 ### 使用方法
 
 - 安装此插件后，样式将应用于非日志页面。默认情况下，页面视图模式已关闭，但可以在插件设置中更改。
-  > 适用于日志 => [Column Layout 插件](https://github.com/YU000jp/Logseq-column-Layout)
+  > 适用于日志 => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
 
 ---
 
