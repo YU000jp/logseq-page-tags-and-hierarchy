@@ -41,6 +41,10 @@ Logseq マーケットプレイスからインストール
 
 ---
 
+## おすすめ
+
+- [ページ名の階層を省略する プラグイン](https://github.com/YU000jp/logseq-plugin-short-namespaces)
+
 ## 先行技術とクレジット
 
 Logseq プラグイン > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/) (目次表示)
