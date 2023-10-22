@@ -13,7 +13,7 @@
 
 ---
 
-- Logseqには、情報の整理と検索をおこなうための機能である **「ページタグ」** と **「階層(hierarchy)」** が備わっています。階層はまた「namespaces」とも呼ばれます。[こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq%E3%81%AF%E3%80%81%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%BF%E3%82%B0%E3%81%A8%E9%9A%8E%E5%B1%A4%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E5%82%99%E3%81%88%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99)
+- Logseqには、情報の整理と検索をおこなうための機能である **「ページタグ」** と **「階層(hierarchy)」** が備わっています。階層はまた「namespaces」とも呼ばれます。[こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%BF%E3%82%B0%E3%81%A8%E9%9A%8E%E5%B1%A4)
 
 ## オプション
 
