@@ -1,6 +1,9 @@
 import "@logseq/libs";
 import { setup as l10nSetup, t } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
 import ja from "./translations/ja.json";
+import ko from "./translations/ko.json";
+import zhCN from "./translations/zh-CN.json";
+import zhHant from "./translations/zh-Hant.json";
 import { settingsTemplate, } from "./settings";
 import { splitHierarchy, } from "./splitHierarchy";
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
@@ -33,7 +36,7 @@ let versionOver: boolean = false;
 
 const main = async () => {
     versionOver = await versionCheck(0, 9, 11);
-    await l10nSetup({ builtinTranslations: { ja } });
+    await l10nSetup({ builtinTranslations: { ja,ko,"zh-Hant": zhHant,"zh-CN":zhCN } });
     /* user settings */
     logseq.useSettingsSchema(settingsTemplate());
 
