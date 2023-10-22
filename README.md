@@ -1,6 +1,6 @@
 [日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) / [简体中文](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.zhCN.md)
 
-# Logseq Plugin: *Page-tags and Hierarchy*
+# Logseq Plugin: *Page-tags and Hierarchy (Page UI)*
 
 1. Split page title hierarchy as links
 1. Page view UI for page-tags and hierarchy
@@ -24,15 +24,14 @@
 
 ### 2. Page view UI
 
-- Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. Wide view mode, side mode, bottom mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View)
+- Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. Wide view mode, side mode, bottom mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
 
 ---
 
 ## Getting Started
 
-### Install from Logseq Marketplace
-
-- Press `---` on the top right toolbar to open `Plugins`. Select `Marketplace`. Type `tags` in the search field, select it from the search results and install.
+Install from Logseq Marketplace
+  - Press `---` on the top right toolbar to open `Plugins`. Select `Marketplace`. Type `tags` in the search field, select it from the search results and install.
 
 ### Usage
 
@@ -41,20 +40,13 @@
 
 ---
 
-## Author
+## Prior art / Credit
 
-- GitHub: [YU000jp](https://github.com/YU000jp)
+Logseq plugin > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
 
----
+Logseq plugin > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
 
-## Prior art & Credit
-
-- Logseq plugin
-
-  - [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
-  - [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
-
----
+Author > [YU000jp (GitHub)](https://github.com/YU000jp)
 
 <a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee" style="height: 42px;width: 152px" ></a>
 
