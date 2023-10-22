@@ -41,7 +41,7 @@
 
 ---
 
-＃＃ 推荐
+## 推荐
 
 - [短命名空间插件] (https://github.com/YU000jp/logseq-plugin-short-namespaces)
 
