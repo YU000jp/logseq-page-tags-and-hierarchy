@@ -1,27 +1,25 @@
-import "@logseq/libs";
+import "@logseq/libs"
+import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
 import { setup as l10nSetup, t } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
-import ja from "./translations/ja.json";
-import ko from "./translations/ko.json";
-import zhCN from "./translations/zh-CN.json";
-import zhHant from "./translations/zh-Hant.json";
-import { settingsTemplate, } from "./settings";
-import { splitHierarchy, } from "./splitHierarchy";
-import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user";
-import { provideStyleByVersion, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent, versionCheck } from "./lib";
-import filePageAccessory from "./pageAccessory.css?inline";
-import fileNestingPageAccessory from "./nestingPageAccessory.css?inline";
-import fileSide from './side.css?inline';
-import fileBottom from './bottom.css?inline';
-import fileWide from './wide.css?inline';
-import fileWideModeJournalQueries from './wideJournalQueries.css?inline';
-import fileCSSMain from './main.css?inline';
-import { displayToc } from "./toc";
+import fileBottom from './bottom.css?inline'
+import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
+import { provideStyleByVersion, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent, versionCheck } from "./lib"
+import fileCSSMain from './main.css?inline'
+import fileNestingPageAccessory from "./nestingPageAccessory.css?inline"
+import filePageAccessory from "./pageAccessory.css?inline"
+import { settingsTemplate, } from "./settings"
+import fileSide from './side.css?inline'
+import { onSettingsChangedRemoveHierarchyPageTitleOnce, onSettingsChangedRevertHierarchyPageTitleOnce, splitHierarchy, } from "./splitHierarchy"
+import { CSSpageSubOrder, displayToc } from "./toc"
+import ja from "./translations/ja.json"
+import ko from "./translations/ko.json"
+import zhCN from "./translations/zh-CN.json"
+import zhHant from "./translations/zh-Hant.json"
+import fileWide from './wide.css?inline'
+import fileWideModeJournalQueries from './wideJournalQueries.css?inline'
 export let checkOnBlockChanged: boolean = false;//一度のみ
 let processBlockChanged: boolean = false;//処理中
 let currentPageName: string = "";
-import { CSSpageSubOrder } from "./toc";
-import { onSettingsChangedRemoveHierarchyPageTitleOnce, onSettingsChangedRevertHierarchyPageTitleOnce } from "./splitHierarchy";
-import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList";
 const keyPageAccessory = "th-PageAccessory";
 const keyNestingPageAccessory = "th-nestingPageAccessory";
 const keySide = "th-side";
