@@ -43,8 +43,12 @@ Logseq マーケットプレイスからインストール
 
 ## おすすめ
 
+- [クイック PARAメソッド プラグイン](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
+  * 「namespaceクエリー検索」機能があります。
+    - 同じ名称を持つページを検索したり、階層構造を気にせず、関連ページを探しリストアップします。
+  * 同じ階層に新しいページを作成したり、サブページを追加できる機能が提供されています。
 - [ページ名の階層を省略する プラグイン](https://github.com/YU000jp/logseq-plugin-short-namespaces)
-
+  > 長くなりがちな階層リンクを省略して表示します。
 ## 先行技術とクレジット
 
 Logseq プラグイン > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/) (目次表示)

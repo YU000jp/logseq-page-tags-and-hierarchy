@@ -42,7 +42,13 @@ Install from Logseq Marketplace
 
 ## Recommend
 
+- [Quickly PARA method plugin](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
+  * There is a "namespace query search" feature.
+    - Search for pages with the same name or explore related pages without worrying about the hierarchical structure and list them.
+  * The ability to create a new page in the same hierarchy or add a sub page is provided.
+
 - [Short namespaces plugin](https://github.com/YU000jp/logseq-plugin-short-namespaces)
+  - Displays hierarchical links, which tend to be long, by omitting them.
 
 ## Prior art / Credit
 
