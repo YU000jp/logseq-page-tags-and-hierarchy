@@ -41,7 +41,7 @@ function tocContentTitleCollapsed(PageName: string) {
 
 async function insertElement(): Promise<void> {
   //コンテンツに目次が存在する場合のみ処理を行う
-  const elementPageRelative = parent.document.querySelector("div#main-content-container div.page.relative") as HTMLDivElement | null
+  const elementPageRelative = parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative") as HTMLDivElement | null
   if (!elementPageRelative || elementPageRelative.querySelector("div.th-toc") !== null) return
   //div elementを作成する
   const tocDiv: HTMLDivElement = document.createElement("div")
@@ -50,15 +50,16 @@ async function insertElement(): Promise<void> {
   //div elementに内容を追加する
   tocDiv.innerHTML = `
     <div class="flex flex-col">
-    <div class="content">
-    <div id="tocContentTitle" class="flex-1 flex-row foldable-title cursor">
-    <div class="flex flex-row items-center">
-    <h2 class="font-medium">Table of Contents</h2>
-    </div></div>
-    </div>
-    <div class="${logseq.settings!.booleanTableOfContentsHide === true ? "hidden" : "initial"}">
-    <div id="tocInPage" class="my-2 color-level px-2 py-2 rounded ls-block"></div>
-    </div>
+      <div class="content">
+        <div id="tocContentTitle" class="flex-1 flex-row foldable-title cursor">
+          <div class="flex flex-row items-center">
+          <h2 class="font-medium">Table of Contents</h2>
+          </div>
+        </div>
+      </div>
+      <div class="${logseq.settings!.booleanTableOfContentsHide === true ? "hidden" : "initial"}">
+      <div id="tocInPage" class="my-2 color-level px-2 py-2 rounded ls-block"></div>
+      </div>
     </div>
     `
   //div elementを挿入する
@@ -121,7 +122,7 @@ const headersList = async (targetElement: HTMLElement, tocBlocks: TocBlock[], th
   elementTop.innerHTML = "To top ⬆️"
   elementTop.style.padding = "1em"
   targetElement.append(elementTop)
-  elementTop.addEventListener('click', () => parent.document.querySelector("div#main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))
+  elementTop.addEventListener('click', () => parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))
 
   // Create list
   for (let i = 0; i < tocBlocks.length; i++) {
@@ -258,13 +259,13 @@ async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
   }
 }
 export const CSSpageSubOrder = (settings) => `
-div#root div.page.relative>div {
-&.lazy-visibility:has(div.scheduled-or-deadlines){order:${settings.enumScheduleDeadline}}
-&.th-toc{order:${settings.enumTableOfContents}}
-&:has(div.page-linked){order:${settings.enumLinkedReferences}}
-&:has(div.page-unlinked){order:${settings.enumUnlinkedReferences}}
-&.page-hierarchy{order:${settings.enumPageHierarchy}}
-&.page-tags{order:${settings.enumPageTags}}
+body[data-page=page]>div#root>div>main div#main-content-container div.page.relative>div {
+  &.lazy-visibility:has(div.scheduled-or-deadlines) {order:${settings.enumScheduleDeadline}}
+  &.th-toc {order:${settings.enumTableOfContents}}
+  &:has(div.page-linked) {order:${settings.enumLinkedReferences}}
+  &:has(div.page-unlinked) {order:${settings.enumUnlinkedReferences}}
+  &.page-hierarchy {order:${settings.enumPageHierarchy}}
+  &.page-tags {order:${settings.enumPageTags}}
 }
 `;
 

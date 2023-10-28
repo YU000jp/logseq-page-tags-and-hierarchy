@@ -15,6 +15,6 @@ body[data-page=page] div#main-content-container div.relative+div.references{widt
 body[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:22vw;bottom:0}
 }
 body[data-page=page] main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content{max-width:1450px}
-body.is-pdf-active div#main-content-container div:is(.page-hierarchy,.relative+div.references),
-div#right-sidebar :is(div.page-hierarchy,div.relative+div.references),
-main.ls-right-sidebar-open div#main-content-container :is(div.page-hierarchy, div.relative+div.references){display:none}
+body[data-page=page].is-pdf-active div#main-content-container div:is(.page-hierarchy,.relative+div.references),
+body[data-page=page] div#right-sidebar :is(div.page-hierarchy,div.relative+div.references),
+body[data-page=page] main.ls-right-sidebar-open div#main-content-container :is(div.page-hierarchy, div.relative+div.references){display:none}

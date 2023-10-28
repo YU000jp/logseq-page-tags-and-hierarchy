@@ -1,4 +1,4 @@
-body[data-page=page]>div#root>div>main>div#app-container {
+body[data-page=page]>div#root>div>main>div#app-container div#main-content-container {
     & div {
         &.page-hierarchy {
             &:not(.th-journal) ul.namespaces {
@@ -54,7 +54,7 @@ body[data-page=page]>div#root>div>main>div#app-container {
                 font-size: .93em;
                 padding: .6em 1em 1em 1em;
 
-                & li {
+                &>li {
                     list-style: decimal-leading-zero;
                 }
             }

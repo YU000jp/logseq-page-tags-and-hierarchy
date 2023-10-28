@@ -9,7 +9,7 @@ import fileNestingPageAccessory from "./nestingPageAccessory.css?inline"
 import filePageAccessory from "./pageAccessory.css?inline"
 import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
-import { onSettingsChangedRemoveHierarchyPageTitleOnce, onSettingsChangedRevertHierarchyPageTitleOnce, splitHierarchy, } from "./splitHierarchy"
+import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitHierarchy, } from "./splitHierarchy"
 import { CSSpageSubOrder, displayToc } from "./toc"
 import ja from "./translations/ja.json"
 import ko from "./translations/ko.json"
@@ -109,10 +109,10 @@ const onPageChanged = async () => {
         if (logseq.settings!.placeSelect === "wide view"
             && logseq.settings!.booleanTableOfContents === true) displayToc(currentPageName)
         //ページタグの折りたたみを有効にする
-        const pageTagsElement = parent.document.querySelector("body>div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
+        const pageTagsElement = parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
         if (pageTagsElement) {
             setTimeout(() => { //あとからでもいい処理
-                const titleElement = pageTagsElement.querySelector("body>div#root>div>main div.content div.foldable-title h2") as HTMLElement | null
+                const titleElement = pageTagsElement.querySelector("body[data-page=page]>div#root>div>main div.content div.foldable-title h2") as HTMLElement | null
                 const eleInitial = pageTagsElement.querySelector("div.initial") as HTMLElement | null
                 if (titleElement && eleInitial) titleCollapsedRegisterEvent(titleElement, eleInitial)
             }, 100)
@@ -132,7 +132,7 @@ const onPageChanged = async () => {
             || currentPageName.match(/^(\d{4}\/\d{2})/)
             //|| currentPageName.match(/^(\d{4}\/\d{2}\/\d{2})/) //Journalの場合はもともと表示されない
         )) {
-        parent.document!.querySelector("div#main-content-container div.page-hierarchy")?.classList.add('th-journal')
+        parent.document!.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page-hierarchy")?.classList.add('th-journal')
     }
 
 }
@@ -271,17 +271,17 @@ const onSettingsChanged = () => {
                 if (newSet.booleanSplitHierarchy === true) {
                     splitHierarchy(currentPageName)
                     if (newSet.booleanRemoveHierarchyPageTitle === true)
-                        onSettingsChangedRemoveHierarchyPageTitleOnce() //ページタイトルの階層を削除
+                        removeOnSettingsChangedHierarchyPageTitleOnce() //ページタイトルの階層を削除
                 } else if (newSet.booleanSplitHierarchy === false) {
                     removeElementId("hierarchyLinks")
-                    onSettingsChangedRevertHierarchyPageTitleOnce() //元に戻す
+                    revertOnSettingsChangedHierarchyPageTitleOnce() //元に戻す
                 }
             }
             if (oldSet.booleanSplitHierarchy === true) { //Hierarchy Linksが有効な場合のみ
                 if (oldSet.booleanRemoveHierarchyPageTitle === false && newSet.booleanRemoveHierarchyPageTitle === true)
-                    onSettingsChangedRemoveHierarchyPageTitleOnce() //ページタイトルの階層を削除
+                    removeOnSettingsChangedHierarchyPageTitleOnce() //ページタイトルの階層を削除
                 else if (oldSet.booleanRemoveHierarchyPageTitle === true && newSet.booleanRemoveHierarchyPageTitle === false)
-                    onSettingsChangedRevertHierarchyPageTitleOnce()
+                    revertOnSettingsChangedHierarchyPageTitleOnce()
             }
         }
     })

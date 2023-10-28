@@ -1,4 +1,4 @@
-body>div#root>div>main {
+body[data-page=page]>div#root>div>main {
     & article>div[data-id="logseq-page-tags-and-hierarchy"] div.heading-item {
         margin-top: 3em;
         border-top-width: 1px;

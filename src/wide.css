@@ -1,7 +1,8 @@
 body[data-page=page] {
     &>div#root>div>main div {
 
-        & div {
+        &#main-content-container div {
+
             &.cp__sidebar-main-content {
                 max-width: unset
             }
@@ -13,7 +14,12 @@ body[data-page=page] {
                 padding-right: .8em;
                 user-select: none;
 
-                & :is(h1, h2, h3, h4, h5, h6) {
+                & h1,
+                & h2,
+                & h3,
+                & h4,
+                & h5,
+                & h6 {
                     &:hover {
                         border-radius: 2px;
                         background-color: var(--ls-block-highlight-color);
@@ -34,14 +40,21 @@ body[data-page=page] {
                     margin-top: .6em;
                 }
 
-                & :is(h2, h3, h4, h5, h6) {
+                & h2,
+                & h3,
+                & h4,
+                & h5,
+                & h6 {
                     margin-top: .5em;
                     display: list-item;
                     list-style-type: disc;
                     list-style-position: inside;
                 }
 
-                & :is(h3, h4, h5, h6) {
+                & h3,
+                & h4,
+                & h5,
+                & h6 {
                     padding-top: .6em;
                 }
 
@@ -66,6 +79,19 @@ body[data-page=page] {
                 display: flex;
 
                 &>div {
+
+                    & div#tocInPage,
+                    & div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
+                    &:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
+                        max-height: 86vh;
+                        overflow: auto;
+                    }
+
+                    &.relative {
+                        min-width: 1050px;
+                        max-width: 1450px;
+                        flex: 1;
+                    }
 
                     &:not(.relative) {
                         padding: 1em;
@@ -94,9 +120,8 @@ body[data-page=page] {
                         }
                     }
 
-
-
-                    &:is(.page-tags, .page-hierarchy) {
+                    &.page-tags,
+                    &.page-hierarchy {
                         padding: 1em;
 
                         & div {
@@ -117,7 +142,6 @@ body[data-page=page] {
                         min-width: 400px
                     }
 
-
                     &.page-tags:not(:has(div.content+div.hidden)) {
                         max-width: 480px;
                         min-width: 400px
@@ -125,13 +149,15 @@ body[data-page=page] {
 
                     & div {
 
+                        /*  */
                         &.foldable-title h2 {
                             user-select: none;
                         }
 
-                        &:is(.page-linked, .page-unlinked) {
+                        &.page-linked,
+                        &.page-unlinked {
                             font-size: .96em;
-
+                            overflow-y: auto;
 
                             &:not(:has(div.content+div.hidden)) {
                                 min-width: 400px;
@@ -141,11 +167,9 @@ body[data-page=page] {
                                     min-width: 500px
                                 }
                             }
-
-                            &:is(:hover, :focus-within)>div.content>div>div.initial {
-                                overflow-y: scroll
-                            }
                         }
+
+                        /*  */
 
                         &.page-linked div.pt-6 {
                             padding-top: unset
@@ -181,32 +205,23 @@ body[data-page=page] {
                     }
                 }
 
-                &>:is(div div.references, div.page-hierarchy) div.foldable-title a.block-control {
+                &>div.page-hierarchy div.foldable-title a.block-control {
                     display: none;
                 }
 
-                &>div.relative {
-                    min-width: 1050px;
-                    max-width: 1450px;
-                    flex: 1;
-                }
             }
         }
 
-
-        &#main-content-container div.page.relative>div div#tocInPage,
-        &.page.relative>div div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
-        &.page.relative>div:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
-            max-height: 86vh;
-            overflow: auto
-        }
 
         &#right-sidebar div.page.relative>div.relative {
             min-width: 94%
         }
 
-        &:is(#main-content-container, #right-sidebar) div.is-journals div#today-queries {
-            display: none
+        &#main-content-container,
+        &#right-sidebar {
+            & div.is-journals div#today-queries {
+                display: none;
+            }
         }
     }
 
@@ -220,7 +235,7 @@ body[data-page=page] {
                     margin-top: unset
                 }
 
-                >div {
+                &>div {
                     &.relative {
                         margin-right: 1.5em
                     }

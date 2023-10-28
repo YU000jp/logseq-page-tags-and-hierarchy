@@ -1,5 +1,10 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user"
 
+/**
+ * Splits the hierarchy of a page name and creates links for each level of the hierarchy.
+ * @param pageName - The name of the page to split the hierarchy for.
+ * @returns void
+ */
 export const splitHierarchy = async (pageName: string) => {
     if (parent.document.getElementById("hierarchyLinks") !== null) return//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
@@ -37,6 +42,12 @@ export const splitHierarchy = async (pageName: string) => {
     }
 }
 
+/**
+ * Removes the hierarchy from the page title.
+ * @param lastPart - The last part of the page name.
+ * @param fullName - The full name of the page.
+ * @returns void
+ */
 export const removeHierarchyPageTitle = async (lastPart: string, fullName: string) => {
     // ジャーナルは除外
     const pageTitleElement = parent.document.querySelector("body>div#root>div>main div#main-content-container div.page.relative:not(.is-journals) div.ls-page-title h1.page-title span.title") as HTMLDivElement | null
@@ -69,6 +80,12 @@ export const removeHierarchyPageTitle = async (lastPart: string, fullName: strin
 
 }
 
+/**
+ * Opens a page in Logseq.
+ * @param pageName - The name of the page to open.
+ * @param shiftKey - Whether the shift key is pressed.
+ * @returns void
+ */
 const openPage = async (pageName: string, shiftKey: boolean) => {
     const page = await logseq.Editor.getPage(pageName) as PageEntity | null//ページの存在チェックが必要
     if (page) {
@@ -79,12 +96,22 @@ const openPage = async (pageName: string, shiftKey: boolean) => {
         }
     }
 }
-export const onSettingsChangedRevertHierarchyPageTitleOnce = () => {
+
+/**
+ * Reverts the hierarchy in the page title once when the settings are changed.
+ * @returns void
+ */
+export const revertOnSettingsChangedHierarchyPageTitleOnce = () => {
     const pageTitleSelector = "div#main-content-container h1.page-title span.title"
     const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null
     if (pageTitleElement) pageTitleElement.innerText = pageTitleElement.dataset.ref as string
 }
-export const onSettingsChangedRemoveHierarchyPageTitleOnce = () => {
+
+/**
+ * Removes the hierarchy from the page title once when the settings are changed.
+ * @returns void
+ */
+export const removeOnSettingsChangedHierarchyPageTitleOnce = () => {
     const pageTitleSelector = "div#main-content-container h1.page-title span.title"
     const pageTitleElement = parent.document.querySelector(pageTitleSelector) as HTMLDivElement | null
     if (pageTitleElement) {
