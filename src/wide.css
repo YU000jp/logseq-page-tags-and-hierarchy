@@ -1,11 +1,5 @@
-body>div#root>div>main div {
-
-    &#main-content-container:not(:has(div#journals)) {
-        justify-content: unset !important;
-
-        &.scrollbar-spacing {
-            overflow-x: unset
-        }
+body[data-page=page] {
+    &>div#root>div>main div {
 
         & div {
             &.cp__sidebar-main-content {
@@ -69,7 +63,7 @@ body>div#root>div>main div {
             &.page.relative {
                 display: flex;
 
-                >div {
+                &>div {
 
                     &:not(.relative) {
                         padding: 1em;
@@ -141,7 +135,7 @@ body>div#root>div>main div {
                                 min-width: 400px;
                                 max-width: 570px;
 
-                                :focus-within {
+                                &:focus-within {
                                     min-width: 500px
                                 }
                             }
@@ -160,11 +154,9 @@ body>div#root>div>main div {
                         }
                     }
 
-                    >div.page-unlinked.mt-6 {
+                    &>div.page-unlinked.mt-6 {
                         margin-top: unset
                     }
-
-
 
                     &.lazy-visibility {
 
@@ -187,59 +179,60 @@ body>div#root>div>main div {
                     }
                 }
 
-                >:is(div div.references, div.page-hierarchy) div.foldable-title a.block-control {
-                    display: none
+                &>:is(div div.references, div.page-hierarchy) div.foldable-title a.block-control {
+                    display: none;
                 }
 
                 &>div.relative {
                     min-width: 1050px;
                     max-width: 1450px;
-                    flex: 1
-                }
-            }
-        }
-    }
-
-    &#main-content-container div.page.relative>div div#tocInPage,
-    &.page.relative>div div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
-    &.page.relative>div:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
-        max-height: 86vh;
-        overflow: auto
-    }
-
-    &#right-sidebar div.page.relative>div.relative {
-        min-width: 94%
-    }
-
-    &:is(#main-content-container, #right-sidebar) div.is-journals div#today-queries {
-        display: none
-    }
-}
-
-
-body.is-awSt-enabled>div#root>div>main>div#app-container div#main-content-container {
-    & div {
-        &.page.relative {
-            gap: .5em;
-
-            & div.mt-6 {
-                margin-top: unset
-            }
-
-            >div {
-                &.relative {
-                    margin-right: 1.5em
-                }
-
-                &:not(.relative) {
-                    background: var(--ls-primary-background-color);
-                    border-radius: 7px
+                    flex: 1;
                 }
             }
         }
 
-        &.cp__sidebar-main-content>div {
-            margin-left: unset
+
+        &#main-content-container div.page.relative>div div#tocInPage,
+        &.page.relative>div div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
+        &.page.relative>div:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
+            max-height: 86vh;
+            overflow: auto
+        }
+
+        &#right-sidebar div.page.relative>div.relative {
+            min-width: 94%
+        }
+
+        &:is(#main-content-container, #right-sidebar) div.is-journals div#today-queries {
+            display: none
+        }
+    }
+
+
+    &.is-awSt-enabled>div#root>div>main>div#app-container div#main-content-container {
+        & div {
+            &.page.relative {
+                gap: .5em;
+
+                & div.mt-6 {
+                    margin-top: unset
+                }
+
+                >div {
+                    &.relative {
+                        margin-right: 1.5em
+                    }
+
+                    &:not(.relative) {
+                        background: var(--ls-primary-background-color);
+                        border-radius: 7px
+                    }
+                }
+            }
+
+            &.cp__sidebar-main-content>div {
+                margin-left: unset
+            }
         }
     }
 }
