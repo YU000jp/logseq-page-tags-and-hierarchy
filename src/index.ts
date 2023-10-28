@@ -97,23 +97,26 @@ logseq.ready(main).catch(console.error)
 
 
 const onPageChanged = async () => {
-    const current = await logseq.Editor.getCurrentPage() as PageEntity | null
+    const current = await logseq.Editor.getCurrentPage() as { originalName: string } | null
     if (current) {
         currentPageName = current.originalName //index.tsの値を書き換える
         //Hierarchy Links
-        if (parent.document.getElementById("hierarchyLinks") as HTMLSpanElement | null === null
-            && logseq.settings!.booleanSplitHierarchy === true
+        if (logseq.settings!.booleanSplitHierarchy === true
             && currentPageName
-            && currentPageName.includes("/")
-            && !(currentPageName.includes(","))) splitHierarchy(currentPageName, true, 0,)
+            && currentPageName.includes("/") as boolean === true
+            && (currentPageName.includes(",")) as boolean === false) splitHierarchy(currentPageName)
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view"
             && logseq.settings!.booleanTableOfContents === true) displayToc(currentPageName)
         //ページタグの折りたたみを有効にする
-        const pageTagsElement = parent.document.querySelector("div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
+        const pageTagsElement = parent.document.querySelector("body>div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
         if (pageTagsElement) {
-            const titleElement = pageTagsElement.querySelector("div.content div.foldable-title h2") as HTMLElement | null
-            if (titleElement) titleCollapsedRegisterEvent(titleElement, pageTagsElement.querySelector("div.initial") as HTMLElement)
+            setTimeout(() => { //あとからでもいい処理
+                const titleElement = pageTagsElement.querySelector("body>div#root>div>main div.content div.foldable-title h2") as HTMLElement | null
+                const eleInitial = pageTagsElement.querySelector("div.initial") as HTMLElement | null
+                if (titleElement && eleInitial) titleCollapsedRegisterEvent(titleElement, eleInitial)
+            }, 100)
+
         }
         if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true) {
             // Hierarchyのサブレベル1のみを表示する
@@ -266,7 +269,7 @@ const onSettingsChanged = () => {
             }
             if (oldSet.booleanSplitHierarchy !== newSet.booleanSplitHierarchy) {
                 if (newSet.booleanSplitHierarchy === true) {
-                    splitHierarchy(currentPageName, true, 0)
+                    splitHierarchy(currentPageName)
                     if (newSet.booleanRemoveHierarchyPageTitle === true)
                         onSettingsChangedRemoveHierarchyPageTitleOnce() //ページタイトルの階層を削除
                 } else if (newSet.booleanSplitHierarchy === false) {
