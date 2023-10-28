@@ -4,10 +4,9 @@ import { checkOnBlockChanged, onBlockChanged } from ".";
 import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage } from "./markdown";
 export const displayToc = async (pageName: string) => {
   if (logseq.settings!.placeSelect !== "wide view") return; //wide viewのみ
-  const pageBlocks = await logseq.Editor.getPageBlocksTree(pageName) as BlockEntity[];
 
   //ページの全ブロックからheaderがあるかどうかを確認する
-  const headers = getTocBlocks(pageBlocks as Child[]);
+  const headers = getTocBlocks(await logseq.Editor.getPageBlocksTree(pageName) as BlockEntity[] as Child[]);
   if (headers.length > 0) {
     //Headerが存在する場合のみ
     const element = parent.document.getElementById("tocInPage") as HTMLDivElement | null;
