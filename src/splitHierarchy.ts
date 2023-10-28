@@ -1,10 +1,10 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user"
 
-export const splitHierarchy = (pageName: string, must: boolean, repeat: number,) => {
+export const splitHierarchy = async (pageName: string, must: boolean, repeat: number,) => {
     if (parent.document.getElementById("hierarchyLinks") !== null) return//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
     if (must !== true && repeat !== undefined && repeat > 10) return
-    const h1Element = parent.document.querySelector("div#main-content-container h1.page-title") as HTMLHeadElement | null
+    const h1Element = parent.document.querySelector("body>div#root>div>main div#main-content-container h1.page-title") as HTMLHeadElement | null
     if (h1Element === null) {
         setTimeout(() => splitHierarchy(pageName, false, repeat + 1), 40)
         return
