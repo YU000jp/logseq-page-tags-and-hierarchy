@@ -13,21 +13,12 @@ body[data-page=page] {
                 padding-right: .8em;
                 user-select: none;
 
-                & :is(h1, h2, h3, h4, h5, h6):hover {
-                    border-radius: 2px;
-                    background-color: var(--ls-block-highlight-color);
-                    transition: background-color .2s cubic-bezier(0, 1, 0, 1);
-                }
-
-                & :is(h2, h3, h4, h5, h6) {
-                    margin-top: .5em;
-                    display: list-item;
-                    list-style-type: disc;
-                    list-style-position: inside;
-                }
-
-                & :is(h3, h4, h5, h6) {
-                    padding-top: .6em;
+                & :is(h1, h2, h3, h4, h5, h6) {
+                    &:hover {
+                        border-radius: 2px;
+                        background-color: var(--ls-block-highlight-color);
+                        transition: background-color .2s cubic-bezier(0, 1, 0, 1);
+                    }
                 }
 
                 & h1 {
@@ -41,6 +32,17 @@ body[data-page=page] {
                     outline: 1px solid var(--ls-quaternary-background-color);
                     border-bottom: unset;
                     margin-top: .6em;
+                }
+
+                & :is(h2, h3, h4, h5, h6) {
+                    margin-top: .5em;
+                    display: list-item;
+                    list-style-type: disc;
+                    list-style-position: inside;
+                }
+
+                & :is(h3, h4, h5, h6) {
+                    padding-top: .6em;
                 }
 
                 & h3 {
