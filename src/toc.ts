@@ -262,7 +262,7 @@ export const CSSpageSubOrder = (settings) => `
 body[data-page=page]>div#root>div>main div#main-content-container div.page.relative>div {
   &.lazy-visibility:has(>div>div.fade-enter-active>div.scheduled-or-deadlines) {order:${settings.enumScheduleDeadline}}
   &.th-toc {order:${settings.enumTableOfContents}}
-  &:has(>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked) {order:${settings.enumLinkedReferences}}
+  &:has(>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked) {order:${settings.enumLinkedReferences}}
   &:has(>div.references.page-unlinked) {order:${settings.enumUnlinkedReferences}}
   &.page-hierarchy {order:${settings.enumPageHierarchy}}
   &.page-tags {order:${settings.enumPageTags}}
