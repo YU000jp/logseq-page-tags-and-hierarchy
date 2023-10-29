@@ -1,3 +1,10 @@
+# [2.18.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.17.3...v2.18.0) (2023-10-29)
+
+
+### Features
+
+* **Add:** plugin settings > Hide "Unlinked References" ([28e2e30](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/28e2e30c280c4d6e39e0e7aea8c8c2ad5049b9ba))
+
 ## [2.17.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.17.2...v2.17.3) (2023-10-29)
 
 
