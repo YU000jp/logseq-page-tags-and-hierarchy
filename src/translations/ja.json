@@ -7,7 +7,7 @@
     "Logseq v0.9.11 or later": "Logseq v0.9.11以降",
     "Delete the hierarchy from the beginning level": "階層を最初のレベルから削除する",
     "Modify the display of hierarchy to be original rather than standard.": "階層の表示方法を、標準ではなくオリジナルに変更します",
-    "Bottom mode, when the window size is less than 1560px, do not display it": "ウィンドウサイズが1560px未満の場合、ボトムモードでは表示しない",
+    "Bottom mode > when the window size is less than 1560px, do not display it": "ウィンドウサイズが1560px未満の場合、ボトムモードでは表示しない",
     "[unset, side, bottom, wide view]": "[設定しない, 右サイド, 下側, ワイドビュー] ",
     "Page view settings": "ページビューの設定",
     "Hierarchy settings": "階層の設定",

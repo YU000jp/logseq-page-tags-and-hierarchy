@@ -59,7 +59,7 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
     },
     {
         key: "booleanDisplayIfSmaller",
-        title: t("Bottom mode, when the window size is less than 1560px, do not display it"),
+        title: t("Bottom mode > when the window size is less than 1560px, do not display it"),
         type: "boolean",
         default: true,
         description: "default: true",
