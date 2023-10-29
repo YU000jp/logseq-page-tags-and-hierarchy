@@ -1,213 +1,220 @@
 body[data-page=page] {
     &>div#root>div>main div {
 
-        &#main-content-container div {
-
-            &.cp__sidebar-main-content {
-                max-width: unset
+        &#main-content-container {
+            &::-webkit-scrollbar {
+                height: 1.2em;
             }
 
-            &#tocInPage {
-                font-size: .88em;
-                padding-bottom: 2em;
-                padding-left: 1em;
-                padding-right: .8em;
-                user-select: none;
+            & div {
 
-                & h1,
-                & h2,
-                & h3,
-                & h4,
-                & h5,
-                & h6 {
-                    &:hover {
-                        border-radius: 2px;
-                        background-color: var(--ls-block-highlight-color);
-                        transition: background-color .2s cubic-bezier(0, 1, 0, 1);
+                &.cp__sidebar-main-content {
+                    max-width: unset
+                }
+
+                &#tocInPage {
+                    font-size: .88em;
+                    padding-bottom: 2em;
+                    padding-left: 1em;
+                    padding-right: .8em;
+                    user-select: none;
+
+                    & h1,
+                    & h2,
+                    & h3,
+                    & h4,
+                    & h5,
+                    & h6 {
+                        &:hover {
+                            border-radius: 2px;
+                            background-color: var(--ls-block-highlight-color);
+                            transition: background-color .2s cubic-bezier(0, 1, 0, 1);
+                        }
+                    }
+
+                    & h1 {
+                        font-size: 1.6em;
+                        margin-top: .8em;
+                    }
+
+                    & h2 {
+                        font-size: 1.4em;
+                        padding-left: .6em;
+                        outline: 1px solid var(--ls-quaternary-background-color);
+                        border-bottom: unset;
+                        margin-top: .6em;
+                    }
+
+                    & h2,
+                    & h3,
+                    & h4,
+                    & h5,
+                    & h6 {
+                        margin-top: .5em;
+                        display: list-item;
+                        list-style-type: disc;
+                        list-style-position: inside;
+                    }
+
+                    & h3,
+                    & h4,
+                    & h5,
+                    & h6 {
+                        padding-top: .6em;
+                    }
+
+                    & h3 {
+                        padding-left: 1.2em;
+                    }
+
+                    & h4 {
+                        padding-left: 2.0em;
+                    }
+
+                    & h5 {
+                        padding-left: 2.8em;
+                    }
+
+                    & h6 {
+                        padding-left: 3.6em;
                     }
                 }
 
-                & h1 {
-                    font-size: 1.6em;
-                    margin-top: .8em;
-                }
+                &.page.relative {
+                    display: flex;
 
-                & h2 {
-                    font-size: 1.4em;
-                    padding-left: .6em;
-                    outline: 1px solid var(--ls-quaternary-background-color);
-                    border-bottom: unset;
-                    margin-top: .6em;
-                }
+                    &>div {
 
-                & h2,
-                & h3,
-                & h4,
-                & h5,
-                & h6 {
-                    margin-top: .5em;
-                    display: list-item;
-                    list-style-type: disc;
-                    list-style-position: inside;
-                }
-
-                & h3,
-                & h4,
-                & h5,
-                & h6 {
-                    padding-top: .6em;
-                }
-
-                & h3 {
-                    padding-left: 1.2em;
-                }
-
-                & h4 {
-                    padding-left: 2.0em;
-                }
-
-                & h5 {
-                    padding-left: 2.8em;
-                }
-
-                & h6 {
-                    padding-left: 3.6em;
-                }
-            }
-
-            &.page.relative {
-                display: flex;
-
-                &>div {
-
-                    & div#tocInPage,
-                    & div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
-                    &:is(.page-tags, .page-hierarchy) div.initial {
-                        max-height: 86vh;
-                        overflow: auto;
-                    }
-
-                    &.relative {
-                        min-width: 1100px;
-                        max-width: 1450px;
-                        flex: 1;
-                    }
-
-                    &:not(.relative) {
-                        padding: 1em;
-                        height: fit-content;
-                        position: sticky;
-                        top: 0;
-
-                        &.mt-6 {
-                            margin-top: unset;
+                        & div#tocInPage,
+                        & div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
+                        &:is(.page-tags, .page-hierarchy) div.initial {
+                            max-height: 86vh;
+                            overflow: auto;
                         }
 
-                        &:not(:has(>div.content+div.hidden)) {
-                            flex: .3;
-                            max-width: fit-content;
+                        &.relative {
+                            min-width: 1100px;
+                            max-width: 1450px;
+                            flex: 1;
+                        }
 
-                            & div.foldable-title {
-                                min-width: 340px
+                        &:not(.relative) {
+                            padding: 1em;
+                            height: fit-content;
+                            position: sticky;
+                            top: 0;
+
+                            &.mt-6 {
+                                margin-top: unset;
+                            }
+
+                            &:not(:has(>div.content+div.hidden)) {
+                                flex: .3;
+                                max-width: fit-content;
+
+                                & div.foldable-title {
+                                    min-width: 340px
+                                }
+                            }
+
+                            &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
+                            &.lazy-visibility:has(>div>div.fade-enter-active>div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
+                            &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
+                                writing-mode: vertical-rl;
+                                max-width: 3.2em;
+                            }
+
+                        }
+
+
+                        &>div.page-unlinked.mt-6 {
+                            margin-top: unset
+                        }
+
+                        &.page-tags,
+                        &.page-hierarchy {
+                            padding: 1em;
+
+                            & div {
+                                &.initial {
+                                    font-size: .9em;
+                                }
+
+                                &.foldable-title h2 {
+                                    opacity: unset;
+                                    font-weight: 500;
+                                    cursor: pointer;
+                                }
                             }
                         }
 
-                        &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
-                        &.lazy-visibility:has(>div>div.fade-enter-active>div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
-                        &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
-                            writing-mode: vertical-rl;
-                            max-width: 3.2em;
-                        }
+                        &.page-hierarchy {
 
-                    }
-
-
-                    &>div.page-unlinked.mt-6 {
-                        margin-top: unset
-                    }
-
-                    &.page-tags,
-                    &.page-hierarchy {
-                        padding: 1em;
-
-                        & div {
-                            &.initial {
-                                font-size: .9em;
+                            & div.foldable-title h2 {
+                                user-select: none;
                             }
 
-                            &.foldable-title h2 {
-                                opacity: unset;
-                                font-weight: 500;
-                                cursor: pointer;
+                            &:not(:has(>div>div.content+div.hidden)) {
+                                max-width: 580px;
+                                min-width: 300px;
                             }
                         }
-                    }
 
-                    &.page-hierarchy {
-
-                        & div.foldable-title h2 {
-                            user-select: none;
-                        }
-
-                        &:not(:has(>div>div.content+div.hidden)) {
-                            max-width: 580px;
+                        &.page-tags:not(:has(>div.content>div>div.content+div.hidden)) {
+                            max-width: 480px;
                             min-width: 300px;
                         }
+
                     }
 
-                    &.page-tags:not(:has(>div.content>div>div.content+div.hidden)) {
-                        max-width: 480px;
-                        min-width: 300px;
-                    }
+                    &>div>div {
 
-                }
+                        &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked div.pt-6 {
+                            padding-top: unset;
+                        }
 
-                &>div>div {
+                        &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked,
+                        &.references.page-unlinked {
+                            font-size: .96em;
+                            overflow-y: auto;
 
-                    &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked div.pt-6 {
-                        padding-top: unset;
-                    }
+                            &:not(:has(>div.content+div.hidden)) {
+                                min-width: 400px;
+                                max-width: 570px;
 
-                    &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked,
-                    &.references.page-unlinked {
-                        font-size: .96em;
-                        overflow-y: auto;
-
-                        &:not(:has(>div.content+div.hidden)) {
-                            min-width: 400px;
-                            max-width: 570px;
-
-                            &:focus-within {
-                                min-width: 500px
+                                &:focus-within {
+                                    min-width: 500px
+                                }
                             }
                         }
-                    }
-                    /* 遅延ロード対策 */
-                    &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked{
-                        display: none;
-                    }
-                }
 
-                &.is-journals>div.lazy-visibility {
-
-                    &:has(>div>div.fade-enter-active>div.scheduled-or-deadlines.mt-8>div.flex>div.content+div.initial) {
-                        min-width: 480px;
-                        max-width: 650px;
-
-                        &:focus-within {
-                            min-width: 550px
-                        }
-                    }
-
-                    &>div>div.fade-enter-active>div.scheduled-or-deadlines.mt-8 {
-                        margin-top: unset;
-
-                        & div.foldable-title a.block-control {
+                        /* 遅延ロード対策 */
+                        &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked {
                             display: none;
                         }
                     }
-                }
 
+                    &.is-journals>div.lazy-visibility {
+
+                        &:has(>div>div.fade-enter-active>div.scheduled-or-deadlines.mt-8>div.flex>div.content+div.initial) {
+                            min-width: 480px;
+                            max-width: 650px;
+
+                            &:focus-within {
+                                min-width: 550px
+                            }
+                        }
+
+                        &>div>div.fade-enter-active>div.scheduled-or-deadlines.mt-8 {
+                            margin-top: unset;
+
+                            & div.foldable-title a.block-control {
+                                display: none;
+                            }
+                        }
+                    }
+
+                }
             }
         }
 
