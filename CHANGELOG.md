@@ -1,3 +1,12 @@
+## [2.17.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.17.1...v2.17.2) (2023-10-29)
+
+
+### Bug Fixes
+
+* **bug:** CSS > wide view mode > lazy-visibility ([f8448d8](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/f8448d86261c129d9e7be36c68cadc0af8799f6d))
+* **bug:** refactor ([b350d80](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/b350d8024561a57ed483cd0cad41db3bc8f29cf1))
+* **bug:** refactor CSS ([f2621e7](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/f2621e78cea4e8c928d7105e78c46467918e9434))
+
 ## [2.17.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.17.0...v2.17.1) (2023-10-28)
 
 
