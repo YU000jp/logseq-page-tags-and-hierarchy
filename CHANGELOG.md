@@ -1,3 +1,10 @@
+## [2.17.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.17.2...v2.17.3) (2023-10-29)
+
+
+### Bug Fixes
+
+* refactor ([1961760](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/196176058692a3c6afc2217017957557abdc43e0))
+
 ## [2.17.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.17.1...v2.17.2) (2023-10-29)
 
 
