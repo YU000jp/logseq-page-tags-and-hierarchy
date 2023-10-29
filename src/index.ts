@@ -10,15 +10,13 @@ import filePageAccessory from "./pageAccessory.css?inline"
 import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
 import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitHierarchy, } from "./splitHierarchy"
-import { CSSpageSubOrder, displayToc } from "./toc"
+import { CSSpageSubOrder, Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
 import ja from "./translations/ja.json"
 import ko from "./translations/ko.json"
 import zhCN from "./translations/zh-CN.json"
 import zhHant from "./translations/zh-Hant.json"
 import fileWide from './wide.css?inline'
 import fileWideModeJournalQueries from './wideJournalQueries.css?inline'
-export let checkOnBlockChanged: boolean = false//一度のみ
-let processBlockChanged: boolean = false//処理中
 let currentPageName: string = ""
 const keyPageAccessory = "th-PageAccessory"
 const keyNestingPageAccessory = "th-nestingPageAccessory"
@@ -92,14 +90,19 @@ const main = async () => {
 }//end main
 
 
-logseq.ready(main).catch(console.error)
 
-
-
+let processingOnPageChanged: boolean = false //処理中
 const onPageChanged = async () => {
+    if (processingOnPageChanged === true) return
+    processingOnPageChanged = true
+    // return 禁止
+    //処理中断対策
+    setTimeout(() => processingOnPageChanged = false, 1000)
+
+
     const current = await logseq.Editor.getCurrentPage() as { originalName: string } | null
     if (current) {
-        currentPageName = current.originalName //index.tsの値を書き換える
+        currentPageName = current.originalName
         //Hierarchy Links
         if (logseq.settings!.booleanSplitHierarchy === true
             && currentPageName
@@ -108,22 +111,9 @@ const onPageChanged = async () => {
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view"
             && logseq.settings!.booleanTableOfContents === true) displayToc(currentPageName)
-        //ページタグの折りたたみを有効にする
-        const pageTagsElement = parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
-        if (pageTagsElement) {
-            setTimeout(() => { //あとからでもいい処理
-                const titleElement = pageTagsElement.querySelector("body[data-page=page]>div#root>div>main div.content div.foldable-title h2") as HTMLElement | null
-                const eleInitial = pageTagsElement.querySelector("div.initial") as HTMLElement | null
-                if (titleElement && eleInitial) titleCollapsedRegisterEvent(titleElement, eleInitial)
-            }, 100)
 
-        }
-        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true) {
-            // Hierarchyのサブレベル1のみを表示する
-            if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true) hierarchyForFirstLevelOnly(currentPageName.split("/"))
-            // Hierarchyの最初から始まるレベルを削除する
-            hierarchyRemoveBeginningLevel(currentPageName.split("/"))
-        }
+
+
     }
     //ページ名が2023/06/24の形式にマッチする場合
     if (logseq.settings!.booleanModifyHierarchy === true
@@ -135,13 +125,41 @@ const onPageChanged = async () => {
         parent.document!.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page-hierarchy")?.classList.add('th-journal')
     }
 
+    setTimeout(() => { //あとからでもいい処理
+        //ページタグの折りたたみを有効にする
+        const pageTagsElement = parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
+        if (pageTagsElement) {
+            const titleElement = pageTagsElement.querySelector("body[data-page=page]>div#root>div>main div.content div.foldable-title h2") as HTMLElement | null
+            const eleInitial = pageTagsElement.querySelector("div.initial") as HTMLElement | null
+            if (titleElement && eleInitial) titleCollapsedRegisterEvent(titleElement, eleInitial)
+        }
+        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true) {
+            // Hierarchyのサブレベル1のみを表示する
+            if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true) hierarchyForFirstLevelOnly(currentPageName.split("/"))
+            // Hierarchyの最初から始まるレベルを削除する
+            hierarchyRemoveBeginningLevel(currentPageName.split("/"))
+        }
+    }, 100)
+
+    // wide view modeのみ
+    if (logseq.settings!.placeSelect === "wide view") {
+        // Linked References 遅延ロード
+        setTimeout(() =>
+            (parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked") as HTMLDivElement)!.style.display = "block"
+            , 300)
+    }
+
+    processingOnPageChanged = false
 }
 
+
+let processingBlockChanged: boolean = false//処理中 TOC更新中にブロック更新が発生した場合に処理を中断する
+let onBlockChangedOnce: boolean = false//一度のみ
 export const onBlockChanged = () => {
-    if (checkOnBlockChanged === true) return
-    checkOnBlockChanged = true //index.tsの値を書き換える
+    if (onBlockChangedOnce === true) return
+    onBlockChangedOnce = true //index.tsの値を書き換える
     logseq.DB.onChanged(async ({ blocks }) => {
-        if (processBlockChanged === true || currentPageName === "" || logseq.settings!.booleanTableOfContents === false) return
+        if (processingBlockChanged === true || currentPageName === "" || logseq.settings!.booleanTableOfContents === false) return
         //headingがあるブロックが更新されたら
         const findBlock = blocks.find((block) => block.properties?.heading) as BlockEntity | null //uuidを得るためsomeではなくfindをつかう
         if (!findBlock) return
@@ -153,12 +171,13 @@ export const onBlockChanged = () => {
     })
 }
 
+
 const updateToc = () => {
-    if (processBlockChanged === true) return
-    processBlockChanged = true //index.tsの値を書き換える
+    if (processingBlockChanged === true) return
+    processingBlockChanged = true //index.tsの値を書き換える
     setTimeout(async () => {
         await displayToc(currentPageName) //toc更新
-        processBlockChanged = false
+        processingBlockChanged = false
     }, 300)
 }
 
@@ -285,6 +304,27 @@ const onSettingsChanged = () => {
             }
         }
     })
-};
+}
 
 
+export const displayToc = async (pageName: string) => {
+    if (logseq.settings!.placeSelect !== "wide view") return //wide viewのみ
+
+
+    //ページの全ブロックからheaderがあるかどうかを確認する
+    const headers = getTocBlocks(await logseq.Editor.getPageBlocksTree(pageName) as BlockEntity[] as Child[])
+    if (headers.length > 0) {
+        //Headerが存在する場合のみ
+        const element = parent.document.getElementById("tocInPage") as HTMLDivElement | null
+        if (element) element.innerHTML = "" //elementが存在する場合は中身を削除する
+        else await insertElement() //elementが存在しない場合は作成する
+        await headersList(parent.document.getElementById("tocInPage") as HTMLDivElement, headers, pageName)
+        //toc更新用のイベントを登録する
+        if (onBlockChangedOnce === false) onBlockChanged()
+        //タイトルでcollapsedする処理
+        tocContentTitleCollapsed(pageName)
+    }
+}
+
+
+logseq.ready(main).catch(console.error)

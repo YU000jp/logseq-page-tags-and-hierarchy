@@ -1,26 +1,9 @@
 import removeMd from "remove-markdown"
 import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { checkOnBlockChanged, onBlockChanged } from "."
 import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage } from "./markdown"
-export const displayToc = async (pageName: string) => {
-  if (logseq.settings!.placeSelect !== "wide view") return //wide viewのみ
 
-  //ページの全ブロックからheaderがあるかどうかを確認する
-  const headers = getTocBlocks(await logseq.Editor.getPageBlocksTree(pageName) as BlockEntity[] as Child[])
-  if (headers.length > 0) {
-    //Headerが存在する場合のみ
-    const element = parent.document.getElementById("tocInPage") as HTMLDivElement | null
-    if (element) element.innerHTML = ""//elementが存在する場合は中身を削除する
-    else await insertElement()//elementが存在しない場合は作成する
-    await headersList(parent.document.getElementById("tocInPage") as HTMLDivElement, headers, pageName)
-    //toc更新用のイベントを登録する
-    if (checkOnBlockChanged === false) onBlockChanged()
-    //タイトルでcollapsedする処理
-    tocContentTitleCollapsed(pageName)
-  }
-}
 
-function tocContentTitleCollapsed(PageName: string) {
+export function tocContentTitleCollapsed(PageName: string) {
   const titleElement = parent.document.getElementById("tocContentTitle") as HTMLDivElement | null
   if (!titleElement || titleElement.dataset.PageName === PageName) return
   titleElement.dataset.pageName = PageName
@@ -39,7 +22,7 @@ function tocContentTitleCollapsed(PageName: string) {
   }
 }
 
-async function insertElement(): Promise<void> {
+export async function insertElement(): Promise<void> {
   //コンテンツに目次が存在する場合のみ処理を行う
   const elementPageRelative = parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative") as HTMLDivElement | null
   if (!elementPageRelative || elementPageRelative.querySelector("div.th-toc") !== null) return
@@ -73,14 +56,14 @@ export interface TocBlock {
   properties?: { [key: string]: string[] }
 }
 
-interface Child {
+export interface Child {
   content: string
   uuid: string
   properties?: { [key: string]: string[] }
   children?: Child[]
 }
 
-const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
+export const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
   let tocBlocks: TocBlock[] = [] // Empty array to push filtered strings to
 
   // Recursive function to map all headers in a linear array
@@ -114,7 +97,7 @@ const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
   return tocBlocks
 }
 
-const headersList = async (targetElement: HTMLElement, tocBlocks: TocBlock[], thisPageName: string): Promise<void> => {
+export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBlock[], thisPageName: string): Promise<void> => {
 
   // To top
   const elementTop = document.createElement("div")

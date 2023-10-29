@@ -182,6 +182,10 @@ body[data-page=page] {
                             }
                         }
                     }
+                    /* 遅延ロード対策 */
+                    &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked{
+                        display: none;
+                    }
                 }
 
                 &.is-journals>div.lazy-visibility {
