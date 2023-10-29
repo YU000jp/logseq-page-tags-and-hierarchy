@@ -53,9 +53,9 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         key: "placeSelect",
         title: t("Select mode"),
         type: "enum",
-        enumChoices: ["wide view", "side", "bottom", "unset"],
+        enumChoices: ["side", "bottom", "wide view", "unset"],
         default: "unset",
-        description: t("[unset, side, bottom, wide view]") + ` [wiki](${t("https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI")})`,
+        description: t("[unset, side, bottom, wide view]") + ` [more details](${t("https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI")})`,
     },
     {
         key: "booleanDisplayIfSmaller",

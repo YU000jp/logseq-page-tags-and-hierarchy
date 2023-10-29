@@ -82,13 +82,13 @@ body[data-page=page] {
 
                     & div#tocInPage,
                     & div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
-                    &:not(.relative):is(.page-tags, .page-hierarchy) div.initial {
+                    &:is(.page-tags, .page-hierarchy) div.initial {
                         max-height: 86vh;
                         overflow: auto;
                     }
 
                     &.relative {
-                        min-width: 1050px;
+                        min-width: 1100px;
                         max-width: 1450px;
                         flex: 1;
                     }
@@ -103,7 +103,7 @@ body[data-page=page] {
                             margin-top: unset;
                         }
 
-                        &:not(:has(div.content+div.hidden)) {
+                        &:not(:has(>div.content+div.hidden)) {
                             flex: .3;
                             max-width: fit-content;
 
@@ -113,11 +113,17 @@ body[data-page=page] {
                         }
 
                         &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
-                        &.lazy-visibility:has(div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
+                        &.lazy-visibility:has(>div>div.fade-enter-active>div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
                         &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
                             writing-mode: vertical-rl;
                             max-width: 3.2em;
                         }
+
+                    }
+
+
+                    &>div.page-unlinked.mt-6 {
+                        margin-top: unset
                     }
 
                     &.page-tags,
@@ -126,7 +132,7 @@ body[data-page=page] {
 
                         & div {
                             &.initial {
-                                font-size: .9em
+                                font-size: .9em;
                             }
 
                             &.foldable-title h2 {
@@ -137,76 +143,65 @@ body[data-page=page] {
                         }
                     }
 
-                    &.page-hierarchy:not(:has(div.content+div.hidden)) {
-                        max-width: 580px;
-                        min-width: 400px
-                    }
+                    &.page-hierarchy {
 
-                    &.page-tags:not(:has(div.content+div.hidden)) {
-                        max-width: 480px;
-                        min-width: 400px
-                    }
-
-                    & div {
-
-                        /*  */
-                        &.foldable-title h2 {
+                        & div.foldable-title h2 {
                             user-select: none;
                         }
 
-                        &.page-linked,
-                        &.page-unlinked {
-                            font-size: .96em;
-                            overflow-y: auto;
-
-                            &:not(:has(div.content+div.hidden)) {
-                                min-width: 400px;
-                                max-width: 570px;
-
-                                &:focus-within {
-                                    min-width: 500px
-                                }
-                            }
-                        }
-
-                        /*  */
-
-                        &.page-linked div.pt-6 {
-                            padding-top: unset
-                        }
-
-                        &.references div.foldable-title a.block-control {
-                            display: none;
+                        &:not(:has(>div>div.content+div.hidden)) {
+                            max-width: 580px;
+                            min-width: 300px;
                         }
                     }
 
-                    &>div.page-unlinked.mt-6 {
-                        margin-top: unset
+                    &.page-tags:not(:has(>div.content>div>div.content+div.hidden)) {
+                        max-width: 480px;
+                        min-width: 300px;
                     }
 
-                    &.lazy-visibility {
+                }
 
-                        &:has(div.scheduled-or-deadlines.mt-8>div.flex>div.content+div.initial) {
-                            min-width: 480px;
-                            max-width: 650px;
+                &>div>div {
+
+                    &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked div.pt-6 {
+                        padding-top: unset;
+                    }
+
+                    &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked,
+                    &.references.page-unlinked {
+                        font-size: .96em;
+                        overflow-y: auto;
+
+                        &:not(:has(>div.content+div.hidden)) {
+                            min-width: 400px;
+                            max-width: 570px;
 
                             &:focus-within {
-                                min-width: 550px
-                            }
-                        }
-
-                        & div.scheduled-or-deadlines.mt-8 {
-                            margin-top: unset;
-
-                            & div.foldable-title a.block-control {
-                                display: none;
+                                min-width: 500px
                             }
                         }
                     }
                 }
 
-                &>div.page-hierarchy div.foldable-title a.block-control {
-                    display: none;
+                &.is-journals>div.lazy-visibility {
+
+                    &:has(>div>div.fade-enter-active>div.scheduled-or-deadlines.mt-8>div.flex>div.content+div.initial) {
+                        min-width: 480px;
+                        max-width: 650px;
+
+                        &:focus-within {
+                            min-width: 550px
+                        }
+                    }
+
+                    &>div>div.fade-enter-active>div.scheduled-or-deadlines.mt-8 {
+                        margin-top: unset;
+
+                        & div.foldable-title a.block-control {
+                            display: none;
+                        }
+                    }
                 }
 
             }
