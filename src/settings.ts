@@ -49,6 +49,13 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         default: "",
         description: "",
     },
+    {// Unlinked Referencesを表示しない
+        key: "booleanUnlinkedReferences",
+        title: t("Hide unlinked references"),
+        type: "boolean",
+        default: false,
+        description: "default: false",
+    },
     {
         key: "placeSelect",
         title: t("Select mode"),

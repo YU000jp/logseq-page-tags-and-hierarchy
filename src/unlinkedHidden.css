@@ -1,0 +1,3 @@
+body[data-page=page]>div#root>div>main div#main-content-container div.page.relative>div:has(>div.references.page-unlinked) {
+    display: none;
+}

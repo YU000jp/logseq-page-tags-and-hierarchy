@@ -1,6 +1,6 @@
 import "@logseq/libs"
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { setup as l10nSetup } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
+import { setup as l10nSetup } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
 import fileBottom from './bottom.css?inline'
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
 import { provideStyleByVersion, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent, versionCheck } from "./lib"
@@ -10,6 +10,7 @@ import filePageAccessory from "./pageAccessory.css?inline"
 import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
 import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitHierarchy, } from "./splitHierarchy"
+import CSSUnlinkedHidden from './unlinkedHidden.css?inline'
 import { CSSpageSubOrder, Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
 import ja from "./translations/ja.json"
 import ko from "./translations/ko.json"
@@ -25,6 +26,7 @@ const keyBottom = "th-bottom"
 const keyWide = "th-wide"
 const keyPageAccessoryOrder = "th-pageAccessoryOrder"
 const keyWideModeJournalQueries = "th-wideModeJournalQueries"
+const keyUnlinkedReferencesHidden = "th-unlinkedReferences-hidden"
 export const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly"
 export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLevel"
 
@@ -36,12 +38,15 @@ const main = async () => {
     /* user settings */
     logseq.useSettingsSchema(settingsTemplate())
 
-    //unset以外
-    //DisplayIfSmaller
-    if (logseq.settings!.placeSelect !== "unset" && logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller')
+    //設定項目 > DisplayIfSmaller
+    if (logseq.settings!.placeSelect === "bottom" && logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller')
 
-    //ModifyHierarchyList
+    //設定項目 > ModifyHierarchyList
     if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory)
+
+    //設定項目 > Unlinked Referencesを表示しない
+    if (logseq.settings!.booleanUnlinkedReferences === true) logseq.provideStyle({
+        key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden})
 
     //CSS minify https://csscompressor.com/
     switch (logseq.settings!.placeSelect) {
@@ -243,6 +248,10 @@ const onSettingsChanged = () => {
             //表示場所の変更以外
         } else {
 
+
+            if (oldSet.booleanUnlinkedReferences === true && newSet.booleanUnlinkedReferences === false) removeProvideStyle(keyUnlinkedReferencesHidden)
+            else if (oldSet.booleanUnlinkedReferences === false && newSet.booleanUnlinkedReferences === true) logseq.provideStyle({
+                key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden})
 
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly)
