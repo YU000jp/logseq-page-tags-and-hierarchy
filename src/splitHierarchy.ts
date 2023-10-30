@@ -15,7 +15,7 @@ export const splitHierarchy = async (pageName: string) => {
     // pageNameArrの最後の要素
     if (logseq.settings!.booleanRemoveHierarchyPageTitle === true) removeHierarchyPageTitle(pageNameArr.pop() as string, pageName)
     //h1Elementの上にspan#hierarchyLinksを作成
-    const hierarchyLinks: HTMLSpanElement = parent.document.createElement("span")
+    const hierarchyLinks: HTMLSpanElement = document.createElement("span")
     hierarchyLinks.id = "hierarchyLinks"
     h1Element.insertAdjacentElement("beforebegin", hierarchyLinks)
     let parts: string = ""
@@ -29,7 +29,7 @@ export const splitHierarchy = async (pageName: string) => {
             } else {
                 return//最後の要素はリンクを作成しない
             }
-        const link: HTMLAnchorElement = parent.document.createElement("a")
+        const link: HTMLAnchorElement = document.createElement("a")
         link.className = "page-ref"
         link.dataset.checked = ""//" data-checked data-localizeは、querySelector回避用
         link.dataset.localize = ""
