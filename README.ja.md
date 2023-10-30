@@ -3,7 +3,7 @@
 # Logseq プラグイン: *Page-tags and Hierarchy (Page UI)*
 
 ページタグと階層のためのプラグイン
-  1. 階層をもつページタイトルを分割して そのリンクを作成します
+  1. 階層をもつページ名を分割して そのリンクを作成します
   1. ページビューUI
 
  [![最新リリースバージョン](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
@@ -17,9 +17,9 @@
 
 ## オプション
 
-### 1. ページタイトルの階層をリンクとして分割
+### 1. ページ名の階層をリンクとして分割
 
-- ページタイトルの階層を分解し、リンクを作成します。階層の親ページに簡単にアクセスできます。
+- ページ名の階層を分解し、リンクを作成します。階層の親ページに簡単にアクセスできます。
 
 ![画像](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 

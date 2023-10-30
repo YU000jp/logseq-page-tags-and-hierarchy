@@ -70,7 +70,7 @@ const main = async () => {
             break
     }
 
-    // ページタイトルの階層を分割する を含む
+    // ページ名の階層を分割する を含む
     logseq.provideStyle(fileCSSMain) //メインCSS
 
     //ページ読み込み時に実行コールバック
@@ -302,7 +302,7 @@ const onSettingsChanged = () => {
                 if (newSet.booleanSplitHierarchy === true) {
                     splitHierarchy(currentPageName)
                     if (newSet.booleanRemoveHierarchyPageTitle === true)
-                        removeOnSettingsChangedHierarchyPageTitleOnce() //ページタイトルの階層を削除
+                        removeOnSettingsChangedHierarchyPageTitleOnce() //ページ名の階層を削除
                 } else if (newSet.booleanSplitHierarchy === false) {
                     removeElementId("hierarchyLinks")
                     revertOnSettingsChangedHierarchyPageTitleOnce() //元に戻す
@@ -310,7 +310,7 @@ const onSettingsChanged = () => {
             }
             if (oldSet.booleanSplitHierarchy === true) { //Hierarchy Linksが有効な場合のみ
                 if (oldSet.booleanRemoveHierarchyPageTitle === false && newSet.booleanRemoveHierarchyPageTitle === true)
-                    removeOnSettingsChangedHierarchyPageTitleOnce() //ページタイトルの階層を削除
+                    removeOnSettingsChangedHierarchyPageTitleOnce() //ページ名の階層を削除
                 else if (oldSet.booleanRemoveHierarchyPageTitle === true && newSet.booleanRemoveHierarchyPageTitle === false)
                     revertOnSettingsChangedHierarchyPageTitleOnce()
             }

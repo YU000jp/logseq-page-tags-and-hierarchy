@@ -19,7 +19,7 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         //この項目のみを有効にしたい場合は次の設定項目をunsetにする
         description: "default: true",
     },
-    {//ページタイトルの階層を取り除く (上の項目が有効な場合のみ)
+    {//ページ名の階層を取り除く (上の項目が有効な場合のみ)
         key: "booleanRemoveHierarchyPageTitle",
         title: t("Remove hierarchies of the page title (if the above option is enabled)"),
         type: "boolean",
