@@ -1,6 +1,6 @@
 import "@logseq/libs"
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { setup as l10nSetup } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
+import { setup as l10nSetup } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
 import fileBottom from './bottom.css?inline'
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
 import { provideStyleByVersion, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent, versionCheck } from "./lib"
@@ -46,7 +46,8 @@ const main = async () => {
 
     //設定項目 > Unlinked Referencesを表示しない
     if (logseq.settings!.booleanUnlinkedReferences === true) logseq.provideStyle({
-        key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden})
+        key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden
+    })
 
     //CSS minify https://csscompressor.com/
     switch (logseq.settings!.placeSelect) {
@@ -105,14 +106,15 @@ const onPageChanged = async () => {
     setTimeout(() => processingOnPageChanged = false, 1000)
 
 
-    const current = await logseq.Editor.getCurrentPage() as { originalName: string } | null
+    const current = await logseq.Editor.getCurrentPage() as { originalName: string, journal?: boolean } | null
     if (current) {
         currentPageName = current.originalName
         //Hierarchy Links
         if (logseq.settings!.booleanSplitHierarchy === true
             && currentPageName
             && currentPageName.includes("/") as boolean === true
-            && (currentPageName.includes(",")) as boolean === false) splitHierarchy(currentPageName)
+            && !(current.journal === true && currentPageName.includes(",")) // Journalかつ,が含まれる場合は除外
+        ) splitHierarchy(currentPageName)
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view"
             && logseq.settings!.booleanTableOfContents === true) displayToc(currentPageName)
@@ -251,7 +253,8 @@ const onSettingsChanged = () => {
 
             if (oldSet.booleanUnlinkedReferences === true && newSet.booleanUnlinkedReferences === false) removeProvideStyle(keyUnlinkedReferencesHidden)
             else if (oldSet.booleanUnlinkedReferences === false && newSet.booleanUnlinkedReferences === true) logseq.provideStyle({
-                key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden})
+                key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden
+            })
 
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly)
