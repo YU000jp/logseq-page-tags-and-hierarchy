@@ -23,7 +23,7 @@ export const splitHierarchy = async (pageName: string) => {
         if (parts === "") {
             parts = part
         } else
-            if (index !== pageNameArr.length - 1) {
+            if (index !== pageNameArr.length) {
                 parts += "/" + part
                 hierarchyLinks.insertAdjacentText("beforeend", " / ")
             } else {
