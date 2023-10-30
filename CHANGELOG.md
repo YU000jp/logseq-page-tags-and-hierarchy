@@ -1,3 +1,11 @@
+## [2.18.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.0...v2.18.1) (2023-10-30)
+
+
+### Bug Fixes
+
+* **bug:** [#44](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/44) split hierarchy title > Comma stops the parsing ([7c76cb6](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/7c76cb6420da4257d71e2656e25d4979d2a5ca32))
+* **bug:** split hierarchy title ([c1d6040](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/c1d60404179a4e01cde4d343f5541e475ed0f20b))
+
 # [2.18.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.17.3...v2.18.0) (2023-10-29)
 
 
