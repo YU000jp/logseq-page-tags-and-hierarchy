@@ -49,7 +49,7 @@ export const splitHierarchy = async (pageName: string) => {
  * @returns void
  */
 export const removeHierarchyPageTitle = async (lastPart: string, fullName: string) => {
-    // ジャーナルは除外
+    // 日誌は除外
     const pageTitleElement = parent.document.querySelector("body>div#root>div>main div#main-content-container div.page.relative:not(.is-journals) div.ls-page-title h1.page-title span.title") as HTMLDivElement | null
     if (!pageTitleElement
         || pageTitleElement.innerText === lastPart) return
