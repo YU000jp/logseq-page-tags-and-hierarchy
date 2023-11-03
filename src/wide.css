@@ -1,4 +1,4 @@
-body[data-page=page] {
+body[data-page="page"] {
     &>div#root>div>main div {
 
         &#main-content-container {
@@ -9,7 +9,7 @@ body[data-page=page] {
             & div {
 
                 &.cp__sidebar-main-content {
-                    max-width: unset
+                    max-width: unset;
                 }
 
                 &#tocInPage {
@@ -128,7 +128,7 @@ body[data-page=page] {
 
 
                         &>div.page-unlinked.mt-6 {
-                            margin-top: unset
+                            margin-top: unset;
                         }
 
                         &.page-tags,
@@ -238,23 +238,23 @@ body[data-page=page] {
                 gap: .5em;
 
                 & div.mt-6 {
-                    margin-top: unset
+                    margin-top: unset;
                 }
 
                 &>div {
                     &.relative {
-                        margin-right: 1.5em
+                        margin-right: 1.5em;
                     }
 
                     &:not(.relative) {
-                        background: var(--ls-primary-background-color);
-                        border-radius: 7px
+                        background-color: var(--ls-primary-background-color);
+                        border-radius: 7px;
                     }
                 }
             }
 
             &.cp__sidebar-main-content>div {
-                margin-left: unset
+                margin-left: unset;
             }
         }
     }

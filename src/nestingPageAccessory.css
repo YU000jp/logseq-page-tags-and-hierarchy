@@ -1,4 +1,4 @@
-body[data-page=page]>div#root>div>main>div#app-container div#main-content-container {
+body[data-page="page"]>div#root>div>main>div#app-container div#main-content-container {
     & div {
         &.page-hierarchy {
             &:not(.th-journal) ul.namespaces {
@@ -10,7 +10,7 @@ body[data-page=page]>div#root>div>main>div#app-container div#main-content-contai
 
                     & span.page-reference {
                         &:not(:last-child) {
-                            display: none
+                            display: none;
                         }
 
                         &+span:not(.page-reference) {
@@ -18,7 +18,7 @@ body[data-page=page]>div#root>div>main>div#app-container div#main-content-contai
 
                             &::after {
                                 content: ">";
-                                visibility: visible
+                                visibility: visible;
                             }
                         }
 

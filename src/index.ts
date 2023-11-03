@@ -129,14 +129,14 @@ const onPageChanged = async () => {
             || currentPageName.match(/^(\d{4}\/\d{2})/)
             //|| currentPageName.match(/^(\d{4}\/\d{2}\/\d{2})/) //Journalの場合はもともと表示されない
         )) {
-        parent.document!.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page-hierarchy")?.classList.add('th-journal')
+        parent.document!.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container div.page-hierarchy")?.classList.add('th-journal')
     }
 
     setTimeout(() => { //あとからでもいい処理
         //ページタグの折りたたみを有効にする
-        const pageTagsElement = parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
+        const pageTagsElement = parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
         if (pageTagsElement) {
-            const titleElement = pageTagsElement.querySelector("body[data-page=page]>div#root>div>main div.content div.foldable-title h2") as HTMLElement | null
+            const titleElement = pageTagsElement.querySelector("body[data-page=\"page\"]>div#root>div>main div.content div.foldable-title h2") as HTMLElement | null
             const eleInitial = pageTagsElement.querySelector("div.initial") as HTMLElement | null
             if (titleElement && eleInitial) titleCollapsedRegisterEvent(titleElement, eleInitial)
         }
@@ -152,7 +152,7 @@ const onPageChanged = async () => {
     if (logseq.settings!.placeSelect === "wide view") {
         // Linked References 遅延ロード
         setTimeout(() => {
-            const ele = (parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked") as HTMLDivElement | null)
+            const ele = (parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container div.page.relative>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked") as HTMLDivElement | null)
             if (ele) ele.style.display = "block"
         }, 300)
     }
