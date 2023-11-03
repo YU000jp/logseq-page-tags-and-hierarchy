@@ -1,3 +1,10 @@
+## [2.18.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.1...v2.18.2) (2023-11-03)
+
+
+### Bug Fixes
+
+* **bug:** console error ([462235c](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/462235c76b7b011fafc8a4a9bb31b33cef493302))
+
 ## [2.18.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.0...v2.18.1) (2023-10-30)
 
 
