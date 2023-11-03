@@ -151,9 +151,10 @@ const onPageChanged = async () => {
     // wide view modeのみ
     if (logseq.settings!.placeSelect === "wide view") {
         // Linked References 遅延ロード
-        setTimeout(() =>
-            (parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked") as HTMLDivElement)!.style.display = "block"
-            , 300)
+        setTimeout(() => {
+            const ele = (parent.document.querySelector("body[data-page=page]>div#root>div>main div#main-content-container div.page.relative>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked") as HTMLDivElement | null)
+            if (ele) ele.style.display = "block"
+        }, 300)
     }
 
     processingOnPageChanged = false
