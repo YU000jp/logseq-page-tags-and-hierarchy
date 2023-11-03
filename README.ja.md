@@ -55,6 +55,6 @@ Logseq プラグイン > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/log
 
 Logseq プラグイン > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/) (目次表示)
 
-製作者 > [YU000jp (GitHub)](https://github.com/YU000jp)
+製作者 > [@YU000jp](https://github.com/YU000jp)
 
 <a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee 製作者にコーヒーを奢ってください!" style="height: 42px;width: 152px" ></a>
