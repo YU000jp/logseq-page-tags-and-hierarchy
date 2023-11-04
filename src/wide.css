@@ -174,7 +174,7 @@ body[data-page="page"] {
                             font-size: .96em;
                             overflow-y: auto;
 
-                            &:not(:has(>div.content+div.hidden)) {
+                            &:has(>div.content+div.initial) {
                                 min-width: 400px;
                                 max-width: 570px;
 
