@@ -1,3 +1,10 @@
+## [2.18.4](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.3...v2.18.4) (2023-11-04)
+
+
+### Bug Fixes
+
+* **bug:** wide view mode > "Linked References" blank space ([57d90b8](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/57d90b84a0ee850f09c7ccf3063360e9743ce433))
+
 ## [2.18.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.2...v2.18.3) (2023-11-04)
 
 
