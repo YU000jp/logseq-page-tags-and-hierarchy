@@ -1,3 +1,10 @@
+## [2.18.3](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.2...v2.18.3) (2023-11-04)
+
+
+### Bug Fixes
+
+* **bug:** CSS ([a6f990e](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/a6f990ebaa58af371065e3ebe7f9355028ac7b4b))
+
 ## [2.18.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.1...v2.18.2) (2023-11-03)
 
 
