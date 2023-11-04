@@ -108,13 +108,9 @@ body[data-page="page"] {
                                 margin-top: unset;
                             }
 
-                            &:not(:has(>div.content+div.hidden)) {
+                            &:has(>div.content+div.initial) {
                                 flex: .3;
                                 max-width: fit-content;
-
-                                & div.foldable-title {
-                                    min-width: 340px
-                                }
                             }
 
                             &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
@@ -154,13 +150,13 @@ body[data-page="page"] {
                                 user-select: none;
                             }
 
-                            &:not(:has(>div>div.content+div.hidden)) {
+                            &:has(>div>div.content+div.initial) {
                                 max-width: 580px;
                                 min-width: 300px;
                             }
                         }
 
-                        &.page-tags:not(:has(>div.content>div>div.content+div.hidden)) {
+                        &.page-tags:has(>div.content>div>div.content+div.initial) {
                             max-width: 480px;
                             min-width: 300px;
                         }
