@@ -1,3 +1,11 @@
+## [2.18.6](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.5...v2.18.6) (2024-1-1)
+
+
+### Bug Fixes
+
+* **bug:** [#46](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/46) `Hierarchy for first level only` ([c769e90](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/c769e90f79e7cced30787639f0e76d1ca64fb5f0))
+* **bug:** CSS not applied ([05bc26e](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/05bc26ea5e7e35b95c506a893c0bec2c6be19a18))
+
 ## [2.18.5](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.4...v2.18.5) (2023-11-04)
 
 
