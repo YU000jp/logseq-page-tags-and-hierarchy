@@ -4,19 +4,10 @@ import { keyHierarchyForFirstLevelOnly, keyHierarchyRemoveBeginningLevel } from 
 // Display only sub-level 1 of Hierarchy
 export const hierarchyForFirstLevelOnly = (pageNameArray: string[]) => {
     const count = pageNameArray.length
-    let CSSdataRef = ""
-    if (count === 1) {
-        //li.my-2:has(span.page-reference[data-ref*="A/"]+span.mx-2)にマッチするliを削除する
-        CSSdataRef = `&:has(span.page-reference[data-ref*="${pageNameArray[0]}/"i]+span.mx-2),`
-    } else {
-        //li.my-2:has(span.page-reference[data-ref*="A/B/C/"]+span.mx-2+span.page-reference[data-ref*="A/B/C/"]+span.mx-2)にマッチするliを削除する
-        for (let i = 0; i < count; i++) {
-            const pageName = pageNameArray.slice(0, i + 1).join("/")
-            CSSdataRef += `&:has(span.page-reference[data-ref*="${pageName}/"i]+span.mx-2+span.page-reference[data-ref*="${pageName}/"i]+span.mx-2),`
-        }
-    }
-    //最後の,を削除する
-    CSSdataRef = CSSdataRef.slice(0, -1)
+    const CSSdataRef = count === 1 ?
+        `&:has(span.page-reference[data-ref*="${pageNameArray[0]}/"i]+span.mx-2)`
+        : `&:has(span.page-reference[data-ref*="${pageNameArray[count - 1]}/"i]+span.mx-2)`
+
     logseq.provideStyle({
         key: keyHierarchyForFirstLevelOnly,
         style: `
