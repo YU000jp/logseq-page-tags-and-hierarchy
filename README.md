@@ -16,7 +16,7 @@
 
 ## Options
 
-### 1. Split page title hierarchy as links
+### 1. Split page title hierarchy as links (default: *enable*)
 
 - Breaking down the page title hierarchy. Easy access the hierarchies parent page.
 
@@ -40,21 +40,24 @@ Install from Logseq Marketplace
 
 ---
 
-## Recommend
+## Showcase / Questions / Ideas / Help
 
-- [Quickly PARA method plugin](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
-  * There is a "namespace query search" feature.
-    - Search for pages with the same name or explore related pages without worrying about the hierarchical structure and list them.
-  * The ability to create a new page in the same hierarchy or add a sub page is provided.
+> Go to the [discussion](https://github.com/YU000jp/Logseq-column-Layout/discussions) tab to ask and find this kind of things.
 
-- [Short namespaces plugin](https://github.com/YU000jp/logseq-plugin-short-namespaces)
-  - Displays hierarchical links, which tend to be long, by omitting them.
+1. This plugin relies on Logseq's DOM (Document Object Model) structure. If the DOM structure changes due to a Logseq version update, styles may not be applied. We will adjust the CSS to deal with it. If you notice something, please raise an issue.
+1. Related plugins
+   1. [Quickly PARA method plugin](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
+      * There is a "namespace query search" feature.
+        - Search for pages with the same name or explore related pages without worrying about the hierarchical structure and list them.
+      * The ability to create a new page in the same hierarchy or add a sub page is provided.
+   1. [Short namespaces plugin](https://github.com/YU000jp/logseq-plugin-short-namespaces)
+      - Displays hierarchical links, which tend to be long, by omitting them.
 
 ## Prior art / Credit
 
-Logseq plugin > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
-
-Logseq plugin > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
+Logseq plugin >
+  1. [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
+  1. [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
 
 Author > [@YU000jp](https://github.com/YU000jp)
 

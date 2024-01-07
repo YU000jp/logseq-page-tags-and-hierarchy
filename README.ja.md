@@ -17,7 +17,7 @@
 
 ## オプション
 
-### 1. ページ名の階層をリンクとして分割
+### 1. ページ名の階層をリンクとして分割 (デフォルト: **有効**)
 
 - ページ名の階層を分解し、リンクを作成します。階層の親ページに簡単にアクセスできます。
 
@@ -49,11 +49,12 @@ Logseq マーケットプレイスからインストール
   * 同じ階層に新しいページを作成したり、サブページを追加できる機能が提供されています。
 - [ページ名の階層を省略する プラグイン](https://github.com/YU000jp/logseq-plugin-short-namespaces)
   > 長くなりがちな階層リンクを省略して表示します。
+
 ## 先行技術とクレジット
 
-Logseq プラグイン > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/) (目次表示)
-
-Logseq プラグイン > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/) (目次表示)
+Logseq プラグイン >
+  1. [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/) (目次表示)
+  1. [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/) (目次表示)
 
 製作者 > [@YU000jp](https://github.com/YU000jp)
 
