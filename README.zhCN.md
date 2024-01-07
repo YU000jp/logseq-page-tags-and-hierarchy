@@ -1,6 +1,6 @@
 [English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy) / [日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md)
 
-# Logseq插件: *Page-tags and Hierarchy (Page UI)*
+# Logseq插件: *Page-tags and Hierarchy*
 
 页面标签和层次结构
   1. 将页面标题的层次分割为链接
