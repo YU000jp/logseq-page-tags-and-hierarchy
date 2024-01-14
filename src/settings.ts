@@ -4,9 +4,9 @@ import { t } from "logseq-l10n"
 /* https://logseq.github.io/plugins/types/SettingSchemaDesc.html */
 export const settingsTemplate = (): SettingSchemaDesc[] => [
 
-    {// Hierarchy
-        key: "headingHierarchy",
-        title: t("Hierarchy settings"),
+    {// Hierarchy of Page Name
+        key: "headingHierarchyOfPageName",
+        title: t("Hierarchy of page-title settings"),
         type: "heading",
         default: "",
         description: "",
@@ -25,6 +25,13 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         type: "boolean",
         default: true,
         description: "default: true",
+    },
+    {// Hierarchy
+        key: "headingHierarchy",
+        title: t("Hierarchy settings"),
+        type: "heading",
+        default: "",
+        description: "",
     },
     {
         key: "booleanModifyHierarchy",
