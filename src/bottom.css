@@ -1,20 +1,76 @@
-@media screen and (max-width:1559px){
-body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
-body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.page-hierarchy,body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.relative+div.references{max-height:210px;width:34vw;padding:1.15em;z-index:var(--ls-z-index-level-3)}
-body.th-DisplayIfSmaller[data-page=page] div#main-content-container div.relative+div.references{bottom:0;right:.3em}
-body.th-DisplayIfSmaller[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body.th-DisplayIfSmaller[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:36vw;bottom:0}
+body[data-page=page]:not(.is-pdf-active) {
+    @media screen and (max-width:699px) {
+        & div#main-content-container :is(div.page-hierarchy, div.references.page-tags) {
+            display: none
+        }
+    }
+
+    @media screen and (min-width:700px) {
+        &:not(.is-tabs-loaded) main:not(.ls-right-sidebar-open) div#main-content-container div:is(.relative+div.references, .page-hierarchy) {
+            font-size: .91em;
+            background-color: var(--ls-primary-background-color);
+            outline-offset: 2px;
+            outline: 2px solid var(--ls-table-tr-even-background-color);
+            border-radius: 10px;
+            overflow: scroll;
+            white-space: nowrap;
+            position: fixed
+        }
+
+        & div#main-content-container {
+            & div.flex-1.page.relative {
+                margin-bottom: 2em;
+                margin-top: 2em;
+                margin-left: 1.5em
+            }
+
+            & div.page-hierarchy,
+            & div.references.page-tags {
+                @media screen and (max-height: 1300px) {
+                    max-height: 220px;
+                }
+
+                @media screen and (min-height: 1301px) {
+                    max-height: 420px;
+                }
+
+                padding: .9em;
+                z-index: var(--ls-z-index-level-3);
+
+                & div.foldable-title h2 {
+                    cursor: pointer;
+                    opacity: .5;
+
+                    &::before {
+                        content: "▽";
+                        margin-right: 0.5em;
+                    }
+                }
+            }
+
+            & div.references.page-tags {
+                bottom: 0;
+                right: .3em;
+                width: 23vw
+            }
+
+            & div.page-hierarchy {
+                min-width: 23vw;
+                max-width: 32vw;
+                right: 23.5vw;
+                bottom: 0
+            }
+        }
+
+        & main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content {
+            max-width: 1450px
+        }
+
+        & div#right-sidebar :is(div.page-hierarchy, div.references.page-tags),
+        & main.ls-right-sidebar-open div#main-content-container :is(div.page-hierarchy, div.references.page-tags) {
+            display: none
+        }
+    }
+
+
 }
-@media screen and (min-width:1560px){
-div#root div#head:has(div.dropdown-wrapper.enter-done){z-index:var(--ls-z-index-level-4)}
-body[data-page=page]:not(.is-tabs-loaded.is-pdf-active) main:not(.ls-right-sidebar-open) div#main-content-container div.relative+div.references,body[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy{font-size:.91em;background-color:var(--ls-primary-background-color);outline-offset:2px;outline:2px solid var(--ls-table-tr-even-background-color);border-radius:10px;overflow:auto;position:fixed}
-body[data-page=page] div#main-content-container div.flex-1.page.relative{margin-bottom:2em;margin-top:2em;margin-left:1.5em}
-body[data-page=page] div#main-content-container div.page-hierarchy,body[data-page=page] div#main-content-container div.relative+div.references{max-height:210px;padding:1.15em;z-index:var(--ls-z-index-level-3)}
-body[data-page=page] div#main-content-container div.relative+div.references{bottom:0;right:.3em}
-body[data-page=page] div#main-content-container div.page-hierarchy,body[data-page=page] div#main-content-container div.relative+div.references{min-width:20vw}
-body[data-page=page] div#main-content-container div.relative+div.references{width:22vw}
-body[data-page=page] main:not(.ls-right-sidebar-open) div#main-content-container div.page-hierarchy,body[data-page=page]:not(.is-pdf-active) div#main-content-container div.page-hierarchy{right:22vw;bottom:0}
-}
-body[data-page=page] main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content{max-width:1450px}
-body[data-page=page].is-pdf-active div#main-content-container div:is(.page-hierarchy,.relative+div.references),
-body[data-page=page] div#right-sidebar :is(div.page-hierarchy,div.relative+div.references),
-body[data-page=page] main.ls-right-sidebar-open div#main-content-container :is(div.page-hierarchy, div.relative+div.references){display:none}
