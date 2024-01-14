@@ -1,3 +1,10 @@
+# [2.19.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.6...v2.19.0) (2024-1-14)
+
+
+### Features
+
+* Optimize for smaller screens [#47](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/47) ([72364e5](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/72364e56f6a8e8998f44a42a62d3d850674dac86))
+
 ## [2.18.6](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.5...v2.18.6) (2024-1-1)
 
 
