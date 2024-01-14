@@ -38,9 +38,6 @@ const main = async () => {
     /* user settings */
     logseq.useSettingsSchema(settingsTemplate())
 
-    //設定項目 > DisplayIfSmaller
-    if (logseq.settings!.placeSelect === "bottom" && logseq.settings?.booleanDisplayIfSmaller === false) parent.document.body.classList.add('th-DisplayIfSmaller')
-
     //設定項目 > ModifyHierarchyList
     if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory)
 
@@ -260,12 +257,6 @@ const onSettingsChanged = () => {
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly)
             else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && currentPageName) hierarchyForFirstLevelOnly(currentPageName.split("/"))
-
-            if (oldSet.booleanDisplayIfSmaller === false
-                && newSet.booleanDisplayIfSmaller === true) parent.document.body.classList!.remove('th-DisplayIfSmaller')
-
-            else if (oldSet.booleanDisplayIfSmaller !== false
-                && newSet.booleanDisplayIfSmaller === false) parent.document.body.classList!.add('th-DisplayIfSmaller')
 
             if (oldSet.booleanModifyHierarchy === false
                 && newSet.booleanModifyHierarchy === true) {

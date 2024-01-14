@@ -1,5 +1,4 @@
 {
-    "Bottom mode, when the window size is less than 1560px, do not display it": "底部模式，当窗口大小小于1560px时，请不要显示它",
     "Collapsed table of contents by default": "默认折叠目录",
     "Delete the hierarchy from the beginning level": "从起始级别删除层次结构",
     "Enable table of contents on a page": "在页面上启用目录",
@@ -8,7 +7,6 @@
     "Hierarchy settings": "层次结构设置",
     "If workspace is small, zoom in or open it in the right sidebar.": "如果工作区较小，请缩小或在右侧边栏中打开。",
     "Linked references position": "链接引用位置",
-    "Logseq v0.9.11 or later": "Logseq v0.9.11或更高版本",
     "Modify the display of hierarchy to be original rather than standard.": "修改层次结构的显示方式，使其原汁原味而不是标准",
     "Page hierarchy position": "页面层次结构位置",
     "Page tags position": "页面标签位置",

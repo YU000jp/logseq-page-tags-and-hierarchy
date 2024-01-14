@@ -60,16 +60,9 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         key: "placeSelect",
         title: t("Select mode"),
         type: "enum",
-        enumChoices: ["side", "bottom", "wide view", "unset"],
+        enumChoices: ["unset", "side", "bottom", "wide view"],
         default: "unset",
         description: t("[unset, side, bottom, wide view]") + ` [more details](${t("https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI")})`,
-    },
-    {
-        key: "booleanDisplayIfSmaller",
-        title: t("Bottom mode > when the window size is less than 1560px, do not display it"),
-        type: "boolean",
-        default: true,
-        description: "default: true",
     },
 
     {//wide viewモードのみ
@@ -80,7 +73,6 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         description: `
         - ${t("Require scroll to right space.")}
         - ${t("If workspace is small, zoom in or open it in the right sidebar.")}
-        - ${t("Logseq v0.9.11 or later")} ⚠️
         `,
     },
     {//Switch Table of Contents
