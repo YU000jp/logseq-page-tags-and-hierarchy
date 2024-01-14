@@ -1,3 +1,10 @@
+# [2.20.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.19.0...v2.20.0) (2024-1-14)
+
+
+### Features
+
+* **design:** Page view UI > Add 3D feel of boxs ([da77c99](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/da77c991cc6aac9f5388fa628444fb016c6f0f37))
+
 # [2.19.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.18.6...v2.19.0) (2024-1-14)
 
 
