@@ -33,7 +33,8 @@ body[data-page=page]:not(.is-pdf-active) {
                 @media screen and (min-height: 1301px) {
                     max-height: 420px;
                 }
-
+                border: 2px solid var(--ls-border-color);
+                box-shadow: 0 0 7px var(--ls-border-color);
                 padding: .9em;
                 z-index: var(--ls-z-index-level-3);
 

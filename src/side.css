@@ -17,6 +17,8 @@ body[data-page=page]:not(.is-pdf-active) {
                 overflow: scroll;
                 white-space: nowrap;
                 position: fixed;
+                border: 2px solid var(--ls-border-color);
+                box-shadow: 0 0 7px var(--ls-border-color);
             }
         }
 
