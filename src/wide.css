@@ -13,10 +13,10 @@ body[data-page="page"] {
                 }
 
                 &#tocInPage {
-                    font-size: .88em;
+                    font-size: .86em;
                     padding-bottom: 2em;
-                    padding-left: 1em;
-                    padding-right: .8em;
+                    padding-left: 0.3em;
+                    padding-right: 1.3em;
                     user-select: none;
 
                     & h1,
@@ -108,20 +108,20 @@ body[data-page="page"] {
                                 margin-top: unset;
                             }
 
-                            &:has(>div.content+div.initial) {
+                            &:has(div.content+div.initial) {
                                 flex: .3;
+                                min-width: 300px;
                                 max-width: fit-content;
                             }
 
                             &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
-                            &.lazy-visibility:has(>div>div.fade-enter-active>div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
-                            &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
+                            &.lazy-visibility:has(div>div.fade-enter-active>div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
+                            &:is(.page-hierarchy,.th-toc):has(div.flex>div.content+div.hidden) {
                                 writing-mode: vertical-rl;
                                 max-width: 3.2em;
                             }
 
                         }
-
 
                         &>div.page-unlinked.mt-6 {
                             margin-top: unset;
