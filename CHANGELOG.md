@@ -1,3 +1,10 @@
+## [2.20.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.20.0...v2.20.1) (2024-1-16)
+
+
+### Bug Fixes
+
+* **bug:** "wide view" > The display is broken [#47](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/47) ([72f874f](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/72f874f0c8e35a3caa7ef985c6d2d38bd12be828))
+
 # [2.20.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.19.0...v2.20.0) (2024-1-14)
 
 
