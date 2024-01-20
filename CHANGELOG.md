@@ -1,3 +1,21 @@
+# [2.21.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.20.1...v2.21.0) (2024-1-20)
+
+
+### Bug Fixes
+
+* **Remove:** check version (require *Logseq v0.9.11* or later) ([d7b423c](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/d7b423c0bc7b7da9f8da736e5f5fb48b8b4d0f9c))
+
+
+### Features
+
+* **Add:** toolbar button for opening the plugin settings ([f1ef1e2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/f1ef1e24f8817e8e2684764fe0964ec620cde1d2))
+* **Table of Contents feature:** Remove specific strings from table of contents [#49](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/49) / Update button ([01569f4](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/01569f4341922df3bddd4e3a1ea9c85cf30d28d6))
+
+
+### Performance Improvements
+
+* **Table of Contents:** if collapse parent block ([0d8a74e](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/0d8a74e1fa10dce44b0d9770ad5c99eb95da45bf))
+
 ## [2.20.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.20.0...v2.20.1) (2024-1-16)
 
 
