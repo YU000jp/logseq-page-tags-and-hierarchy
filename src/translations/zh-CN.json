@@ -13,14 +13,17 @@
     "Page tags position": "页面标签位置",
     "Page view settings": "页面视图设置",
     "Remove hierarchies of the page title (if the above option is enabled)": "删除页面标题中的层次结构（如果上述选项已启用）",
+    "Remove words from table of contents": "从目录中删除单词",
     "Require scroll to right space.": "需要滚动到右侧的空间。如果您的鼠标不支持横向滚动，则不适用。",
     "Scheduled and deadline position": "计划和截止日期位置",
     "Select mode": "选择模式",
+    "Separate with line breaks": "用换行符分隔",
     "Showing journal queries on today journal page": "在今天的日志页面上显示日志查询",
     "Split page title hierarchy as links (non-journals)": "将页面标题中的层次结构拆分为链接（非期刊）",
     "Table of contents position": "目录位置",
     "Unlinked references position": "未链接引用位置",
     "Wide view mode settings": "宽视图模式设置",
     "[unset, side, bottom, wide view]": "[未设置，侧边，底部，宽视图]",
-    "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI": "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E9%A1%B5%E9%9D%A2%E8%A7%86%E5%9B%BE%E7%95%8C%E9%9D%A2"
+    "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI": "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E9%A1%B5%E9%9D%A2%E8%A7%86%E5%9B%BE%E7%95%8C%E9%9D%A2",
+    "plugin settings": "插件设置"
 }

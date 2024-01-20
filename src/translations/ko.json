@@ -13,13 +13,16 @@
     "Page tags position": "페이지 태그 위치",
     "Page view settings": "페이지 보기 설정",
     "Remove hierarchies of the page title (if the above option is enabled)": "페이지 제목의 계층 제거 (위의 옵션이 활성화된 경우)",
+    "Remove words from table of contents": "목차에서 단어 제거",
     "Require scroll to right space.": "오른쪽 공간으로 스크롤 필요. 가로 스크롤 지원하지 않는 마우스로는 부적합합니다.",
     "Scheduled and deadline position": "일정 및 마감 위치",
     "Select mode": "모드 선택",
+    "Separate with line breaks": "줄 바꿈으로 구분",
     "Showing journal queries on today journal page": "오늘의 저널 페이지에 저널 쿼리 표시",
     "Split page title hierarchy as links (non-journals)": "페이지 제목 계층을 링크로 분할 (저널 제외)",
     "Table of contents position": "목차 위치",
     "Unlinked references position": "연결되지 않은 참조 위치",
     "Wide view mode settings": "와이드 뷰 모드 설정",
-    "[unset, side, bottom, wide view]": "[설정하지 않음, 사이드, 하단, 와이드 뷰]"
+    "[unset, side, bottom, wide view]": "[설정하지 않음, 사이드, 하단, 와이드 뷰]",
+    "plugin settings": "플러그인 설정"
 }

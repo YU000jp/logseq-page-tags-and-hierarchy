@@ -13,14 +13,17 @@
     "Page tags position": "ページタグの位置",
     "Page view settings": "ページビューの設定",
     "Remove hierarchies of the page title (if the above option is enabled)": "ページ名に含まれる階層を削除（上記のオプションが有効な場合）",
+    "Remove words from table of contents": "目次から単語を削除する",
     "Require scroll to right space.": "右スペースにスクロールする必要があります。横スクロール対応のマウスではない場合は、不向きです。",
     "Scheduled and deadline position": "スケジュールと締切位置",
     "Select mode": "モードを選択します",
+    "Separate with line breaks": "改行で区切る",
     "Showing journal queries on today journal page": "今日の日記で日誌クエリーを表示します",
     "Split page title hierarchy as links (non-journals)": "ページ名に階層がある場合にリンクとして分割する（日誌以外）",
     "Table of contents position": "目次の位置",
     "Unlinked references position": "Unlinked Referencesの位置",
     "Wide view mode settings": "ワイドビューモードの設定",
     "[unset, side, bottom, wide view]": "[設定しない, 右サイド, 下側, ワイドビュー] ",
-    "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI": "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%93%E3%83%A5%E3%83%BCUI"
+    "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI": "https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%93%E3%83%A5%E3%83%BCUI",
+    "plugin settings": "プラグイン設定"
 }
