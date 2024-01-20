@@ -1,6 +1,6 @@
 import "@logseq/libs"
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { setup as l10nSetup } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
+import { setup as l10nSetup, t } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
 import fileBottom from './bottom.css?inline'
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
 import { provideStyle, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent } from "./lib"
@@ -81,6 +81,17 @@ const main = async () => {
     //設定変更のコールバック
     onSettingsChanged()
 
+    //ツールバーに設定画面を開くボタンを追加
+    logseq.App.registerUIItem('toolbar', {
+        key: 'toolbarPageTagsAndHierarchy',
+        template: `<div><a class="button icon" data-on-click="toolbarPageTagsAndHierarchy" style="font-size:15px;color:#1f9ee1;opacity:unset" title="Page-tags and Hierarchy: ${t("plugin settings")}">🏷️</a></div>`,
+    })
+    //ツールバーボタンのクリックイベント
+    logseq.provideModel({
+        toolbarPageTagsAndHierarchy: () => logseq.showSettingsUI(),
+    })
+
+    //プラグインオフの場合はページ名の階層リンクを削除する
     logseq.beforeunload(async () => {
         const element = parent.document.getElementById("hierarchyLinks") as HTMLSpanElement | null
         if (element) element.remove()
