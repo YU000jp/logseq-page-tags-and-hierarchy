@@ -1,21 +1,20 @@
 import "@logseq/libs"
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { setup as l10nSetup } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
+import { setup as l10nSetup } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
 import fileBottom from './bottom.css?inline'
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
-import { provideStyleByVersion, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent, versionCheck } from "./lib"
+import { provideStyle, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent } from "./lib"
 import fileCSSMain from './main.css?inline'
-import fileNestingPageAccessory from "./nestingPageAccessory.css?inline"
-import filePageAccessory from "./pageAccessory.css?inline"
+import fileNestingPageAccessory from "./pageAccessory.css?inline"
 import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
-import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitHierarchy, } from "./splitHierarchy"
-import CSSUnlinkedHidden from './unlinkedHidden.css?inline'
+import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitHierarchy } from "./splitHierarchy"
 import { CSSpageSubOrder, Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
 import ja from "./translations/ja.json"
 import ko from "./translations/ko.json"
 import zhCN from "./translations/zh-CN.json"
 import zhHant from "./translations/zh-Hant.json"
+import CSSUnlinkedHidden from './unlinkedHidden.css?inline'
 import fileWide from './wide.css?inline'
 import fileWideModeJournalQueries from './wideJournalQueries.css?inline'
 let currentPageName: string = ""
@@ -30,16 +29,13 @@ const keyUnlinkedReferencesHidden = "th-unlinkedReferences-hidden"
 export const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly"
 export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLevel"
 
-let versionOver: boolean = false
-
 const main = async () => {
-    versionOver = await versionCheck(0, 9, 11)
     await l10nSetup({ builtinTranslations: { ja, ko, "zh-Hant": zhHant, "zh-CN": zhCN } })
     /* user settings */
     logseq.useSettingsSchema(settingsTemplate())
 
     //設定項目 > ModifyHierarchyList
-    if (logseq.settings?.booleanModifyHierarchy === true) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory)
+    if (logseq.settings?.booleanModifyHierarchy === true) provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
 
     //設定項目 > Unlinked Referencesを表示しない
     if (logseq.settings!.booleanUnlinkedReferences === true) logseq.provideStyle({
@@ -201,7 +197,7 @@ const onSettingsChanged = () => {
 
             if (newSet.booleanModifyHierarchy === true
                 && !parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`))
-                provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory)
+                provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
             else if (newSet.booleanModifyHierarchy === false) {
                 removeProvideStyle(keyPageAccessory)
                 removeProvideStyle(keyNestingPageAccessory)
@@ -222,16 +218,11 @@ const onSettingsChanged = () => {
                     logseq.provideStyle({ key: keySide, style: fileSide })
                     break
                 case "wide view":
-                    if (versionOver === true) {
-                        removeProvideStyle(keySide)
-                        removeProvideStyle(keyBottom)
-                        logseq.provideStyle({ key: keyWide, style: fileWide })
-                        logseq.provideStyle({ key: keyPageAccessoryOrder, style: CSSpageSubOrder(logseq.settings) })
-                        if (newSet.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideModeJournalQueries, style: fileWideModeJournalQueries })
-                    } else {
-                        logseq.UI.showMsg("Wide view mode is available from Logseq v0.9.11")
-                        setTimeout(() => { logseq.updateSettings({ placeSelect: oldSet.placeSelect }) }, 300)
-                    }
+                    removeProvideStyle(keySide)
+                    removeProvideStyle(keyBottom)
+                    logseq.provideStyle({ key: keyWide, style: fileWide })
+                    logseq.provideStyle({ key: keyPageAccessoryOrder, style: CSSpageSubOrder(logseq.settings) })
+                    if (newSet.booleanWideModeJournalQueries === true) logseq.provideStyle({ key: keyWideModeJournalQueries, style: fileWideModeJournalQueries })
                     break
                 case "unset":
                     removeProvideStyle(keySide)
@@ -260,7 +251,7 @@ const onSettingsChanged = () => {
 
             if (oldSet.booleanModifyHierarchy === false
                 && newSet.booleanModifyHierarchy === true) {
-                if (!parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`) && !parent.document.head.querySelector(`style[data-injected-style^="${keyNestingPageAccessory}"]`)) provideStyleByVersion(versionOver, keyNestingPageAccessory, fileNestingPageAccessory, keyPageAccessory, filePageAccessory)
+                if (!parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`) && !parent.document.head.querySelector(`style[data-injected-style^="${keyNestingPageAccessory}"]`)) provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
             }
             else if (oldSet.booleanModifyHierarchy === true
                 && newSet.booleanModifyHierarchy === false) {
