@@ -14,11 +14,15 @@ body[data-page="page"] {
 
                 &#tocInPage {
                     font-size: .86em;
-                    padding-bottom: 2em;
+                    padding-bottom: 1.6em;
                     padding-left: 0.3em;
                     padding-right: 1.3em;
+                    padding-top:1em;
                     user-select: none;
 
+                    &>div{
+                        margin-bottom: 1.2em;
+                    }
                     & h1,
                     & h2,
                     & h3,

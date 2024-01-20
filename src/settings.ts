@@ -96,6 +96,15 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         default: false,
         description: "default: false",
     },
+    //20240120
+    {//Table of Contents、削除する単語リスト 改行区切り
+        key: "tocRemoveWordList",
+        title: t("Remove words from table of contents"),
+        type: "string",
+        inputAs: "textarea",
+        default: "",
+        description: t("Separate with line breaks"),
+    },
     {//wide viewモード、Journal Queriesを表示するかどうか
         key: "booleanWideModeJournalQueries",
         title: t("Showing journal queries on today journal page"),

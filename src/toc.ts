@@ -1,6 +1,7 @@
 import removeMd from "remove-markdown"
 import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage } from "./markdown"
+import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage, removeListWords } from "./markdown"
+import { displayToc } from "."
 
 
 export function tocContentTitleCollapsed(PageName: string) {
@@ -99,13 +100,23 @@ export const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
 
 export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBlock[], thisPageName: string): Promise<void> => {
 
-  // To top
-  const elementTop = document.createElement("div")
+  const elementButtons = document.createElement("div")
+  // Update button
+  const elementUpdate = document.createElement("span")
+  elementUpdate.classList.add("cursor")
+  elementUpdate.innerHTML = "🔄 Update"
+  elementUpdate.style.padding = "1em"
+  elementButtons.append(elementUpdate)
+  elementUpdate.addEventListener('click', () => displayToc(thisPageName), { once: true })
+  elementButtons.append(document.createElement("span").innerHTML = "/")
+  // Scroll to top
+  const elementTop = document.createElement("span")
   elementTop.classList.add("cursor")
-  elementTop.innerHTML = "To top ⬆️"
+  elementTop.innerHTML = "⬆️ Scroll to top"
   elementTop.style.padding = "1em"
-  targetElement.append(elementTop)
+  elementButtons.append(elementTop)
   elementTop.addEventListener('click', () => parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))
+  targetElement.append(elementButtons)
 
   // Create list
   for (let i = 0; i < tocBlocks.length; i++) {
@@ -141,6 +152,8 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
     blockContent = replaceOverCharacters(blockContent)
     //マークダウンの画像記法を全体削除する
     blockContent = removeMarkdownImage(blockContent)
+    //リストにマッチする文字列を正規表現で取り除く
+    blockContent = removeListWords(blockContent)
 
     // Header
     if (blockContent.startsWith("# ")

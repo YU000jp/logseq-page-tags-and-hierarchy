@@ -43,3 +43,15 @@ export async function removeProperties(tocBlocks: TocBlock[], i: number, blockCo
   }
   return blockContent
 }
+
+export const removeListWords = (blockContent: string): string => {
+  //改行区切りのリスト
+  //最後の改行を削除する
+  const list = (logseq.settings!.tocRemoveWordList as string).split("\n")
+  //リストにマッチする文字列を正規表現で取り除く
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] === "") continue
+    blockContent = blockContent.replaceAll(new RegExp(list[i], "g"), "")
+  }
+  return blockContent
+}
