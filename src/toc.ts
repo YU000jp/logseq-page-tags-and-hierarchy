@@ -198,49 +198,26 @@ async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
     element.scrollIntoView({ behavior: 'smooth' })
     setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
   } else {
-    //さらに親ブロックがcollapsedの場合
-    if (parentBlock.parent) {
-      const parentParentBlock = await logseq.Editor.getBlock(parentBlock.parent.id)
-      if (parentParentBlock) {
-        await logseq.Editor.setBlockCollapsed(parentParentBlock.uuid, false)
-        const element = parent.document.getElementById('block-content-' + parentParentBlock.uuid) as HTMLDivElement | null
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-          setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
-        } else {
-          //さらに親ブロックがcollapsedの場合
-          if (parentParentBlock.parent) {
-            const parentParentParentBlock = await logseq.Editor.getBlock(parentParentBlock.parent.id)
-            if (parentParentParentBlock) {
-              await logseq.Editor.setBlockCollapsed(parentParentParentBlock.uuid, false)
-              const element = parent.document.getElementById('block-content-' + parentParentParentBlock.uuid) as HTMLDivElement | null
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' })
-                setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
-              } else {
-                //さらに親ブロックがcollapsedの場合
-                if (parentParentParentBlock.parent) {
-                  const parentParentParentParentBlock = await logseq.Editor.getBlock(parentParentParentBlock.parent.id)
-                  if (parentParentParentParentBlock) {
-                    await logseq.Editor.setBlockCollapsed(parentParentParentParentBlock.uuid, false)
-                    const element = parent.document.getElementById('block-content-' + parentParentParentParentBlock.uuid) as HTMLDivElement | null
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' })
-                      setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
-                    } else {
-                      //さらに親ブロックがcollapsedの場合
-                      //処理しない
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+    await expandParentBlock(parentBlock)
+  }
+}
+
+async function expandParentBlock(block: BlockEntity): Promise<void> {
+  if (block.parent) {
+    const parentBlock = await logseq.Editor.getBlock(block.parent.id) as BlockEntity | null
+    if (parentBlock) {
+      await logseq.Editor.setBlockCollapsed(parentBlock.uuid, false)
+      const element = parent.document.getElementById('block-content-' + parentBlock.uuid) as HTMLDivElement | null
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+        setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
+      } else {
+        await expandParentBlock(parentBlock)
       }
     }
   }
 }
+
 export const CSSpageSubOrder = (settings) => `
 body[data-page="page"]>div#root>div>main div#main-content-container div.page.relative>div {
   &.lazy-visibility:has(>div>div.fade-enter-active>div.scheduled-or-deadlines) {order:${settings.enumScheduleDeadline}}
