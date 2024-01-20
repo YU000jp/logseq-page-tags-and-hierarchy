@@ -56,9 +56,9 @@ Install from Logseq Marketplace
 
 ## Prior art / Credit
 
-Logseq plugin >
-  1. [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
-  1. [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
+"Table of contents" feature:
+  1. [@hkgnp/ logseq-toc plugin](https://github.com/hkgnp/logseq-toc-plugin/)
+  1. [@freder/ logseq-plugin-jump-to-block plugin](https://github.com/freder/logseq-plugin-jump-to-block/)
 
 Author > [@YU000jp](https://github.com/YU000jp)
 
