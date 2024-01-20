@@ -2,6 +2,7 @@ import removeMd from "remove-markdown"
 import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user"
 import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage, removeListWords } from "./markdown"
 import { displayToc } from "."
+import { time } from "console"
 
 
 export function tocContentTitleCollapsed(PageName: string) {
@@ -107,7 +108,11 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
   elementUpdate.innerHTML = "🔄 Update"
   elementUpdate.style.padding = "1em"
   elementButtons.append(elementUpdate)
-  elementUpdate.addEventListener('click', () => displayToc(thisPageName), { once: true })
+  elementUpdate.addEventListener('click', () => {
+    elementUpdate.style.visibility = "hidden"
+    setTimeout(() => elementUpdate.style.visibility = "visible", 2000)
+    displayToc(thisPageName)
+  })
   elementButtons.append(document.createElement("span").innerHTML = "/")
   // Scroll to top
   const elementTop = document.createElement("span")
