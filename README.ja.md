@@ -21,7 +21,7 @@
 
 - ページ名の階層を分解し、リンクを作成します。階層の親ページに簡単にアクセスできます。
 
-![画像](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
+  ![画像](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
 ### 2. ページビューUI
 
@@ -38,25 +38,25 @@ Logseq マーケットプレイスからインストール
 ### 使用方法
 
 - このプラグインをインストールした後、**スタイルは日誌ページ以外に適用されます**。デフォルトではページビューモードはオフになっています。プラグインの設定で変更できます。
-  > 日誌用 => [カラムレイアウト (日誌UI) プラグイン](https://github.com/YU000jp/Logseq-column-Layout)
 
 ---
 
 ## おすすめ
 
-- [クイック PARAメソッド プラグイン](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
-  * 「namespaceクエリー検索」機能があります。
-    - 同じ名称を持つページを検索したり、階層構造を気にせず、関連ページを探しリストアップします。
-  * 同じ階層に新しいページを作成したり、サブページを追加できる機能が提供されています。
-- [ページ名の階層を省略する プラグイン](https://github.com/YU000jp/logseq-plugin-short-namespaces)
-  > 長くなりがちな階層リンクを省略して表示します。
+1. 日誌用 => [カラムレイアウト (日誌UI) プラグイン](https://github.com/YU000jp/Logseq-column-Layout)
+1. [クイック PARAメソッド プラグイン](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
+   * 「namespaceクエリー検索」機能があります。
+     - 同じ名称を持つページを検索したり、階層構造を気にせず、関連ページを探しリストアップします。
+   * 同じ階層に新しいページを作成したり、サブページを追加できる機能が提供されています。
+1. [ページ名の階層を省略する プラグイン](https://github.com/YU000jp/logseq-plugin-short-namespaces)
+   > 長くなりがちな階層リンクを省略して表示します。
 
 ## 先行技術とクレジット
 
-Logseq プラグイン >
-  1. [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/) (目次表示)
-  1. [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/) (目次表示)
+1. Logseq プラグイン >
+   1. [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/) (目次表示)
+   1. [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/) (目次表示)
 
-製作者 > [@YU000jp](https://github.com/YU000jp)
+1. 製作者 > [@YU000jp](https://github.com/YU000jp)
 
 <a href="https://www.buymeacoffee.com/yu000japan"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=yu000japan&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
