@@ -25,11 +25,12 @@
 ### 2. Page view UI (option)
 
 - Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. side mode, bottom mode, Wide view mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
-  > Logseq v0.9.11 or later 🚧
 
 ---
 
 ## Getting Started
+
+> Logseq v0.9.11 or later 🚧
 
 Install from Logseq Marketplace
   - Press `---` on the top right toolbar to open `Plugins`. Select `Marketplace`. Type `tags` in the search field, select it from the search results and install.
