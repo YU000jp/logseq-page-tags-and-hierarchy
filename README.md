@@ -2,7 +2,7 @@
 
 # Logseq Plugin: *Page-tags and Hierarchy*
 
-1. Split page title hierarchy as links
+1. Breadcrumb of page title
 1. Page view UI for page-tags and hierarchy
 
  [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
@@ -14,15 +14,15 @@
 
 - Logseq features Page Tags and Hierarchy, which are essential functions that assist in organizing and searching for information. Hierarchy is also called `namespaces`. [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
 
-## Options
+## Overview
 
-### 1. Split page title hierarchy as links (default: *enable*)
+### 1. Breadcrumb of page titie  (default: *enable*)
 
-- Breaking down the page title hierarchy. Easy access the hierarchies parent page.
+- Split page title hierarchy as links. Easy access the hierarchies parent page.
 
 ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
-### 2. Page view UI
+### 2. Page view UI (option)
 
 - Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. side mode, bottom mode, Wide view mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
   > Logseq v0.9.11 or later 🚧
@@ -37,7 +37,6 @@ Install from Logseq Marketplace
 ### Usage
 
 - After installing this plugin, the styles be applied to non-journal pages. By default, page view mode is turned off. it is possible to set in the plugin settings.
-  > For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
 
 ---
 
@@ -47,6 +46,7 @@ Install from Logseq Marketplace
 
 1. This plugin relies on Logseq's DOM (Document Object Model) structure. If the DOM structure changes due to a Logseq version update, styles may not be applied. We will adjust the CSS to deal with it. If you notice something, please raise an issue.
 1. Related plugins
+   1. For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
    1. [Quickly PARA method plugin](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
       * There is a "namespace query search" feature.
         - Search for pages with the same name or explore related pages without worrying about the hierarchical structure and list them.
