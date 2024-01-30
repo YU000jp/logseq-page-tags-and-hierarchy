@@ -8,8 +8,11 @@ import { PageEntity } from "@logseq/libs/dist/LSPlugin.user"
 export const splitHierarchy = async (pageName: string) => {
     if (parent.document.getElementById("hierarchyLinks") !== null) return//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
-    const h1Element = parent.document.querySelector("body>div#root>div>main div#main-content-container h1.page-title") as HTMLHeadElement | null
+    const h1Element = parent.document.body.querySelector("div#root>div>main div#main-content-container h1.page-title") as HTMLHeadElement | null
     if (h1Element === null) return
+
+    // 「[[」と「]]」が同時に含まれる場合は、ページ名として認識しない
+    if(pageName.includes("[[") && pageName.includes("]]")) return
 
     const pageNameArr: string[] = pageName.split('/')
     // pageNameArrの最後の要素
