@@ -12,7 +12,7 @@ export const splitHierarchy = async (pageName: string) => {
     if (h1Element === null) return
 
     // 「[[」と「]]」が同時に含まれる場合は、ページ名として認識しない
-    if(pageName.includes("[[") && pageName.includes("]]")) return
+    if (pageName.includes("[[") && pageName.includes("]]")) return
 
     const pageNameArr: string[] = pageName.split('/')
     // pageNameArrの最後の要素
@@ -23,15 +23,15 @@ export const splitHierarchy = async (pageName: string) => {
     h1Element.insertAdjacentElement("beforebegin", hierarchyLinks)
     let parts: string = ""
     for (const [index, part] of pageNameArr.entries()) {
-        if (parts === "") {
+        if (parts === "")
             parts = part
-        } else
+        else
             if (index !== pageNameArr.length) {
                 parts += "/" + part
                 hierarchyLinks.insertAdjacentText("beforeend", " / ")
-            } else {
+            } else
                 return//最後の要素はリンクを作成しない
-            }
+
         const link: HTMLAnchorElement = document.createElement("a")
         link.className = "page-ref"
         link.dataset.checked = ""//" data-checked data-localizeは、querySelector回避用
