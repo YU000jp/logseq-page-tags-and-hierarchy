@@ -1,3 +1,15 @@
+# [2.22.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.21.0...v2.22.0) (2024-1-30)
+
+
+### Bug Fixes
+
+* **bug:** Crashes when the page name contains "[[" and "]]" [#50](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/50) ([3cd0293](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/3cd02935e786bc1ed3dddd62c8f375148cda1128))
+
+
+### Features
+
+* **translations:** for plugin settings ([8b88a59](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/8b88a595cb182e0e164c082f429973e2db23eac7))
+
 # [2.21.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.20.1...v2.21.0) (2024-1-20)
 
 
