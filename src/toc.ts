@@ -2,7 +2,6 @@ import removeMd from "remove-markdown"
 import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user"
 import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage, removeListWords } from "./markdown"
 import { displayToc } from "."
-import { time } from "console"
 
 
 export function tocContentTitleCollapsed(PageName: string) {
@@ -206,9 +205,9 @@ async function selectBlock(shiftKey: boolean, pageName: string, blockUuid: strin
 }
 
 async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
-  const block = await logseq.Editor.getBlock(blockUuidOrId) as BlockEntity | null
+  const block = await logseq.Editor.getBlock(blockUuidOrId) as { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] } | null
   if (!block) return
-  const parentBlock = await logseq.Editor.getBlock(block.parent.id) as BlockEntity | null
+  const parentBlock = await logseq.Editor.getBlock(block.parent.id) as { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] } | null
   if (!parentBlock) return
   await logseq.Editor.setBlockCollapsed(parentBlock.uuid, false)
   const element = parent.document.getElementById('block-content-' + block.uuid) as HTMLDivElement | null
@@ -220,18 +219,17 @@ async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
   }
 }
 
-async function expandParentBlock(block: BlockEntity): Promise<void> {
+async function expandParentBlock(block: { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] }): Promise<void> {
   if (block.parent) {
-    const parentBlock = await logseq.Editor.getBlock(block.parent.id) as BlockEntity | null
+    const parentBlock = await logseq.Editor.getBlock(block.parent.id) as { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] } | null
     if (parentBlock) {
       await logseq.Editor.setBlockCollapsed(parentBlock.uuid, false)
       const element = parent.document.getElementById('block-content-' + parentBlock.uuid) as HTMLDivElement | null
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
         setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
-      } else {
+      } else
         await expandParentBlock(parentBlock)
-      }
     }
   }
 }
