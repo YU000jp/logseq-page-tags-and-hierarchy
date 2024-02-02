@@ -110,14 +110,15 @@ const onPageChanged = async () => {
     setTimeout(() => processingOnPageChanged = false, 1000)
 
 
-    const current = await logseq.Editor.getCurrentPage() as { originalName: string, journal?: boolean } | null
+    const current = await logseq.Editor.getCurrentPage() as { originalName: PageEntity["originalName"], journal?: PageEntity["journal?"] } | null
     if (current) {
         currentPageName = current.originalName
         //Hierarchy Links
         if (logseq.settings!.booleanSplitHierarchy === true
             && currentPageName
             && currentPageName.includes("/") as boolean === true
-            && !(current.journal === true && currentPageName.includes(",")) // Journalかつ,が含まれる場合は除外
+            && !(current.journal === true
+                && currentPageName.includes(",")) // Journalかつ,が含まれる場合は除外
         ) splitHierarchy(currentPageName)
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view"
@@ -144,7 +145,8 @@ const onPageChanged = async () => {
             const eleInitial = pageTagsElement.querySelector("div.initial") as HTMLElement | null
             if (titleElement && eleInitial) titleCollapsedRegisterEvent(titleElement, eleInitial)
         }
-        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true || logseq.settings!.booleanRemoveBeginningLevel === true) {
+        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true
+            || logseq.settings!.booleanRemoveBeginningLevel === true) {
             // Hierarchyのサブレベル1のみを表示する
             if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true) hierarchyForFirstLevelOnly(currentPageName.split("/"))
             // Hierarchyの最初から始まるレベルを削除する
@@ -171,7 +173,9 @@ export const onBlockChanged = () => {
     if (onBlockChangedOnce === true) return
     onBlockChangedOnce = true //index.tsの値を書き換える
     logseq.DB.onChanged(async ({ blocks }) => {
-        if (processingBlockChanged === true || currentPageName === "" || logseq.settings!.booleanTableOfContents === false) return
+        if (processingBlockChanged === true
+            || currentPageName === ""
+            || logseq.settings!.booleanTableOfContents === false) return
         //headingがあるブロックが更新されたら
         const findBlock = blocks.find((block) => block.properties?.heading) as BlockEntity | null //uuidを得るためsomeではなくfindをつかう
         if (!findBlock) return
@@ -199,12 +203,15 @@ const onSettingsChanged = () => {
 
         // 表示場所の変更
         if (oldSet.placeSelect !== newSet.placeSelect) { //tocはwide viewのみ
-            if (oldSet.placeSelect === "wide view" && newSet.placeSelect !== "wide view") removeElementClass("th-toc")
-            else if (oldSet.placeSelect !== "wide view" && newSet.placeSelect === "wide view") {
-                const current = await logseq.Editor.getCurrentPage() as PageEntity | null
-                if (current && current.name) displayToc(current.name)
-                onBlockChanged()
-            }
+            if (oldSet.placeSelect === "wide view"
+                && newSet.placeSelect !== "wide view") removeElementClass("th-toc")
+            else
+                if (oldSet.placeSelect !== "wide view"
+                    && newSet.placeSelect === "wide view") {
+                    const current = await logseq.Editor.getCurrentPage() as { name: PageEntity["name"] } | null
+                    if (current && current.name) displayToc(current.name)
+                    onBlockChanged()
+                }
 
             if (newSet.booleanModifyHierarchy === true
                 && !parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`))
@@ -251,30 +258,39 @@ const onSettingsChanged = () => {
         } else {
 
 
-            if (oldSet.booleanUnlinkedReferences === true && newSet.booleanUnlinkedReferences === false) removeProvideStyle(keyUnlinkedReferencesHidden)
-            else if (oldSet.booleanUnlinkedReferences === false && newSet.booleanUnlinkedReferences === true) logseq.provideStyle({
-                key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden
-            })
+            if (oldSet.booleanUnlinkedReferences === true
+                && newSet.booleanUnlinkedReferences === false) removeProvideStyle(keyUnlinkedReferencesHidden)
+            else
+                if (oldSet.booleanUnlinkedReferences === false
+                    && newSet.booleanUnlinkedReferences === true) logseq.provideStyle({ key: keyUnlinkedReferencesHidden, style: CSSUnlinkedHidden })
 
             // 階層のサブレベル1のみを表示する
-            if (oldSet.booleanHierarchyForFirstLevelOnly === true && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly)
-            else if (oldSet.booleanHierarchyForFirstLevelOnly === false && newSet.booleanHierarchyForFirstLevelOnly === true && currentPageName) hierarchyForFirstLevelOnly(currentPageName.split("/"))
+            if (oldSet.booleanHierarchyForFirstLevelOnly === true
+                && newSet.booleanHierarchyForFirstLevelOnly === false) removeProvideStyle(keyHierarchyForFirstLevelOnly)
+            else
+                if (oldSet.booleanHierarchyForFirstLevelOnly === false
+                    && newSet.booleanHierarchyForFirstLevelOnly === true && currentPageName) hierarchyForFirstLevelOnly(currentPageName.split("/"))
 
             if (oldSet.booleanModifyHierarchy === false
                 && newSet.booleanModifyHierarchy === true) {
-                if (!parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`) && !parent.document.head.querySelector(`style[data-injected-style^="${keyNestingPageAccessory}"]`)) provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
+                if (!parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`)
+                    && !parent.document.head.querySelector(`style[data-injected-style^="${keyNestingPageAccessory}"]`)) provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
             }
-            else if (oldSet.booleanModifyHierarchy === true
-                && newSet.booleanModifyHierarchy === false) {
-                removeProvideStyle(keyPageAccessory)
-                removeProvideStyle(keyNestingPageAccessory)
-            }
-            if (oldSet.booleanTableOfContents === false && newSet.booleanTableOfContents === true) {
-                const current = await logseq.Editor.getCurrentPage() as PageEntity | null
+            else
+                if (oldSet.booleanModifyHierarchy === true
+                    && newSet.booleanModifyHierarchy === false) {
+                    removeProvideStyle(keyPageAccessory)
+                    removeProvideStyle(keyNestingPageAccessory)
+                }
+            if (oldSet.booleanTableOfContents === false
+                && newSet.booleanTableOfContents === true) {
+                const current = await logseq.Editor.getCurrentPage() as { name: PageEntity["name"] } | null
                 if (current && current.name) displayToc(current.name)
                 onBlockChanged()
             }
-            else if (oldSet.booleanTableOfContents === true && newSet.booleanTableOfContents === false) removeElementClass("th-toc")
+            else
+                if (oldSet.booleanTableOfContents === true
+                    && newSet.booleanTableOfContents === false) removeElementClass("th-toc")
 
             //positionのCSSを変更
             if (newSet.placeSelect === "wide view") {
@@ -287,26 +303,33 @@ const onSettingsChanged = () => {
                     removeProvideStyle(keyPageAccessoryOrder)
                     logseq.provideStyle({ key: keyPageAccessoryOrder, style: CSSpageSubOrder(newSet) })
                 }
-                if (oldSet.booleanWideModeJournalQueries === false && newSet.booleanWideModeJournalQueries === true)
+                if (oldSet.booleanWideModeJournalQueries === false
+                    && newSet.booleanWideModeJournalQueries === true)
                     logseq.provideStyle({ key: keyWideModeJournalQueries, style: fileWideModeJournalQueries })
-                else if (oldSet.booleanWideModeJournalQueries === true && newSet.booleanWideModeJournalQueries === false)
-                    removeProvideStyle(keyWideModeJournalQueries)
+                else
+                    if (oldSet.booleanWideModeJournalQueries === true
+                        && newSet.booleanWideModeJournalQueries === false)
+                        removeProvideStyle(keyWideModeJournalQueries)
             }
             if (oldSet.booleanSplitHierarchy !== newSet.booleanSplitHierarchy) {
                 if (newSet.booleanSplitHierarchy === true) {
                     splitHierarchy(currentPageName)
                     if (newSet.booleanRemoveHierarchyPageTitle === true)
                         removeOnSettingsChangedHierarchyPageTitleOnce() //ページ名の階層を削除
-                } else if (newSet.booleanSplitHierarchy === false) {
-                    removeElementId("hierarchyLinks")
-                    revertOnSettingsChangedHierarchyPageTitleOnce() //元に戻す
-                }
+                } else
+                    if (newSet.booleanSplitHierarchy === false) {
+                        removeElementId("hierarchyLinks")
+                        revertOnSettingsChangedHierarchyPageTitleOnce() //元に戻す
+                    }
             }
             if (oldSet.booleanSplitHierarchy === true) { //Hierarchy Linksが有効な場合のみ
-                if (oldSet.booleanRemoveHierarchyPageTitle === false && newSet.booleanRemoveHierarchyPageTitle === true)
+                if (oldSet.booleanRemoveHierarchyPageTitle === false
+                    && newSet.booleanRemoveHierarchyPageTitle === true)
                     removeOnSettingsChangedHierarchyPageTitleOnce() //ページ名の階層を削除
-                else if (oldSet.booleanRemoveHierarchyPageTitle === true && newSet.booleanRemoveHierarchyPageTitle === false)
-                    revertOnSettingsChangedHierarchyPageTitleOnce()
+                else
+                    if (oldSet.booleanRemoveHierarchyPageTitle === true
+                        && newSet.booleanRemoveHierarchyPageTitle === false)
+                        revertOnSettingsChangedHierarchyPageTitleOnce()
             }
         }
     })
