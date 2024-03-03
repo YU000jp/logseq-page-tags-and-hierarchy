@@ -16,7 +16,7 @@
 
 ## Overview
 
-### 1. Breadcrumb of page titie  (default: *enable*)
+### 1. Breadcrumb of page title  (default: *enable*)
 
 - Split page title hierarchy as links. Easy access the hierarchies parent page.
 
