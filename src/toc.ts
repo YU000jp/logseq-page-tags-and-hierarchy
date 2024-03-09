@@ -6,7 +6,8 @@ import { displayToc } from "."
 
 export function tocContentTitleCollapsed(PageName: string) {
   const titleElement = parent.document.getElementById("tocContentTitle") as HTMLDivElement | null
-  if (!titleElement || titleElement.dataset.PageName === PageName) return
+  if (!titleElement
+    || titleElement.dataset.PageName === PageName) return
   titleElement.dataset.pageName = PageName
   titleElement.onclick = async () => {
     const elementTocInPage = parent.document.getElementById("tocInPage") as HTMLDivElement | null
@@ -26,7 +27,8 @@ export function tocContentTitleCollapsed(PageName: string) {
 export async function insertElement(): Promise<void> {
   //コンテンツに目次が存在する場合のみ処理を行う
   const elementPageRelative = parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container div.page.relative") as HTMLDivElement | null
-  if (!elementPageRelative || elementPageRelative.querySelector("div.th-toc") !== null) return
+  if (!elementPageRelative
+    || elementPageRelative.querySelector("div.th-toc") !== null) return
   //div elementを作成する
   const tocDiv: HTMLDivElement = document.createElement("div")
   tocDiv.classList.add("th-toc")
@@ -86,11 +88,10 @@ export const getTocBlocks = (childrenArr: Child[]): TocBlock[] => {
           properties: childrenArr[a].properties,
         })
       }
-      if (childrenArr[a].children) {
+      if (childrenArr[a].children)
         findAllHeaders(childrenArr[a].children as Child[])
-      } else {
+      else
         return
-      }
     }
   }
 
@@ -125,7 +126,8 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
   // Create list
   for (let i = 0; i < tocBlocks.length; i++) {
     let blockContent: string = tocBlocks[i].content
-    if (blockContent.includes("((") && blockContent.includes("))")) {
+    if (blockContent.includes("((")
+      && blockContent.includes("))")) {
       // Get content if it's q block reference
       const rxGetId = /\(([^(())]+)\)/
       const blockId = rxGetId.exec(blockContent)
@@ -143,10 +145,8 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
     //プロパティを取り除く
     blockContent = await removeProperties(tocBlocks, i, blockContent)
 
-
-    if (blockContent.includes("id:: ")) {
+    if (blockContent.includes("id:: "))
       blockContent = blockContent.substring(0, blockContent.indexOf("id:: "))
-    }
 
     //文字列のどこかで「[[」と「]]」で囲まれているもいのがある場合は、[[と]]を削除する
     blockContent = removeMarkdownLink(blockContent)
@@ -177,9 +177,11 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
       element.classList.add("cursor")
       //elementのタグ名を取得する
       element.title = element.tagName.toLowerCase()
-      element.innerHTML = removeMd(`${(blockContent.includes("collapsed:: true") &&
-        blockContent.substring(2, blockContent.length - 16)) ||
-        blockContent.substring(2)}`)
+      element.innerHTML = removeMd(
+        `${(blockContent.includes("collapsed:: true")
+          && blockContent.substring(2, blockContent.length - 16))
+        || blockContent.substring(2)}`
+      )
       setTimeout(() => {
         element.addEventListener('click', ({ shiftKey }) => selectBlock(shiftKey, thisPageName, tocBlocks[i].uuid))
       }, 800)
@@ -189,18 +191,17 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
 }
 
 async function selectBlock(shiftKey: boolean, pageName: string, blockUuid: string) {
-  if (shiftKey) {
+  if (shiftKey)
     logseq.Editor.openInRightSidebar(blockUuid)
-  } else {
+  else {
     //https://github.com/freder/logseq-plugin-jump-to-block/blob/master/src/components/App.tsx#L39
     const elem = parent.document.getElementById('block-content-' + blockUuid) as HTMLDivElement | null
     if (elem) {
       elem.scrollIntoView({ behavior: 'smooth' })
       setTimeout(() => logseq.Editor.selectBlock(blockUuid), 50)
-    } else {
+    } else
       //親ブロックがcollapsedの場合
       await parentBlockToggleCollapsed(blockUuid)
-    }
   }
 }
 
@@ -214,9 +215,8 @@ async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
     setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
-  } else {
+  } else
     await expandParentBlock(parentBlock)
-  }
 }
 
 async function expandParentBlock(block: { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] }): Promise<void> {
