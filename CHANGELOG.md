@@ -1,3 +1,10 @@
+## [2.23.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.23.0...v2.23.1) (2024-03-16)
+
+
+### Bug Fixes
+
+* **bug:** Whiteboard hierarchies > Bug that does not recognize it on the spot ([58a70b9](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/58a70b9cf2677aa0b4bbc650fe23f9237b24d772))
+
 # [2.23.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.22.0...v2.23.0) (2024-03-16)
 
 
