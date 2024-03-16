@@ -18,7 +18,7 @@
 
 ### 1. Breadcrumb of page title  (default: *enable*)
 
-- Split page title hierarchy as links. Easy access the hierarchies parent page.
+- Split page title hierarchy as links. Easy access the parent page.
 
    ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
