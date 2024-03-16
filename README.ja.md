@@ -3,7 +3,7 @@
 # Logseq プラグイン: *Page-tags and Hierarchy*
 
 ページタグと階層のためのプラグイン
-  1. 階層をもつページ名を分割して そのリンクを作成します
+  1. ページ名称の階層を分割して そのリンクを作成します
   1. ページビューUI
 
  [![最新リリースバージョン](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
@@ -17,15 +17,16 @@
 
 ## オプション
 
-### 1. ページ名の階層をリンクとして分割 (デフォルト: **有効**)
+### 1. ページ名称の階層をリンクとして分割 (デフォルト: **有効**)
 
-- ページ名の階層を分解し、リンクを作成します。階層の親ページに簡単にアクセスできます。
+- ページ名称の階層を分割し、リンクを作成します。階層の親ページに簡単にアクセスできます。
+  > ホワイトボード機能のサポート [#51](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/51#issuecomment-2000623402) 🆕 (ページ名称の階層を分割する)
 
   ![画像](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
 ### 2. ページビューUI
 
-- ページコンテンツに配置されたページタグと階層の位置を通常とは異なる位置に変更します。複数のモードから選択できます。ワイドビューモード、サイドモード、ボトムモードなど... [こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%93%E3%83%A5%E3%83%BCUI)
+- ページコンテンツに配置されるページタグと階層の位置を、通常とは異なる位置に変更します。複数のモードから選択できます。ワイドビューモード、サイドモード、ボトムモードなど... [こちらのドキュメント](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%93%E3%83%A5%E3%83%BCUI)
   > Logseq バージョン0.9.11以降に対応
 
 ---
