@@ -8,3 +8,21 @@ body[data-page="page"]>div#root>div>main div#main-content-container div.is-journ
     position: absolute;
     margin-top: -4em;
 }
+
+body[data-page="whiteboard"]>div#root>div>main div#main-content-container {
+    & div.whiteboard-page-title>span#hierarchyLinks {
+        font-size: small;
+
+        &>a.page-ref {
+            text-decoration: underline;
+        }
+    }
+
+    & div.tl-logseq-portal-container>div.tl-logseq-portal-header-page>div.relative span.hierarchyLinks {
+        &:after {
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            content: "/";
+        }
+    }
+}

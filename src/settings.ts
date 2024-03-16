@@ -6,7 +6,7 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
 
     {// Hierarchy of Page Name
         key: "headingHierarchyOfPageName",
-        title: t("Hierarchy of page-title settings"),
+        title: t("Hierarchy of page-name settings"),
         type: "heading",
         default: "",
         description: "",
@@ -22,6 +22,13 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
     {//ページ名の階層を取り除く (上の項目が有効な場合のみ)
         key: "booleanRemoveHierarchyPageTitle",
         title: t("Remove hierarchies of the page title (if the above option is enabled)"),
+        type: "boolean",
+        default: true,
+        description: "default: true",
+    },
+    {
+        key: "booleanWhiteboardSplitHierarchy",
+        title: t("Splits of hierarchies on Whiteboard"),
         type: "boolean",
         default: true,
         description: "default: true",
@@ -56,13 +63,6 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         default: "",
         description: "",
     },
-    {// Unlinked Referencesを表示しない
-        key: "booleanUnlinkedReferences",
-        title: t("Hide unlinked references"),
-        type: "boolean",
-        default: false,
-        description: "default: false",
-    },
     {
         key: "placeSelect",
         title: t("Select mode"),
@@ -70,6 +70,13 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         enumChoices: ["unset", "side", "bottom", "wide view"],
         default: "unset",
         description: t("[unset, side, bottom, wide view]") + ` [more details](${t("https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI")})`,
+    },
+    {// Unlinked Referencesを表示しない
+        key: "booleanUnlinkedReferences",
+        title: t("Hide unlinked references"),
+        type: "boolean",
+        default: false,
+        description: "default: false",
     },
 
     {//wide viewモードのみ
