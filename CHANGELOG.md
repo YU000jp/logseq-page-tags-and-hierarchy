@@ -1,3 +1,10 @@
+# [2.23.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.22.0...v2.23.0) (2024-03-16)
+
+
+### Features
+
+* **Add:** Splits of hierarchies on Whiteboard ([19ff725](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/19ff72537115ace605fd688fc05cd8cbea4ea36d))
+
 # [2.22.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.21.0...v2.22.0) (2024-1-30)
 
 
