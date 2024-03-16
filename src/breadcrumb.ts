@@ -85,6 +85,7 @@ const checkPageTitleOnBoardObserver = () => {
         observer.observe(targetNode, {
             subtree: true,
             attributes: true,
+            childList: true,
         })
 }
 
@@ -96,7 +97,7 @@ const checkPageTitleOnBoardCallback = async () => {
     setTimeout(() => whiteboardCheckPageTitleObserverFlag = false, 3000)
 
     //aタグ("div.tl-logseq-portal-container[data-page-id]>div.tl-logseq-portal-header-page>div.relative>a.page-ref")が発生するので、ページ名を取得して、それを分割する
-    if (!parent.document.body.querySelector("div#root>div>main div#main-content-container div.tl-logseq-portal-container[checked]")) { //フラグのないものがあった場合
+    if (parent.document.body.querySelector("div#root>div>main div#main-content-container div.tl-logseq-portal-container:not([checked])")) { //フラグのないものがあった場合
         parent.document.body.querySelectorAll("div#root>div>main div#main-content-container div.tl-logseq-portal-container:not([checked])>div.tl-logseq-portal-header-page>div.relative>a.page-ref").forEach((element) => {
             const pageName = (element as HTMLAnchorElement).innerText as string
             if (pageName.includes("/")) {
