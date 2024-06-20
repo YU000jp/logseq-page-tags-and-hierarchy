@@ -17,12 +17,13 @@ body[data-page="page"] {
                     padding-bottom: 1.6em;
                     padding-left: 0.3em;
                     padding-right: 1.3em;
-                    padding-top:1em;
+                    padding-top: 1em;
                     user-select: none;
 
-                    &>div{
+                    &>div {
                         margin-bottom: 1.2em;
                     }
+
                     & h1,
                     & h2,
                     & h3,
@@ -89,6 +90,15 @@ body[data-page="page"] {
 
                     &>div {
 
+                        &#weekNav {
+                            writing-mode: vertical-rl;
+                            padding-right: 1.8em;
+
+                            &>:is(span, a) {
+                                margin-bottom: 1.5em;
+                            }
+                        }
+
                         & div#tocInPage,
                         & div:is(.page-linked, .page-unlinked)>div.content>div>div.initial,
                         &:is(.page-tags, .page-hierarchy) div.initial {
@@ -120,7 +130,7 @@ body[data-page="page"] {
 
                             &:not(#today-queries):has(div.content>div.flex>div.content+div.hidden),
                             &.lazy-visibility:has(div>div.fade-enter-active>div.scheduled-or-deadlines>div.flex>div.content+div.hidden),
-                            &:is(.page-hierarchy,.th-toc):has(div.flex>div.content+div.hidden) {
+                            &:is(.page-hierarchy, .th-toc):has(div.flex>div.content+div.hidden) {
                                 writing-mode: vertical-rl;
                                 max-width: 3.2em;
                             }
