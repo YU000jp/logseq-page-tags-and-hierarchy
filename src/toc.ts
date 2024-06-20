@@ -105,7 +105,7 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
   // Update button
   const elementUpdate = document.createElement("span")
   elementUpdate.classList.add("cursor")
-  elementUpdate.innerHTML = "🔄 Update"
+  elementUpdate.innerHTML = "🔄"
   elementUpdate.style.padding = "1em"
   elementButtons.append(elementUpdate)
   elementUpdate.addEventListener('click', () => {
@@ -117,7 +117,7 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
   // Scroll to top
   const elementTop = document.createElement("span")
   elementTop.classList.add("cursor")
-  elementTop.innerHTML = "⬆️ Scroll to top"
+  elementTop.innerHTML = "⬆️"
   elementTop.style.padding = "1em"
   elementButtons.append(elementTop)
   elementTop.addEventListener('click', () => parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))

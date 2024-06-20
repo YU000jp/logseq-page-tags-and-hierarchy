@@ -1,4 +1,5 @@
 {
+    "Clean up Linked References. The disadvantage is that if a block containing the tags property contains other information, it will not be displayed. It is hidden, so the number of refs does not match.": "Linked Referencesを整理します。欠点は、tagsプロパティを含むブロックが他の情報を含む場合、表示されないことです。ブロックが隠されるため、リファレンスの数が一致しません。",
     "Collapsed table of contents by default": "デフォルトで目次を折りたたみます",
     "Delete the hierarchy from the beginning level": "階層を最初のレベルから削除する",
     "Enable table of contents on a page": "ページの目次機能を有効にする",
@@ -9,6 +10,7 @@
     "If workspace is small, zoom in or open it in the right sidebar.": "ワークスペースが小さい場合は、ズームインするか、右サイドバーで開きます。",
     "Linked references position": "Linked Referencesの位置",
     "Modify the display of hierarchy to be original rather than standard.": "階層の表示方法を、標準ではなくオリジナルに変更する",
+    "Omit the block if the Linked References contain tags property": "Linked Referencesにtagsプロパティが含まれる場合、ブロックを省略します",
     "Page hierarchy position": "ページ階層の位置",
     "Page tags position": "ページタグの位置",
     "Page view settings": "ページビューの設定",

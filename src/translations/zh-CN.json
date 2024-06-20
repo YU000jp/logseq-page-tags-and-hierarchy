@@ -1,4 +1,5 @@
 {
+    "Clean up Linked References. The disadvantage is that if a block containing the tags property contains other information, it will not be displayed. It is hidden, so the number of refs does not match.": "清理链接引用。 缺点是，如果包含标签属性的块包含其他信息，则不会显示。 它是隐藏的，因此引用的数量不匹配。",
     "Collapsed table of contents by default": "默认折叠目录",
     "Delete the hierarchy from the beginning level": "从起始级别删除层次结构",
     "Enable table of contents on a page": "在页面上启用目录",
@@ -9,6 +10,7 @@
     "If workspace is small, zoom in or open it in the right sidebar.": "如果工作区较小，请缩小或在右侧边栏中打开。",
     "Linked references position": "链接引用位置",
     "Modify the display of hierarchy to be original rather than standard.": "修改层次结构的显示方式，使其原汁原味而不是标准",
+    "Omit the block if the Linked References contain tags property": "如果链接引用包含标签属性，则省略块",
     "Page hierarchy position": "页面层次结构位置",
     "Page tags position": "页面标签位置",
     "Page view settings": "页面视图设置",

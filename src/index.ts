@@ -1,15 +1,16 @@
 import "@logseq/libs"
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { setup as l10nSetup, t } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
+import { setup as l10nSetup, t } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
 import fileBottom from './bottom.css?inline'
+import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitPageTitle, WhiteboardCallback } from "./breadcrumb"
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
 import { provideStyle, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent } from "./lib"
 import fileCSSMain from './main.css?inline'
 import fileNestingPageAccessory from "./pageAccessory.css?inline"
+import CSSLinkedRefHiddenTagsProperty from "./refHiddenTags.css?inline"
 import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
-import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitPageTitle, WhiteboardCallback } from "./breadcrumb"
-import { CSSpageSubOrder, Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
+import { Child, CSSpageSubOrder, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
 import ja from "./translations/ja.json"
 import ko from "./translations/ko.json"
 import zhCN from "./translations/zh-CN.json"
@@ -26,6 +27,7 @@ const keyWide = "th-wide"
 const keyPageAccessoryOrder = "th-pageAccessoryOrder"
 const keyWideModeJournalQueries = "th-wideModeJournalQueries"
 const keyUnlinkedReferencesHidden = "th-unlinkedReferences-hidden"
+const keyLinkedRefHiddenTagsProperty = "th-linkedRefHiddenTagsProperty"
 export const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly"
 export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLevel"
 
@@ -45,6 +47,13 @@ const main = async () => {
         logseq.provideStyle({
             key: keyUnlinkedReferencesHidden,
             style: CSSUnlinkedHidden
+        })
+
+    //設定項目 > Linked Referencesのページタグのみが含まれる場合、そのプロパティを省略する
+    if (logseq.settings!.booleanLinkedRefRemoveTagsProperty === true)
+        logseq.provideStyle({
+            key: keyLinkedRefHiddenTagsProperty,
+            style: CSSLinkedRefHiddenTagsProperty
         })
 
     //CSS minify https://csscompressor.com/
@@ -347,6 +356,17 @@ const onSettingsChangedCallback = () => {
                     logseq.provideStyle({
                         key: keyUnlinkedReferencesHidden,
                         style: CSSUnlinkedHidden
+                    })
+
+            if (oldSet.booleanLinkedRefRemoveTagsProperty === true
+                && newSet.booleanLinkedRefRemoveTagsProperty === false)
+                removeProvideStyle(keyLinkedRefHiddenTagsProperty)
+            else
+                if (oldSet.booleanLinkedRefRemoveTagsProperty === false
+                    && newSet.booleanLinkedRefRemoveTagsProperty === true)
+                    logseq.provideStyle({
+                        key: keyLinkedRefHiddenTagsProperty,
+                        style: CSSLinkedRefHiddenTagsProperty
                     })
 
             // 階層のサブレベル1のみを表示する

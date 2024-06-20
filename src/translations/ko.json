@@ -1,4 +1,5 @@
 {
+    "Clean up Linked References. The disadvantage is that if a block containing the tags property contains other information, it will not be displayed. It is hidden, so the number of refs does not match.": "Linked References를 정리합니다. 단점은 tags 속성을 포함하는 블록이 다른 정보를 포함하는 경우 표시되지 않습니다. 숨겨져 있으므로 참조 수가 일치하지 않습니다.",
     "Collapsed table of contents by default": "기본값으로 목차 축소",
     "Delete the hierarchy from the beginning level": "시작 레벨에서 계층 삭제",
     "Enable table of contents on a page": "페이지에서 목차 활성화",
@@ -9,6 +10,7 @@
     "If workspace is small, zoom in or open it in the right sidebar.": "작업 공간이 작으면 확대하거나 오른쪽 사이드바에서 열기",
     "Linked references position": "연결된 참조 위치",
     "Modify the display of hierarchy to be original rather than standard.": "표준 대신 원본 계층 표시 수정",
+    "Omit the block if the Linked References contain tags property": "Linked References에 tags 속성이 포함되어 있으면 블록을 생략합니다.",
     "Page hierarchy position": "페이지 계층 위치",
     "Page tags position": "페이지 태그 위치",
     "Page view settings": "페이지 보기 설정",
