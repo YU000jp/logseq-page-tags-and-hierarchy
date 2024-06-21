@@ -108,8 +108,8 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         key: "booleanTableOfContentsHide",
         title: t("Collapsed table of contents by default"),
         type: "boolean",
-        default: false,
-        description: "default: false",
+        default: true,
+        description: "default: true",
     },
     //20240120
     {//Table of Contents、削除する単語リスト 改行区切り
