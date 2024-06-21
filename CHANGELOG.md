@@ -1,3 +1,15 @@
+# [2.24.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.23.1...v2.24.0) (2024-06-21)
+
+
+### Bug Fixes
+
+* **bug:** Weekly Journal nav ([153cd8f](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/153cd8fc68cd6f0dd743ea2657ceae51b9e66155))
+
+
+### Features
+
+* **Add:** Omit the block if the Linked References contain tags property ([31343bf](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/31343bf60a7f37e5b51862c3d2a2ebc0c9f81e57))
+
 ## [2.23.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.23.0...v2.23.1) (2024-03-16)
 
 
