@@ -1,5 +1,4 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { create } from "domain"
 
 /**
  * Splits the hierarchy of a page name and creates links for each level of the hierarchy.
@@ -173,8 +172,7 @@ export const pageTitleLastPartOnlyControl = async (
                                 pageTitleElement.innerText = lastPart
                                 return
                             } else
-                                //名前が変わっていたら監視を終了
-                                observer.disconnect()
+                                observer.disconnect()//名前が変わっていたら監視を終了
                         }
         })
         const targetNode = pageTitleElement.parentElement

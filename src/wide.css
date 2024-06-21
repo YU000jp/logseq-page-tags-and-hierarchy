@@ -179,11 +179,7 @@ body[data-page="page"] {
 
                     &>div>div {
 
-                        &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked div.pt-6 {
-                            padding-top: unset;
-                        }
-
-                        &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked,
+                        & div.fade-enter-active>div.references.page-linked,
                         &.references.page-unlinked {
                             font-size: .96em;
                             overflow-y: auto;
@@ -198,9 +194,13 @@ body[data-page="page"] {
                             }
                         }
 
-                        /* 遅延ロード対策 */
-                        &.lazy-visibility>div>div.fade-enter-active>div.references.page-linked {
+                        & div.fade-enter-active>div.references.page-linked {
+                            /* 遅延ロード対策 */
                             display: none;
+
+                            & div.pt-6 {
+                                padding-top: unset;
+                            }
                         }
                     }
 

@@ -120,7 +120,8 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
   elementTop.innerHTML = "⬆️"
   elementTop.style.padding = "1em"
   elementButtons.append(elementTop)
-  elementTop.addEventListener('click', () => parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))
+  elementTop.addEventListener('click', () =>
+    parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))
   targetElement.append(elementButtons)
 
   // Create list
@@ -244,4 +245,3 @@ body[data-page="page"]>div#root>div>main div#main-content-container div.page.rel
   &.page-tags {order:${settings.enumPageTags}}
 }
 `;
-

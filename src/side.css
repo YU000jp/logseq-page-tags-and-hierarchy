@@ -4,6 +4,7 @@ body[data-page=page]:not(.is-pdf-active) {
             display: none
         }
     }
+
     @media screen and (min-width:900px) {
         & main:not(.ls-right-sidebar-open) div#main-content-container {
 
