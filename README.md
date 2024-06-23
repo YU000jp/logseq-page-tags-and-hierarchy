@@ -1,14 +1,15 @@
-[日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) / [简体中文](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.zhCN.md)
-
 # Logseq Plugin: *Page-tags and Hierarchy*
 
 1. Breadcrumb of page title
 1. Page view UI for page-tags and hierarchy
 
- [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
+<div align="right">
+
+ [日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) / [简体中文](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.zhCN.md) [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/YU000jp/logseq-page-tags-and-hierarchy/total.svg)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
- Published 20221010
+ Published 20221010 <a href="https://www.buymeacoffee.com/yu000japan"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=yu000japan&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff"/></a>
+</div>
 
 ---
 
@@ -58,9 +59,7 @@ Install from Logseq Marketplace
 
 ## Prior art / Credit
 
-1. "Table of contents" feature:
-   1. [@hkgnp/ logseq-toc plugin](https://github.com/hkgnp/logseq-toc-plugin/)
-   1. [@freder/ logseq-plugin-jump-to-block plugin](https://github.com/freder/logseq-plugin-jump-to-block/)
-1. Author > [@YU000jp](https://github.com/YU000jp)
-
-<a href="https://www.buymeacoffee.com/yu000japan"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=yu000japan&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff"/></a>
+- "Table of contents" feature:
+  1. [@hkgnp/ logseq-toc plugin](https://github.com/hkgnp/logseq-toc-plugin/)
+  1. [@freder/ logseq-plugin-jump-to-block plugin](https://github.com/freder/logseq-plugin-jump-to-block/)
+- Author > [@YU000jp](https://github.com/YU000jp)
