@@ -1,4 +1,3 @@
-[English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy) / [日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md)
 
 # Logseq插件: *Page-tags and Hierarchy*
 
@@ -6,10 +5,13 @@
   1. 将页面标题的层次分割为链接
   1. 用于页面标签和层次的页面视图界面
 
-[![最新发布版本](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
+<div align="right">
+
+[English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy) / [日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) [![最新发布版本](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![许可证](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
 [![下载次数](https://img.shields.io/github/downloads/YU000jp/logseq-page-tags-and-hierarchy/total.svg)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
-发布日期：2022/10/10
+发布日期：2022/10/10 <a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee 请作者喝咖啡！" style="height: 42px;width: 152px" ></a>
+</div>
 
 ---
 
@@ -47,12 +49,6 @@
 
 ## 先行研究 / 鸣谢
 
-Logseq插件 > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
-
-Logseq插件 > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
-
-作者 > [YU000jp (GitHub)](https://github.com/YU000jp)
-
----
-
-<a href="https://www.buymeacoffee.com/yu000japan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="🍌Buy Me A Coffee 请作者喝咖啡！" style="height: 42px;width: 152px" ></a>
+- Logseq插件 > [hkgnp/ logseq-toc-plugin](https://github.com/hkgnp/logseq-toc-plugin/)
+- Logseq插件 > [freder/ logseq-plugin-jump-to-block](https://github.com/freder/logseq-plugin-jump-to-block/)
+- 作者 > [@YU000jp](https://github.com/YU000jp)
