@@ -1,3 +1,10 @@
+## [2.24.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.24.1...v2.24.2) (2024-06-24)
+
+
+### Bug Fixes
+
+* **bug:** Bug in the ability to remove page hierarchy. Annual, monthly, etc. ([d5c6ded](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/d5c6ded88364819d3d6348198eb3ac6fb1bde710))
+
 ## [2.24.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.24.0...v2.24.1) (2024-06-24)
 
 
