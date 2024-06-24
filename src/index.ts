@@ -1,6 +1,6 @@
 import "@logseq/libs"
 import { BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { setup as l10nSetup, t } from "logseq-l10n"; //https://github.com/sethyuan/logseq-l10n
+import { setup as l10nSetup, t } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
 import fileBottom from './bottom.css?inline'
 import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitPageTitle, WhiteboardCallback } from "./breadcrumb"
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
@@ -190,14 +190,15 @@ const onPageChangedCallback = async () => {
             displayToc(currentPageName)
     }
 
+    let flagYearOrMonth: boolean = false
     //ページ名が2023/06/24の形式にマッチする場合
     if (logseq.settings!.booleanModifyHierarchy === true
         && currentPageName
         && (currentPageName.match(/^\d{4}/)
             || currentPageName.match(/^(\d{4}\/\d{2})/)
-            //|| currentPageName.match(/^(\d{4}\/\d{2}\/\d{2})/) //Journalの場合はもともと表示されない
         )) {
         parent.document.body.querySelector("div#root>div>main div#main-content-container div.page-hierarchy")?.classList.add('th-journal')
+        flagYearOrMonth = true
     }
 
     setTimeout(() => { //あとからでもいい処理
@@ -210,13 +211,12 @@ const onPageChangedCallback = async () => {
                 && eleInitial)
                 titleCollapsedRegisterEvent(titleElement, eleInitial)
         }
-        if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true
-            || logseq.settings!.booleanRemoveBeginningLevel === true) {
-            // Hierarchyのサブレベル1のみを表示する
-            if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true)
+
+        if (flagYearOrMonth === false) { // 年と月のページの場合は処理しない
+            if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true)// Hierarchyのサブレベル1のみを表示する
                 hierarchyForFirstLevelOnly(currentPageName.split("/"))
-            // Hierarchyの最初から始まるレベルを削除する
-            hierarchyRemoveBeginningLevel(currentPageName.split("/"))
+            if (logseq.settings!.booleanRemoveBeginningLevel === true)// Hierarchyの最初から始まるレベルを削除する
+                hierarchyRemoveBeginningLevel(currentPageName.split("/"), currentPageName)
         }
     }, 1)
 
