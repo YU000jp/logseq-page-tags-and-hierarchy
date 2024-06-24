@@ -55,6 +55,13 @@ const main = async () => {
             key: keyLinkedRefHiddenTagsProperty,
             style: CSSLinkedRefHiddenTagsProperty
         })
+    //設定項目 > Journal Queriesを表示するかどうか
+    //wide viewモード以外も。
+    if (logseq.settings!.booleanWideModeJournalQueries === true)
+        logseq.provideStyle({
+            key: keyWideModeJournalQueries,
+            style: fileWideModeJournalQueries
+        })
 
     //CSS minify https://csscompressor.com/
     switch (logseq.settings!.placeSelect) {
@@ -90,11 +97,7 @@ const main = async () => {
                 key: keyPageAccessoryOrder,
                 style: CSSpageSubOrder(logseq.settings)
             })
-            if (logseq.settings!.booleanWideModeJournalQueries === true)
-                logseq.provideStyle({
-                    key: keyWideModeJournalQueries,
-                    style: fileWideModeJournalQueries
-                })
+
             break
     }
 
@@ -293,7 +296,8 @@ const onSettingsChangedCallback = () => {
                     removeProvideStyle(keyPageAccessory)
                     removeProvideStyle(keyNestingPageAccessory)
                 }
-
+            
+            // UIの変更
             switch (newSet.placeSelect) {
                 case "bottom":
                     removeProvideStyle(keySide)
@@ -325,11 +329,6 @@ const onSettingsChangedCallback = () => {
                         key: keyPageAccessoryOrder,
                         style: CSSpageSubOrder(logseq.settings)
                     })
-                    if (newSet.booleanWideModeJournalQueries === true)
-                        logseq.provideStyle({
-                            key: keyWideModeJournalQueries,
-                            style: fileWideModeJournalQueries
-                        })
                     break
                 case "unset":
                     removeProvideStyle(keySide)
@@ -403,7 +402,18 @@ const onSettingsChangedCallback = () => {
                 if (oldSet.booleanTableOfContents === true
                     && newSet.booleanTableOfContents === false)
                     removeElementClass("th-toc")
-
+            
+            if (oldSet.booleanWideModeJournalQueries === false
+                && newSet.booleanWideModeJournalQueries === true)
+                logseq.provideStyle({
+                    key: keyWideModeJournalQueries,
+                    style: fileWideModeJournalQueries
+                })
+            else
+                if (oldSet.booleanWideModeJournalQueries === true
+                    && newSet.booleanWideModeJournalQueries === false)
+                    removeProvideStyle(keyWideModeJournalQueries)
+            
             //positionのCSSを変更
             if (newSet.placeSelect === "wide view") {
                 if (oldSet.enumScheduleDeadline !== newSet.enumScheduleDeadline
@@ -418,16 +428,7 @@ const onSettingsChangedCallback = () => {
                         style: CSSpageSubOrder(newSet)
                     })
                 }
-                if (oldSet.booleanWideModeJournalQueries === false
-                    && newSet.booleanWideModeJournalQueries === true)
-                    logseq.provideStyle({
-                        key: keyWideModeJournalQueries,
-                        style: fileWideModeJournalQueries
-                    })
-                else
-                    if (oldSet.booleanWideModeJournalQueries === true
-                        && newSet.booleanWideModeJournalQueries === false)
-                        removeProvideStyle(keyWideModeJournalQueries)
+
             }
             if (oldSet.booleanSplitHierarchy !== newSet.booleanSplitHierarchy) {
                 if (newSet.booleanSplitHierarchy === true) {
