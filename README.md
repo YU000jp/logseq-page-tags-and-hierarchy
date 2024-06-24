@@ -1,11 +1,8 @@
 # Logseq Plugin: *Page-tags and Hierarchy*
 
-1. Breadcrumb of page title
-1. Page view UI for page-tags and hierarchy
-
 <div align="right">
 
- [日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) / [简体中文](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.zhCN.md) [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
+[English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/)/[日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) [![latest release version](https://img.shields.io/github/v/release/YU000jp/logseq-page-tags-and-hierarchy)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
 [![License](https://img.shields.io/github/license/YU000jp/logseq-page-tags-and-hierarchy?color=blue)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/YU000jp/logseq-page-tags-and-hierarchy/total.svg)](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/releases)
  Published 20221010 <a href="https://www.buymeacoffee.com/yu000japan"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=yu000japan&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff"/></a>
@@ -13,20 +10,21 @@
 
 ---
 
-- Logseq features Page Tags and Hierarchy, which are essential functions that assist in organizing and searching for information. Hierarchy is also called `namespaces`. [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
+- Logseq has page tags and a hierarchical structure to show how pages are related to each other. They provide links within the page content, but not enough. This plugin improves on that. [For more information.](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Logseq-features-Page-Tags-and-Hierarchy)
 
 ## Overview
 
 ### 1. Breadcrumb of page title  (default: *enable*)
 
-- Split page title hierarchy as links. Easy access the parent page.
-  > Support in Whiteboard [#51](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/51#issuecomment-2000623402) 🆕 (Split the hierarchy of each page-name)
+- Split the hierarchy of a page name into links
+  > It also works on whiteboards. [#51](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/51#issuecomment-2000623402) 🆕
 
    ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
-### 2. Page view UI (option)
+### 2. Page view UI
 
-- Change the position of page tags and hierarchy placed in page content to a different position than usual. Choose from several modes. side mode, bottom mode, Wide view mode etc... [Document here](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
+- By default, page tags and hierarchy appear at the end of the page content. This plugin offers different placement options:
+  > [For more information.](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
 
 ---
 
@@ -34,12 +32,12 @@
 
 > Logseq v0.9.11 or later 🚧
 
-Install from Logseq Marketplace
+- Install from Logseq Marketplace
   - Press `---` on the top right toolbar to open `Plugins`. Select `Marketplace`. Type `tags` in the search field, select it from the search results and install.
 
 ### Usage
 
-- After installing this plugin, the styles be applied to non-journal pages. By default, page view mode is turned off. it is possible to set in the plugin settings.
+- Configure various settings in the plugin settings.
 
 ---
 
@@ -48,14 +46,14 @@ Install from Logseq Marketplace
 > Go to the [Discussions](https://github.com/YU000jp/Logseq-column-Layout/discussions) tab to ask and find this kind of things.
 
 1. This plugin relies on Logseq's DOM (Document Object Model) structure. If the DOM structure changes due to a Logseq version update, styles may not be applied. We will adjust the CSS to deal with it. If you notice something, please raise an issue.
-1. Related plugins
+1. Related Item
    1. For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
    1. [Quickly PARA method plugin](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
       * There is a "namespace query search" feature.
-        - Search for pages with the same name or explore related pages without worrying about the hierarchical structure and list them.
-      * The ability to create a new page in the same hierarchy or add a sub page is provided.
+        - It is possible to search for pages with the same name, find related pages and list them without having to worry about hierarchical structure.
+      *  The ability to create new pages and add sub-pages in the same hierarchy.
    1. [Short namespaces plugin](https://github.com/YU000jp/logseq-plugin-short-namespaces)
-      - Displays hierarchical links, which tend to be long, by omitting them.
+      - Displays abbreviated hierarchical links, which tend to be lengthy.
 
 ## Prior art / Credit
 
