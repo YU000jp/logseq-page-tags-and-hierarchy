@@ -1,6 +1,6 @@
 {
     "name": "logseq-page-tags-and-hierarchy",
-    "description": "Split page title hierarchy as links / Page view UI for page-tags and hierarchy",
+    "description": "Breadcrumb of page title / Page view UI",
     "repository": "https://github.com/YU000jp/logseq-page-tags-and-hierarchy.git",
     "author": "YU000jp",
     "license": "MIT",
