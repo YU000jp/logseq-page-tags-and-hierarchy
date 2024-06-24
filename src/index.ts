@@ -236,7 +236,7 @@ const onPageChangedCallback = async () => {
 
         if (flagYearOrMonth === false) { // 年と月のページの場合は処理しない
             if (logseq.settings!.booleanHierarchyForFirstLevelOnly === true)// Hierarchyのサブレベル1のみを表示する
-                hierarchyForFirstLevelOnly(currentPageName.split("/"))
+                hierarchyForFirstLevelOnly(currentPageName.split("/"), currentPageName)
             if (logseq.settings!.booleanRemoveBeginningLevel === true)// Hierarchyの最初から始まるレベルを削除する
                 hierarchyRemoveBeginningLevel(currentPageName.split("/"), currentPageName)
         }
@@ -395,7 +395,7 @@ const onSettingsChangedCallback = () => {
                 if (oldSet.booleanHierarchyForFirstLevelOnly === false
                     && newSet.booleanHierarchyForFirstLevelOnly === true
                     && currentPageName)
-                    hierarchyForFirstLevelOnly(currentPageName.split("/"))
+                    hierarchyForFirstLevelOnly(currentPageName.split("/"), currentPageName)
 
             if (oldSet.booleanModifyHierarchy === false
                 && newSet.booleanModifyHierarchy === true) {
