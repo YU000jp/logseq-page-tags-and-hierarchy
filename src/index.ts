@@ -12,7 +12,22 @@ import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
 import { Child, CSSpageSubOrder, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
 import ja from "./translations/ja.json"
+import af from "./translations/af.json"
+import de from "./translations/de.json"
+import es from "./translations/es.json"
+import fr from "./translations/fr.json"
+import id from "./translations/id.json"
+import it from "./translations/it.json"
 import ko from "./translations/ko.json"
+import nbNO from "./translations/nb-NO.json"
+import nl from "./translations/nl.json"
+import pl from "./translations/pl.json"
+import ptBR from "./translations/pt-BR.json"
+import ptPT from "./translations/pt-PT.json"
+import ru from "./translations/ru.json"
+import sk from "./translations/sk.json"
+import tr from "./translations/tr.json"
+import uk from "./translations/uk.json"
 import zhCN from "./translations/zh-CN.json"
 import zhHant from "./translations/zh-Hant.json"
 import CSSUnlinkedHidden from './unlinkedHidden.css?inline'
@@ -34,7 +49,11 @@ export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLeve
 
 const main = async () => {
 
-    await l10nSetup({ builtinTranslations: { ja, ko, "zh-Hant": zhHant, "zh-CN": zhCN } })
+    await l10nSetup({
+        builtinTranslations: {//Full translations
+            ja, af, de, es, fr, id, it, ko, "nb-NO": nbNO, nl, pl, "pt-BR": ptBR, "pt-PT": ptPT, ru, sk, tr, uk, "zh-CN": zhCN, "zh-Hant": zhHant
+        }
+    })
     /* user settings */
     logseq.useSettingsSchema(settingsTemplate())
 
@@ -296,7 +315,7 @@ const onSettingsChangedCallback = () => {
                     removeProvideStyle(keyPageAccessory)
                     removeProvideStyle(keyNestingPageAccessory)
                 }
-            
+
             // UIの変更
             switch (newSet.placeSelect) {
                 case "bottom":
@@ -402,7 +421,7 @@ const onSettingsChangedCallback = () => {
                 if (oldSet.booleanTableOfContents === true
                     && newSet.booleanTableOfContents === false)
                     removeElementClass("th-toc")
-            
+
             if (oldSet.booleanWideModeJournalQueries === false
                 && newSet.booleanWideModeJournalQueries === true)
                 logseq.provideStyle({
@@ -413,7 +432,7 @@ const onSettingsChangedCallback = () => {
                 if (oldSet.booleanWideModeJournalQueries === true
                     && newSet.booleanWideModeJournalQueries === false)
                     removeProvideStyle(keyWideModeJournalQueries)
-            
+
             //positionのCSSを変更
             if (newSet.placeSelect === "wide view") {
                 if (oldSet.enumScheduleDeadline !== newSet.enumScheduleDeadline
