@@ -1,3 +1,11 @@
+## [2.24.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.24.0...v2.24.1) (2024-06-24)
+
+
+### Bug Fixes
+
+* **bug:** Bug fixes in the "Remove duplicates from the standard hierarchy" function. ([5ea8f4f](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/5ea8f4f413028759d7969a458e6782fb636aabc1))
+* Plugin settings and translation improvements ([b67d6af](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/b67d6af66eef9be772271755decf4ad11866ef1f))
+
 # [2.24.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.23.1...v2.24.0) (2024-06-21)
 
 
