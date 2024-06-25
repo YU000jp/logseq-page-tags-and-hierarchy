@@ -21,9 +21,9 @@
 
    ![image](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/assets/111847207/f7da636b-4418-4a2f-b1e9-49c6aa8ec055)
 
-### 2. Page view UI
+### 2. Customizing Page Tags and Hierarchy Display (Page view UI)
 
-- By default, page tags and hierarchy appear at the end of the page content. This plugin offers different placement options:
+- Logseq standard displays page tags and hierarchy at the end of page content, but it is inconvenient to scroll to the end. This plugin provides placement options to eliminate that inconvenience:
   > [For more information.](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
 
 ---
