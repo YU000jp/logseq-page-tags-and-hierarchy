@@ -1,3 +1,10 @@
+# [2.25.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.24.2...v2.25.0) (2024-07-06)
+
+
+### Features
+
+* Update Plugin Settings ([bfa2c14](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/bfa2c143d4194ed0ab8cd986175108e859c333fe))
+
 ## [2.24.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.24.1...v2.24.2) (2024-06-24)
 
 
