@@ -1,8 +1,48 @@
-body>div#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] div.heading-item {
-    margin-top: 3em;
-    border-top-width: 1px;
-    padding-top: 1em;
+body>div#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] {
+    & div.heading-item {
+        margin-top: 3em;
+        border-top-width: 1px;
+        padding-top: 1em;
+    }
+
+    & div.desc-item {
+        &[data-key="booleanSplitHierarchy"]:has(input.form-checkbox:not(:checked))+div.desc-item[data-key="booleanRemoveHierarchyPageTitle"] {
+            display: none;
+        }
+
+        &[data-key="booleanModifyHierarchy"]:has(input.form-checkbox:not(:checked))+div.desc-item[data-key="booleanHierarchyForFirstLevelOnly"] {
+            display: none;
+        }
+
+        &[data-key="booleanTableOfContents"]:has(input.form-checkbox:not(:checked))+div.desc-item[data-key="booleanTableOfContentsHide"] {
+            display: none;
+
+            &+div.desc-item[data-key="tocRemoveWordList"] {
+                display: none;
+            }
+        }
+    }
 }
+
+head:not(:has(style[data-injected-style^="th-wide"]))+body>div#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] {
+
+    & div.heading-item[data-key="heading0030"],
+    & div.desc-item[data-key="booleanTableOfContents"],
+    & div.desc-item[data-key="booleanTableOfContentsHide"],
+    & div.desc-item[data-key="tocRemoveWordList"],
+    & div.heading-item[data-key="heading0040"],
+    & div.desc-item[data-key="enumScheduleDeadline"],
+    & div.desc-item[data-key="enumTableOfContents"],
+    & div.desc-item[data-key="enumLinkedReferences"],
+    & div.desc-item[data-key="enumUnlinkedReferences"],
+    & div.desc-item[data-key="enumPageHierarchy"],
+    & div.desc-item[data-key="enumPageTags"] {
+        display: none;
+    }
+
+
+}
+
 
 body[data-page="page"]>div#root>div>main div#main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
     position: absolute;
