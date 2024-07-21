@@ -1,3 +1,10 @@
+## [2.25.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.25.0...v2.25.1) (2024-07-21)
+
+
+### Bug Fixes
+
+* **bug:** LazyLoad overloaded. ([11d9864](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/11d9864d4d600591e3a7bc56f792c0cf2270e800))
+
 # [2.25.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.24.2...v2.25.0) (2024-07-06)
 
 
