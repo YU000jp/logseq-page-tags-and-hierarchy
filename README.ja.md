@@ -1,5 +1,8 @@
 # Logseq プラグイン: *Page-tags and Hierarchy*
 
+> [!WARNING]
+>このプラグインはLogseq dbバージョンでは動作しません。
+
 <div align="right">
 
 [English](https://github.com/YU000jp/logseq-page-tags-and-hierarchy)/[日本語](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/blob/main/README.ja.md) 
