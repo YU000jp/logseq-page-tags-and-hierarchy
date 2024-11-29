@@ -51,10 +51,6 @@ Logseq マーケットプレイスからインストールできます。
 ## おすすめプラグイン
 
 1. 日誌用 => [カラムレイアウト (日誌UI) プラグイン](https://github.com/YU000jp/Logseq-column-Layout)
-2. [クイック PARAメソッド プラグイン](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
-   - 「namespaceクエリー検索」機能があります。
-     - 同じ名称を持つページを検索したり、階層構造を無視して関連ページを探せます。
-   - 同じ階層に新しいページを作成したり、サブページを追加する機能があります。
 3. [ページ名の階層を省略する プラグイン](https://github.com/YU000jp/logseq-plugin-short-namespaces)
    > 長くなりがちな階層リンクを省略して表示します。
 
