@@ -51,10 +51,6 @@ This plugin does not work with Logseq db version.
 1. This plugin relies on Logseq's DOM (Document Object Model) structure. If the DOM structure changes due to a Logseq version update, styles may not be applied. We will adjust the CSS to deal with it. If you notice something, please raise an issue.
 1. Related Item
    1. For journals => [Column Layout plugin](https://github.com/YU000jp/Logseq-column-Layout)
-   1. [Quickly PARA method plugin](https://github.com/YU000jp/logseq-plugin-quickly-para-method)
-      * There is a "namespace query search" feature.
-        - It is possible to search for pages with the same name, find related pages and list them without having to worry about hierarchical structure.
-      *  The ability to create new pages and add sub-pages in the same hierarchy.
    1. [Short namespaces plugin](https://github.com/YU000jp/logseq-plugin-short-namespaces)
       - Displays abbreviated hierarchical links, which tend to be lengthy.
 
