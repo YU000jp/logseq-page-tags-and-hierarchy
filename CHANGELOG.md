@@ -1,3 +1,11 @@
+## [2.25.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.25.1...v2.25.2) (2025-01-02)
+
+
+### Bug Fixes
+
+* **bug:** a confg "Showing journal queries on today daily page" ([c30eeb0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/c30eeb02bb6e3c13c8bf9a992de494b9ed3f849a))
+* remove a function ("Omit the block if the Linked References contain tags property" ([0cd60d0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/0cd60d0216bbffff1910ebaa01ffe73a350c5a2d))
+
 ## [2.25.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.25.0...v2.25.1) (2024-07-21)
 
 
