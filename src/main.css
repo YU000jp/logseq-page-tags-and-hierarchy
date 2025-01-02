@@ -66,3 +66,7 @@ body[data-page="whiteboard"]>div#root>div>main div#main-content-container {
         }
     }
 }
+
+body[data-page="page"]>div#root>div>main :is(div#main-content-container, div#right-sidebar) div.is-journals div#today-queries {
+    display: none;
+}
