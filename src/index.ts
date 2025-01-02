@@ -8,6 +8,7 @@ import { provideStyle, removeElementClass, removeElementId, removeProvideStyle, 
 import fileCSSMain from './main.css?inline'
 import fileNestingPageAccessory from "./pageAccessory.css?inline"
 import CSSLinkedRefHiddenTagsProperty from "./refHiddenTags.css?inline"
+// import CSSLinkedRefHiddenTagsProperty from "./refHiddenTags.css?inline"
 import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
 import { Child, CSSpageSubOrder, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
@@ -42,7 +43,7 @@ const keyWide = "th-wide"
 const keyPageAccessoryOrder = "th-pageAccessoryOrder"
 const keyWideModeJournalQueries = "th-wideModeJournalQueries"
 const keyUnlinkedReferencesHidden = "th-unlinkedReferences-hidden"
-const keyLinkedRefHiddenTagsProperty = "th-linkedRefHiddenTagsProperty"
+// const keyLinkedRefHiddenTagsProperty = "th-linkedRefHiddenTagsProperty"
 export const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly"
 export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLevel"
 
@@ -69,11 +70,11 @@ const main = async () => {
         })
 
     //設定項目 > Linked Referencesのページタグのみが含まれる場合、そのプロパティを省略する
-    if (logseq.settings!.booleanLinkedRefRemoveTagsProperty === true)
-        logseq.provideStyle({
-            key: keyLinkedRefHiddenTagsProperty,
-            style: CSSLinkedRefHiddenTagsProperty
-        })
+    // if (logseq.settings!.booleanLinkedRefRemoveTagsProperty === true)
+    //     logseq.provideStyle({
+    //         key: keyLinkedRefHiddenTagsProperty,
+    //         style: CSSLinkedRefHiddenTagsProperty
+    //     })
     //設定項目 > Journal Queriesを表示するかどうか
     //wide viewモード以外も。
     if (logseq.settings!.booleanWideModeJournalQueries === true)
@@ -376,16 +377,16 @@ const onSettingsChangedCallback = () => {
                         style: CSSUnlinkedHidden
                     })
 
-            if (oldSet.booleanLinkedRefRemoveTagsProperty === true
-                && newSet.booleanLinkedRefRemoveTagsProperty === false)
-                removeProvideStyle(keyLinkedRefHiddenTagsProperty)
-            else
-                if (oldSet.booleanLinkedRefRemoveTagsProperty === false
-                    && newSet.booleanLinkedRefRemoveTagsProperty === true)
-                    logseq.provideStyle({
-                        key: keyLinkedRefHiddenTagsProperty,
-                        style: CSSLinkedRefHiddenTagsProperty
-                    })
+            // if (oldSet.booleanLinkedRefRemoveTagsProperty === true
+            //     && newSet.booleanLinkedRefRemoveTagsProperty === false)
+            //     removeProvideStyle(keyLinkedRefHiddenTagsProperty)
+            // else
+            //     if (oldSet.booleanLinkedRefRemoveTagsProperty === false
+            //         && newSet.booleanLinkedRefRemoveTagsProperty === true)
+            //         logseq.provideStyle({
+            //             key: keyLinkedRefHiddenTagsProperty,
+            //             style: CSSLinkedRefHiddenTagsProperty
+            //         })
 
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true

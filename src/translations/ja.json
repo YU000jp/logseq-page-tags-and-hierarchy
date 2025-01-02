@@ -3,7 +3,7 @@
   "Settings relating to page name hierarchy": "ページ名の階層に関する設定",
   "Enable Split the hierarchy of a page name into links": "[ページ名の階層をリンクに分割する] を有効にします",
   "Journals or daily pages are excluded.": "日誌やそのシングルページは除きます。",
-  "Enable Remove page name hierarchy": "ページ名階層の削除を有効にする",
+  "Enable Remove page name hierarchy": "ページ名階層の除去を有効にする",
   "Only if the above item is enabled": "上記項目が有効な場合のみ",
   "Enable Splits of hierarchy on Whiteboard": "ホワイトボードでの階層の分割を有効にする",
   "Hierarchy settings in page content": "ページコンテンツ内にある、階層に関する設定",

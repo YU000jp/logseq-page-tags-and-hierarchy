@@ -99,14 +99,15 @@ export const settingsTemplate = (): SettingSchemaDesc[] => [
         default: false,
         description: "",
     },
-    {// Linked Referencesで、tagsプロパティがある場合はそのブロックを省略する
-        key: "booleanLinkedRefRemoveTagsProperty",
-        title: t("Omit the block if the Linked References contain tags property")+"🆕",
-        type: "boolean",
-        default: true,
-        // "Linked References"をスッキリさせます。デメリットは、tagsプロパティを含むブロックが他の情報を含んでいても、それらが表示されません。隠されるため、refの件数が一致しません。
-        description: t("Clean up Linked References. The disadvantage is that if a block containing the tags property contains other information, it will not be displayed. It is hidden, so the number of refs does not match."),
-    },
+    // {// Linked Referencesで、tagsプロパティがある場合はそのブロックを省略する
+    //     key: "booleanLinkedRefRemoveTagsProperty",
+    //     title: t("Omit the block if the Linked References contain tags property")+"🆕",
+    //     type: "boolean",
+    //     default: false,
+    //     // "Linked References"をスッキリさせます。デメリットは、tagsプロパティを含むブロックが他の情報を含んでいても、それらが表示されません。隠されるため、refの件数が一致しません。
+    //     description: t("Clean up Linked References. The disadvantage is that if a block containing the tags property contains other information, it will not be displayed. It is hidden, so the number of refs does not match."),
+    // },
+
 
     {//wide viewモードのみ
         key: "heading0030",
