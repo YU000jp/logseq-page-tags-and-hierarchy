@@ -1,9 +1,7 @@
 # [2.26.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.25.2...v2.26.0) (2025-06-09)
 
 
-### Features
-
-* **Add:** Check Logseq model or version [#58](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/58) ([84ca4de](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/84ca4de47f693d642ced6e61f658df949bc99403))
+* Check Logseq model or version [#58](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/58) ([84ca4de](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/84ca4de47f693d642ced6e61f658df949bc99403))
 
 
 ### Performance Improvements
