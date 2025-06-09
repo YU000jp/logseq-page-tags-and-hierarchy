@@ -15,8 +15,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(@logseq/libs@0.0.17)
       remove-markdown:
-        specifier: ^0.5.5
-        version: 0.5.5
+        specifier: ^0.6.2
+        version: 0.6.2
     devDependencies:
       '@semantic-release/changelog':
         specifier: ^6.0.3
@@ -2336,8 +2336,8 @@ packages:
     resolution: {integrity: sha512-GdekYuwLXLxMuFTwAPg5UKGLW/UXzQrZvH/Zj791BQif5T05T0RsaLfHc9q3ZOKi7n+BoprPD9mJ0O0k4xzUlw==}
     engines: {node: '>=14'}
 
-  remove-markdown@0.5.5:
-    resolution: {integrity: sha512-lMR8tOtDqazFT6W2bZidoXwkptMdF3pCxpri0AEokHg0sZlC2GdoLqnoaxsEj1o7/BtXV1MKtT3YviA1t7rW7g==}
+  remove-markdown@0.6.2:
+    resolution: {integrity: sha512-EijDXJZbzpGbQBd852ViUzcqgpMujthM+SAEHiWCMcZonRbZ+xViWKLJA/vrwbDwYdxrs1aFDjpBhcGrZoJRGA==}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -5330,7 +5330,7 @@ snapshots:
     dependencies:
       '@pnpm/npm-conf': 2.3.1
 
-  remove-markdown@0.5.5: {}
+  remove-markdown@0.6.2: {}
 
   require-directory@2.1.1: {}
 

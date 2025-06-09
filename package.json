@@ -22,7 +22,7 @@
     "dependencies": {
         "@logseq/libs": "^0.0.17",
         "logseq-l10n": "^0.2.0",
-        "remove-markdown": "^0.5.5"
+        "remove-markdown": "^0.6.2"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^6.0.3",
