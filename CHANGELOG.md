@@ -1,3 +1,10 @@
+## [2.26.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.26.0...v2.26.1) (2025-06-09)
+
+
+### Bug Fixes
+
+* **bug:** for v2.26.0 ([859a7d1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/859a7d13af8030c167357c937f501933e3ec4f8a))
+
 # [2.26.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.25.2...v2.26.0) (2025-06-09)
 
 
