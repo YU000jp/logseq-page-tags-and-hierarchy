@@ -1,4 +1,4 @@
-body>div#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] {
+body>#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] {
     & div.heading-item {
         margin-top: 3em;
         border-top-width: 1px;
@@ -24,7 +24,7 @@ body>div#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] {
     }
 }
 
-head:not(:has(style[data-injected-style^="th-wide"]))+body>div#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] {
+head:not(:has(style[data-injected-style^="th-wide"]))+body>#root>div>main article>div[data-id="logseq-page-tags-and-hierarchy"] {
 
     & div.heading-item[data-key="heading0030"],
     & div.desc-item[data-key="booleanTableOfContents"],
@@ -44,12 +44,12 @@ head:not(:has(style[data-injected-style^="th-wide"]))+body>div#root>div>main art
 }
 
 
-body[data-page="page"]>div#root>div>main div#main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
+body[data-page="page"] #main-content-container div.is-journals>div.relative div div.ls-page-title span#hierarchyLinks {
     position: absolute;
     margin-top: -4em;
 }
 
-body[data-page="whiteboard"]>div#root>div>main div#main-content-container {
+body[data-page="whiteboard"] #main-content-container {
     & div.whiteboard-page-title>span#hierarchyLinks {
         font-size: small;
 
@@ -67,6 +67,6 @@ body[data-page="whiteboard"]>div#root>div>main div#main-content-container {
     }
 }
 
-body[data-page="page"]>div#root>div>main :is(div#main-content-container, div#right-sidebar) div.is-journals div#today-queries {
+body[data-page="page"] :is(#main-content-container, #right-sidebar) div.is-journals #today-queries {
     display: none;
 }

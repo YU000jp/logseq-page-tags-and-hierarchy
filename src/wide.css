@@ -1,7 +1,7 @@
 body[data-page="page"] {
     &>div#root>div>main {
 
-        & div#main-content-container {
+        & #main-content-container {
             &::-webkit-scrollbar {
                 height: 1.2em;
             }
@@ -10,7 +10,7 @@ body[data-page="page"] {
                 max-width: unset;
             }
 
-            & div#tocInPage {
+            & #tocInPage {
                 font-size: .86em;
                 padding-bottom: 1.6em;
                 padding-left: 0.3em;
@@ -83,7 +83,7 @@ body[data-page="page"] {
                 }
             }
 
-            & div.page.relative {
+            & div.page {
                 display: flex;
 
                 &>div#weekNav {
@@ -223,12 +223,12 @@ body[data-page="page"] {
         }
 
 
-        & div#right-sidebar div.page.relative>div.relative {
+        & #right-sidebar div.page>div.relative {
             min-width: 94%
         }
 
-        & div#main-content-container,
-        & div#right-sidebar {
+        & #main-content-container,
+        & #right-sidebar {
             & div.is-journals div#today-queries {
                 display: none;
             }
@@ -236,9 +236,9 @@ body[data-page="page"] {
     }
 
 
-    &.is-awSt-enabled>div#root>div>main>div#app-container div#main-content-container {
+    &.is-awSt-enabled #main-content-container {
 
-        & div.page.relative {
+        & div.page {
             gap: .5em;
 
             & div.mt-6 {

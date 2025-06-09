@@ -18,7 +18,7 @@ export const hierarchyForFirstLevelOnly = (pageNameArray: string[], pageName: st
     logseq.provideStyle({
         key: keyHierarchyForFirstLevelOnly,
         style: `
-        body[data-page="page"]>div#root>div>main div.page.relative>div.page-hierarchy ul.namespaces>li.my-2 {
+        body[data-page="page"]>#root>div>main div.page>div.page-hierarchy ul.namespaces>li.my-2 {
             ${CSSdataRef} {
                 display: none;
             }
@@ -47,7 +47,7 @@ export const hierarchyRemoveBeginningLevel = (pageNameArray: string[], pageName:
     logseq.provideStyle({
         key: keyHierarchyRemoveBeginningLevel,
         style: `
-    body[data-page="page"]>div#root>div>main div.page.relative>div.page-hierarchy ul.namespaces>li.my-2 {
+    body[data-page="page"]>#root>div>main div.page>div.page-hierarchy ul.namespaces>li.my-2 {
         &>span.page-reference {
             ${CSSdataRef} {
                 display: none;

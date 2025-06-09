@@ -1,12 +1,12 @@
 body[data-page=page]:not(.is-pdf-active) {
     @media screen and (max-width:699px) {
-        & div#main-content-container :is(div.page-hierarchy, div.references.page-tags) {
+        & #main-content-container :is(div.page-hierarchy, div.references.page-tags) {
             display: none
         }
     }
 
     @media screen and (min-width:700px) {
-        &:not(.is-tabs-loaded) main:not(.ls-right-sidebar-open) div#main-content-container div:is(.relative+div.references, .page-hierarchy) {
+        &:not(.is-tabs-loaded) main:not(.ls-right-sidebar-open) #main-content-container div:is(.relative+div.references, .page-hierarchy) {
             font-size: .91em;
             background-color: var(--ls-primary-background-color);
             outline-offset: 2px;
@@ -17,7 +17,7 @@ body[data-page=page]:not(.is-pdf-active) {
             position: fixed
         }
 
-        & div#main-content-container {
+        & #main-content-container {
             & div.flex-1.page.relative {
                 margin-bottom: 2em;
                 margin-top: 2em;
@@ -64,12 +64,12 @@ body[data-page=page]:not(.is-pdf-active) {
             }
         }
 
-        & main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content {
+        & main.ls-wide-mode #main-content-container div.cp__sidebar-main-content {
             max-width: 1450px
         }
 
-        & div#right-sidebar :is(div.page-hierarchy, div.references.page-tags),
-        & main.ls-right-sidebar-open div#main-content-container :is(div.page-hierarchy, div.references.page-tags) {
+        & #right-sidebar :is(div.page-hierarchy, div.references.page-tags),
+        & main.ls-right-sidebar-open #main-content-container :is(div.page-hierarchy, div.references.page-tags) {
             display: none
         }
     }

@@ -1,4 +1,4 @@
-body[data-page="page"]>div#root>div>main>div#app-container div#main-content-container {
+body[data-page="page"] #main-content-container {
     & div {
         &.page-hierarchy {
             &:not(.th-journal) ul.namespaces {

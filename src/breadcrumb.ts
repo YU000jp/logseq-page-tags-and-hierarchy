@@ -11,8 +11,8 @@ export const splitPageTitle = (pageName: string, querySelectorString: "singlePag
     //pageNameに「/」が含まれるかチェック済み
     const h1Element = parent.document.querySelector(
         querySelectorString === "singlePage" ?
-            "body[data-page=page]>div#root>div>main div#main-content-container h1.page-title" //ページ
-            : "div#root>div>main div#main-content-container div.whiteboard-page-title>h1.page-title" //ホワイトボードのタイトル
+            "body[data-page=page]>#root>div>main #main-content-container h1.page-title" //ページ
+            : "#main-content-container div.whiteboard-page-title>h1.page-title" //ホワイトボードのタイトル
     ) as HTMLElement | null
     if (h1Element === null)
         return
@@ -79,7 +79,7 @@ const checkPageTitleOnBoardObserver = () => {
 
     const observer = new MutationObserver(checkPageTitleOnBoardCallback)
 
-    const targetNode = parent.document.body.querySelector("div#root>div>main div#main-content-container div.whiteboard div.tl-canvas") as Node | null
+    const targetNode = parent.document.body.querySelector("#main-content-container div.whiteboard div.tl-canvas") as Node | null
     if (targetNode)
         observer.observe(targetNode, {
             subtree: true,
@@ -95,9 +95,9 @@ const checkPageTitleOnBoardCallback = async () => {
     whiteboardCheckPageTitleObserverFlag = true
     setTimeout(() => whiteboardCheckPageTitleObserverFlag = false, 3000)
 
-    //aタグ("div.tl-logseq-portal-container[data-page-id]>div.tl-logseq-portal-header-page>div.relative>a.page-ref")が発生するので、ページ名を取得して、それを分割する
-    if (parent.document.body.querySelector("div#root>div>main div#main-content-container div.tl-logseq-portal-container:not([checked])")) { //フラグのないものがあった場合
-        parent.document.body.querySelectorAll("div#root>div>main div#main-content-container div.tl-logseq-portal-container:not([checked])>div.tl-logseq-portal-header-page>div.relative>a.page-ref").forEach((element) => {
+    //aタグ("#main-content-container div.tl-logseq-portal-container[data-page-id]>div.tl-logseq-portal-header-page>div.relative>a.page-ref")が発生するので、ページ名を取得して、それを分割する
+    if (parent.document.body.querySelector("#main-content-container div.tl-logseq-portal-container:not([checked])")) { //フラグのないものがあった場合
+        parent.document.body.querySelectorAll("#main-content-container div.tl-logseq-portal-container:not([checked])>div.tl-logseq-portal-header-page>div.relative>a.page-ref").forEach((element) => {
             const pageName = (element as HTMLAnchorElement).innerText as string
             if (pageName.includes("/")) {
 
@@ -109,7 +109,7 @@ const checkPageTitleOnBoardCallback = async () => {
 
         })
         //すべてにフラグをつける
-        parent.document.body.querySelectorAll("div#root>div>main div#main-content-container div.tl-logseq-portal-container:not([checked])").forEach((element) => element.setAttribute("checked", "true"))
+        parent.document.body.querySelectorAll("#main-content-container div.tl-logseq-portal-container:not([checked])").forEach((element) => element.setAttribute("checked", "true"))
     }
 }
 
@@ -144,9 +144,9 @@ export const pageTitleLastPartOnlyControl = async (
         element
         : parent.document.body.querySelector(
             querySelector === "singlePage" ?
-                "div#root>div>main div#main-content-container div.page:not(.is-journals) div.ls-page-title h1.page-title span.title"
+                "#main-content-container div.page:not(.is-journals) div.ls-page-title h1.page-title span.title"
                 // ホワイトボード
-                : "div#root>div>main div#main-content-container div.whiteboard-page-title>h1.page-title>div.page-title-sizer-wrapper>span.title"
+                : "#main-content-container div.whiteboard-page-title>h1.page-title>div.page-title-sizer-wrapper>span.title"
         ) as HTMLDivElement | null
 
     // 最後の要素
@@ -203,7 +203,7 @@ const openPageEvent = async (pageName: string, shiftKey: boolean) => {
  * @returns void
  */
 export const revertOnSettingsChangedHierarchyPageTitleOnce = () => {
-    const pageTitleElement = parent.document.body.querySelector("div#root>div>main div#main-content-container h1.page-title span.title") as HTMLDivElement | null
+    const pageTitleElement = parent.document.body.querySelector("#main-content-container h1.page-title span.title") as HTMLDivElement | null
     if (pageTitleElement)
         pageTitleElement.innerText = pageTitleElement.dataset.ref as string
 }
@@ -213,7 +213,7 @@ export const revertOnSettingsChangedHierarchyPageTitleOnce = () => {
  * @returns void
  */
 export const removeOnSettingsChangedHierarchyPageTitleOnce = () => {
-    const pageTitleElement = parent.document.body.querySelector("div#root>div>main div#main-content-container h1.page-title span.title") as HTMLDivElement | null
+    const pageTitleElement = parent.document.body.querySelector("#main-content-container h1.page-title span.title") as HTMLDivElement | null
     if (pageTitleElement) {
         const pageTitle = pageTitleElement.innerText
         const pageTitleArr = pageTitle.split("/")

@@ -26,7 +26,7 @@ export function tocContentTitleCollapsed(PageName: string) {
 
 export async function insertElement(): Promise<void> {
   //コンテンツに目次が存在する場合のみ処理を行う
-  const elementPageRelative = parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container div.page.relative") as HTMLDivElement | null
+  const elementPageRelative = parent.document.querySelector("body[data-page=\"page\"] #main-content-container div.page") as HTMLDivElement | null
   if (!elementPageRelative
     || elementPageRelative.querySelector("div.th-toc") !== null) return
   //div elementを作成する
@@ -121,7 +121,7 @@ export const headersList = async (targetElement: HTMLElement, tocBlocks: TocBloc
   elementTop.style.padding = "1em"
   elementButtons.append(elementTop)
   elementTop.addEventListener('click', () =>
-    parent.document.querySelector("body[data-page=\"page\"]>div#root>div>main div#main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))
+    parent.document.querySelector("body[data-page=\"page\"] #main-content-container h1.page-title")!.scrollIntoView({ behavior: 'smooth' }))
   targetElement.append(elementButtons)
 
   // Create list
@@ -236,7 +236,7 @@ async function expandParentBlock(block: { uuid: BlockEntity["uuid"], parent: Blo
 }
 
 export const CSSpageSubOrder = (settings) => `
-body[data-page="page"]>div#root>div>main div#main-content-container div.page.relative>div {
+body[data-page="page"] #main-content-container div.page>div {
   &.lazy-visibility:has(>div>div.fade-enter-active>div.scheduled-or-deadlines) {order:${settings.enumScheduleDeadline}}
   &.th-toc {order:${settings.enumTableOfContents}}
   &:has(>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked) {order:${settings.enumLinkedReferences}}

@@ -1,12 +1,12 @@
 body[data-page=page]:not(.is-pdf-active) {
     @media screen and (max-width:899px) {
-        & div#main-content-container :is(div.page-hierarchy, div.references.page-tags) {
+        & #main-content-container :is(div.page-hierarchy, div.references.page-tags) {
             display: none
         }
     }
 
     @media screen and (min-width:900px) {
-        & main:not(.ls-right-sidebar-open) div#main-content-container {
+        & main:not(.ls-right-sidebar-open) #main-content-container {
 
             & div.references.page-tags,
             & div.page-hierarchy {
@@ -23,7 +23,7 @@ body[data-page=page]:not(.is-pdf-active) {
             }
         }
 
-        & div#main-content-container {
+        & #main-content-container {
             & div.flex-1.page.relative {
                 margin-bottom: 2em;
                 margin-top: 2em;
@@ -57,7 +57,7 @@ body[data-page=page]:not(.is-pdf-active) {
             }
         }
 
-        &.is-tabs-loaded main:not(.ls-right-sidebar-open) div#main-content-container div.references.page-tags {
+        &.is-tabs-loaded main:not(.ls-right-sidebar-open) #main-content-container div.references.page-tags {
             top: 4.5em
         }
 
@@ -66,7 +66,7 @@ body[data-page=page]:not(.is-pdf-active) {
     @media screen and (min-width:900px) and (max-width:1500px) {
         & main:not(.ls-right-sidebar-open) {
 
-            & div#main-content-container {
+            & #main-content-container {
 
                 & div.page-hierarchy,
                 & div.references.page-tags {
@@ -84,11 +84,11 @@ body[data-page=page]:not(.is-pdf-active) {
 
     @media screen and (min-width:1501px) {
         & main:not(.ls-right-sidebar-open) {
-            & div#main-container {
+            & #main-container {
                 padding-right: 20vw
             }
 
-            & div#main-content-container {
+            & #main-content-container {
 
                 & div.page-hierarchy,
                 & div.references.page-tags {
@@ -100,12 +100,12 @@ body[data-page=page]:not(.is-pdf-active) {
         }
     }
 
-    & main.ls-wide-mode div#main-content-container div.cp__sidebar-main-content {
+    & main.ls-wide-mode #main-content-container div.cp__sidebar-main-content {
         max-width: 1450px
     }
 
-    & div#right-sidebar :is(div.page-hierarchy, div.references.page-tags),
-    & main.ls-right-sidebar-open div#main-content-container :is(div.page-hierarchy, div.references.page-tags) {
+    & #right-sidebar :is(div.page-hierarchy, div.references.page-tags),
+    & main.ls-right-sidebar-open #main-content-container :is(div.page-hierarchy, div.references.page-tags) {
         display: none
     }
 }

@@ -1,4 +1,4 @@
-body[data-page="page"]>div#root>div>main div:is(#main-content-container, #right-sidebar) div.is-journals div#today-queries {
+body[data-page="page"] :is(#main-content-container, #right-sidebar) div.is-journals #today-queries {
   max-height: 88vh;
   overflow: scroll;
   min-width: 500px;

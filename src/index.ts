@@ -180,7 +180,7 @@ const main = async () => {
     logseq.App.onPageHeadActionsSlotted(async () => {
         onPageChangedCallback()
         setTimeout(() => {
-            const node: Node | null = parent.document.body.querySelector("div#root>div>main div#main-content-container div.whiteboard") as Node | null
+            const node: Node | null = parent.document.body.querySelector("#main-content-container div.whiteboard") as Node | null
             if (Node
                 && logseq.settings!.booleanWhiteboardSplitHierarchy === true)
                 WhiteboardCallback()
@@ -229,11 +229,12 @@ const onPageChangedCallback = async () => {
 
 
     const current = await logseq.Editor.getCurrentPage() as {
-        originalName: PageEntity["originalName"],
+        originalName?: PageEntity["originalName"],
+        title?: string,
         journal?: PageEntity["journal?"]
     } | null
     if (current) {
-        currentPageName = current.originalName
+        currentPageName = current.originalName || current.title || "" //ページ名を取得
         //Hierarchy Links
         if (logseq.settings!.booleanSplitHierarchy === true
             && currentPageName
@@ -255,13 +256,13 @@ const onPageChangedCallback = async () => {
         && (currentPageName.match(/^\d{4}/)
             || currentPageName.match(/^(\d{4}\/\d{2})/)
         )) {
-        parent.document.body.querySelector("div#root>div>main div#main-content-container div.page-hierarchy")?.classList.add('th-journal')
+        parent.document.body.querySelector("#main-content-container div.page-hierarchy")?.classList.add('th-journal')
         flagYearOrMonth = true
     }
 
     setTimeout(() => { //あとからでもいい処理
         //ページタグの折りたたみを有効にする
-        const pageTagsElement = parent.document.body.querySelector("div#root>div>main div#main-content-container div.page.relative div.page-tags") as HTMLElement | null
+        const pageTagsElement = parent.document.body.querySelector("#main-content-container div.page div.page-tags") as HTMLElement | null
         if (pageTagsElement) {
             const titleElement = pageTagsElement.querySelector("div.content div.foldable-title h2") as HTMLElement | null
             const eleInitial = pageTagsElement.querySelector("div.initial") as HTMLElement | null
@@ -282,7 +283,7 @@ const onPageChangedCallback = async () => {
     if (logseq.settings!.placeSelect === "wide view")
         // Linked References 遅延ロード
         setTimeout(() => {
-            const ele = (parent.document.body.querySelector("div#root>div>main div#main-content-container div.page.relative>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked") as HTMLDivElement | null)
+            const ele = (parent.document.body.querySelector("#main-content-container div.page>div>div.lazy-visibility>div>div.fade-enter-active>div.references.page-linked") as HTMLDivElement | null)
             if (ele) ele.style.display = "block"
         }, 300)
 
