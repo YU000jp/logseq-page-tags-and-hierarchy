@@ -63,28 +63,28 @@ const main = async () => {
     // 100ms待つ
     await new Promise(resolve => setTimeout(resolve, 100))
 
-    // if (logseqVersionMd === false) {
-    //   // Logseq ver 0.10.*以下にしか対応していない
-    //   logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
-    //   return
-    // }
-
-    // // DBグラフチェック
-    logseqDbGraph = await checkLogseqDbGraph()
-    if (logseqDbGraph === true) {
-        // DBグラフには対応していない
-        return showDbGraphIncompatibilityMsg()
+    if (logseqVersionMd === false) {
+      // Logseq ver 0.10.*以下にしか対応していない
+      logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
+      return
     }
+
+    // // // DBグラフチェック
+    // logseqDbGraph = await checkLogseqDbGraph()
+    // if (logseqDbGraph === true) {
+    //     // DBグラフには対応していない
+    //     return showDbGraphIncompatibilityMsg()
+    // }
 
     //100ms待つ
     await new Promise(resolve => setTimeout(resolve, 100))
 
-    logseq.App.onCurrentGraphChanged(async () => {
-        logseqDbGraph = await checkLogseqDbGraph()
-        if (logseqDbGraph === true)
-            // DBグラフには対応していない
-            return showDbGraphIncompatibilityMsg()
-    })
+    // logseq.App.onCurrentGraphChanged(async () => {
+    //     logseqDbGraph = await checkLogseqDbGraph()
+    //     if (logseqDbGraph === true)
+    //         // DBグラフには対応していない
+    //         return showDbGraphIncompatibilityMsg()
+    // })
 
     await l10nSetup({
         builtinTranslations: {//Full translations
