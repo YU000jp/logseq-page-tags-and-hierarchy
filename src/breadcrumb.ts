@@ -1,5 +1,4 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { getPageUuid } from "./query/advancedQuery"
 
 /**
  * Splits the hierarchy of a page name and creates links for each level of the hierarchy.
@@ -190,10 +189,10 @@ export const pageTitleLastPartOnlyControl = async (
  * @returns void
  */
 const openPageEvent = async (pageName: string, shiftKey: boolean) => {
-    const page = await getPageUuid(pageName) as { uuid: PageEntity["uuid"] } | null//ページの存在チェックが必要
-    if (page) {
+    const pageEntity = await logseq.Editor.getPage(pageName) as { uuid: PageEntity["uuid"] } | null//ページの存在チェックが必要
+    if (pageEntity) {
         if (shiftKey)
-            logseq.Editor.openInRightSidebar(page.uuid)
+            logseq.Editor.openInRightSidebar(pageEntity.uuid)
         else
             logseq.App.replaceState('page', { name: pageName })
     }
