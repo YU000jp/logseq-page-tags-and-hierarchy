@@ -1,4 +1,5 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user"
+import { getPageUuid } from "./query/advancedQuery"
 
 /**
  * Splits the hierarchy of a page name and creates links for each level of the hierarchy.
@@ -11,7 +12,7 @@ export const splitPageTitle = (pageName: string, querySelectorString: "singlePag
     //pageNameに「/」が含まれるかチェック済み
     const h1Element = parent.document.querySelector(
         querySelectorString === "singlePage" ?
-            "body[data-page=page]>#root>div>main #main-content-container h1.page-title" //ページ
+            "body[data-page=page] #main-content-container h1.page-title" //ページ
             : "#main-content-container div.whiteboard-page-title>h1.page-title" //ホワイトボードのタイトル
     ) as HTMLElement | null
     if (h1Element === null)
@@ -189,7 +190,7 @@ export const pageTitleLastPartOnlyControl = async (
  * @returns void
  */
 const openPageEvent = async (pageName: string, shiftKey: boolean) => {
-    const page = await logseq.Editor.getPage(pageName) as { uuid: PageEntity["uuid"] } | null//ページの存在チェックが必要
+    const page = await getPageUuid(pageName) as { uuid: PageEntity["uuid"] } | null//ページの存在チェックが必要
     if (page) {
         if (shiftKey)
             logseq.Editor.openInRightSidebar(page.uuid)

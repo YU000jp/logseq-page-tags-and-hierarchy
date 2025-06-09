@@ -34,6 +34,7 @@ import zhHant from "./translations/zh-Hant.json"
 import CSSUnlinkedHidden from './unlinkedHidden.css?inline'
 import fileWide from './wide.css?inline'
 import fileWideModeJournalQueries from './wideJournalQueries.css?inline'
+import { getCurrentPage, getCurrentPageName } from "./query/advancedQuery"
 let currentPageName: string = ""
 const keyPageAccessory = "th-PageAccessory"
 const keyNestingPageAccessory = "th-nestingPageAccessory"
@@ -228,16 +229,17 @@ const onPageChangedCallback = async () => {
     setTimeout(() => processingOnPageChanged = false, 1000)
 
 
-    const current = await logseq.Editor.getCurrentPage() as {
-        originalName?: PageEntity["originalName"],
-        title?: string,
+    const current = await getCurrentPageName() as {
+        title: string,
         journal?: PageEntity["journal?"]
     } | null
+    // console.log("onPageChangedCallback current", current)
     if (current) {
-        currentPageName = current.originalName || current.title || "" //ページ名を取得
+        currentPageName = current.title as string
+        // console.log("onPageChangedCallback currentPageName", currentPageName)
         //Hierarchy Links
         if (logseq.settings!.booleanSplitHierarchy === true
-            && currentPageName
+            && currentPageName !== ""
             && currentPageName.includes("/") as boolean === true
             && !(current.journal === true
                 && currentPageName.includes(",")) // Journalかつ,が含まれる場合は除外
@@ -337,7 +339,7 @@ const onSettingsChangedCallback = () => {
             else
                 if (oldSet.placeSelect !== "wide view"
                     && newSet.placeSelect === "wide view") {
-                    const current = await logseq.Editor.getCurrentPage() as { name: PageEntity["name"] } | null
+                    const current = await getCurrentPage() as { name: PageEntity["name"] } | null
                     if (current
                         && current.name)
                         displayToc(current.name)
@@ -448,7 +450,7 @@ const onSettingsChangedCallback = () => {
                 }
             if (oldSet.booleanTableOfContents === false
                 && newSet.booleanTableOfContents === true) {
-                const current = await logseq.Editor.getCurrentPage() as { name: PageEntity["name"] } | null
+                const current = await getCurrentPage() as { name: PageEntity["name"] } | null
                 if (current
                     && current.name)
                     displayToc(current.name)

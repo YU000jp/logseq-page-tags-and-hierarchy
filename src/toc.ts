@@ -2,6 +2,7 @@ import removeMd from "remove-markdown"
 import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user"
 import { removeProperties, removeMarkdownLink, removeMarkdownAliasLink, replaceOverCharacters, removeMarkdownImage, removeListWords } from "./markdown"
 import { displayToc } from "."
+import { getParentFromUuid } from "./query/advancedQuery"
 
 
 export function tocContentTitleCollapsed(PageName: string) {
@@ -206,33 +207,23 @@ async function selectBlock(shiftKey: boolean, pageName: string, blockUuid: strin
   }
 }
 
-async function parentBlockToggleCollapsed(blockUuidOrId): Promise<void> {
-  const block = await logseq.Editor.getBlock(blockUuidOrId) as { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] } | null
-  if (!block) return
-  const parentBlock = await logseq.Editor.getBlock(block.parent.id) as { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] } | null
+async function expandAndSelectBlock(uuid: BlockEntity["uuid"], targetUuid: BlockEntity["uuid"] = uuid): Promise<void> {
+  const parentBlock = await getParentFromUuid(uuid) as BlockEntity["uuid"] | null
   if (!parentBlock) return
-  await logseq.Editor.setBlockCollapsed(parentBlock.uuid, false)
-  const element = parent.document.getElementById('block-content-' + block.uuid) as HTMLDivElement | null
+
+  await logseq.Editor.setBlockCollapsed(parentBlock, false)
+  const element = parent.document.getElementById('block-content-' + uuid) as HTMLDivElement | null
+
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
-    setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
-  } else
-    await expandParentBlock(parentBlock)
+    setTimeout(() => logseq.Editor.selectBlock(targetUuid), 50)
+  } else {
+    await expandAndSelectBlock(parentBlock, targetUuid)
+  }
 }
 
-async function expandParentBlock(block: { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] }): Promise<void> {
-  if (block.parent) {
-    const parentBlock = await logseq.Editor.getBlock(block.parent.id) as { uuid: BlockEntity["uuid"], parent: BlockEntity["parent"] } | null
-    if (parentBlock) {
-      await logseq.Editor.setBlockCollapsed(parentBlock.uuid, false)
-      const element = parent.document.getElementById('block-content-' + parentBlock.uuid) as HTMLDivElement | null
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-        setTimeout(() => logseq.Editor.selectBlock(block.uuid), 50)
-      } else
-        await expandParentBlock(parentBlock)
-    }
-  }
+async function parentBlockToggleCollapsed(uuid: BlockEntity["uuid"]): Promise<void> {
+  await expandAndSelectBlock(uuid)
 }
 
 export const CSSpageSubOrder = (settings) => `
@@ -244,4 +235,4 @@ body[data-page="page"] #main-content-container div.page>div {
   &.page-hierarchy {order:${settings.enumPageHierarchy}}
   &.page-tags {order:${settings.enumPageTags}}
 }
-`;
+`
