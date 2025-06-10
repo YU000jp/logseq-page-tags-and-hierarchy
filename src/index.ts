@@ -7,18 +7,17 @@ import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hie
 import { provideStyle, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent } from "./lib"
 import fileCSSMain from './main.css?inline'
 import fileNestingPageAccessory from "./pageAccessory.css?inline"
-import CSSLinkedRefHiddenTagsProperty from "./refHiddenTags.css?inline"
-// import CSSLinkedRefHiddenTagsProperty from "./refHiddenTags.css?inline"
+import { getCurrentPage, getCurrentPageName } from "./query/advancedQuery"
 import { settingsTemplate, } from "./settings"
 import fileSide from './side.css?inline'
 import { Child, CSSpageSubOrder, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
-import ja from "./translations/ja.json"
 import af from "./translations/af.json"
 import de from "./translations/de.json"
 import es from "./translations/es.json"
 import fr from "./translations/fr.json"
 import id from "./translations/id.json"
 import it from "./translations/it.json"
+import ja from "./translations/ja.json"
 import ko from "./translations/ko.json"
 import nbNO from "./translations/nb-NO.json"
 import nl from "./translations/nl.json"
@@ -34,7 +33,6 @@ import zhHant from "./translations/zh-Hant.json"
 import CSSUnlinkedHidden from './unlinkedHidden.css?inline'
 import fileWide from './wide.css?inline'
 import fileWideModeJournalQueries from './wideJournalQueries.css?inline'
-import { getCurrentPage, getCurrentPageName } from "./query/advancedQuery"
 let currentPageName: string = ""
 const keyPageAccessory = "th-PageAccessory"
 const keyNestingPageAccessory = "th-nestingPageAccessory"
@@ -44,7 +42,6 @@ const keyWide = "th-wide"
 const keyPageAccessoryOrder = "th-pageAccessoryOrder"
 const keyWideModeJournalQueries = "th-JournalQueries"
 const keyUnlinkedReferencesHidden = "th-unlinkedReferences-hidden"
-// const keyLinkedRefHiddenTagsProperty = "th-linkedRefHiddenTagsProperty"
 export const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly"
 export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLevel"
 let logseqVersion: string = "" //バージョンチェック用
@@ -63,11 +60,8 @@ const main = async () => {
     // 100ms待つ
     await new Promise(resolve => setTimeout(resolve, 100))
 
-    if (logseqVersionMd === false) {
-      // Logseq ver 0.10.*以下にしか対応していない
-      logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
-      return
-    }
+    // if (logseqVersionMd === false) {
+    //   // Logseq ver 0.10.*以下にしか対応していない
 
     // // // DBグラフチェック
     // logseqDbGraph = await checkLogseqDbGraph()
@@ -75,9 +69,6 @@ const main = async () => {
     //     // DBグラフには対応していない
     //     return showDbGraphIncompatibilityMsg()
     // }
-
-    //100ms待つ
-    await new Promise(resolve => setTimeout(resolve, 100))
 
     // logseq.App.onCurrentGraphChanged(async () => {
     //     logseqDbGraph = await checkLogseqDbGraph()
@@ -104,13 +95,6 @@ const main = async () => {
             key: keyUnlinkedReferencesHidden,
             style: CSSUnlinkedHidden
         })
-
-    //設定項目 > Linked Referencesのページタグのみが含まれる場合、そのプロパティを省略する
-    // if (logseq.settings!.booleanLinkedRefRemoveTagsProperty === true)
-    //     logseq.provideStyle({
-    //         key: keyLinkedRefHiddenTagsProperty,
-    //         style: CSSLinkedRefHiddenTagsProperty
-    //     })
     //設定項目 > Journal Queriesを表示するかどうか
     //wide viewモード以外も。
     if (logseq.settings!.booleanWideModeJournalQueries === true)
@@ -414,17 +398,6 @@ const onSettingsChangedCallback = () => {
                         key: keyUnlinkedReferencesHidden,
                         style: CSSUnlinkedHidden
                     })
-
-            // if (oldSet.booleanLinkedRefRemoveTagsProperty === true
-            //     && newSet.booleanLinkedRefRemoveTagsProperty === false)
-            //     removeProvideStyle(keyLinkedRefHiddenTagsProperty)
-            // else
-            //     if (oldSet.booleanLinkedRefRemoveTagsProperty === false
-            //         && newSet.booleanLinkedRefRemoveTagsProperty === true)
-            //         logseq.provideStyle({
-            //             key: keyLinkedRefHiddenTagsProperty,
-            //             style: CSSLinkedRefHiddenTagsProperty
-            //         })
 
             // 階層のサブレベル1のみを表示する
             if (oldSet.booleanHierarchyForFirstLevelOnly === true
