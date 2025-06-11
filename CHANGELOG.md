@@ -1,3 +1,11 @@
+# [2.27.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.26.1...v2.27.0) (2025-06-11)
+
+
+### Features
+
+* **Add:** feat: notify in plugin settings that available features vary by Logseq model [#58](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/58) ([d42f937](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/d42f937d948ff51742f90789b4c742f515b68691))
+* Support for breadcrumbing of page name for Logseq DB model [#58](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/58) ([afedfa7](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/afedfa7daca58fb8cb6622bc62bcb344683e3af2))
+
 ## [2.26.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.26.0...v2.26.1) (2025-06-09)
 
 
