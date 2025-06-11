@@ -4,31 +4,31 @@ import { applyModelStyles } from "./css/applyModelStyles"
 import { keyBottom, keyHierarchyForFirstLevelOnly, keyHierarchyRemoveBeginningLevel, keyNestingPageAccessory, keyPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "./key"
 import { removeProvideStyles } from "./lib"
 
-
-// MDモデルかどうかのチェック DBモデルはfalse
+// Check if the model is Markdown-based. Returns false for DB models.
 const checkLogseqVersion = async (): Promise<boolean> => {
     const logseqInfo = (await logseq.App.getInfo("version")) as AppInfo | any
-    //  0.11.0もしくは0.11.0-alpha+nightly.20250427のような形式なので、先頭の3つの数値(1桁、2桁、2桁)を正規表現で取得する
+    // The version format is like "0.11.0" or "0.11.0-alpha+nightly.20250427".
+    // Extract the first three numeric parts (1-digit, 2-digit, 2-digit) using a regular expression.
     const version = logseqInfo.match(/(\d+)\.(\d+)\.(\d+)/)
     if (version) {
-        replaceLogseqVersion(version[0]) //バージョンを更新
-        // console.log("logseq version: ", logseqVersion)
-        // もし バージョンが0.10.*系やそれ以下ならば、logseqVersionMdをtrueにする
+        replaceLogseqVersion(version[0]) // Update the version
+        // If the version is 0.10.* or lower, set logseqVersionMd to true.
         if (version[0].match(/0\.([0-9]|10)\.\d+/)) {
-            // console.log("logseq version is 0.10.* or lower")
             return true
         }
-    } else
-        replaceLogseqVersion("0.0.0") //バージョンを更新
+    } else {
+        replaceLogseqVersion("0.0.0") // Update the version
+    }
     return false
 }
-// DBグラフかどうかのチェック
-// DBグラフかどうかのチェック DBグラフだけtrue
-const checkLogseqDbGraph = async (): Promise<boolean> => (logseq.App as any).checkCurrentIsDbGraph() as boolean || false // DBグラフかどうかのチェック
 
+// Check if the graph is a DB graph. Returns true only for DB graphs.
+const checkLogseqDbGraph = async (): Promise<boolean> => (logseq.App as any).checkCurrentIsDbGraph() as boolean || false
+
+// Show a warning message if the graph is a DB graph and limit the message to 3 times.
 const showDbGraphIncompatibilityMsg = () => {
     if (!logseq.settings!.warningMessageShownDbGraph || logseq.settings!.warningMessageShownDbGraph as number >= 3) {
-        // 通知3回目以降は表示しない カウント
+        // Do not show the notification after the third time. Increment the count.
         logseq.updateSettings({
             warningMessageShownDbGraph: logseq.settings!.warningMessageShownDbGraph ? logseq.settings!.warningMessageShownDbGraph as number + 1 : 1
         })
@@ -36,6 +36,7 @@ const showDbGraphIncompatibilityMsg = () => {
     }
     return
 }
+
 /**
  * Checks the Logseq model type (Markdown or DB graph) and handles related state and UI updates.
  * @returns Promise<boolean[]> - [isDbGraph, isMdModel]
@@ -79,7 +80,7 @@ export const logseqModelCheck = async (): Promise<boolean[]> => {
         } else {
             applyModelStyles() // Set styles according to the model
         }
-        /* user settings */
+        /* Update user settings */
         setUserSettings(logseqDbGraph, logseqMdModel, logseq.settings!.placeSelect as string)
     })
     return [logseqDbGraph, logseqMdModel] // Return [isDbGraph, isMdModel]
