@@ -30,12 +30,12 @@ const main = async () => {
     await firstLoadLogseqModelCheck()
 
     // 初期ロード
-    await firstLoadPlugin()
+    await firstLoadPlugin(logseqDbGraph, logseqMdModel)
 
 }//end main
 
 
-export const setUserSettings = (setting: string) => {
+export const setUserSettings = (logseqDbGraph: boolean, logseqMdModel: boolean, setting: string) => {
     logseq.useSettingsSchema(settingsTemplate(logseqDbGraph, logseqMdModel, setting === "wide view" ? true : false)) //設定を登録
 }
 
@@ -195,6 +195,8 @@ const checkLogseqVersion = async (): Promise<boolean> => {
 // DBグラフかどうかのチェック
 // DBグラフかどうかのチェック DBグラフだけtrue
 const checkLogseqDbGraph = async (): Promise<boolean> => {
+    // 1秒待機
+    await new Promise(resolve => setTimeout(resolve, 1000))
     const element = parent.document.querySelector(
         "div.block-tags",
     ) as HTMLDivElement | null // ページ内にClassタグが存在する  WARN:: ※DOM変更の可能性に注意
@@ -255,7 +257,7 @@ const firstLoadLogseqModelCheck = async () => {
             applyModelStyles() // モデルに合わせてスタイルを設定
         }
         /* user settings */
-        setUserSettings(logseq.settings!.placeSelect as string) //設定を再登録
+        setUserSettings(logseqDbGraph,logseqMdModel,logseq.settings!.placeSelect as string) //設定を再登録
     })
 }
 

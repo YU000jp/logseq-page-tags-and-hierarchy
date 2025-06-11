@@ -177,7 +177,7 @@ export const onSettingsChangedCallback = (logseqDbGraph: boolean, logseqMdModel:
                                        await handleUIChanges(newSet)
 
                                        setTimeout(() => {
-                                                    setUserSettings(newSet.placeSelect as string)
+                                                    setUserSettings(logseqDbGraph, logseqMdModel, newSet.placeSelect as string)
                                                     logseq.showSettingsUI()
                                        }, 100)
                           } else {

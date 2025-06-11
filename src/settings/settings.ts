@@ -6,7 +6,7 @@ import { wideViewSettings } from "./wideViewSettings"
 
 export const settingsTemplate = (logseqDbGraph: boolean, logseqMdModel: boolean, enabledWideView: boolean): SettingSchemaDesc[] => {
     // LogseqDbGraphがtrueのときは、DBグラフモードであることを警告する設定を追加
-    if (logseqDbGraph)
+    if (logseqDbGraph === true)
         return [logseqDbGraphWarningSetting()] // DBグラフモードのときは、警告を表示する (機能動作なし・設定項目なし)
     else
         return [

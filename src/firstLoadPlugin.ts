@@ -5,13 +5,13 @@ import { applyModelStyles } from "./css/applyModelStyles"
 import { onSettingsChangedCallback } from "./settings/onSettingsChanged"
 import { loadLogseqL10n } from "./translations/l10nSetup"
 
-export const firstLoadPlugin = async () => {
+export const firstLoadPlugin = async (logseqDbGraph: boolean, logseqMdModel: boolean) => {
 
     // ユーザー設定言語を取得し、L10Nをセットアップ
     await loadLogseqL10n()
 
     /* user settings */
-    setUserSettings(logseq.settings!.placeSelect as string) //設定を登録
+    setUserSettings(logseqDbGraph, logseqMdModel, logseq.settings!.placeSelect as string) //設定を登録
 
 
     //モデルに合わせてスタイルを設定
