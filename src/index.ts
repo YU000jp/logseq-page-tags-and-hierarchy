@@ -1,21 +1,24 @@
 import "@logseq/libs"
 import { AppInfo, BlockEntity, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { t } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
 import { applyModelStyles } from "./css/applyModelStyles"
-import { removeBreadCrumb, splitPageTitle, WhiteboardCallback } from "./breadcrumb"
+import { splitPageTitle } from "./breadcrumb"
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
 import { keyBottom, keyHierarchyForFirstLevelOnly, keyHierarchyRemoveBeginningLevel, keyNestingPageAccessory, keyPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "./key"
-import { loadLogseqL10n } from "./translations/l10nSetup"
 import { removeProvideStyles, titleCollapsedRegisterEvent } from "./lib"
-import { onSettingsChangedCallback } from "./settings/onSettingsChanged"
 import { getCurrentPageName } from "./query/advancedQuery"
 import { settingsTemplate, } from "./settings/settings"
 import { Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
+import { firstLoadPlugin } from "./firstLoadPlugin"
 
-let currentPageName: string = ""
+export let currentPageName: string = ""
+export const getCurrentPageNameString = () => currentPageName //ページ名を取得
+export const replaceCurrentPageName = (name: string) => {
+    currentPageName = name
+    // console.log("replaceCurrentPageName", currentPageName)
+}
 let logseqVersion: string = "" //バージョンチェック用
 export let logseqMdModel: boolean = false //モデルチェック用
-let logseqDbGraph: boolean = false
+export let logseqDbGraph: boolean = false
 // export const getLogseqVersion = () => logseqVersion //バージョンチェック用
 export const booleanLogseqMdModel = () => logseqMdModel //モデルチェック用
 export const booleanDbGraph = () => logseqDbGraph //バージョンチェック用
@@ -23,118 +26,11 @@ export const booleanDbGraph = () => logseqDbGraph //バージョンチェック�
 
 const main = async () => {
 
-    // バージョンチェック
-    logseqMdModel = await checkLogseqVersion()
-    // console.log("logseq version: ", logseqVersion)
-    // console.log("logseq version is MD model: ", logseqVersionMd)
-    // 100ms待つ
-    await new Promise(resolve => setTimeout(resolve, 100))
+    // Logseqモデルのチェックを実行
+    await firstLoadLogseqModelCheck()
 
-    // if (logseqVersionMd === false) {
-    //   // Logseq ver 0.10.*以下にしか対応していない
-    //   logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
-    //   return
-    // }
-
-    // // DBグラフチェック
-    logseqDbGraph = await checkLogseqDbGraph()
-    if (logseqDbGraph === true) {
-        // DBグラフには対応していない
-        return showDbGraphIncompatibilityMsg()
-    }
-
-    logseq.App.onCurrentGraphChanged(async () => {
-        logseqDbGraph = await checkLogseqDbGraph()
-        if (logseqDbGraph === true) {
-            // DBグラフには対応していない
-            showDbGraphIncompatibilityMsg() //メッセージを通知
-
-            // 使わない<style>をまとめて削除
-            removeProvideStyles([
-                keyBottom,
-                keySide,
-                keyWide,
-                keyPageAccessoryOrder,
-                keyNestingPageAccessory,
-                keyWideModeJournalQueries,
-                keyUnlinkedReferencesHidden,
-                keyPageAccessory,
-                keyHierarchyForFirstLevelOnly,
-                keyHierarchyRemoveBeginningLevel
-            ])
-
-        } else {
-            applyModelStyles() // モデルに合わせてスタイルを設定
-        }
-        /* user settings */
-        setUserSettings(logseq.settings!.placeSelect as string) //設定を再登録
-    })
-
-
-
-    // ここから初期ロード
-
-    // ユーザー設定言語を取得し、L10Nをセットアップ
-    await loadLogseqL10n()
-
-
-    /* user settings */
-    setUserSettings(logseq.settings!.placeSelect as string) //設定を登録
-
-
-    applyModelStyles() //モデルに合わせてスタイルを設定
-
-    //ページ読み込み時に実行コールバック
-    logseq.App.onRouteChanged(async ({ template }) => {
-        switch (template) {
-            case '/home':
-                currentPageName = ""
-                break
-            case '/page/:name':
-                onPageChangedCallback()
-                break
-            case '/whiteboard/:name':
-                //Whiteboardの場合
-                if (logseq.settings!.booleanWhiteboardSplitHierarchy === true)
-                    WhiteboardCallback()
-                break
-        }
-    })
-
-    //ページ読み込み時に実行コールバック
-    logseq.App.onPageHeadActionsSlotted(async () => {
-        onPageChangedCallback()
-        setTimeout(() => {
-            const node: Node | null = parent.document.body.querySelector("#main-content-container div.whiteboard") as Node | null
-            if (Node
-                && logseq.settings!.booleanWhiteboardSplitHierarchy === true)
-                WhiteboardCallback()
-        }, 1)
-
-    }) //バグあり？onRouteChangedとともに動作保証が必要
-
-    //ブロック更新のコールバック
-    if (logseq.settings!.placeSelect === "wide view"
-        && logseq.settings!.booleanTableOfContents === true)
-        onBlockChanged()
-
-    //設定変更のコールバック
-    onSettingsChangedCallback(logseqDbGraph, logseqMdModel, currentPageName)
-
-    //ツールバーに設定画面を開くボタンを追加
-    logseq.App.registerUIItem('toolbar', {
-        key: 'toolbarPageTagsAndHierarchy',
-        template: `<div><a class="button icon" data-on-click="toolbarPageTagsAndHierarchy" style="font-size:15px;color:#1f9ee1;opacity:unset" title="Page-tags and Hierarchy: ${t("plugin settings")}">🏷️</a></div>`,
-    })
-    //ツールバーボタンのクリックイベント
-    logseq.provideModel({
-        toolbarPageTagsAndHierarchy: () => logseq.showSettingsUI(),
-    })
-
-    //プラグインオフの場合はページ名の階層リンクを削除する
-    logseq.beforeunload(async () => {
-        removeBreadCrumb()
-    })
+    // 初期ロード
+    await firstLoadPlugin()
 
 }//end main
 
@@ -146,7 +42,7 @@ export const setUserSettings = (setting: string) => {
 
 let processingOnPageChanged: boolean = false //処理中
 //ページ読み込み時に実行コールバック
-const onPageChangedCallback = async () => {
+export const onPageChangedCallback = async () => {
 
     if (processingOnPageChanged === true)
         return
@@ -252,9 +148,6 @@ const updateToc = () => {
     }, 300)
 }
 
-
-
-
 export const displayToc = async (pageName: string) => {
     if (logseq.settings!.placeSelect !== "wide view") return //wide viewのみ
 
@@ -275,6 +168,10 @@ export const displayToc = async (pageName: string) => {
         tocContentTitleCollapsed(pageName)
     }
 }
+
+
+
+// ここからはLogseqのバージョンチェックとモデルチェック
 
 
 // MDモデルかどうかのチェック DBモデルはfalse
@@ -313,4 +210,58 @@ const showDbGraphIncompatibilityMsg = () => {
     return
 }
 
+const firstLoadLogseqModelCheck = async () => {
+    // バージョンチェック
+    logseqMdModel = await checkLogseqVersion()
+    // console.log("logseq version: ", logseqVersion)
+    // console.log("logseq version is MD model: ", logseqVersionMd)
+    // 100ms待つ
+    await new Promise(resolve => setTimeout(resolve, 100))
+
+    // if (logseqVersionMd === false) {
+    //   // Logseq ver 0.10.*以下にしか対応していない
+    //   logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
+    //   return
+    // }
+
+    // // DBグラフチェック
+    logseqDbGraph = await checkLogseqDbGraph()
+    if (logseqDbGraph === true) {
+        // DBグラフには対応していない
+        return showDbGraphIncompatibilityMsg()
+    }
+
+    logseq.App.onCurrentGraphChanged(async () => {
+        logseqDbGraph = await checkLogseqDbGraph()
+        if (logseqDbGraph === true) {
+            // DBグラフには対応していない
+            showDbGraphIncompatibilityMsg() //メッセージを通知
+
+            // 使わない<style>をまとめて削除
+            removeProvideStyles([
+                keyBottom,
+                keySide,
+                keyWide,
+                keyPageAccessoryOrder,
+                keyNestingPageAccessory,
+                keyWideModeJournalQueries,
+                keyUnlinkedReferencesHidden,
+                keyPageAccessory,
+                keyHierarchyForFirstLevelOnly,
+                keyHierarchyRemoveBeginningLevel
+            ])
+
+        } else {
+            applyModelStyles() // モデルに合わせてスタイルを設定
+        }
+        /* user settings */
+        setUserSettings(logseq.settings!.placeSelect as string) //設定を再登録
+    })
+}
+
+// ここまで はLogseqのバージョンチェックとモデルチェック
+
+
+
+// Logseqの準備ができたらmainを実行
 logseq.ready(main).catch(console.error)
