@@ -1,7 +1,7 @@
 # Logseq Plugin: *Page-tags and Hierarchy*
 
-> [!WARNING]
-This plugin does not work with Logseq db graph.
+> [!NOTE]
+This plugin only works on file-based graph.
 
 <div align="right">
 
