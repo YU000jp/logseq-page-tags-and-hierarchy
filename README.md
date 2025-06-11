@@ -1,7 +1,7 @@
 # Logseq Plugin: *Page-tags and Hierarchy*
 
 > [!WARNING]
-This plugin does not work with Logseq db version.
+This plugin does not work with Logseq db graph.
 
 <div align="right">
 
@@ -19,6 +19,7 @@ This plugin does not work with Logseq db version.
 
 ### 1. Breadcrumb of page title  (default: *enable*)
 
+> Available in Logseq file-based graph
 - Split the hierarchy of a page name into links
   > It also works on whiteboards. [#51](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/issues/51#issuecomment-2000623402) 🆕
 
@@ -26,14 +27,13 @@ This plugin does not work with Logseq db version.
 
 ### 2. Customizing Page Tags and Hierarchy Display (Page view UI)
 
+> Logseq DB model is not supported
 - Logseq standard displays page tags and hierarchy at the end of page content, but it is inconvenient to scroll to the end. This plugin provides placement options to eliminate that inconvenience:
   > [For more information.](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/wiki/Page-View-UI)
 
 ---
 
 ## Getting Started
-
-> Logseq v0.9.11 or later 🚧
 
 - Install from Logseq Marketplace
   - Press `---` on the top right toolbar to open `Plugins`. Select `Marketplace`. Type `tags` in the search field, select it from the search results and install.
