@@ -27,10 +27,10 @@ const checkLogseqDbGraph = async (): Promise<boolean> => (logseq.App as any).che
 
 // Show a warning message if the graph is a DB graph and limit the message to 3 times.
 const showDbGraphIncompatibilityMsg = () => {
-    if (!logseq.settings!.warningMessageShownDbGraph || logseq.settings!.warningMessageShownDbGraph as number >= 3) {
+    if (!logseq.settings!.warningMessageShownDbGraph) {
         // Do not show the notification after the third time. Increment the count.
         logseq.updateSettings({
-            warningMessageShownDbGraph: logseq.settings!.warningMessageShownDbGraph ? logseq.settings!.warningMessageShownDbGraph as number + 1 : 1
+            warningMessageShownDbGraph: true
         })
         logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin does not support Logseq DB graph.", "warning", { timeout: 5000 })
     }
