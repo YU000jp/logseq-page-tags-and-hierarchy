@@ -1,33 +1,38 @@
 import "@logseq/libs"
-import { AppInfo, BlockEntity, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { applyModelStyles } from "./css/applyModelStyles"
+import { BlockEntity, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
 import { splitPageTitle } from "./breadcrumb"
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
-import { keyBottom, keyHierarchyForFirstLevelOnly, keyHierarchyRemoveBeginningLevel, keyNestingPageAccessory, keyPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "./key"
-import { removeProvideStyles, titleCollapsedRegisterEvent } from "./lib"
+import { titleCollapsedRegisterEvent } from "./lib"
 import { getCurrentPageName } from "./query/advancedQuery"
 import { settingsTemplate, } from "./settings/settings"
 import { Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
 import { firstLoadPlugin } from "./firstLoadPlugin"
+import { logseqModelCheck } from "./logseqModelCheck"
 
 export let currentPageName: string = ""
 export const getCurrentPageNameString = () => currentPageName //ページ名を取得
-export const replaceCurrentPageName = (name: string) => {
+export const changeCurrentPageTitle = (name: string) => {
     currentPageName = name
     // console.log("replaceCurrentPageName", currentPageName)
 }
+// 変数 (同じモジュール内で使用するため、exportしない)
 let logseqVersion: string = "" //バージョンチェック用
-export let logseqMdModel: boolean = false //モデルチェック用
-export let logseqDbGraph: boolean = false
-// export const getLogseqVersion = () => logseqVersion //バージョンチェック用
+let logseqMdModel: boolean = false //モデルチェック用
+let logseqDbGraph: boolean = false //DBグラフチェック用
+// 外部から参照するためにexportする
+export const getLogseqVersion = () => logseqVersion //バージョンチェック用
+export const replaceLogseqVersion = (version: string) => logseqVersion = version
 export const booleanLogseqMdModel = () => logseqMdModel //モデルチェック用
-export const booleanDbGraph = () => logseqDbGraph //バージョンチェック用
+export const replaceLogseqMdModel = (mdModel: boolean) => logseqMdModel = mdModel
+
+export const booleanDbGraph = () => logseqDbGraph //DBグラフチェック用
+export const replaceLogseqDbGraph = (dbGraph: boolean) => logseqDbGraph = dbGraph
 
 
 const main = async () => {
 
     // Logseqモデルのチェックを実行
-    await firstLoadLogseqModelCheck()
+    const [logseqDbGraph, logseqMdModel] = await logseqModelCheck()
 
     // 初期ロード
     await firstLoadPlugin(logseqDbGraph, logseqMdModel)
@@ -168,101 +173,6 @@ export const displayToc = async (pageName: string) => {
         tocContentTitleCollapsed(pageName)
     }
 }
-
-
-
-// ここからはLogseqのバージョンチェックとモデルチェック
-
-
-// MDモデルかどうかのチェック DBモデルはfalse
-const checkLogseqVersion = async (): Promise<boolean> => {
-    const logseqInfo = (await logseq.App.getInfo("version")) as AppInfo | any
-    //  0.11.0もしくは0.11.0-alpha+nightly.20250427のような形式なので、先頭の3つの数値(1桁、2桁、2桁)を正規表現で取得する
-    const version = logseqInfo.match(/(\d+)\.(\d+)\.(\d+)/)
-    if (version) {
-        logseqVersion = version[0] //バージョンを取得
-        // console.log("logseq version: ", logseqVersion)
-
-        // もし バージョンが0.10.*系やそれ以下ならば、logseqVersionMdをtrueにする
-        if (logseqVersion.match(/0\.([0-9]|10)\.\d+/)) {
-            logseqMdModel = true
-            // console.log("logseq version is 0.10.* or lower")
-            return true
-        } else logseqMdModel = false
-    } else logseqVersion = "0.0.0"
-    return false
-}
-// DBグラフかどうかのチェック
-// DBグラフかどうかのチェック DBグラフだけtrue
-const checkLogseqDbGraph = async (): Promise<boolean> => {
-    // 1秒待機
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    const element = parent.document.querySelector(
-        "div.block-tags",
-    ) as HTMLDivElement | null // ページ内にClassタグが存在する  WARN:: ※DOM変更の可能性に注意
-    if (element) {
-        logseqDbGraph = true
-        return true
-    } else logseqDbGraph = false
-    return false
-}
-
-const showDbGraphIncompatibilityMsg = () => {
-    logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin does not support Logseq DB graph.", "warning", { timeout: 5000 })
-    return
-}
-
-const firstLoadLogseqModelCheck = async () => {
-    // バージョンチェック
-    logseqMdModel = await checkLogseqVersion()
-    // console.log("logseq version: ", logseqVersion)
-    // console.log("logseq version is MD model: ", logseqVersionMd)
-    // 100ms待つ
-    await new Promise(resolve => setTimeout(resolve, 100))
-
-    // if (logseqVersionMd === false) {
-    //   // Logseq ver 0.10.*以下にしか対応していない
-    //   logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
-    //   return
-    // }
-
-    // // DBグラフチェック
-    logseqDbGraph = await checkLogseqDbGraph()
-    if (logseqDbGraph === true) {
-        // DBグラフには対応していない
-        return showDbGraphIncompatibilityMsg()
-    }
-
-    logseq.App.onCurrentGraphChanged(async () => {
-        logseqDbGraph = await checkLogseqDbGraph()
-        if (logseqDbGraph === true) {
-            // DBグラフには対応していない
-            showDbGraphIncompatibilityMsg() //メッセージを通知
-
-            // 使わない<style>をまとめて削除
-            removeProvideStyles([
-                keyBottom,
-                keySide,
-                keyWide,
-                keyPageAccessoryOrder,
-                keyNestingPageAccessory,
-                keyWideModeJournalQueries,
-                keyUnlinkedReferencesHidden,
-                keyPageAccessory,
-                keyHierarchyForFirstLevelOnly,
-                keyHierarchyRemoveBeginningLevel
-            ])
-
-        } else {
-            applyModelStyles() // モデルに合わせてスタイルを設定
-        }
-        /* user settings */
-        setUserSettings(logseqDbGraph,logseqMdModel,logseq.settings!.placeSelect as string) //設定を再登録
-    })
-}
-
-// ここまで はLogseqのバージョンチェックとモデルチェック
-
 
 
 // Logseqの準備ができたらmainを実行

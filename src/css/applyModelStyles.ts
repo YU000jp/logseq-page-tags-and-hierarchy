@@ -1,4 +1,4 @@
-import { logseqMdModel } from ".."
+import { booleanLogseqMdModel } from ".."
 import {
     fileBottom,
     fileNestingPageAccessory,
@@ -15,12 +15,14 @@ import { provideStyle } from "../lib"
 
 // モデルに合わせて適用するスタイルを選択
 export const applyModelStyles = () => {
-    if (logseqMdModel === true) {
+    if (booleanLogseqMdModel() === true) {
         setStylesForFileBasedModel() //スタイルを設定
     } else {
         // Logseq ver 0.10.*以下にしか対応していない
         logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
         return
+
+        //TODO:
     }
 }
 export function setStylesForFileBasedModel() {

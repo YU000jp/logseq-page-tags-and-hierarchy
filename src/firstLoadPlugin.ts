@@ -1,5 +1,5 @@
 import { t } from "logseq-l10n"
-import { setUserSettings, onPageChangedCallback, onBlockChanged, logseqDbGraph, logseqMdModel, replaceCurrentPageName, getCurrentPageNameString } from "."
+import { changeCurrentPageTitle, getCurrentPageNameString, onBlockChanged, onPageChangedCallback, setUserSettings } from "."
 import { WhiteboardCallback, removeBreadCrumb } from "./breadcrumb"
 import { applyModelStyles } from "./css/applyModelStyles"
 import { onSettingsChangedCallback } from "./settings/onSettingsChanged"
@@ -15,13 +15,13 @@ export const firstLoadPlugin = async (logseqDbGraph: boolean, logseqMdModel: boo
 
 
     //モデルに合わせてスタイルを設定
-    applyModelStyles()
+    await applyModelStyles()
 
     //ページ読み込み時に実行コールバック
     logseq.App.onRouteChanged(async ({ template }) => {
         switch (template) {
             case '/home':
-                replaceCurrentPageName("")
+                changeCurrentPageTitle("")
                 break
             case '/page/:name':
                 onPageChangedCallback()
