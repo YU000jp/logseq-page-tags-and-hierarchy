@@ -1,19 +1,30 @@
 import { PageEntity } from "@logseq/libs/dist/LSPlugin.user"
+import { booleanDbGraph, booleanLogseqMdModel } from "."
 
 /**
- * Splits the hierarchy of a page name and creates links for each level of the hierarchy.
- * @param pageName - The name of the page to split the hierarchy for.
- * @returns void
+ * Splits and processes a Logseq page title, inserting breadcrumb links into the DOM if appropriate.
+ *
+ * This function checks for the existence of a hierarchy links element, locates the page title element
+ * based on the context (single page or whiteboard), and creates clickable breadcrumb links for hierarchical
+ * page names. It avoids processing if the page name contains both "[[" and "]]", which indicates a non-standard title.
+ *
+ * @param logseqDbGraph - Indicates if the Logseq database graph model is used.
+ * @param logseqMdModel - Indicates if the Logseq Markdown model is used.
+ * @param pageName - The name of the current page to process.
+ * @param querySelectorString - Determines the selector context: "singlePage" for regular pages or "whiteboardTitle" for whiteboard pages.
  */
-export const splitPageTitle = (pageName: string, querySelectorString: "singlePage" | "whiteboardTitle") => {
+export const splitPageTitle = (logseqDbGraph: boolean, logseqMdModel: boolean, pageName: string, querySelectorString: "singlePage" | "whiteboardTitle") => {
+    // console.log("splitPageTitle", pageName, querySelectorString)
+
     if (parent.document.getElementById("hierarchyLinks") !== null)
         return//存在していたら何もしない
     //pageNameに「/」が含まれるかチェック済み
     const h1Element = parent.document.querySelector(
         querySelectorString === "singlePage" ?
-            "body[data-page=page] #main-content-container h1.page-title" //ページ
+            `${logseqMdModel === true ? "body[data-page='page']" : "body[data-page]"} #main-content-container h1.page-title` //ページ
             : "#main-content-container div.whiteboard-page-title>h1.page-title" //ホワイトボードのタイトル
     ) as HTMLElement | null
+    // console.log("h1Element", h1Element) 
     if (h1Element === null)
         return
 
@@ -26,10 +37,23 @@ export const splitPageTitle = (pageName: string, querySelectorString: "singlePag
         && pageName.includes("]]"))
         return
 
-    createTitleLinks(pageName, h1Element)
+    createTitleLinks(logseqDbGraph, logseqMdModel, pageName, h1Element)
 }
 
-const createTitleLinks = (pageName: string, h1Element: HTMLElement, flag?: { class?: boolean }) => {
+/**
+ * Creates breadcrumb-style links for a hierarchical page title and inserts them above the given h1 element.
+ * 
+ * This function splits the provided `pageName` by slashes (`/`) to determine hierarchy levels,
+ * optionally modifies the page title based on settings, and generates clickable anchor elements
+ * for each hierarchy part except the last one. The links are inserted into a span element
+ * placed before the specified `h1Element`.
+ * 
+ * @param pageName - The hierarchical name of the page, with levels separated by slashes.
+ * @param h1Element - The HTML heading element above which the breadcrumb links will be inserted.
+ * @param flag - Optional configuration object:
+ *   - `class`: If true, assigns the class "hierarchyLinks" to the span; otherwise, sets its id to "hierarchyLinks".
+ */
+const createTitleLinks = (logseqDbGraph: boolean, logseqMdModel: boolean, pageName: string, h1Element: HTMLElement, flag?: { class?: boolean }) => {
     const pageNameArr: string[] = pageName.split('/')
     // pageNameArrの最後の要素
     if (logseq.settings!.booleanRemoveHierarchyPageTitle === true)
@@ -59,14 +83,14 @@ const createTitleLinks = (pageName: string, h1Element: HTMLElement, flag?: { cla
 
 // ホワイトボードの場合
 let processingWhiteboard: boolean = false
-export const WhiteboardCallback = () => {
+export const WhiteboardCallback = (logseqDbGraph: boolean, logseqMdModel: boolean) => {
     if (processingWhiteboard === true)
         return
     processingWhiteboard = true
     setTimeout(() =>
         processingWhiteboard = false, 300)
     //ダッシュボードのタイトルを分割する
-    splitPageTitle("", "whiteboardTitle")//タイトルの下に階層リンクを表示する
+    splitPageTitle(logseqDbGraph, logseqMdModel, "", "whiteboardTitle")//タイトルの下に階層リンクを表示する
     pageTitleLastPartOnlyControl("", "", "whiteboardTitle") // タイトルに含まれる最後のパートのみを表示するようにコントロールする
 
     setTimeout(() =>
@@ -101,7 +125,7 @@ const checkPageTitleOnBoardCallback = async () => {
             const pageName = (element as HTMLAnchorElement).innerText as string
             if (pageName.includes("/")) {
 
-                createTitleLinks(pageName, element as HTMLElement, { class: true })
+                createTitleLinks(booleanDbGraph(), booleanLogseqMdModel(), pageName, element as HTMLElement, { class: true })
 
                 if (logseq.settings!.booleanRemoveHierarchyPageTitle === true)
                     (element as HTMLElement).innerText = pageName.split('/').pop() as string
@@ -111,18 +135,6 @@ const checkPageTitleOnBoardCallback = async () => {
         //すべてにフラグをつける
         parent.document.body.querySelectorAll("#main-content-container div.tl-logseq-portal-container:not([checked])").forEach((element) => element.setAttribute("checked", "true"))
     }
-}
-
-export const splitPageTitleOnBoard = (pageName: string, element: HTMLElement) => {
-    if (parent.document.getElementById("hierarchyLinks") !== null)
-        return//存在していたら何もしない
-
-    // 「[[」と「]]」が同時に含まれる場合は、ページ名として認識しない
-    if (pageName.includes("[[")
-        && pageName.includes("]]"))
-        return
-
-    createTitleLinks(pageName, element)
 }
 
 /**
@@ -138,48 +150,75 @@ export const pageTitleLastPartOnlyControl = async (
     querySelector: "singlePage" | "whiteboardTitle" | "pageOnBoard",
     element?: HTMLElement
 ) => {
+    const logseqMdModel = booleanLogseqMdModel()
 
-    // 日誌は除外の個別ページ
-    const pageTitleElement = element ?
-        element
-        : parent.document.body.querySelector(
-            querySelector === "singlePage" ?
-                "#main-content-container div.page:not(.is-journals) div.ls-page-title h1.page-title span.title"
-                // ホワイトボード
+    // 共通でpageTitleElementを取得する関数
+    const getPageTitleElement = (): HTMLDivElement | null => {
+        if (element) return element as HTMLDivElement
+        return parent.document.body.querySelector(
+            querySelector === "singlePage"
+                ? "#main-content-container div.page:not(.is-journals) h1.page-title span.title"
                 : "#main-content-container div.whiteboard-page-title>h1.page-title>div.page-title-sizer-wrapper>span.title"
         ) as HTMLDivElement | null
-
-    // 最後の要素
-    if (querySelector === "whiteboardTitle"
-        || querySelector === "pageOnBoard") { // ホワイトボードの場合は、innerTextを使う
-        fullName = pageTitleElement?.innerText as string
-        lastPart = pageTitleElement?.innerText.split("/").pop() as string
     }
 
-    if (!pageTitleElement
-        || pageTitleElement.innerText === lastPart)
+    let pageTitleElement = getPageTitleElement()
+
+    // ホワイトボードの場合は、innerTextから取得
+    if (querySelector === "whiteboardTitle" || querySelector === "pageOnBoard") {
+        if (pageTitleElement) {
+            fullName = pageTitleElement.innerText
+            lastPart = pageTitleElement.innerText.split("/").pop() as string
+        }
+    }
+
+    if (!pageTitleElement || pageTitleElement.innerText === lastPart)
         return
+
     pageTitleElement.innerText = lastPart
 
     setTimeout(() => {
-        //同じ階層でspan.editingが発生し消えたらpageTitleElementを元に戻す
         const observer = new MutationObserver((mutations) => {
             for (const mutation of mutations)
                 if (mutation.type === "childList")
-                    for (const node of mutation.removedNodes)
-                        if (node.nodeName === "SPAN") {
-                            if (pageTitleElement.innerText === fullName) {
-                                pageTitleElement.innerText = lastPart
-                                return
-                            } else
-                                observer.disconnect()//名前が変わっていたら監視を終了
+                    for (const node of mutation.removedNodes) {
+                        if (logseqMdModel == true) {
+                            // MD model
+
+                            // span.editingが消えたら元に戻す
+                            if (node.nodeName === "SPAN") {
+                                const currentTitleElement = getPageTitleElement()
+                                if (currentTitleElement && currentTitleElement.innerText === fullName) {
+                                    currentTitleElement.innerText = lastPart
+                                    return
+                                } else
+                                    observer.disconnect()
+                            }
+                        } else {
+                            // DB model
+
+                            // input.editingが消えたら元に戻す
+                            if (node.nodeName === "INPUT") {
+                                setTimeout(() => {
+                                    const currentTitleElement = getPageTitleElement()
+                                    if (!currentTitleElement) {
+                                        observer.disconnect()
+                                        return
+                                    }
+                                    if (currentTitleElement.innerText === fullName) {
+                                        currentTitleElement.innerText = lastPart
+                                        return
+                                    }
+                                }, 100)
+                            }
                         }
+                    }
         })
         const targetNode = pageTitleElement.parentElement
         if (targetNode)
             observer.observe(targetNode, { childList: true })
-    }, 300)
 
+    }, 300)
 }
 
 /**

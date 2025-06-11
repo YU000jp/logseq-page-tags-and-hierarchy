@@ -28,25 +28,25 @@ export const firstLoadPlugin = async (logseqDbGraph: boolean, logseqMdModel: boo
                 changeCurrentPageTitle("")
                 break
             case '/page/:name':
-                onPageChangedCallback()
+                onPageChangedCallback(logseqDbGraph, logseqMdModel)
                 break
             case '/whiteboard/:name':
                 //Whiteboardの場合
                 if (logseq.settings!.booleanWhiteboardSplitHierarchy === true)
-                    WhiteboardCallback()
+                    WhiteboardCallback(logseqDbGraph, logseqMdModel)
                 break
         }
     })
 
     //ページ読み込み時に実行コールバック
     logseq.App.onPageHeadActionsSlotted(async () => {
-        onPageChangedCallback()
+        onPageChangedCallback(logseqDbGraph, logseqMdModel)
         setTimeout(() => {
             if (logseqDbGraph === true || logseqMdModel === false) return // DBグラフの場合と、MDモデルではない場合は実行しない
             const node: Node | null = parent.document.body.querySelector("#main-content-container div.whiteboard") as Node | null
             if (Node
                 && logseq.settings!.booleanWhiteboardSplitHierarchy === true)
-                WhiteboardCallback()
+                WhiteboardCallback(logseqDbGraph, logseqMdModel)
         }, 1)
 
     }) //バグあり？onRouteChangedとともに動作保証が必要

@@ -1,17 +1,17 @@
 import { LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin"
-import { displayToc, onBlockChanged, setUserSettings } from "../"
-import { keyBottom, keyHierarchyForFirstLevelOnly, keyNestingPageAccessory, keyPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "../key"
+import { booleanDbGraph, booleanLogseqMdModel, displayToc, onBlockChanged, setUserSettings } from "../"
+import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitPageTitle } from "../breadcrumb"
 import {
+             CSSUnlinkedHidden,
+             CSSpageSubOrder,
              fileBottom,
              fileNestingPageAccessory,
              fileSide,
              fileWide,
              fileWideModeJournalQueries,
-             CSSUnlinkedHidden,
-             CSSpageSubOrder,
 } from "../css/styles"
-import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitPageTitle } from "../breadcrumb"
 import { hierarchyForFirstLevelOnly } from "../hierarchyList"
+import { keyBottom, keyHierarchyForFirstLevelOnly, keyNestingPageAccessory, keyPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "../key"
 import { provideStyle, removeElementClass, removeElementId, removeProvideStyle } from "../lib"
 import { getCurrentPage } from "../query/advancedQuery"
 
@@ -22,7 +22,7 @@ const handleSplitHierarchyChanges = (
 ) => {
              if (oldSet.booleanSplitHierarchy !== newSet.booleanSplitHierarchy) {
                           if (newSet.booleanSplitHierarchy) {
-                                       splitPageTitle(currentPageName, "singlePage")
+                                       splitPageTitle(booleanDbGraph(), booleanLogseqMdModel(), currentPageName, "singlePage")
                                        if (newSet.booleanRemoveHierarchyPageTitle)
                                                     removeOnSettingsChangedHierarchyPageTitleOnce()
                           } else {
@@ -34,8 +34,9 @@ const handleSplitHierarchyChanges = (
              if (oldSet.booleanSplitHierarchy) {
                           if (!oldSet.booleanRemoveHierarchyPageTitle && newSet.booleanRemoveHierarchyPageTitle)
                                        removeOnSettingsChangedHierarchyPageTitleOnce()
-                          else if (oldSet.booleanRemoveHierarchyPageTitle && !newSet.booleanRemoveHierarchyPageTitle)
-                                       revertOnSettingsChangedHierarchyPageTitleOnce()
+                          else
+                                       if (oldSet.booleanRemoveHierarchyPageTitle && !newSet.booleanRemoveHierarchyPageTitle)
+                                                    revertOnSettingsChangedHierarchyPageTitleOnce()
              }
 }
 
@@ -170,9 +171,10 @@ export const onSettingsChangedCallback = (logseqDbGraph: boolean, logseqMdModel:
                                        // TOC の表示/非表示制御
                                        if (oldSet.placeSelect === "wide view" && newSet.placeSelect !== "wide view") {
                                                     removeElementClass("th-toc")
-                                       } else if (oldSet.placeSelect !== "wide view" && newSet.placeSelect === "wide view") {
-                                                    await handleUIChanges(newSet)
-                                       }
+                                       } else
+                                                    if (oldSet.placeSelect !== "wide view" && newSet.placeSelect === "wide view") {
+                                                                 await handleUIChanges(newSet)
+                                                    }
 
                                        await handleUIChanges(newSet)
 

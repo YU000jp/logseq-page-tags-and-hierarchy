@@ -1,13 +1,13 @@
 import "@logseq/libs"
-import { BlockEntity, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
+import { BlockEntity } from "@logseq/libs/dist/LSPlugin.user"
 import { splitPageTitle } from "./breadcrumb"
+import { firstLoadPlugin } from "./firstLoadPlugin"
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
 import { titleCollapsedRegisterEvent } from "./lib"
-import { getCurrentPageName } from "./query/advancedQuery"
+import { logseqModelCheck } from "./logseqModelCheck"
+import { getCurrentPageForMd } from "./query/advancedQuery"
 import { settingsTemplate, } from "./settings/settings"
 import { Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
-import { firstLoadPlugin } from "./firstLoadPlugin"
-import { logseqModelCheck } from "./logseqModelCheck"
 
 export let currentPageName: string = ""
 export const getCurrentPageNameString = () => currentPageName //ページ名を取得
@@ -47,7 +47,7 @@ export const setUserSettings = (logseqDbGraph: boolean, logseqMdModel: boolean, 
 
 let processingOnPageChanged: boolean = false //処理中
 //ページ読み込み時に実行コールバック
-export const onPageChangedCallback = async () => {
+export const onPageChangedCallback = async (logseqDbGraph: boolean, logseqMdModel: boolean) => {
 
     if (processingOnPageChanged === true)
         return
@@ -56,22 +56,20 @@ export const onPageChangedCallback = async () => {
     //処理中断対策
     setTimeout(() => processingOnPageChanged = false, 1000)
 
-
-    const current = await getCurrentPageName() as {
-        title: string,
-        journal?: PageEntity["journal?"]
-    } | null
-    // console.log("onPageChangedCallback current", current)
-    if (current) {
-        currentPageName = current.title as string
+    const currentTitle = logseqMdModel === false ?
+        (parent.document.body.dataset["page"] || null) // DBモデル
+        : await getCurrentPageForMd() as string | null // MDモデル
+    if (currentTitle) {
+        if (logseqMdModel === false && currentTitle === "Logseq") return // DBモデルの場合、Logseqページは除外
+        currentPageName = currentTitle as string
         // console.log("onPageChangedCallback currentPageName", currentPageName)
         //Hierarchy Links
         if (logseq.settings!.booleanSplitHierarchy === true
             && currentPageName !== ""
             && currentPageName.includes("/") as boolean === true
-            && !(current.journal === true
+            && !((parent.document.body.querySelector("#main-content-container div.journal.page") as HTMLDivElement | null)
                 && currentPageName.includes(",")) // Journalかつ,が含まれる場合は除外
-        ) splitPageTitle(currentPageName, "singlePage")
+        ) splitPageTitle(logseqDbGraph, logseqMdModel, currentPageName, "singlePage")
 
         //Hierarchyのelementをコピーしたが、リンクやクリックイベントはコピーされない
         if (logseq.settings!.placeSelect === "wide view"

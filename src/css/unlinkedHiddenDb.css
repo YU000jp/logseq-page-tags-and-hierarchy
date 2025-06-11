@@ -1,3 +1,0 @@
-body[data-page]:not([data-page="/"]) #main-content-container div.page>div:has(>div.references.page-unlinked) {
-    display: none;
-}

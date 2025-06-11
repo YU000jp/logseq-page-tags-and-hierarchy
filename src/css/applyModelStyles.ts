@@ -9,20 +9,24 @@ import {
     fileCSSMain,
     CSSpageSubOrder,
 } from "./styles"
-import { keyBottom, keyNestingPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "../key"
-import { provideStyle } from "../lib"
-
+import { keyBottom, keyDbBreadcrumb, keyNestingPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "../key"
+import { provideStyle, removeProvideStyle } from "../lib"
 
 // モデルに合わせて適用するスタイルを選択
 export const applyModelStyles = () => {
     if (booleanLogseqMdModel() === true) {
         setStylesForFileBasedModel() //スタイルを設定
+        removeProvideStyle(keyDbBreadcrumb)
     } else {
-        // Logseq ver 0.10.*以下にしか対応していない
-        logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
-        return
-
-        //TODO:
+        logseq.provideStyle({
+            key: keyDbBreadcrumb,
+            style: `
+            #main-content-container #hierarchyLinks {
+                position: absolute;
+                top: -1.7em;
+            }
+            `
+        })
     }
 }
 export function setStylesForFileBasedModel() {

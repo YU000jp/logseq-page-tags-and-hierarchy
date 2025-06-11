@@ -66,35 +66,28 @@ export const getCurrentPage = async (): Promise<{ name: PageEntity["name"], uuid
   return null
 }
 
-export const getCurrentPageName = async (): Promise<{
-  title: string,
-  journal?: PageEntity["journal?"]
-} | null> => {
-  // nameを取得
-  const result = await advancedQuery<{ title: string, journal?: PageEntity["journal?"] }[]>(`
-      [:find (pull ?p [:block/original-name :block/title :block/journal?])
-       :in $ ?current
-       :where
-       [?p :block/name ?name]
-       [(= ?name ?current)]
-       [?p :block/uuid ?uuid]]
-       `, ":current-page")
-  if (result?.[0]) {
-    // console.log("getCurrentPageName result", result)
-    return {
-      title: result[0]["original-name"] || result[0].title,
-      journal: result[0].journal
-    }
-  }
-  return null
-}
+// export const getCurrentPageNameForDb = async (): Promise<string | null> => {
+//   //:current-pageで、:block/titleが存在する場合は、dbバージョンかつページを開いていると認識する
+//   const result = await advancedQuery<{ title: string }>(`
+//     [:find (pull ?p [:block/title])
+//      :in $ ?current
+//      :where
+//      [?p :block/title ?title]
+//      [?p :block/uuid ?uuid]
+//      [?p :block/name ?name]
+//      [(= ?name ?current)]]
+//      ` , ":current-page")
+//   if (result?.[0]?.title)
+//     return result[0].title
+//   return null
+// }
 
 // MD バージョン用の関数
 
-export const getCurrentPageForMd = async (): Promise<{ originalName: PageEntity["originalName"], uuid: PageEntity["uuid"] } | null> => {
+export const getCurrentPageForMd = async (): Promise<string | null> => {
   // mdバージョンの場合は original-nameが取得できる
-  const result = await advancedQuery<{ "original-name": PageEntity["originalName"], uuid: PageEntity["uuid"] }[]>(`
-      [:find (pull ?p [:block/original-name :block/uuid])
+  const result = await advancedQuery<{ "original-name": PageEntity["originalName"] }[]>(`
+      [:find (pull ?p [:block/original-name])
        :in $ ?current
        :where
        [?p :block/name ?name]
@@ -102,10 +95,8 @@ export const getCurrentPageForMd = async (): Promise<{ originalName: PageEntity[
        [?p :block/uuid ?uuid]
        [?p :block/original-name ?original-name]]
        `, ":current-page")
-  if (result?.[0]) {
-    const { "original-name": originalName, uuid } = result[0]
-    return { originalName, uuid }
-  }
+  if (result?.[0])
+    return result[0]["original-name"]
   return null
 }
 
