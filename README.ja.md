@@ -1,7 +1,7 @@
 # Logseq プラグイン: *Page-tags and Hierarchy*
 
-> [!WARNING]
->このプラグインはLogseq DBグラフでは動作しません。
+> [!NOTE]
+>このプラグインはLogseq ファイルベース グラフでのみ動作します。
 
 <div align="right">
 
