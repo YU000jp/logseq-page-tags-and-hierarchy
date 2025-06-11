@@ -19,6 +19,10 @@ export const firstLoadPlugin = async (logseqDbGraph: boolean, logseqMdModel: boo
 
     //ページ読み込み時に実行コールバック
     logseq.App.onRouteChanged(async ({ template }) => {
+        if (logseqDbGraph === true) return // DBグラフでは実行しない
+
+
+        //TODO:
         switch (template) {
             case '/home':
                 changeCurrentPageTitle("")
@@ -38,6 +42,7 @@ export const firstLoadPlugin = async (logseqDbGraph: boolean, logseqMdModel: boo
     logseq.App.onPageHeadActionsSlotted(async () => {
         onPageChangedCallback()
         setTimeout(() => {
+            if (logseqDbGraph === true || logseqMdModel === false) return // DBグラフの場合と、MDモデルではない場合は実行しない
             const node: Node | null = parent.document.body.querySelector("#main-content-container div.whiteboard") as Node | null
             if (Node
                 && logseq.settings!.booleanWhiteboardSplitHierarchy === true)

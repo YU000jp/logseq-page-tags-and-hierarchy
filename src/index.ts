@@ -124,8 +124,7 @@ export const onPageChangedCallback = async () => {
 let processingBlockChanged: boolean = false//処理中 TOC更新中にブロック更新が発生した場合に処理を中断する
 let onBlockChangedOnce: boolean = false//一度のみ
 export const onBlockChanged = () => {
-    if (onBlockChangedOnce === true || logseqDbGraph === true)
-        return
+    if (onBlockChangedOnce === true || logseqDbGraph === true || logseqMdModel === false) return //DBグラフ、MDモデルでは実行しない
     onBlockChangedOnce = true //index.tsの値を書き換える
     logseq.DB.onChanged(async ({ blocks }) => {
         if (processingBlockChanged === true
