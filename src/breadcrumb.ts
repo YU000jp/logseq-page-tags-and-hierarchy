@@ -238,4 +238,8 @@ const createAnchor = (parts: string, part: string, hierarchyLinks: HTMLSpanEleme
             openPageEvent(link.dataset.ref as string, shiftKey)
     })
 }
+export const removeBreadCrumb = () => {
+    const element = parent.document.getElementById("hierarchyLinks") as HTMLSpanElement | null
+    if (element) element.remove()
+}
 

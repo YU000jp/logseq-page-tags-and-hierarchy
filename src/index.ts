@@ -1,60 +1,30 @@
 import "@logseq/libs"
-import { AppInfo, BlockEntity, LSPluginBaseInfo, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
-import { setup as l10nSetup, t } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
-import fileBottom from './bottom.css?inline'
-import { removeOnSettingsChangedHierarchyPageTitleOnce, revertOnSettingsChangedHierarchyPageTitleOnce, splitPageTitle, WhiteboardCallback } from "./breadcrumb"
+import { AppInfo, BlockEntity, PageEntity } from "@logseq/libs/dist/LSPlugin.user"
+import { t } from "logseq-l10n" //https://github.com/sethyuan/logseq-l10n
+import { applyModelStyles } from "./css/applyModelStyles"
+import { removeBreadCrumb, splitPageTitle, WhiteboardCallback } from "./breadcrumb"
 import { hierarchyForFirstLevelOnly, hierarchyRemoveBeginningLevel } from "./hierarchyList"
-import { provideStyle, removeElementClass, removeElementId, removeProvideStyle, titleCollapsedRegisterEvent } from "./lib"
-import fileCSSMain from './main.css?inline'
-import fileNestingPageAccessory from "./pageAccessory.css?inline"
-import { getCurrentPage, getCurrentPageName } from "./query/advancedQuery"
-import { settingsTemplate, } from "./settings"
-import fileSide from './side.css?inline'
-import { Child, CSSpageSubOrder, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
-import af from "./translations/af.json"
-import de from "./translations/de.json"
-import es from "./translations/es.json"
-import fr from "./translations/fr.json"
-import id from "./translations/id.json"
-import it from "./translations/it.json"
-import ja from "./translations/ja.json"
-import ko from "./translations/ko.json"
-import nbNO from "./translations/nb-NO.json"
-import nl from "./translations/nl.json"
-import pl from "./translations/pl.json"
-import ptBR from "./translations/pt-BR.json"
-import ptPT from "./translations/pt-PT.json"
-import ru from "./translations/ru.json"
-import sk from "./translations/sk.json"
-import tr from "./translations/tr.json"
-import uk from "./translations/uk.json"
-import zhCN from "./translations/zh-CN.json"
-import zhHant from "./translations/zh-Hant.json"
-import CSSUnlinkedHidden from './unlinkedHidden.css?inline'
-import fileWide from './wide.css?inline'
-import fileWideModeJournalQueries from './wideJournalQueries.css?inline'
+import { keyBottom, keyHierarchyForFirstLevelOnly, keyHierarchyRemoveBeginningLevel, keyNestingPageAccessory, keyPageAccessory, keyPageAccessoryOrder, keySide, keyUnlinkedReferencesHidden, keyWide, keyWideModeJournalQueries } from "./key"
+import { loadLogseqL10n } from "./translations/l10nSetup"
+import { removeProvideStyles, titleCollapsedRegisterEvent } from "./lib"
+import { onSettingsChangedCallback } from "./settings/onSettingsChanged"
+import { getCurrentPageName } from "./query/advancedQuery"
+import { settingsTemplate, } from "./settings/settings"
+import { Child, getTocBlocks, headersList, insertElement, tocContentTitleCollapsed } from "./toc"
+
 let currentPageName: string = ""
-const keyPageAccessory = "th-PageAccessory"
-const keyNestingPageAccessory = "th-nestingPageAccessory"
-const keySide = "th-side"
-const keyBottom = "th-bottom"
-const keyWide = "th-wide"
-const keyPageAccessoryOrder = "th-pageAccessoryOrder"
-const keyWideModeJournalQueries = "th-JournalQueries"
-const keyUnlinkedReferencesHidden = "th-unlinkedReferences-hidden"
-export const keyHierarchyForFirstLevelOnly = "th-hierarchyForFirstLevelOnly"
-export const keyHierarchyRemoveBeginningLevel = "th-hierarchyRemoveBeginningLevel"
 let logseqVersion: string = "" //バージョンチェック用
-let logseqVersionMd: boolean = false //バージョンチェック用
+export let logseqMdModel: boolean = false //モデルチェック用
 let logseqDbGraph: boolean = false
 // export const getLogseqVersion = () => logseqVersion //バージョンチェック用
-export const booleanLogseqVersionMd = () => logseqVersionMd //バージョンチェック用
+export const booleanLogseqMdModel = () => logseqMdModel //モデルチェック用
 export const booleanDbGraph = () => logseqDbGraph //バージョンチェック用
+
 
 const main = async () => {
 
     // バージョンチェック
-    logseqVersionMd = await checkLogseqVersion()
+    logseqMdModel = await checkLogseqVersion()
     // console.log("logseq version: ", logseqVersion)
     // console.log("logseq version is MD model: ", logseqVersionMd)
     // 100ms待つ
@@ -62,87 +32,57 @@ const main = async () => {
 
     // if (logseqVersionMd === false) {
     //   // Logseq ver 0.10.*以下にしか対応していない
-
-    // // // DBグラフチェック
-    // logseqDbGraph = await checkLogseqDbGraph()
-    // if (logseqDbGraph === true) {
-    //     // DBグラフには対応していない
-    //     return showDbGraphIncompatibilityMsg()
+    //   logseq.UI.showMsg("The ’Page-tags and Hierarchy’ plugin only supports Logseq ver 0.10.* and below.", "warning", { timeout: 5000 })
+    //   return
     // }
 
-    // logseq.App.onCurrentGraphChanged(async () => {
-    //     logseqDbGraph = await checkLogseqDbGraph()
-    //     if (logseqDbGraph === true)
-    //         // DBグラフには対応していない
-    //         return showDbGraphIncompatibilityMsg()
-    // })
-
-    await l10nSetup({
-        builtinTranslations: {//Full translations
-            ja, af, de, es, fr, id, it, ko, "nb-NO": nbNO, nl, pl, "pt-BR": ptBR, "pt-PT": ptPT, ru, sk, tr, uk, "zh-CN": zhCN, "zh-Hant": zhHant
-        }
-    })
-    /* user settings */
-    logseq.useSettingsSchema(settingsTemplate())
-
-    //設定項目 > ModifyHierarchyList
-    if (logseq.settings!.booleanModifyHierarchy === true)
-        provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
-
-    //設定項目 > Unlinked Referencesを表示しない
-    if (logseq.settings!.booleanUnlinkedReferences === true)
-        logseq.provideStyle({
-            key: keyUnlinkedReferencesHidden,
-            style: CSSUnlinkedHidden
-        })
-    //設定項目 > Journal Queriesを表示するかどうか
-    //wide viewモード以外も。
-    if (logseq.settings!.booleanWideModeJournalQueries === true)
-        logseq.provideStyle({
-            key: keyWideModeJournalQueries,
-            style: fileWideModeJournalQueries
-        })
-
-    //CSS minify https://csscompressor.com/
-    switch (logseq.settings!.placeSelect) {
-        case "unset":
-            break
-        case "bottom":
-            logseq.provideStyle({
-                key: keyBottom,
-                style: fileBottom
-            })
-            break
-        case "side":
-            logseq.provideStyle({
-                key: keySide,
-                style: fileSide
-            })
-            break
-        case "Side"://Sideミス対策
-            logseq.provideStyle({
-                key: keySide,
-                style: fileSide
-            })
-            logseq.updateSettings({
-                placeSelect: "side"
-            }) //default値を間違えていたため修正(変更していないユーザー用)
-            break
-        case "wide view":
-            logseq.provideStyle({
-                key: keyWide,
-                style: fileWide
-            })
-            logseq.provideStyle({
-                key: keyPageAccessoryOrder,
-                style: CSSpageSubOrder(logseq.settings)
-            })
-
-            break
+    // // DBグラフチェック
+    logseqDbGraph = await checkLogseqDbGraph()
+    if (logseqDbGraph === true) {
+        // DBグラフには対応していない
+        return showDbGraphIncompatibilityMsg()
     }
 
-    // ページ名の階層を分割する を含む
-    logseq.provideStyle(fileCSSMain) //メインCSS
+    logseq.App.onCurrentGraphChanged(async () => {
+        logseqDbGraph = await checkLogseqDbGraph()
+        if (logseqDbGraph === true) {
+            // DBグラフには対応していない
+            showDbGraphIncompatibilityMsg() //メッセージを通知
+
+            // 使わない<style>をまとめて削除
+            removeProvideStyles([
+                keyBottom,
+                keySide,
+                keyWide,
+                keyPageAccessoryOrder,
+                keyNestingPageAccessory,
+                keyWideModeJournalQueries,
+                keyUnlinkedReferencesHidden,
+                keyPageAccessory,
+                keyHierarchyForFirstLevelOnly,
+                keyHierarchyRemoveBeginningLevel
+            ])
+
+        } else {
+            applyModelStyles() // モデルに合わせてスタイルを設定
+        }
+        /* user settings */
+        setUserSettings(logseq.settings!.placeSelect as string) //設定を再登録
+    })
+
+
+
+    // ここから初期ロード
+
+    // ユーザー設定言語を取得し、L10Nをセットアップ
+    await loadLogseqL10n()
+
+
+    /* user settings */
+    setUserSettings(logseq.settings!.placeSelect as string) //設定を登録
+
+
+    applyModelStyles() //モデルに合わせてスタイルを設定
 
     //ページ読み込み時に実行コールバック
     logseq.App.onRouteChanged(async ({ template }) => {
@@ -179,7 +119,7 @@ const main = async () => {
         onBlockChanged()
 
     //設定変更のコールバック
-    onSettingsChangedCallback()
+    onSettingsChangedCallback(logseqDbGraph, logseqMdModel, currentPageName)
 
     //ツールバーに設定画面を開くボタンを追加
     logseq.App.registerUIItem('toolbar', {
@@ -193,12 +133,15 @@ const main = async () => {
 
     //プラグインオフの場合はページ名の階層リンクを削除する
     logseq.beforeunload(async () => {
-        const element = parent.document.getElementById("hierarchyLinks") as HTMLSpanElement | null
-        if (element) element.remove()
+        removeBreadCrumb()
     })
 
 }//end main
 
+
+export const setUserSettings = (setting: string) => {
+    logseq.useSettingsSchema(settingsTemplate(logseqDbGraph, logseqMdModel, setting === "wide view" ? true : false)) //設定を登録
+}
 
 
 let processingOnPageChanged: boolean = false //処理中
@@ -280,7 +223,7 @@ const onPageChangedCallback = async () => {
 let processingBlockChanged: boolean = false//処理中 TOC更新中にブロック更新が発生した場合に処理を中断する
 let onBlockChangedOnce: boolean = false//一度のみ
 export const onBlockChanged = () => {
-    if (onBlockChangedOnce === true)
+    if (onBlockChangedOnce === true || logseqDbGraph === true)
         return
     onBlockChangedOnce = true //index.tsの値を書き換える
     logseq.DB.onChanged(async ({ blocks }) => {
@@ -301,8 +244,7 @@ export const onBlockChanged = () => {
 
 
 const updateToc = () => {
-    if (processingBlockChanged === true)
-        return
+    if (processingBlockChanged === true || logseqDbGraph === true || logseqMdModel === false) return //処理中、DBグラフ、DBモデルは更新しない
     processingBlockChanged = true //index.tsの値を書き換える
     setTimeout(async () => {
         await displayToc(currentPageName) //toc更新
@@ -311,179 +253,6 @@ const updateToc = () => {
 }
 
 
-const onSettingsChangedCallback = () => {
-
-    logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
-
-        // 表示場所の変更
-        if (oldSet.placeSelect !== newSet.placeSelect) { //tocはwide viewのみ
-            if (oldSet.placeSelect === "wide view"
-                && newSet.placeSelect !== "wide view")
-                removeElementClass("th-toc")
-            else
-                if (oldSet.placeSelect !== "wide view"
-                    && newSet.placeSelect === "wide view") {
-                    const current = await getCurrentPage() as { name: PageEntity["name"] } | null
-                    if (current
-                        && current.name)
-                        displayToc(current.name)
-                    onBlockChanged()
-                }
-
-            if (newSet.booleanModifyHierarchy === true
-                && !parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`))
-                provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
-            else
-                if (newSet.booleanModifyHierarchy === false) {
-                    removeProvideStyle(keyPageAccessory)
-                    removeProvideStyle(keyNestingPageAccessory)
-                }
-
-            // UIの変更
-            switch (newSet.placeSelect) {
-                case "bottom":
-                    removeProvideStyle(keySide)
-                    removeProvideStyle(keyWide)
-                    removeProvideStyle(keyPageAccessoryOrder)
-                    removeProvideStyle(keyWideModeJournalQueries)
-                    logseq.provideStyle({
-                        key: keyBottom,
-                        style: fileBottom
-                    })
-                    break
-                case "side":
-                    removeProvideStyle(keyBottom)
-                    removeProvideStyle(keyWide)
-                    removeProvideStyle(keyPageAccessoryOrder)
-                    logseq.provideStyle({
-                        key: keySide,
-                        style: fileSide
-                    })
-                    break
-                case "wide view":
-                    removeProvideStyle(keySide)
-                    removeProvideStyle(keyBottom)
-                    logseq.provideStyle({
-                        key: keyWide,
-                        style: fileWide
-                    })
-                    logseq.provideStyle({
-                        key: keyPageAccessoryOrder,
-                        style: CSSpageSubOrder(logseq.settings)
-                    })
-                    break
-                case "unset":
-                    removeProvideStyle(keySide)
-                    removeProvideStyle(keyBottom)
-                    removeProvideStyle(keyWide)
-                    removeProvideStyle(keyPageAccessoryOrder)
-                    removeProvideStyle(keyWideModeJournalQueries)
-                    removeProvideStyle(keyPageAccessory)
-                    removeProvideStyle(keyNestingPageAccessory)
-                    break
-            }
-
-
-            //表示場所の変更以外
-        } else {
-
-
-            if (oldSet.booleanUnlinkedReferences === true
-                && newSet.booleanUnlinkedReferences === false)
-                removeProvideStyle(keyUnlinkedReferencesHidden)
-            else
-                if (oldSet.booleanUnlinkedReferences === false
-                    && newSet.booleanUnlinkedReferences === true)
-                    logseq.provideStyle({
-                        key: keyUnlinkedReferencesHidden,
-                        style: CSSUnlinkedHidden
-                    })
-
-            // 階層のサブレベル1のみを表示する
-            if (oldSet.booleanHierarchyForFirstLevelOnly === true
-                && newSet.booleanHierarchyForFirstLevelOnly === false)
-                removeProvideStyle(keyHierarchyForFirstLevelOnly)
-            else
-                if (oldSet.booleanHierarchyForFirstLevelOnly === false
-                    && newSet.booleanHierarchyForFirstLevelOnly === true
-                    && currentPageName)
-                    hierarchyForFirstLevelOnly(currentPageName.split("/"), currentPageName)
-
-            if (oldSet.booleanModifyHierarchy === false
-                && newSet.booleanModifyHierarchy === true) {
-                if (!parent.document.head.querySelector(`style[data-injected-style^="${keyPageAccessory}"]`)
-                    && !parent.document.head.querySelector(`style[data-injected-style^="${keyNestingPageAccessory}"]`))
-                    provideStyle(keyNestingPageAccessory, fileNestingPageAccessory)
-            }
-            else
-                if (oldSet.booleanModifyHierarchy === true
-                    && newSet.booleanModifyHierarchy === false) {
-                    removeProvideStyle(keyPageAccessory)
-                    removeProvideStyle(keyNestingPageAccessory)
-                }
-            if (oldSet.booleanTableOfContents === false
-                && newSet.booleanTableOfContents === true) {
-                const current = await getCurrentPage() as { name: PageEntity["name"] } | null
-                if (current
-                    && current.name)
-                    displayToc(current.name)
-                onBlockChanged()
-            }
-            else
-                if (oldSet.booleanTableOfContents === true
-                    && newSet.booleanTableOfContents === false)
-                    removeElementClass("th-toc")
-
-            if (oldSet.booleanWideModeJournalQueries === false
-                && newSet.booleanWideModeJournalQueries === true)
-                logseq.provideStyle({
-                    key: keyWideModeJournalQueries,
-                    style: fileWideModeJournalQueries
-                })
-            else
-                if (oldSet.booleanWideModeJournalQueries === true
-                    && newSet.booleanWideModeJournalQueries === false)
-                    removeProvideStyle(keyWideModeJournalQueries)
-
-            //positionのCSSを変更
-            if (newSet.placeSelect === "wide view") {
-                if (oldSet.enumScheduleDeadline !== newSet.enumScheduleDeadline
-                    || oldSet.enumTableOfContents !== newSet.enumTableOfContents
-                    || oldSet.enumLinkedReferences !== newSet.enumLinkedReferences
-                    || oldSet.enumUnlinkedReferences !== newSet.enumUnlinkedReferences
-                    || oldSet.enumPageHierarchy !== newSet.enumPageHierarchy
-                    || oldSet.enumPageTags !== newSet.enumPageTags) {
-                    removeProvideStyle(keyPageAccessoryOrder)
-                    logseq.provideStyle({
-                        key: keyPageAccessoryOrder,
-                        style: CSSpageSubOrder(newSet)
-                    })
-                }
-
-            }
-            if (oldSet.booleanSplitHierarchy !== newSet.booleanSplitHierarchy) {
-                if (newSet.booleanSplitHierarchy === true) {
-                    splitPageTitle(currentPageName, "singlePage")
-                    if (newSet.booleanRemoveHierarchyPageTitle === true)
-                        removeOnSettingsChangedHierarchyPageTitleOnce() //ページ名の階層を削除
-                } else
-                    if (newSet.booleanSplitHierarchy === false) {
-                        removeElementId("hierarchyLinks")
-                        revertOnSettingsChangedHierarchyPageTitleOnce() //元に戻す
-                    }
-            }
-            if (oldSet.booleanSplitHierarchy === true) { //Hierarchy Linksが有効な場合のみ
-                if (oldSet.booleanRemoveHierarchyPageTitle === false
-                    && newSet.booleanRemoveHierarchyPageTitle === true)
-                    removeOnSettingsChangedHierarchyPageTitleOnce() //ページ名の階層を削除
-                else
-                    if (oldSet.booleanRemoveHierarchyPageTitle === true
-                        && newSet.booleanRemoveHierarchyPageTitle === false)
-                        revertOnSettingsChangedHierarchyPageTitleOnce()
-            }
-        }
-    })
-}
 
 
 export const displayToc = async (pageName: string) => {
@@ -519,10 +288,10 @@ const checkLogseqVersion = async (): Promise<boolean> => {
 
         // もし バージョンが0.10.*系やそれ以下ならば、logseqVersionMdをtrueにする
         if (logseqVersion.match(/0\.([0-9]|10)\.\d+/)) {
-            logseqVersionMd = true
+            logseqMdModel = true
             // console.log("logseq version is 0.10.* or lower")
             return true
-        } else logseqVersionMd = false
+        } else logseqMdModel = false
     } else logseqVersion = "0.0.0"
     return false
 }

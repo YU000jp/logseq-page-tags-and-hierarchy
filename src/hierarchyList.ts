@@ -1,4 +1,4 @@
-import { keyHierarchyForFirstLevelOnly, keyHierarchyRemoveBeginningLevel } from "."
+import { keyHierarchyForFirstLevelOnly, keyHierarchyRemoveBeginningLevel } from "./key"
 
 // Hierarchyのサブレベル1のみを表示する
 // Display only sub-level 1 of Hierarchy
