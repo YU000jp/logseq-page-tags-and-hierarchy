@@ -24,7 +24,7 @@ jobs:
           version: latest
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --allow-scripts
 
       - name: Build dist
         run: pnpm prod
