@@ -27,7 +27,7 @@ jobs:
               run: pnpm config set ignore-scripts=false
 
             - name: Install dependencies
-              run: pnpm install --allow-scripts
+              run: pnpm install
 
             - name: Build dist
               run: pnpm prod
