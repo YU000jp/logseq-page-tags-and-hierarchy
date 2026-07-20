@@ -1,3 +1,10 @@
+## [2.27.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.27.0...v2.27.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* detect Logseq OG (1.x) as MD model in checkLogseqVersion ([766110d](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/766110dbb36a4cf0a89be9ef17489f905c4a0620))
+
 # [2.27.0](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.26.1...v2.27.0) (2025-06-11)
 
 
