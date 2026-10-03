@@ -1,3 +1,10 @@
+## [2.27.2](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.27.1...v2.27.2) (2026-10-03)
+
+
+### Bug Fixes
+
+* グラフ種別の検出を公式APIベースに修正 ([aa0b0df](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/commit/aa0b0dfa0bafc86e2d1e896c4c3b65ae68649b70))
+
 ## [2.27.1](https://github.com/YU000jp/logseq-page-tags-and-hierarchy/compare/v2.27.0...v2.27.1) (2026-07-20)
 
 
