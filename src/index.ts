@@ -17,16 +17,20 @@ export const changeCurrentPageTitle = (name: string) => {
 }
 // 変数 (同じモジュール内で使用するため、exportしない)
 let logseqVersion: string = "" //バージョンチェック用
-let logseqMdModel: boolean = false //モデルチェック用
+let logseqMdModel: boolean = false //ファイルベースグラフチェック用(= !isDbGraph)
 let logseqDbGraph: boolean = false //DBグラフチェック用
+let logseqAppDbEra: boolean = false //アプリ世代チェック用(新UI=DB系アプリ)
 // 外部から参照するためにexportする
 export const getLogseqVersion = () => logseqVersion //バージョンチェック用
 export const replaceLogseqVersion = (version: string) => logseqVersion = version
-export const booleanLogseqMdModel = () => logseqMdModel //モデルチェック用
+export const booleanLogseqMdModel = () => logseqMdModel //ファイルベースグラフチェック用
 export const replaceLogseqMdModel = (mdModel: boolean) => logseqMdModel = mdModel
 
 export const booleanDbGraph = () => logseqDbGraph //DBグラフチェック用
 export const replaceLogseqDbGraph = (dbGraph: boolean) => logseqDbGraph = dbGraph
+
+export const booleanAppDbEra = () => logseqAppDbEra //アプリ世代チェック用
+export const replaceAppDbEra = (dbEra: boolean) => logseqAppDbEra = dbEra
 
 
 const main = async () => {
@@ -41,7 +45,7 @@ const main = async () => {
 
 
 export const setUserSettings = (logseqDbGraph: boolean, logseqMdModel: boolean, setting: string) => {
-    logseq.useSettingsSchema(settingsTemplate(logseqDbGraph, logseqMdModel, setting === "wide view" ? true : false)) //設定を登録
+    logseq.useSettingsSchema(settingsTemplate(logseqDbGraph, logseqMdModel, booleanAppDbEra(), setting === "wide view" ? true : false)) //設定を登録
 }
 
 

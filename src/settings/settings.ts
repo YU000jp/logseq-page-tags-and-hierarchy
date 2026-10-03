@@ -4,13 +4,13 @@ import { pageContentHierarchySettings } from "./pageContentHierarchySettings"
 import { uiLayoutSettings } from "./uiLayoutSettings"
 import { wideViewSettings } from "./wideViewSettings"
 
-export const settingsTemplate = (logseqDbGraph: boolean, logseqMdModel: boolean, enabledWideView: boolean): SettingSchemaDesc[] => {
+export const settingsTemplate = (logseqDbGraph: boolean, logseqMdModel: boolean, logseqAppDbEra: boolean, enabledWideView: boolean): SettingSchemaDesc[] => {
     // LogseqDbGraphがtrueのときは、DBグラフモードであることを警告する設定を追加
     if (logseqDbGraph === true)
         return [logseqDbGraphWarningSetting()] // DBグラフモードのときは、警告を表示する (機能動作なし・設定項目なし)
     else
         return [
-            ...(logseqMdModel === false ? [logseqMdModelWarningSetting()] : []), // DBモデルかつfile-basedグラフのときは警告を表示
+            ...(logseqAppDbEra === true ? [logseqMdModelWarningSetting()] : []), // DB系アプリ上のfile-basedグラフのときは警告を表示
             ...hierarchySettings(logseqDbGraph, logseqMdModel), // 階層設定は、LogseqDbGraphがfalseのときのみ有効
             ...(logseqMdModel ? pageContentHierarchySettings() : []), // ページコンテンツの階層設定は、LogseqMdModelがtrueのときのみ有効
             ...(logseqMdModel ? uiLayoutSettings() : []), // UIレイアウト設定は、LogseqMdModelがtrueのときのみ有効
