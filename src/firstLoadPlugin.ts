@@ -1,5 +1,5 @@
 import { t } from "logseq-l10n"
-import { changeCurrentPageTitle, getCurrentPageNameString, onBlockChanged, onPageChangedCallback, setUserSettings } from "."
+import { booleanDbGraph, booleanLogseqMdModel, changeCurrentPageTitle, getCurrentPageNameString, onBlockChanged, onPageChangedCallback, setUserSettings } from "."
 import { WhiteboardCallback, removeBreadCrumb } from "./breadcrumb"
 import { applyModelStyles } from "./css/applyModelStyles"
 import { onSettingsChangedCallback } from "./settings/onSettingsChanged"
@@ -18,8 +18,9 @@ export const firstLoadPlugin = async (logseqDbGraph: boolean, logseqMdModel: boo
     await applyModelStyles()
 
     //ページ読み込み時に実行コールバック
+    // グラフ切替に追従するため、コールバック内ではゲッターで現在のグラフ種別を参照する
     logseq.App.onRouteChanged(async ({ template }) => {
-        if (logseqDbGraph === true) return // DBグラフでは実行しない
+        if (booleanDbGraph() === true) return // DBグラフでは実行しない
 
 
         //TODO:
@@ -28,25 +29,25 @@ export const firstLoadPlugin = async (logseqDbGraph: boolean, logseqMdModel: boo
                 changeCurrentPageTitle("")
                 break
             case '/page/:name':
-                onPageChangedCallback(logseqDbGraph, logseqMdModel)
+                onPageChangedCallback(booleanDbGraph(), booleanLogseqMdModel())
                 break
             case '/whiteboard/:name':
                 //Whiteboardの場合
                 if (logseq.settings!.booleanWhiteboardSplitHierarchy === true)
-                    WhiteboardCallback(logseqDbGraph, logseqMdModel)
+                    WhiteboardCallback(booleanDbGraph(), booleanLogseqMdModel())
                 break
         }
     })
 
     //ページ読み込み時に実行コールバック
     logseq.App.onPageHeadActionsSlotted(async () => {
-        onPageChangedCallback(logseqDbGraph, logseqMdModel)
+        onPageChangedCallback(booleanDbGraph(), booleanLogseqMdModel())
         setTimeout(() => {
-            if (logseqDbGraph === true || logseqMdModel === false) return // DBグラフの場合と、MDモデルではない場合は実行しない
+            if (booleanDbGraph() === true || booleanLogseqMdModel() === false) return // DBグラフの場合と、ファイルベースグラフではない場合は実行しない
             const node: Node | null = parent.document.body.querySelector("#main-content-container div.whiteboard") as Node | null
             if (Node
                 && logseq.settings!.booleanWhiteboardSplitHierarchy === true)
-                WhiteboardCallback(logseqDbGraph, logseqMdModel)
+                WhiteboardCallback(booleanDbGraph(), booleanLogseqMdModel())
         }, 1)
 
     }) //バグあり？onRouteChangedとともに動作保証が必要

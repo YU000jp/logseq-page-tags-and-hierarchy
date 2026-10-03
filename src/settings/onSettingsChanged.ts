@@ -160,8 +160,9 @@ const handleOtherSettings = async (
 export const onSettingsChangedCallback = (logseqDbGraph: boolean, logseqMdModel: boolean, currentPageName: string) => {
              logseq.onSettingsChanged(async (newSet: LSPluginBaseInfo['settings'], oldSet: LSPluginBaseInfo['settings']) => {
 
-                          // DB グラフまたは MD モデルの場合は階層処理のみ
-                          if (logseqDbGraph === true || logseqMdModel === false) {
+                          // DB グラフまたはファイルベースグラフではない場合は階層処理のみ
+                          // グラフ切替に追従するため、現在のフラグをゲッターで参照する
+                          if (booleanDbGraph() === true || booleanLogseqMdModel() === false) {
                                        handleSplitHierarchyChanges(oldSet, newSet, currentPageName)
                                        return
                           }
@@ -179,7 +180,7 @@ export const onSettingsChangedCallback = (logseqDbGraph: boolean, logseqMdModel:
                                        await handleUIChanges(newSet)
 
                                        setTimeout(() => {
-                                                    setUserSettings(logseqDbGraph, logseqMdModel, newSet.placeSelect as string)
+                                                    setUserSettings(booleanDbGraph(), booleanLogseqMdModel(), newSet.placeSelect as string)
                                                     logseq.showSettingsUI()
                                        }, 100)
                           } else {
